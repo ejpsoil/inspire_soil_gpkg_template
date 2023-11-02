@@ -1,0 +1,1 @@
+--- a set of sql statements to update a plain geopackage template to a INSPIRE Soil template

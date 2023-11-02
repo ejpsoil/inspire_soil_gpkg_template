@@ -1,6 +1,6 @@
 # A gpkg template for the INSPIRE Soil theme
 
-This repository hosts the design of a template for a relational database to capture soil data according the INSPIRE soil data model.
+This repository hosts the design of a template for a relational database to capture soil data according to the INSPIRE soil data model.
 
 The [Good practice on GeoPackage encodings for INSPIRE data](https://github.com/INSPIRE-MIF/gp-geopackage-encodings) introduced a mechanism to share INSPIRE data in a way which makes it much easier for producers to produce the data and consumers to consume the data.
 

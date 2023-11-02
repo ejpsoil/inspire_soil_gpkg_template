@@ -1,0 +1,5 @@
+---
+title: "Howto: produce a GeoPackage template for INSPIRE Soil data"
+date:
+author:
+---
