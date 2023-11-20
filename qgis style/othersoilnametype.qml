@@ -1,11 +1,16 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis styleCategories="LayerConfiguration|Fields|Forms" readOnly="0" version="3.32.3-Lima">
+<qgis version="3.32.3-Lima" readOnly="0" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
     <Searchable>1</Searchable>
     <Private>0</Private>
   </flags>
+  <referencedLayers>
+    <relation referencedLayer="soilprofile_70463919_e765_4575_a6dd_732282d87450" strength="Composition" dataSource="./Vector.gpkg|layername=soilprofile" referencingLayer="othersoilnametype_917e3c78_6f7a_4b13_876a_220a55c464b5" id="soilprofile_othersoilnametype" layerId="soilprofile_70463919_e765_4575_a6dd_732282d87450" providerKey="ogr" name="soilprofile_othersoilnametype" layerName="soilprofile">
+      <fieldRef referencingField="othersoilname" referencedField="guidkey"/>
+    </relation>
+  </referencedLayers>
   <fieldConfiguration>
     <field configurationFlags="None" name="id">
       <editWidget type="TextEdit">
@@ -14,33 +19,23 @@
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="guidkey">
-      <editWidget type="TextEdit">
-        <config>
-          <Option type="Map">
-            <Option name="IsMultiline" type="bool" value="false"/>
-            <Option name="UseHtml" type="bool" value="false"/>
-          </Option>
-        </config>
-      </editWidget>
-    </field>
     <field configurationFlags="None" name="soilname">
       <editWidget type="ValueRelation">
         <config>
           <Option type="Map">
-            <Option name="AllowMulti" type="bool" value="false"/>
-            <Option name="AllowNull" type="bool" value="false"/>
-            <Option name="Description" type="QString" value="&quot;label&quot;"/>
-            <Option name="FilterExpression" type="QString" value="&quot;collection&quot; IN('http://inspire.ec.europa.eu/codelist/OtherSoilNameTypeValue') "/>
-            <Option name="Key" type="QString" value="id"/>
-            <Option name="Layer" type="QString" value="codelist_6dff4a6f_20e9_4a3d_912e_3af2836047d1"/>
-            <Option name="LayerName" type="QString" value="codelist"/>
-            <Option name="LayerProviderName" type="QString" value="ogr"/>
-            <Option name="LayerSource" type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector/Vector.gpkg|layername=codelist"/>
-            <Option name="NofColumns" type="int" value="1"/>
-            <Option name="OrderByValue" type="bool" value="false"/>
-            <Option name="UseCompleter" type="bool" value="false"/>
-            <Option name="Value" type="QString" value="label"/>
+            <Option type="bool" value="false" name="AllowMulti"/>
+            <Option type="bool" value="false" name="AllowNull"/>
+            <Option type="QString" value="&quot;label&quot;" name="Description"/>
+            <Option type="QString" value="&quot;collection&quot; IN('OtherSoilNameTypeValue') " name="FilterExpression"/>
+            <Option type="QString" value="id" name="Key"/>
+            <Option type="QString" value="codelist_44009776_a9a6_4371_91e7_8f3009ac5748" name="Layer"/>
+            <Option type="QString" value="codelist" name="LayerName"/>
+            <Option type="QString" value="ogr" name="LayerProviderName"/>
+            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_08 newcodelist/Vector.gpkg|layername=codelist" name="LayerSource"/>
+            <Option type="int" value="1" name="NofColumns"/>
+            <Option type="bool" value="false" name="OrderByValue"/>
+            <Option type="bool" value="false" name="UseCompleter"/>
+            <Option type="QString" value="label" name="Value"/>
           </Option>
         </config>
       </editWidget>
@@ -49,9 +44,9 @@
       <editWidget type="CheckBox">
         <config>
           <Option type="Map">
-            <Option name="CheckedState" type="QString" value=""/>
-            <Option name="TextDisplayMethod" type="int" value="0"/>
-            <Option name="UncheckedState" type="QString" value=""/>
+            <Option type="QString" value="" name="CheckedState"/>
+            <Option type="int" value="0" name="TextDisplayMethod"/>
+            <Option type="QString" value="" name="UncheckedState"/>
           </Option>
         </config>
       </editWidget>
@@ -60,55 +55,50 @@
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option name="AllowAddFeatures" type="bool" value="false"/>
-            <Option name="AllowNULL" type="bool" value="false"/>
-            <Option name="FetchLimitActive" type="bool" value="true"/>
-            <Option name="FetchLimitNumber" type="int" value="100"/>
-            <Option name="MapIdentification" type="bool" value="false"/>
-            <Option name="ReadOnly" type="bool" value="false"/>
-            <Option name="ReferencedLayerDataSource" type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector/Vector.gpkg|layername=soilprofile"/>
-            <Option name="ReferencedLayerId" type="QString" value="soilprofile_22025b68_6999_464c_bf4d_549fdc6f07f9"/>
-            <Option name="ReferencedLayerName" type="QString" value="soilprofile"/>
-            <Option name="ReferencedLayerProviderKey" type="QString" value="ogr"/>
-            <Option name="Relation" type="QString" value="soilprofile_othersoilnametype"/>
-            <Option name="ShowForm" type="bool" value="false"/>
-            <Option name="ShowOpenFormButton" type="bool" value="true"/>
+            <Option type="bool" value="false" name="AllowAddFeatures"/>
+            <Option type="bool" value="false" name="AllowNULL"/>
+            <Option type="bool" value="true" name="FetchLimitActive"/>
+            <Option type="int" value="100" name="FetchLimitNumber"/>
+            <Option type="bool" value="false" name="MapIdentification"/>
+            <Option type="bool" value="false" name="ReadOnly"/>
+            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_08 newcodelist/Vector.gpkg|layername=soilprofile" name="ReferencedLayerDataSource"/>
+            <Option type="QString" value="soilprofile_70463919_e765_4575_a6dd_732282d87450" name="ReferencedLayerId"/>
+            <Option type="QString" value="soilprofile" name="ReferencedLayerName"/>
+            <Option type="QString" value="ogr" name="ReferencedLayerProviderKey"/>
+            <Option type="QString" value="soilprofile_othersoilnametype" name="Relation"/>
+            <Option type="bool" value="false" name="ShowForm"/>
+            <Option type="bool" value="true" name="ShowOpenFormButton"/>
           </Option>
         </config>
       </editWidget>
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias field="id" index="0" name=""/>
-    <alias field="guidkey" index="1" name=""/>
-    <alias field="soilname" index="2" name="Soil Name"/>
-    <alias field="isoriginalclassification" index="3" name="It is an Original Classification"/>
-    <alias field="othersoilname" index="4" name="Soil Profile"/>
+    <alias index="0" field="id" name=""/>
+    <alias index="1" field="soilname" name="Soil Name"/>
+    <alias index="2" field="isoriginalclassification" name="It is an Original Classification"/>
+    <alias index="3" field="othersoilname" name="Soil Profile"/>
   </aliases>
   <splitPolicies>
     <policy field="id" policy="Duplicate"/>
-    <policy field="guidkey" policy="DefaultValue"/>
     <policy field="soilname" policy="DefaultValue"/>
     <policy field="isoriginalclassification" policy="DefaultValue"/>
     <policy field="othersoilname" policy="DefaultValue"/>
   </splitPolicies>
   <defaults>
     <default field="id" expression="" applyOnUpdate="0"/>
-    <default field="guidkey" expression="" applyOnUpdate="0"/>
     <default field="soilname" expression="" applyOnUpdate="0"/>
     <default field="isoriginalclassification" expression="" applyOnUpdate="0"/>
     <default field="othersoilname" expression="" applyOnUpdate="0"/>
   </defaults>
   <constraints>
-    <constraint field="id" constraints="3" unique_strength="1" exp_strength="0" notnull_strength="1"/>
-    <constraint field="guidkey" constraints="2" unique_strength="1" exp_strength="0" notnull_strength="0"/>
-    <constraint field="soilname" constraints="1" unique_strength="0" exp_strength="0" notnull_strength="1"/>
-    <constraint field="isoriginalclassification" constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0"/>
-    <constraint field="othersoilname" constraints="0" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+    <constraint constraints="3" unique_strength="1" field="id" notnull_strength="1" exp_strength="0"/>
+    <constraint constraints="1" unique_strength="0" field="soilname" notnull_strength="1" exp_strength="0"/>
+    <constraint constraints="0" unique_strength="0" field="isoriginalclassification" notnull_strength="0" exp_strength="0"/>
+    <constraint constraints="0" unique_strength="0" field="othersoilname" notnull_strength="0" exp_strength="0"/>
   </constraints>
   <constraintExpressions>
     <constraint field="id" exp="" desc=""/>
-    <constraint field="guidkey" exp="" desc=""/>
     <constraint field="soilname" exp="" desc=""/>
     <constraint field="isoriginalclassification" exp="" desc=""/>
     <constraint field="othersoilname" exp="" desc=""/>
@@ -137,36 +127,36 @@ control = dialog.findChild(QWidget, "MyLineEdit")
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="0,0,0,255">
-      <labelFont bold="0" underline="0" strikethrough="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style=""/>
+    <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
+      <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
     </labelStyle>
-    <attributeEditorField horizontalStretch="0" index="0" name="id" showLabel="1" verticalStretch="0">
-      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="0,0,0,255">
-        <labelFont bold="0" underline="0" strikethrough="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style=""/>
+    <attributeEditorField index="0" showLabel="1" verticalStretch="0" name="id" horizontalStretch="0">
+      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
+        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField horizontalStretch="0" index="2" name="soilname" showLabel="1" verticalStretch="0">
-      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="0,0,0,255">
-        <labelFont bold="0" underline="0" strikethrough="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style=""/>
+    <attributeEditorField index="1" showLabel="1" verticalStretch="0" name="soilname" horizontalStretch="0">
+      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
+        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField horizontalStretch="0" index="3" name="isoriginalclassification" showLabel="1" verticalStretch="0">
-      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="0,0,0,255">
-        <labelFont bold="0" underline="0" strikethrough="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style=""/>
+    <attributeEditorField index="2" showLabel="1" verticalStretch="0" name="isoriginalclassification" horizontalStretch="0">
+      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
+        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField horizontalStretch="0" index="4" name="othersoilname" showLabel="1" verticalStretch="0">
-      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="0,0,0,255">
-        <labelFont bold="0" underline="0" strikethrough="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style=""/>
+    <attributeEditorField index="3" showLabel="1" verticalStretch="0" name="othersoilname" horizontalStretch="0">
+      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
+        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
       </labelStyle>
     </attributeEditorField>
   </attributeEditorForm>
   <editable>
-    <field name="guidkey" editable="1"/>
-    <field name="id" editable="1"/>
-    <field name="isoriginalclassification" editable="1"/>
-    <field name="othersoilname" editable="1"/>
-    <field name="soilname" editable="1"/>
+    <field editable="1" name="guidkey"/>
+    <field editable="1" name="id"/>
+    <field editable="1" name="isoriginalclassification"/>
+    <field editable="1" name="othersoilname"/>
+    <field editable="1" name="soilname"/>
   </editable>
   <labelOnTop>
     <field labelOnTop="0" name="guidkey"/>
@@ -176,11 +166,11 @@ control = dialog.findChild(QWidget, "MyLineEdit")
     <field labelOnTop="0" name="soilname"/>
   </labelOnTop>
   <reuseLastValue>
-    <field name="guidkey" reuseLastValue="0"/>
-    <field name="id" reuseLastValue="0"/>
-    <field name="isoriginalclassification" reuseLastValue="0"/>
-    <field name="othersoilname" reuseLastValue="0"/>
-    <field name="soilname" reuseLastValue="0"/>
+    <field reuseLastValue="0" name="guidkey"/>
+    <field reuseLastValue="0" name="id"/>
+    <field reuseLastValue="0" name="isoriginalclassification"/>
+    <field reuseLastValue="0" name="othersoilname"/>
+    <field reuseLastValue="0" name="soilname"/>
   </reuseLastValue>
   <dataDefinedFieldProperties/>
   <widgets/>
