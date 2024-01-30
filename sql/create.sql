@@ -1,5 +1,10 @@
---- a set of sql statements to update a plain geopackage template to a INSPIRE Soil template
+---
+-- title: "Howto: produce a GeoPackage template for INSPIRE Soil data"
+-- date: 30/01/2024
+-- author: Andrea Lachi - andrea.lachi@crea.gov.it
+---
 
+--- a set of sql statements to update a plain geopackage template to a INSPIRE Soil template
 /* 
 ███████ ██████  ███████  ██████      ██████   ██████  ██████  ███████ 
 ██      ██   ██ ██      ██                ██ ██  ████      ██ ██      
@@ -7,6 +12,7 @@
 ██      ██           ██ ██    ██          ██ ████  ██      ██      ██ 
 ███████ ██      ███████  ██████      ██████   ██████  ██████  ███████ 
  */
+
 
 INSERT INTO gpkg_spatial_ref_sys (srs_name, srs_id, organization, organization_coordsys_id, definition, description) VALUES ('EPSG:ETRS89 / LAEA Europe', 3035, 'EPSG', 3035, 'PROJCS["ETRS89 / LAEA Europe", 
   GEOGCS["ETRS89", 
@@ -39,7 +45,6 @@ INSERT INTO gpkg_spatial_ref_sys (srs_name, srs_id, organization, organization_c
          */                             
 
 
-
 -- Table soilsite ---------------------------------------------------------------------------------------
 CREATE TABLE soilsite
 ( 
@@ -50,9 +55,9 @@ CREATE TABLE soilsite
     inspireid_namespace TEXT, 
     inspireid_versionid TEXT, 
     soilinvestigationpurpose TEXT NOT NULL, -- Codelist  soilinvestigationpurposevalue
-    validfrom DATETIME default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')) not null,-- DEFAULT CURRENT_TIMESTAMP,
+    validfrom DATETIME default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')) not null,
     validto DATETIME,
-    beginlifespanversion DATETIME default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')) not null, -- DEFAULT CURRENT_TIMESTAMP,
+    beginlifespanversion DATETIME default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')) not null, 
     endlifespanversion DATETIME
 );
 
@@ -102,7 +107,6 @@ INSERT INTO gpkg_geometry_columns (
 );
 
 -- Trigger soilsite ---------------------------------------------------------------------------------------
-
 CREATE TRIGGER soilsiteguid
 AFTER INSERT ON soilsite
 FOR EACH ROW
@@ -150,7 +154,6 @@ END;
 --
 
 
-
 CREATE TRIGGER i_soilinvestigationpurpose
 BEFORE INSERT ON soilsite
 FOR EACH ROW
@@ -181,6 +184,7 @@ BEGIN
 END;
 --
 
+
 CREATE TRIGGER u_begin_today_soilsite_error
 AFTER UPDATE
 OF inspireid_localid,inspireid_namespace,inspireid_versionid,soilinvestigationpurpose,validfrom,validto,endlifespanversion
@@ -191,9 +195,6 @@ BEGIN
 END;
 --
 
-
-
---
 
 /* 
 ███████  ██████  ██ ██      ██████  ██       ██████  ████████ 
@@ -214,7 +215,7 @@ CREATE TABLE soilplot
     inspireid_namespace TEXT,
     inspireid_versionid TEXT,
     soilplottype TEXT NOT NULL,  -- Codelist soilplottypevalue
-    beginlifespanversion DATETIME default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')) not null, -- DEFAULT CURRENT_TIMESTAMP,
+    beginlifespanversion DATETIME default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')) not null,
     endlifespanversion DATETIME,
     locatedon TEXT,
     FOREIGN KEY (locatedon)
@@ -267,9 +268,7 @@ INSERT INTO gpkg_geometry_columns (
   0 -- if the geometry has a M coordinate (0 = no, 1 = yes, 2 = optional)
 );
 
-
 -- Trigger soilplot ---------------------------------------------------------------------------------------
-
 CREATE TRIGGER soilplotguid
 AFTER INSERT ON soilplot
 FOR EACH ROW
@@ -318,6 +317,7 @@ BEGIN
 END;
 --
 
+
 CREATE TRIGGER u_begin_today_soilplot
 AFTER UPDATE
 OF inspireid_localid,inspireid_namespace,inspireid_versionid,soilplottype,endlifespanversion
@@ -329,6 +329,7 @@ BEGIN
    SET beginlifespanversion  = strftime('%Y-%m-%dT%H:%M:%fZ', 'now','localtime')
    WHERE id = new.id;
 END;
+--
 
 
 CREATE TRIGGER u_begin_today_soilplot_error
@@ -339,6 +340,7 @@ WHEN  datetime('now') > new.endlifespanversion
 BEGIN
    SELECT RAISE(ABORT,'If you change record endlifespanversion must be greater than today');
 END;
+--
 
 
 /* 
@@ -349,9 +351,10 @@ END;
 ███████  ██████  ██ ███████ ██      ██   ██  ██████  ██      ██ ███████ ███████ 
  */
 
-
+--------------------------------
 -- OBSERVED isderived -> 0   
 -- DERIVED  isderived -> 1   
+--------------------------------
 
 -- Table soilprofile ---------------------------------------------------------------------------------------
 CREATE TABLE soilprofile 
@@ -367,7 +370,7 @@ CREATE TABLE soilprofile
     validfrom DATETIME default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')) not null,
     validto	DATETIME,
     isderived BOOLEAN DEFAULT 0 NOT NULL, 
-    wrbreferencesoilgroup TEXT,    -- Codelist wrbreferencesoilgroupvalue
+    wrbreferencesoilgroup TEXT NOT NULL,    -- Codelist wrbreferencesoilgroupvalue
     isoriginalclassification BOOLEAN DEFAULT 1 NOT NULL,
 
     location TEXT UNIQUE,
@@ -403,7 +406,6 @@ INSERT INTO gpkg_contents (
 );
 
 -- Trigger soilprofile ---------------------------------------------------------------------------------------
-
 CREATE TRIGGER soilprofileguid
 AFTER INSERT ON soilprofile
 FOR EACH ROW
@@ -502,6 +504,7 @@ BEGIN
 END;
 --
 
+
 CREATE TRIGGER u_begin_today_soilprofile
 AFTER UPDATE
 OF inspireid_localid,inspireid_namespace,inspireid_versionid,localidentifier,endlifespanversion,validfrom,validto,isderived,wrbreferencesoilgroup,isoriginalclassification
@@ -512,7 +515,7 @@ BEGIN
    SET beginlifespanversion  = strftime('%Y-%m-%dT%H:%M:%fZ', 'now','localtime')
    WHERE id = new.id;
 END;
-
+--
 
 
 CREATE TRIGGER u_begin_today_soilprofile_error
@@ -540,15 +543,15 @@ END;
 CREATE TABLE othersoilnametype
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
-    soilname TEXT NOT NULL, --Codelist othersoilnametypevalue
-    isoriginalclassification  BOOLEAN, 
+    othersoilname_type TEXT NOT NULL, --Codelist othersoilnametypevalue
+    othersoilname_class TEXT,
+    isoriginalclassification  BOOLEAN  DEFAULT 0 NOT NULL,
     othersoilname TEXT,
     FOREIGN KEY (othersoilname)
       REFERENCES soilprofile(guidkey)
       ON DELETE CASCADE
       ON UPDATE CASCADE
 );
-
 
 -- Contents othersoilnametype ---------------------------------------------------------------------------------------
 INSERT INTO gpkg_contents (
@@ -575,24 +578,21 @@ INSERT INTO gpkg_contents (
   NULL -- EPSG spatial reference system code
 );
 
-
 -- Trigger othersoilnametype ---------------------------------------------------------------------------------------
-
-
 CREATE TRIGGER i_soilname
 BEFORE INSERT ON othersoilnametype
 FOR EACH ROW
-WHEN NEW.soilname NOT IN (SELECT id FROM codelist WHERE collection = 'OtherSoilNameTypeValue')
+WHEN NEW.othersoilname_type NOT IN (SELECT id FROM codelist WHERE collection = 'OtherSoilNameTypeValue')
 BEGIN
-    SELECT RAISE(ABORT, 'Table othersoilnametype: Invalid value for soilname. Must be present in id of othersoilnametypevalue codelist.');
+    SELECT RAISE(ABORT, 'Table othersoilnametype: Invalid value for othersoilname_type. Must be present in id of othersoilnametypevalue codelist.');
 END;
 
 CREATE TRIGGER u_soilname
 BEFORE UPDATE ON othersoilnametype
 FOR EACH ROW
-WHEN NEW.soilname NOT IN (SELECT id FROM codelist WHERE collection = 'OtherSoilNameTypeValue')
+WHEN NEW.othersoilname_type NOT IN (SELECT id FROM codelist WHERE collection = 'OtherSoilNameTypeValue')
 BEGIN
-    SELECT RAISE(ABORT, 'Table othersoilnametype: Invalid value for soilname. Must be present in id of othersoilnametypevalue codelist.');
+    SELECT RAISE(ABORT, 'Table othersoilnametype: Invalid value for othersoilname_type. Must be present in id of othersoilnametypevalue codelist.');
 END;
 --
 
@@ -613,8 +613,8 @@ CREATE TABLE isderivedfrom
   base_id TEXT NOT NULL,
   related_id TEXT NOT NULL,
   CONSTRAINT unicrelationidf UNIQUE (base_id, related_id),
-  FOREIGN KEY (base_id) REFERENCES soilprofile (guidkey),
-  FOREIGN KEY (related_id) REFERENCES soilprofile (guidkey)
+  FOREIGN KEY (base_id) REFERENCES soilprofile (guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (related_id) REFERENCES soilprofile (guidkey) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Contents isderivedfrom ---------------------------------------------------------------------------------------
@@ -632,10 +632,7 @@ last_change
 strftime('%Y-%m-%dT%H:%M:%fZ','now') -- last modification date and time
 );
 
-
- 
 -- Trigger isderivedfrom ---------------------------------------------------------------------------------------
-
 CREATE TRIGGER i_checkisderived
 BEFORE INSERT ON isderivedfrom
 BEGIN
@@ -675,6 +672,7 @@ BEGIN
 END;
 --
 
+
 /* 
 ███████  ██████  ██ ██      ██████   ██████  ██████  ██    ██ 
 ██      ██    ██ ██ ██      ██   ██ ██    ██ ██   ██  ██  ██  
@@ -696,8 +694,6 @@ CREATE TABLE soilbody
     endlifespanversion DATETIME,
     soilbodylabel TEXT NOT NULL
 );
-
-
 
 -- Contents soilbody ---------------------------------------------------------------------------------------
 INSERT INTO gpkg_contents (
@@ -721,13 +717,10 @@ INSERT INTO gpkg_contents (
   NULL,
   NULL,
   NULL,
-  3035 -- EPSG spatial reference system code
+  NULL -- EPSG spatial reference system code
 );
 
-
-
 -- Trigger soilbody ---------------------------------------------------------------------------------------
-
 CREATE TRIGGER soilbodyguid
 AFTER INSERT ON soilbody
 FOR EACH ROW
@@ -783,7 +776,6 @@ END;
 -- 
 
 
-
 /*
 ███████  ██████  ██ ██      ██████   ██████  ██████  ██    ██          ██████  ███████  ██████  ███    ███ 
 ██      ██    ██ ██ ██      ██   ██ ██    ██ ██   ██  ██  ██          ██       ██      ██    ██ ████  ████ 
@@ -793,17 +785,17 @@ END;
 */
 
 -- Table soilbody_geom ---------------------------------------------------------------------------------------
-
 CREATE TABLE soilbody_geom
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
     geom MULTIPOLYGON NOT NULL, 
-    idsoilbodylabel TEXT NOT NULL,
-     FOREIGN KEY (idsoilbodylabel)
+    idsoilbody TEXT NOT NULL,
+     FOREIGN KEY (idsoilbody)
       REFERENCES soilbody(guidkey)
-
+      ON DELETE CASCADE 
+      ON UPDATE CASCADE
+ 
 );
-
 
 -- Contents soilbody_geom ---------------------------------------------------------------------------------------
 INSERT INTO gpkg_contents (
@@ -830,10 +822,8 @@ INSERT INTO gpkg_contents (
   3035 -- EPSG spatial reference system code
 );
 
-
 -- spatial index
 CREATE INDEX soiBody_geom_idx ON soilbody_geom(geom);
-
 
 -- Geometry soilbody_geom ---------------------------------------------------------------------------------------
 INSERT INTO gpkg_geometry_columns (
@@ -853,9 +843,6 @@ INSERT INTO gpkg_geometry_columns (
 );
 
 
-
-
-
 /* 
 ██████  ███████ ██████  ██ ██    ██ ███████ ██████  ██████  ██████   ██████  ███████ ██ ██      ███████ ██████  ██████  ███████ ███████ ███████ ███    ██  ██████ ███████ ██ ███    ██ ███████  ██████  ██ ██      ██████   ██████  ██████  ██    ██ 
 ██   ██ ██      ██   ██ ██ ██    ██ ██      ██   ██ ██   ██ ██   ██ ██    ██ ██      ██ ██      ██      ██   ██ ██   ██ ██      ██      ██      ████   ██ ██      ██      ██ ████   ██ ██      ██    ██ ██ ██      ██   ██ ██    ██ ██   ██  ██  ██  
@@ -866,7 +853,6 @@ INSERT INTO gpkg_geometry_columns (
 
 
 -- Table derivedprofilepresenceinsoilbody ---------------------------------------------------------------------------------------
-
 CREATE TABLE derivedprofilepresenceinsoilbody (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   idsoilbody TEXT NOT NULL,
@@ -874,8 +860,8 @@ CREATE TABLE derivedprofilepresenceinsoilbody (
   lowervalue REAL,
   uppervalue REAL,
   CONSTRAINT unicrelationdpsb UNIQUE (idsoilbody, idsoilprofile),
-  FOREIGN KEY (idsoilbody) REFERENCES soilbody (guidkey),
-  FOREIGN KEY (idsoilprofile) REFERENCES soilprofile (guidkey)
+  FOREIGN KEY (idsoilbody) REFERENCES soilbody (guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (idsoilprofile) REFERENCES soilprofile (guidkey) ON DELETE CASCADE ON UPDATE CASCADE
   
 );
 -- Contents derivedprofilepresenceinsoilbody ---------------------------------------------------------------------------------------
@@ -905,7 +891,6 @@ INSERT INTO gpkg_contents (
 
 
 -- Trigger derivedprofilepresenceinsoilbody ---------------------------------------------------------------------------------------------
-
 CREATE TRIGGER i_cecklowervaluesum
 BEFORE INSERT ON derivedprofilepresenceinsoilbody
 FOR EACH ROW
@@ -982,7 +967,7 @@ INSERT INTO gpkg_contents (
   srs_id
 ) VALUES (
   'soilderivedobject', -- table name
-  'attributes', -- data type
+  'features', -- data type
   't_sdo', -- unique table identifier
   'soilderivedobject Table', -- table description
   strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
@@ -993,7 +978,22 @@ INSERT INTO gpkg_contents (
   NULL -- EPSG spatial reference system code
 );
 
-
+-- Geometry soilderivedobject ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_geometry_columns (
+  table_name,
+  column_name,
+  geometry_type_name,
+  srs_id,
+  z,
+  m
+) VALUES (
+  'soilderivedobject', -- table name
+  'geometry', -- geometry column name
+  'POLYGON', -- geometry type
+  3035, -- EPSG spatial reference system code
+  0, -- if the geometry has a Z coordinate (0 = no, 1 = yes, 2 = optional)
+  0 -- if the geometry has a M coordinate (0 = no, 1 = yes, 2 = optional)
+);
 
 -- Trigger soilderivedobject ---------------------------------------------------------------------------------------
 CREATE TRIGGER soilderivedobjectguid
@@ -1015,8 +1015,7 @@ BEGIN
             RAISE (ABORT, 'Cannot update guidkey column.')
     END;
 END;
-
-
+--
 
 
 /* 
@@ -1035,8 +1034,8 @@ CREATE TABLE isbasedonobservedsoilprofile
   idsoilderivedobject TEXT NOT NULL,
   idsoilprofile TEXT NOT NULL, --idsoilprofile
   CONSTRAINT unicrelationibosp UNIQUE (idsoilderivedobject, idsoilprofile),
-  FOREIGN KEY (idsoilderivedobject) REFERENCES soilderivedobject (guidkey),
-  FOREIGN KEY (idsoilprofile) REFERENCES soilprofile (guidkey)
+  FOREIGN KEY (idsoilderivedobject) REFERENCES soilderivedobject (guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (idsoilprofile) REFERENCES soilprofile (guidkey) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Contents isbasedonobservedsoilprofile  ---------------------------------------------------------------------------------------
@@ -1054,7 +1053,7 @@ last_change
 strftime('%Y-%m-%dT%H:%M:%fZ','now') -- last modification date and time
 );
 
-
+-- Trigger isbasedonobservedsoilprofile ---------------------------------------------------------------------------------------
 CREATE TRIGGER i_checkisobserved_dobj
 BEFORE INSERT ON isbasedonobservedsoilprofile 
 BEGIN
@@ -1091,8 +1090,8 @@ CREATE TABLE isbasedonsoilbody
   idsoilderivedobject TEXT NOT NULL,
   idsoilbody TEXT NOT NULL,
   CONSTRAINT unicrelationibosb UNIQUE (idsoilderivedobject, idsoilbody),
-  FOREIGN KEY (idsoilderivedobject) REFERENCES soilderivedobject (guidkey),
-  FOREIGN KEY (idsoilbody) REFERENCES soilbody (guidkey)
+  FOREIGN KEY (idsoilderivedobject) REFERENCES soilderivedobject (guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (idsoilbody) REFERENCES soilbody (guidkey)  ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Contents isbasedonsoilbody ---------------------------------------------------------------------------------------
@@ -1111,14 +1110,13 @@ strftime('%Y-%m-%dT%H:%M:%fZ','now') -- last modification date and time
 );
 
 
-
 /* 
 ██ ███████ ██████   █████  ███████ ███████ ██████   ██████  ███    ██ ███████  ██████  ██ ██      ██████  ███████ ██████  ██ ██    ██ ███████ ██████   ██████  ██████       ██ ███████  ██████ ████████ 
 ██ ██      ██   ██ ██   ██ ██      ██      ██   ██ ██    ██ ████   ██ ██      ██    ██ ██ ██      ██   ██ ██      ██   ██ ██ ██    ██ ██      ██   ██ ██    ██ ██   ██      ██ ██      ██         ██    
 ██ ███████ ██████  ███████ ███████ █████   ██   ██ ██    ██ ██ ██  ██ ███████ ██    ██ ██ ██      ██   ██ █████   ██████  ██ ██    ██ █████   ██   ██ ██    ██ ██████       ██ █████   ██         ██    
 ██      ██ ██   ██ ██   ██      ██ ██      ██   ██ ██    ██ ██  ██ ██      ██ ██    ██ ██ ██      ██   ██ ██      ██   ██ ██  ██  ██  ██      ██   ██ ██    ██ ██   ██ ██   ██ ██      ██         ██    
 ██ ███████ ██████  ██   ██ ███████ ███████ ██████   ██████  ██   ████ ███████  ██████  ██ ███████ ██████  ███████ ██   ██ ██   ████   ███████ ██████   ██████  ██████   █████  ███████  ██████    ██    
-                       */                                                                                                                                                                                  
+*/                                                                                                                                                                                  
 
 
 -- Table isbasedonsoilderivedobject
@@ -1127,8 +1125,8 @@ CREATE TABLE isbasedonsoilderivedobject (
   base_id TEXT NOT NULL,
   related_id TEXT NOT NULL,
   CONSTRAINT unicrelationibosdo UNIQUE (base_id, related_id),
-  FOREIGN KEY (base_id) REFERENCES soilderivedobject (guidkey),
-  FOREIGN KEY (related_id) REFERENCES soilderivedobject (guidkey)
+  FOREIGN KEY (base_id) REFERENCES soilderivedobject (guidkey)  ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (related_id) REFERENCES soilderivedobject (guidkey)  ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Contents soilderivedobject
@@ -1155,6 +1153,11 @@ strftime('%Y-%m-%dT%H:%M:%fZ','now') -- last modification date and time
 ██      ██   ██  ██████  ██      ██ ███████ ███████ ███████ ███████ ███████ ██      ██ ███████ ██   ████    ██   
  */
 
+-----------------------------------
+-- profileelementtype -> 0 (HORIZON)
+-- profileelementtype -> 1 (LAYER)
+-----------------------------------
+
 -- Table profileelement ---------------------------------------------------------------------------------------
 CREATE TABLE profileelement
 (
@@ -1163,15 +1166,13 @@ CREATE TABLE profileelement
     inspireid_localid                    TEXT,      
     inspireid_namespace                  TEXT,     
     inspireid_versionid                   TEXT, 
-    -- profileElementDepthRange
     profileelementdepthrange_uppervalue  INTEGER NOT NULL, 
     profileelementdepthrange_lowervalue  INTEGER NOT NULL,  
-
     beginlifespanversion DATETIME default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')) not null, 
     endlifespanversion                   DATETIME,  
 
-    layertype                            TEXT,      -- Codelist layertypevalue geometry
-    layerrocktype                        TEXT,      -- Codelist lithologyvalue (DA 0-N) ma noi mettiamo cardinalità 0..1
+    layertype                            TEXT,      -- Codelist layertypevalue
+    layerrocktype                        TEXT,      -- Codelist lithologyvalue
 
     layergenesisprocess                  TEXT,      -- Codelist eventprocessvalue  
     layergenesisenviroment               TEXT,      -- Codelist eventenvironmentvalue 
@@ -1211,7 +1212,6 @@ INSERT INTO gpkg_contents (
 );
 
 -- Trigger profileelement ---------------------------------------------------------------------------------------
-
 CREATE TRIGGER profileelementguid
 AFTER INSERT ON profileelement
 FOR EACH ROW
@@ -1297,6 +1297,7 @@ BEGIN
 END;
 --
 
+
 CREATE TRIGGER i_ceckhorizonfields
 BEFORE INSERT  ON profileelement
 FOR EACH ROW
@@ -1335,6 +1336,7 @@ BEGIN
             RAISE(ABORT, 'layergenesisprocessstate must be NULL when profilelement is "HORIZON".')
     END;
 END;
+--
 
 
 CREATE TRIGGER i_layertype
@@ -1448,6 +1450,7 @@ WHEN  datetime('now') > new.endlifespanversion
 BEGIN
    SELECT RAISE(ABORT,'If you change record endlifespanversion must be greater than today');
 END;
+--
 
 
 /* 
@@ -1463,12 +1466,14 @@ END;
 CREATE TABLE particlesizefractiontype
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
-    fractioncontent                 REAL, 
-    pariclesize_min                 REAL, 
-    pariclesize_max                  REAL, 
+    fractioncontent                 REAL NOT NULL, 
+    pariclesize_min                 REAL NOT NULL, 
+    pariclesize_max                 REAL NOT NULL, 
     idprofileelement TEXT NOT NULL,
     FOREIGN KEY (idprofileelement)
-      REFERENCES profileelement(guidkey)
+      REFERENCES profileelement(guidkey) 
+      ON DELETE CASCADE 
+      ON UPDATE CASCADE
 
 );
 
@@ -1498,7 +1503,6 @@ INSERT INTO gpkg_contents (
 );
 
 
-
 /* 
 ███████  █████   ██████  ██   ██  ██████  ██████  ██ ███████  ██████  ███    ██ ███    ██  ██████  ████████  █████  ████████ ██  ██████  ███    ██ ████████ ██    ██ ██████  ███████ 
 ██      ██   ██ ██    ██ ██   ██ ██    ██ ██   ██ ██    ███  ██    ██ ████   ██ ████   ██ ██    ██    ██    ██   ██    ██    ██ ██    ██ ████   ██    ██     ██  ██  ██   ██ ██      
@@ -1513,16 +1517,15 @@ CREATE TABLE faohorizonnotationtype
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
     faohorizondiscontinuity           INTEGER, 
-    faohorizonmaster                  TEXT, -- Codelist faohorizonmastervalue
+    faohorizonmaster                  TEXT NOT NULL, -- Codelist faohorizonmastervalue
     faohorizonsubordinate             TEXT, -- Codelist faohorizonsubordinatevalue
     faohorizonverical                INTEGER,
-    faoprime                          TEXT,  -- Codelist faoprimevalue
-    isoriginalclassification          BOOLEAN,
+    faoprime                          TEXT  NOT NULL,  -- Codelist faoprimevalue
+    isoriginalclassification          BOOLEAN  DEFAULT 0 NOT NULL,
     idprofileelement TEXT UNIQUE, 
     FOREIGN KEY (idprofileelement) 
-      REFERENCES profileelement(guidkey)  
+      REFERENCES profileelement(guidkey)  ON DELETE CASCADE ON UPDATE CASCADE
 );
-
 
 -- Contents faohorizonnotationtype ---------------------------------------------------------------------------------------
 INSERT INTO gpkg_contents (
@@ -1550,8 +1553,6 @@ INSERT INTO gpkg_contents (
 );
 
 -- Trigger faohorizonnotationtype ---------------------------------------------------------------------------------------
-
-
 CREATE TRIGGER "i_ceckfaoprofileelementtype"
 BEFORE INSERT ON faohorizonnotationtype
 FOR EACH ROW
@@ -1577,7 +1578,7 @@ END;
 CREATE TRIGGER i_faohorizonmaster
 BEFORE INSERT ON faohorizonnotationtype
 FOR EACH ROW
-WHEN NEW.faohorizonmaster NOT IN (SELECT id FROM codelist WHERE collection = 'FAOHorizonMaster') AND NEW.faohorizonmaster NOT NULL
+WHEN NEW.faohorizonmaster NOT IN (SELECT id FROM codelist WHERE collection = 'FAOHorizonMasterValue') AND NEW.faohorizonmaster NOT NULL
 BEGIN
     SELECT RAISE(ABORT, 'Table faohorizonnotationtype: Invalid value for faohorizonmaster. Must be present in id of faohorizonmastervalue codelist.');
 END;
@@ -1585,7 +1586,7 @@ END;
 CREATE TRIGGER u_faohorizonmaster
 BEFORE UPDATE ON faohorizonnotationtype
 FOR EACH ROW
-WHEN NEW.faohorizonmaster NOT IN (SELECT id FROM codelist WHERE collection = 'FAOHorizonMaster') AND NEW.faohorizonmaster NOT NULL
+WHEN NEW.faohorizonmaster NOT IN (SELECT id FROM codelist WHERE collection = 'FAOHorizonMasterValue') AND NEW.faohorizonmaster NOT NULL
 BEGIN
     SELECT RAISE(ABORT, 'Table faohorizonnotationtype: Invalid value for faohorizonmaster. Must be present in id of faohorizonmastervalue codelist.');
 END;
@@ -1595,7 +1596,7 @@ END;
 CREATE TRIGGER i_faohorizonsubordinate
 BEFORE INSERT ON faohorizonnotationtype
 FOR EACH ROW
-WHEN NEW.faohorizonsubordinate NOT IN (SELECT id FROM codelist WHERE collection = 'FAOHorizonSubordinate') AND NEW.faohorizonsubordinate  NOT NULL
+WHEN NEW.faohorizonsubordinate NOT IN (SELECT id FROM codelist WHERE collection = 'FAOHorizonSubordinateValue') AND NEW.faohorizonsubordinate  NOT NULL
 BEGIN
     SELECT RAISE(ABORT, 'Table faohorizonnotationtype: Invalid value for faohorizonsubordinate. Must be present in id of faohorizonsubordinatevalue codelist.');
 END;
@@ -1603,7 +1604,7 @@ END;
 CREATE TRIGGER u_faohorizonsubordinate
 BEFORE UPDATE ON faohorizonnotationtype
 FOR EACH ROW
-WHEN NEW.faohorizonsubordinate NOT IN (SELECT id FROM codelist WHERE collection = 'FAOHorizonSubordinate') AND NEW.faohorizonsubordinate  NOT NULL
+WHEN NEW.faohorizonsubordinate NOT IN (SELECT id FROM codelist WHERE collection = 'FAOHorizonSubordinateValue') AND NEW.faohorizonsubordinate  NOT NULL
 BEGIN
     SELECT RAISE(ABORT, 'Table faohorizonnotationtype: Invalid value for faohorizonsubordinate. Must be present in id of faohorizonsubordinatevalue codelist.');
 END;
@@ -1613,7 +1614,7 @@ END;
 CREATE TRIGGER i_faoprime
 BEFORE INSERT ON faohorizonnotationtype
 FOR EACH ROW
-WHEN NEW.faoprime NOT IN (SELECT id FROM codelist WHERE collection = 'FAOPrime') AND NEW.faoprime NOT NULL
+WHEN NEW.faoprime NOT IN (SELECT id FROM codelist WHERE collection = 'FAOPrimeValue') AND NEW.faoprime NOT NULL
 BEGIN
     SELECT RAISE(ABORT, 'Table faohorizonnotationtype: Invalid value for faoprime. Must be present in id of faoprimevalue codelist.');
 END;
@@ -1621,7 +1622,7 @@ END;
 CREATE TRIGGER u_faoprime
 BEFORE UPDATE ON faohorizonnotationtype
 FOR EACH ROW
-WHEN NEW.faoprime NOT IN (SELECT id FROM codelist WHERE collection = 'FAOPrime') AND NEW.faoprime NOT NULL
+WHEN NEW.faoprime NOT IN (SELECT id FROM codelist WHERE collection = 'FAOPrimeValue') AND NEW.faoprime NOT NULL
 BEGIN
     SELECT RAISE(ABORT, 'Table faohorizonnotationtype: Invalid value for faoprime. Must be present in id of faoprimevalue codelist.');
 END;
@@ -1641,16 +1642,12 @@ END;
 CREATE TABLE otherhorizonnotationtype
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
-    horizonnotation                      TEXT, --Codelist otherhorizonnotationtypevalue
-    diagnostichorizon                    TEXT, -- Codelist wrbdiagnostichorizon 
-    isoriginalclassification             BOOLEAN, 
-    otherhorizonnotation TEXT,
-    FOREIGN KEY (otherhorizonnotation)
-      REFERENCES profileelement(guidkey)
-      ON DELETE CASCADE
-      ON UPDATE CASCADE
+    guidkey TEXT UNIQUE,
+    horizonnotation                      TEXT NOT NULL, --Codelist otherhorizonnotationtypevalue
+    diagnostichorizon                    TEXT, -- Codelist wrbdiagnostichorizonvalue 
+    isoriginalclassification             BOOLEAN  DEFAULT 0 NOT NULL, 
+    otherhorizonnotation TEXT
 );
-
 
 -- Contents otherhorizonnotationtype ---------------------------------------------------------------------------------------
 INSERT INTO gpkg_contents (
@@ -1677,27 +1674,25 @@ INSERT INTO gpkg_contents (
   NULL -- EPSG spatial reference system code
 );
 
-
 -- Trigger otherhorizonnotationtype ---------------------------------------------------------------------------------------
-
-CREATE TRIGGER   i_ceckothprofileelementtype
-BEFORE INSERT ON otherhorizonnotationtype
+CREATE TRIGGER otherhorizonnotationtypeguid
+AFTER INSERT ON otherhorizonnotationtype
 FOR EACH ROW
-WHEN NEW.otherhorizonnotation IS NOT NULL AND (
-    SELECT profileelementtype FROM profileelement WHERE id = NEW.otherhorizonnotation
-    ) <> 1
+WHEN (NEW.guidkey IS NULL)
 BEGIN
-    SELECT RAISE(ABORT, 'Table otherhorizonnotationtype: The associated profileelement must have profileelementtype = 0 (HORIZON)');
+   UPDATE otherhorizonnotationtype SET guidkey = (select hex( randomblob(4)) || '-' || hex( randomblob(2))
+             || '-' || '4' || substr( hex( randomblob(2)), 2) || '-'
+             || substr('AB89', 1 + (abs(random()) % 4) , 1)  ||
+             substr(hex(randomblob(2)), 2) || '-' || hex(randomblob(6)) ) WHERE rowid = NEW.rowid;
 END;
 
-CREATE TRIGGER   u_ceckothprofileelementtype
-BEFORE UPDATE ON otherhorizonnotationtype
-FOR EACH ROW
-WHEN NEW.otherhorizonnotation IS NOT NULL AND (
-    SELECT profileelementtype FROM profileelement WHERE id = NEW.otherhorizonnotation
-    ) <> 1
+CREATE TRIGGER otherhorizonnotationtypeguidupdate
+AFTER UPDATE OF guidkey ON otherhorizonnotationtype
 BEGIN
-    SELECT RAISE(ABORT, 'Table otherhorizonnotationtype: The associated profileelement must have profileelementtype = 0 (HORIZON)');
+    SELECT CASE
+        WHEN NEW.guidkey != OLD.guidkey THEN
+            RAISE (ABORT, 'Cannot update guidkey column.')
+    END;
 END;
 --
 
@@ -1719,24 +1714,81 @@ BEGIN
 END;
 --
 
--- to be completed
+
 CREATE TRIGGER i_diagnostichorizon
 BEFORE INSERT ON otherhorizonnotationtype
 FOR EACH ROW
-WHEN NEW.diagnostichorizon = 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB' and NEW.horizonnotation NOT IN (SELECT id FROM codelist WHERE collection = 'WRBdiagnostichorizon') AND NEW.horizonnotation NOT NULL
+WHEN NEW.diagnostichorizon NOT IN (SELECT id FROM codelist WHERE collection = NEW.horizonnotation) AND NEW.diagnostichorizon NOT NULL
 BEGIN
-    SELECT RAISE(ABORT, 'Table otherhorizonnotationtype: Invalid value for horizonnotation. Must be present in id of otherhorizonnotationtype codelist.');
+    SELECT RAISE(ABORT, 'Table otherhorizonnotationtype: Invalid value for diagnostichorizon. Must be present in the relativecodelist.');
 END;
 
 CREATE TRIGGER u_diagnostichorizon
 BEFORE UPDATE ON otherhorizonnotationtype
 FOR EACH ROW
-WHEN NEW.diagnostichorizon = 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB' and NEW.horizonnotation NOT IN (SELECT id FROM codelist WHERE collection = 'WRBdiagnostichorizon') AND NEW.horizonnotation NOT NULL
+WHEN NEW.diagnostichorizon NOT IN (SELECT id FROM codelist WHERE collection = NEW.horizonnotation) AND NEW.diagnostichorizon NOT NULL
 BEGIN
-    SELECT RAISE(ABORT, 'Table otherhorizonnotationtype: Invalid value for horizonnotation. Must be present in id of otherhorizonnotationtypevalue codelist.');
+    SELECT RAISE(ABORT, 'Table otherhorizonnotationtype: Invalid value for diagnostichorizon. Must be present in the relativecodelist.');
 END;
 --
 
+
+/*
+ ██████  ████████ ██   ██ ███████ ██████  ██   ██  ██████  ██████  ██ ███████  ██████  ███    ██         ██████  ██████   ██████  ███████ ██ ██      ███████ ███████ ██      ███████ ███    ███ ███████ ███    ██ ████████ 
+██    ██    ██    ██   ██ ██      ██   ██ ██   ██ ██    ██ ██   ██ ██    ███  ██    ██ ████   ██         ██   ██ ██   ██ ██    ██ ██      ██ ██      ██      ██      ██      ██      ████  ████ ██      ████   ██    ██    
+██    ██    ██    ███████ █████   ██████  ███████ ██    ██ ██████  ██   ███   ██    ██ ██ ██  ██         ██████  ██████  ██    ██ █████   ██ ██      █████   █████   ██      █████   ██ ████ ██ █████   ██ ██  ██    ██    
+██    ██    ██    ██   ██ ██      ██   ██ ██   ██ ██    ██ ██   ██ ██  ███    ██    ██ ██  ██ ██         ██      ██   ██ ██    ██ ██      ██ ██      ██      ██      ██      ██      ██  ██  ██ ██      ██  ██ ██    ██    
+ ██████     ██    ██   ██ ███████ ██   ██ ██   ██  ██████  ██   ██ ██ ███████  ██████  ██   ████ ███████ ██      ██   ██  ██████  ██      ██ ███████ ███████ ███████ ███████ ███████ ██      ██ ███████ ██   ████    ██    
+*/
+
+
+-- Table otherhorizon_profileelement ---------------------------------------------------------------------------------------
+CREATE TABLE otherhorizon_profileelement
+(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  idprofileelement TEXT NOT NULL,
+  idotherhorizonnotationtype TEXT NOT NULL,
+  CONSTRAINT unicrelationprooth UNIQUE (idprofileelement, idotherhorizonnotationtype),
+  FOREIGN KEY (idprofileelement) REFERENCES profileelement (guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (idotherhorizonnotationtype) REFERENCES otherhorizonnotationtype (guidkey)  ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- Contents otherhorizon_profileelement ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_contents (
+table_name,
+data_type,
+identifier,
+description,
+last_change
+) VALUES (
+'otherhorizon_profileelement', -- table name
+'attributes', -- data type
+'t_othproe', -- unique table identifier
+'otherhorizon_profileelement Table', -- table description
+strftime('%Y-%m-%dT%H:%M:%fZ','now') -- last modification date and time
+);
+
+-- Trigger otherhorizon_profileelement ---------------------------------------------------------------------------------------
+CREATE TRIGGER   i_ceckothprofileelementtype
+BEFORE INSERT ON otherhorizon_profileelement
+FOR EACH ROW
+WHEN (
+    SELECT profileelementtype FROM profileelement WHERE guidkey = NEW.idprofileelement
+    ) = 1
+BEGIN
+    SELECT RAISE(ABORT, 'Table otherhorizon_profileelement: The associated profileelement must have profileelementtype = 0 (HORIZON)');
+END;
+
+CREATE TRIGGER   u_ceckothprofileelementtype
+BEFORE UPDATE ON otherhorizon_profileelement
+FOR EACH ROW
+WHEN  (
+    SELECT profileelementtype FROM profileelement WHERE guidkey = NEW.idprofileelement
+    ) = 1
+BEGIN
+    SELECT RAISE(ABORT, 'Table otherhorizon_profileelement: The associated profileelement must have profileelementtype = 0 (HORIZON)');
+END;
+--
 
 
 /* 
@@ -1747,21 +1799,17 @@ END;
  ███ ███  ██   ██ ██████   ██████   ██████  ██   ██ ███████ ██ ██      ██ ███████ ██   ██  ██████  ██   ██  ██████   ██████  ██         ██       ██    ██      ███████ 
  */
 
+
 -- Table wrbqualifiergrouptype ---------------------------------------------------------------------------------------
 CREATE TABLE wrbqualifiergrouptype 
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    guidkey TEXT UNIQUE,
     qualifierplace            TEXT NOT NULL, -- Codelist wrbqualifierplacevalue
     qualifierposition         INTEGER NOT NULL,
     wrbqualifier              TEXT NOT NULL,  --Codelist wrbqualifiervalue 
     wrbspecifier_1            TEXT,    -- Codelist wrbspecifiervalue
-    wrbspecifier_2            TEXT,    -- Codelist wrbspecifiervalue
-
-    wrbqualifiergroup TEXT,  
-    FOREIGN KEY (wrbqualifiergroup)
-      REFERENCES soilprofile(guidkey)
-      ON DELETE CASCADE
-      ON UPDATE CASCADE
+    wrbspecifier_2            TEXT    -- Codelist wrbspecifiervalue
 );
 
 -- Contents wrbqualifiergrouptype ---------------------------------------------------------------------------------------
@@ -1789,8 +1837,27 @@ INSERT INTO gpkg_contents (
   NULL -- EPSG spatial reference system code
 );
 
-
 -- Trigger wrbqualifiergrouptype ---------------------------------------------------------------------------------------
+CREATE TRIGGER wrbqualifiergrouptypeguid
+AFTER INSERT ON wrbqualifiergrouptype
+FOR EACH ROW
+WHEN (NEW.guidkey IS NULL)
+BEGIN
+   UPDATE wrbqualifiergrouptype SET guidkey = (select hex( randomblob(4)) || '-' || hex( randomblob(2))
+             || '-' || '4' || substr( hex( randomblob(2)), 2) || '-'
+             || substr('AB89', 1 + (abs(random()) % 4) , 1)  ||
+             substr(hex(randomblob(2)), 2) || '-' || hex(randomblob(6)) ) WHERE rowid = NEW.rowid;
+END;
+
+CREATE TRIGGER wrbqualifiergrouptypeguidupdate
+AFTER UPDATE OF guidkey ON wrbqualifiergrouptype
+BEGIN
+    SELECT CASE
+        WHEN NEW.guidkey != OLD.guidkey THEN
+            RAISE (ABORT, 'Cannot update guidkey column.')
+    END;
+END;
+--
 
 CREATE TRIGGER i_wrbqualifier
 BEFORE INSERT ON wrbqualifiergrouptype
@@ -1809,6 +1876,7 @@ BEGIN
 END;
 --
 
+
 CREATE TRIGGER i_qualifierplace
 BEFORE INSERT ON wrbqualifiergrouptype
 FOR EACH ROW
@@ -1826,10 +1894,11 @@ BEGIN
 END;
 --
 
+
 CREATE TRIGGER i_wrbspecifier_1
 BEFORE INSERT ON wrbqualifiergrouptype
 FOR EACH ROW
-WHEN NEW.wrbspecifier_1 NOT IN (SELECT id FROM codelist WHERE collection = 'WRBSpecifiers') AND NEW.wrbspecifier_1 NOT NULL
+WHEN NEW.wrbspecifier_1 NOT IN (SELECT id FROM codelist WHERE collection = 'WRBSpecifierValue') AND NEW.wrbspecifier_1 NOT NULL
 BEGIN
     SELECT RAISE(ABORT, 'Table wrbqualifiergrouptype: Invalid value for wrbspecifier_1. Must be present in id of wrbspecifiervalue codelist.');
 END;
@@ -1837,7 +1906,7 @@ END;
 CREATE TRIGGER u_wrbspecifier_1
 BEFORE UPDATE ON wrbqualifiergrouptype
 FOR EACH ROW
-WHEN NEW.wrbspecifier_1 NOT IN (SELECT id FROM codelist WHERE collection = 'WRBSpecifiers') AND NEW.wrbspecifier_1 NOT NULL
+WHEN NEW.wrbspecifier_1 NOT IN (SELECT id FROM codelist WHERE collection = 'WRBSpecifierValue') AND NEW.wrbspecifier_1 NOT NULL
 BEGIN
     SELECT RAISE(ABORT, 'Table wrbqualifiergrouptype: Invalid value for wrbspecifier_1. Must be present in id of wrbspecifiervalue codelist.');
 END;
@@ -1847,7 +1916,7 @@ END;
 CREATE TRIGGER i_wrbspecifier_2
 BEFORE INSERT ON wrbqualifiergrouptype
 FOR EACH ROW
-WHEN NEW.wrbspecifier_2 NOT IN (SELECT id FROM codelist WHERE collection = 'WRBSpecifiers') AND NEW.wrbspecifier_2 NOT NULL
+WHEN NEW.wrbspecifier_2 NOT IN (SELECT id FROM codelist WHERE collection = 'WRBSpecifierValue') AND NEW.wrbspecifier_2 NOT NULL
 BEGIN
     SELECT RAISE(ABORT, 'Table wrbqualifiergrouptype: Invalid value for wrbspecifier_2. Must be present in id of wrbspecifiervalue codelist.');
 END;
@@ -1855,9 +1924,1302 @@ END;
 CREATE TRIGGER u_wrbspecifier_2
 BEFORE UPDATE ON wrbqualifiergrouptype
 FOR EACH ROW
-WHEN NEW.wrbspecifier_2 NOT IN (SELECT id FROM codelist WHERE collection = 'WRBSpecifiers') AND NEW.wrbspecifier_2 NOT NULL
+WHEN NEW.wrbspecifier_2 NOT IN (SELECT id FROM codelist WHERE collection = 'WRBSpecifierValue') AND NEW.wrbspecifier_2 NOT NULL
 BEGIN
     SELECT RAISE(ABORT, 'Table wrbqualifiergrouptype: Invalid value for wrbspecifier_2. Must be present in id of wrbspecifiervalue codelist.');
+END;
+--
+
+
+/*
+██     ██ ██████  ██████   ██████  ██    ██  █████  ██      ██ ███████ ██ ███████ ██████   ██████  ██████   ██████  ██    ██ ██████          ██████  ██████   ██████  ███████ ██ ██      ███████ 
+██     ██ ██   ██ ██   ██ ██    ██ ██    ██ ██   ██ ██      ██ ██      ██ ██      ██   ██ ██       ██   ██ ██    ██ ██    ██ ██   ██         ██   ██ ██   ██ ██    ██ ██      ██ ██      ██      
+██  █  ██ ██████  ██████  ██    ██ ██    ██ ███████ ██      ██ █████   ██ █████   ██████  ██   ███ ██████  ██    ██ ██    ██ ██████          ██████  ██████  ██    ██ █████   ██ ██      █████   
+██ ███ ██ ██   ██ ██   ██ ██ ▄▄ ██ ██    ██ ██   ██ ██      ██ ██      ██ ██      ██   ██ ██    ██ ██   ██ ██    ██ ██    ██ ██              ██      ██   ██ ██    ██ ██      ██ ██      ██      
+ ███ ███  ██   ██ ██████   ██████   ██████  ██   ██ ███████ ██ ██      ██ ███████ ██   ██  ██████  ██   ██  ██████   ██████  ██      ███████ ██      ██   ██  ██████  ██      ██ ███████ ███████ 
+*/
+
+
+-- Table wrbqualifiergroup_profile ---------------------------------------------------------------------------------------
+CREATE TABLE wrbqualifiergroup_profile
+(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  idsoilprofile TEXT NOT NULL,
+  idwrbqualifiergrouptype TEXT NOT NULL,
+  CONSTRAINT unicrelationspwbr UNIQUE (idsoilprofile, idwrbqualifiergrouptype),
+  FOREIGN KEY (idsoilprofile) REFERENCES soilprofile (guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (idwrbqualifiergrouptype) REFERENCES wrbqualifiergrouptype (guidkey)  ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- Contents wrbqualifiergroup_profile ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_contents (
+table_name,
+data_type,
+identifier,
+description,
+last_change
+) VALUES (
+'wrbqualifiergroup_profile', -- table name
+'attributes', -- data type
+'t_wrbpro', -- unique table identifier
+'wrbqualifiergroup_profile Table', -- table description
+strftime('%Y-%m-%dT%H:%M:%fZ','now') -- last modification date and time
+);
+
+
+/*
+██████   █████  ████████  █████  ███████ ████████ ██████  ███████  █████  ███    ███ 
+██   ██ ██   ██    ██    ██   ██ ██         ██    ██   ██ ██      ██   ██ ████  ████ 
+██   ██ ███████    ██    ███████ ███████    ██    ██████  █████   ███████ ██ ████ ██ 
+██   ██ ██   ██    ██    ██   ██      ██    ██    ██   ██ ██      ██   ██ ██  ██  ██ 
+██████  ██   ██    ██    ██   ██ ███████    ██    ██   ██ ███████ ██   ██ ██      ██ 
+*/
+
+-- Table datastream
+CREATE TABLE datastream
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    guidkey TEXT UNIQUE,
+    idsoilsite            TEXT,
+    idsoilprofile         TEXT,
+    idsoilderivedobject   TEXT,
+    idprofileelement      TEXT,
+    iddatastreamcollection            TEXT,
+    idprocess               TEXT NOT NULL,
+    idobservedproperty      TEXT NOT NULL,
+    idsensor            TEXT,
+
+    -- Feature Of Interset ----------------------------------------          
+    FOREIGN KEY (idsoilsite)
+      REFERENCES soilsite(guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
+    
+    FOREIGN KEY (idsoilprofile)
+      REFERENCES soilprofile(guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
+    
+    FOREIGN KEY (idsoilderivedobject)
+      REFERENCES soilderivedobject(guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
+
+    FOREIGN KEY (idprofileelement)
+      REFERENCES profileelement(guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
+    -------------------------------------------------------------------
+    
+    FOREIGN KEY (iddatastreamcollection)
+      REFERENCES datastreamcollection(guidkey),
+
+    FOREIGN KEY (idprocess)
+      REFERENCES process(guidkey),
+       
+    FOREIGN KEY (idobservedproperty)
+      REFERENCES observableproperty(guidkey),
+      
+    FOREIGN KEY (idsensor)
+      REFERENCES sensor(guidkey),
+    
+    -- Only one among Soil Site, Soil Profile, Profile Element, and Soil Derived Object can be populated.
+    CONSTRAINT check_single_id CHECK (
+        (idsoilsite IS NOT NULL AND idsoilprofile IS NULL AND idsoilderivedobject IS NULL AND idprofileelement IS NULL) OR
+        (idsoilsite IS NULL AND idsoilprofile IS NOT NULL AND idsoilderivedobject IS NULL AND idprofileelement IS NULL) OR
+        (idsoilsite IS NULL AND idsoilprofile IS NULL AND idsoilderivedobject IS NOT NULL AND idprofileelement IS NULL) OR
+        (idsoilsite IS NULL AND idsoilprofile IS NULL AND idsoilderivedobject IS NULL AND idprofileelement IS NOT NULL)
+    ),
+
+    -- Only a unique series of property/process/sensor/datastreamcollection can belong to a single feature.
+    CONSTRAINT unique_data_idsoilsite_key UNIQUE (
+        idsoilsite, iddatastreamcollection, idsensor, idprocess, idobservedproperty
+    ),
+    CONSTRAINT unique_data_idsoilprofile_key UNIQUE (
+        idsoilprofile, iddatastreamcollection, idsensor, idprocess, idobservedproperty
+    ),
+    CONSTRAINT unique_data_idprofileelement_key UNIQUE (
+        idprofileelement, iddatastreamcollection, idsensor, idprocess, idobservedproperty
+    ),
+    CONSTRAINT unique_data_idsoilderivedobject_key UNIQUE (
+        idsoilderivedobject, iddatastreamcollection, idsensor, idprocess, idobservedproperty
+    ),
+
+    -- Only specific property/process pairs can exist
+    FOREIGN KEY (idprocess, idobservedproperty) REFERENCES observableproperty_process(idprocess, idobservedproperty)
+
+);
+    -- Only one property/process pair can belong to a single feature.
+    CREATE UNIQUE INDEX index_ss ON datastream (
+        idsoilsite, idprocess, idobservedproperty,
+        ifnull(iddatastreamcollection, 0) 
+    );
+
+    CREATE UNIQUE INDEX index_sp ON datastream (
+        idsoilprofile, idprocess, idobservedproperty,
+        ifnull(iddatastreamcollection, 0) 
+    );
+
+    CREATE UNIQUE INDEX index_pe ON datastream (
+        idprofileelement, idprocess, idobservedproperty,
+        ifnull(iddatastreamcollection, 0) 
+    );
+
+    CREATE UNIQUE INDEX index_do ON datastream (
+        idsoilderivedobject, idprocess, idobservedproperty,
+        ifnull(iddatastreamcollection, 0) 
+    );
+
+
+-- Contents datastream ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_contents (
+  table_name,
+  data_type,
+  identifier,
+  description,
+  last_change,
+  min_x,
+  min_y,
+  max_x,
+  max_y,
+  srs_id
+) VALUES (
+  'datastream', -- table name
+  'attributes', -- data type
+  't_datas', -- unique table identifier
+  'datastream Table', -- table description
+  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
+  NULL,  
+  NULL,
+  NULL,
+  NULL,
+  NULL  -- EPSG spatial reference system code
+);
+
+-- Trigger datastream ---------------------------------------------------------------------------------------
+CREATE TRIGGER datastreamguid
+AFTER INSERT ON datastream
+FOR EACH ROW
+WHEN (NEW.guidkey IS NULL)
+BEGIN
+   UPDATE datastream SET guidkey = (select hex( randomblob(4)) || '-' || hex( randomblob(2))
+             || '-' || '4' || substr( hex( randomblob(2)), 2) || '-'
+             || substr('AB89', 1 + (abs(random()) % 4) , 1)  ||
+             substr(hex(randomblob(2)), 2) || '-' || hex(randomblob(6)) ) WHERE rowid = NEW.rowid;
+END;
+
+CREATE TRIGGER datastreamguidupdate
+AFTER UPDATE OF guidkey ON datastream
+BEGIN
+    SELECT CASE
+        WHEN NEW.guidkey != OLD.guidkey THEN
+            RAISE (ABORT, 'Cannot update guidkey column.')
+    END;
+END;
+--
+
+-- Properties can only be those related to their own FOI (8 Trigger)
+CREATE TRIGGER i_soilprofile_obspro
+BEFORE INSERT ON datastream
+FOR EACH ROW
+WHEN NEW.idsoilprofile is NOT NULL AND  NEW.idobservedproperty NOT IN (SELECT guidkey FROM observableproperty WHERE foi = 'soilprofile')
+BEGIN
+    SELECT RAISE(ABORT, 'Invalid value for observedproperty. Must be a valid Soil Profile Parameter.');
+END;
+
+CREATE TRIGGER u_soilprofile_obspro
+BEFORE UPDATE ON datastream
+FOR EACH ROW
+WHEN NEW.idsoilprofile is NOT NULL AND  NEW.idobservedproperty NOT IN (SELECT guidkey FROM observableproperty WHERE foi = 'soilprofile')
+BEGIN
+    SELECT RAISE(ABORT, 'Invalid value for observedproperty. Must be a valid Soil Profile Parameter.');
+END;
+--
+
+CREATE TRIGGER i_soilsite_obspro
+BEFORE INSERT ON datastream
+FOR EACH ROW
+WHEN NEW.idsoilsite is NOT NULL AND  NEW.idobservedproperty NOT IN (SELECT guidkey FROM observableproperty WHERE foi = 'soilsite')
+BEGIN
+    SELECT RAISE(ABORT, 'Invalid value for observedproperty. Must be a valid Soil Site Parameter.');
+END;
+
+CREATE TRIGGER u_soilsite_obspro
+BEFORE UPDATE ON datastream
+FOR EACH ROW
+WHEN NEW.idsoilsite is NOT NULL AND  NEW.idobservedproperty NOT IN (SELECT guidkey FROM observableproperty WHERE foi = 'soilsite')
+BEGIN
+    SELECT RAISE(ABORT, 'Invalid value for observedproperty. Must be a valid Soil Site Parameter.');
+END;
+--
+
+CREATE TRIGGER i_profileelement_obspro
+BEFORE INSERT ON datastream
+FOR EACH ROW
+WHEN NEW.idprofileelement is NOT NULL AND  NEW.idobservedproperty NOT IN (SELECT guidkey FROM observableproperty WHERE foi = 'profileelement')
+BEGIN
+    SELECT RAISE(ABORT, 'Invalid value for observedproperty. Must be a valid Profile Element Parameter.');
+END;
+
+CREATE TRIGGER u_profileelement_obspro
+BEFORE UPDATE ON datastream
+FOR EACH ROW
+WHEN NEW.idprofileelement is NOT NULL AND  NEW.idobservedproperty NOT IN (SELECT guidkey FROM observableproperty WHERE foi = 'profileelement')
+BEGIN
+    SELECT RAISE(ABORT, 'Invalid value for observedproperty. Must be a valid Profile Element Parameter.');
+END;
+--
+
+CREATE TRIGGER i_soilderivedobject_obspro
+BEFORE INSERT ON datastream
+FOR EACH ROW
+WHEN NEW.idsoilderivedobject is NOT NULL AND  NEW.idobservedproperty NOT IN (SELECT guidkey FROM observableproperty WHERE foi = 'soilderivedobject')
+BEGIN
+    SELECT RAISE(ABORT, 'Invalid value for observedproperty. Must be a valid Derived Object Parameter.');
+END;
+
+CREATE TRIGGER u_soilderivedobject_obspro
+BEFORE UPDATE ON datastream
+FOR EACH ROW
+WHEN NEW.idsoilderivedobject is NOT NULL AND  NEW.idobservedproperty NOT IN (SELECT guidkey FROM observableproperty WHERE foi = 'soilderivedobject')
+BEGIN
+    SELECT RAISE(ABORT, 'Invalid value for observedproperty. Must be a valid Derived Object Parameter.');
+END;
+--
+
+
+/*
+ ██████  ██████  ███████ ███████ ██████  ██    ██  █████  ██████  ██      ███████ ██████  ██████   ██████  ██████  ███████ ██████  ████████ ██    ██         ██████  ██████   ██████   ██████ ███████ ███████ ███████ 
+██    ██ ██   ██ ██      ██      ██   ██ ██    ██ ██   ██ ██   ██ ██      ██      ██   ██ ██   ██ ██    ██ ██   ██ ██      ██   ██    ██     ██  ██          ██   ██ ██   ██ ██    ██ ██      ██      ██      ██      
+██    ██ ██████  ███████ █████   ██████  ██    ██ ███████ ██████  ██      █████   ██████  ██████  ██    ██ ██████  █████   ██████     ██      ████           ██████  ██████  ██    ██ ██      █████   ███████ ███████ 
+██    ██ ██   ██      ██ ██      ██   ██  ██  ██  ██   ██ ██   ██ ██      ██      ██      ██   ██ ██    ██ ██      ██      ██   ██    ██       ██            ██      ██   ██ ██    ██ ██      ██           ██      ██ 
+ ██████  ██████  ███████ ███████ ██   ██   ████   ██   ██ ██████  ███████ ███████ ██      ██   ██  ██████  ██      ███████ ██   ██    ██       ██    ███████ ██      ██   ██  ██████   ██████ ███████ ███████ ███████ 
+ */
+
+
+--Table observableproperty_process
+CREATE TABLE observableproperty_process (
+    idprocess TEXT NOT NULL,
+    idobservedproperty TEXT NOT NULL,
+    CONSTRAINT pk_observableproperty_process PRIMARY KEY (idprocess, idobservedproperty),
+    
+    FOREIGN KEY (idprocess)
+      REFERENCES process(guidkey) 
+      ON DELETE CASCADE 
+      ON UPDATE CASCADE,
+
+    FOREIGN KEY (idobservedproperty)
+      REFERENCES observableproperty(guidkey)
+      ON DELETE CASCADE 
+      ON UPDATE CASCADE
+);
+
+
+-- Contents observableproperty_process ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_contents (
+  table_name,
+  data_type,
+  identifier,
+  description,
+  last_change,
+  min_x,
+  min_y,
+  max_x,
+  max_y,
+  srs_id
+) VALUES (
+  'observableproperty_process', -- table name
+  'attributes', -- data type
+  't_obspro', -- unique table identifier
+  'observableproperty_process Table', -- table description
+  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
+  NULL,  
+  NULL,
+  NULL,
+  NULL,
+  NULL  -- EPSG spatial reference system code
+);
+
+
+/* 
+ ██████  ██████  ███████ ███████ ██████  ██    ██  █████  ████████ ██  ██████  ███    ██ 
+██    ██ ██   ██ ██      ██      ██   ██ ██    ██ ██   ██    ██    ██ ██    ██ ████   ██ 
+██    ██ ██████  ███████ █████   ██████  ██    ██ ███████    ██    ██ ██    ██ ██ ██  ██ 
+██    ██ ██   ██      ██ ██      ██   ██  ██  ██  ██   ██    ██    ██ ██    ██ ██  ██ ██ 
+ ██████  ██████  ███████ ███████ ██   ██   ████   ██   ██    ██    ██  ██████  ██   ████ 
+ */
+
+
+-- Table observation ---------------------------------------------------------------------------------------
+CREATE TABLE observation
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    guidkey TEXT UNIQUE,
+    phenomenontime             DATETIME default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')) not null, 
+    resulttime                 DATETIME default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')) not null,
+    validtime                  DATETIME,
+    resultquality              TEXT,
+    result_value   REAL,
+    result_uri  TEXT,
+    iddatastream  TEXT,
+
+    FOREIGN KEY (iddatastream)
+      REFERENCES datastream(guidkey)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+);
+
+-- Contents observation ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_contents (
+  table_name,
+  data_type,
+  identifier,
+  description,
+  last_change,
+  min_x,
+  min_y,
+  max_x,
+  max_y,
+  srs_id
+) VALUES (
+  'observation', -- table name
+  'attributes', -- data type
+  't_ob', -- unique table identifier
+  'observation Table', -- table description
+  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
+  NULL,  
+  NULL,
+  NULL,
+  NULL,
+  NULL  -- EPSG spatial reference system code
+);
+
+-- Trigger observation ---------------------------------------------------------------------------------------
+CREATE TRIGGER observationguid
+AFTER INSERT ON observation
+FOR EACH ROW
+WHEN (NEW.guidkey IS NULL)
+BEGIN
+   UPDATE observation SET guidkey = (select hex( randomblob(4)) || '-' || hex( randomblob(2))
+             || '-' || '4' || substr( hex( randomblob(2)), 2) || '-'
+             || substr('AB89', 1 + (abs(random()) % 4) , 1)  ||
+             substr(hex(randomblob(2)), 2) || '-' || hex(randomblob(6)) ) WHERE rowid = NEW.rowid;
+END;
+
+CREATE TRIGGER observationguidupdate
+AFTER UPDATE OF guidkey ON observation
+BEGIN
+    SELECT CASE
+        WHEN NEW.guidkey != OLD.guidkey THEN
+            RAISE (ABORT, 'Cannot update guidkey column.')
+    END;
+END;
+--
+
+
+CREATE TRIGGER i_ceckvalidperiodobservation
+BEFORE INSERT ON observation
+WHEN NEW.resulttime > NEW.validtime 
+BEGIN
+    SELECT RAISE(ABORT, 'Table observation: resulttime must be less than validtime');
+END;
+
+CREATE TRIGGER u_ceckvalidperiodobservation
+BEFORE UPDATE ON observation
+WHEN NEW.resulttime > NEW.validtime 
+BEGIN
+    SELECT RAISE(ABORT, 'Table observation: resulttime must be less than validtime');
+END; 
+--
+
+
+CREATE TRIGGER i_check_result_value_uri
+BEFORE INSERT ON observation
+FOR EACH ROW
+BEGIN
+    SELECT CASE
+        WHEN NEW.result_value IS NOT NULL AND NEW.result_uri IS NOT NULL THEN
+            RAISE(ABORT, 'Both result_value and result_uri cannot be evaluated at the same time')
+    END;
+END;
+
+
+CREATE TRIGGER u_check_result_value_uri
+BEFORE INSERT ON observation
+FOR EACH ROW
+BEGIN
+    SELECT CASE
+        WHEN NEW.result_value IS NOT NULL AND NEW.result_uri IS NOT NULL THEN
+            RAISE(ABORT, 'Both result_value and result_uri cannot be evaluated at the same time')
+    END;
+END;
+--
+
+
+CREATE TRIGGER i_controlresultvalue
+BEFORE INSERT ON observation
+FOR EACH ROW
+WHEN NEW.result_value >
+    (SELECT  CAST (observableproperty.domain_max AS REAL)
+    FROM observation
+    JOIN datastream ON observation.iddatastream = datastream.guidkey
+    JOIN observableproperty ON datastream.idobservedproperty = observableproperty.guidkey
+    WHERE datastream.guidkey = NEW.iddatastream)
+    
+    OR NEW.result_value <
+        
+    (SELECT  CAST (observableproperty.domain_min AS REAL)
+    FROM observation
+    JOIN datastream ON observation.iddatastream = datastream.guidkey
+    JOIN observableproperty ON datastream.idobservedproperty = observableproperty.guidkey
+    WHERE datastream.guidkey = NEW.iddatastream)
+BEGIN
+    SELECT RAISE(ABORT, 'Observation ERROR');
+END;
+
+CREATE TRIGGER u_controlresultvalue
+BEFORE UPDATE ON observation
+FOR EACH ROW
+WHEN NEW.result_value >
+    (SELECT  CAST (observableproperty.domain_max AS REAL)
+    FROM observation
+    JOIN datastream ON observation.iddatastream = datastream.guidkey
+    JOIN observableproperty ON datastream.idobservedproperty = observableproperty.guidkey
+    WHERE datastream.guidkey = NEW.iddatastream)
+    
+    OR NEW.result_value <
+        
+    (SELECT  CAST (observableproperty.domain_min AS REAL)
+    FROM observation
+    JOIN datastream ON observation.iddatastream = datastream.guidkey
+    JOIN observableproperty ON datastream.idobservedproperty = observableproperty.guidkey
+    WHERE datastream.guidkey = NEW.iddatastream)
+BEGIN
+    SELECT RAISE(ABORT, 'Observation ERROR');
+END;
+--
+
+
+/* 
+██████   █████  ████████  █████  ███████ ████████ ██████  ███████  █████  ███    ███  ██████  ██████  ██      ██      ███████  ██████ ████████ ██  ██████  ███    ██ 
+██   ██ ██   ██    ██    ██   ██ ██         ██    ██   ██ ██      ██   ██ ████  ████ ██      ██    ██ ██      ██      ██      ██         ██    ██ ██    ██ ████   ██ 
+██   ██ ███████    ██    ███████ ███████    ██    ██████  █████   ███████ ██ ████ ██ ██      ██    ██ ██      ██      █████   ██         ██    ██ ██    ██ ██ ██  ██ 
+██   ██ ██   ██    ██    ██   ██      ██    ██    ██   ██ ██      ██   ██ ██  ██  ██ ██      ██    ██ ██      ██      ██      ██         ██    ██ ██    ██ ██  ██ ██ 
+██████  ██   ██    ██    ██   ██ ███████    ██    ██   ██ ███████ ██   ██ ██      ██  ██████  ██████  ███████ ███████ ███████  ██████    ██    ██  ██████  ██   ████                                                                                                                                                                    
+ */
+
+
+-- Table  datastreamcollection ---------------------------------------------------------------------------------------
+CREATE TABLE datastreamcollection
+(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  guidkey TEXT UNIQUE,
+  name TEXT,
+  description TEXT NOT NULL, 
+  observedarea BLOB,
+  beginphenomenontime DATETIME,
+  endphenomenontime DATETIME,
+  beginresulttime DATETIME, 
+  endresulttime DATETIME,
+  properties BLOB, 
+  idthing Text NOT NULL, 
+    FOREIGN KEY (idthing)
+      REFERENCES thing(guidkey)
+);
+
+-- Contents datastreamcollection  ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_contents (
+  table_name,
+  data_type,
+  identifier,
+  description,
+  last_change,
+  min_x,
+  min_y,
+  max_x,
+  max_y,
+  srs_id
+) VALUES (
+  'datastreamcollection', -- table name
+  'attributes', -- data type
+  't_dstcoll', -- unique table identifier
+  'datastreamcollection Table', -- table description
+  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
+  NULL,  
+  NULL,
+  NULL,
+  NULL,
+  NULL  -- EPSG spatial reference system code
+);
+
+-- Trigger datastreamcollection ---------------------------------------------------------------------------------------
+CREATE TRIGGER datastreamcollectionguid
+AFTER INSERT ON datastreamcollection
+FOR EACH ROW
+WHEN (NEW.guidkey IS NULL)
+BEGIN
+   UPDATE datastreamcollection SET guidkey = (select hex( randomblob(4)) || '-' || hex( randomblob(2))
+             || '-' || '4' || substr( hex( randomblob(2)), 2) || '-'
+             || substr('AB89', 1 + (abs(random()) % 4) , 1)  ||
+             substr(hex(randomblob(2)), 2) || '-' || hex(randomblob(6)) ) WHERE rowid = NEW.rowid;
+END;
+
+CREATE TRIGGER datastreamcollectionguidupdate
+AFTER UPDATE OF guidkey ON datastreamcollection
+BEGIN
+    SELECT CASE
+        WHEN NEW.guidkey != OLD.guidkey THEN
+            RAISE (ABORT, 'Cannot update guidkey column.')
+    END;
+END;
+--
+
+
+CREATE TRIGGER i_ceckvalidphetimedatastreamcollection
+BEFORE INSERT ON datastreamcollection
+WHEN NEW.beginphenomenontime > NEW.endphenomenontime 
+BEGIN
+    SELECT RAISE(ABORT, 'Table datastreamcollectiomn: beginphenomenontime must be less than endphenomenontime');
+END;
+
+CREATE TRIGGER u_ceckvalidphetimedatastreamcollection
+BEFORE UPDATE ON datastreamcollection
+WHEN NEW.beginphenomenontime > NEW.endphenomenontime 
+BEGIN
+    SELECT RAISE(ABORT, 'Table datastreamcollectiomn: beginphenomenontime must be less than endphenomenontime');
+END;
+--
+
+
+CREATE TRIGGER i_ceckvalidrestimedatastreamcollection
+BEFORE INSERT ON datastreamcollection
+WHEN NEW.beginresulttime > NEW.endresulttime 
+BEGIN
+    SELECT RAISE(ABORT, 'Table datastreamcollectiomn: beginresulttime must be less than endresulttime');
+END;
+
+CREATE TRIGGER u_ceckvalidrestimedatastreamcollection
+BEFORE UPDATE ON datastreamcollection
+WHEN NEW.beginresulttime > NEW.endresulttime 
+BEGIN
+    SELECT RAISE(ABORT, 'Table datastreamcollectiomn: beginresulttime must be less than endresulttime');
+END;
+--
+
+
+/* 
+██████   █████  ██████   █████  ███    ███ ███████ ████████ ███████ ██████  
+██   ██ ██   ██ ██   ██ ██   ██ ████  ████ ██         ██    ██      ██   ██ 
+██████  ███████ ██████  ███████ ██ ████ ██ █████      ██    █████   ██████  
+██      ██   ██ ██   ██ ██   ██ ██  ██  ██ ██         ██    ██      ██   ██ 
+██      ██   ██ ██   ██ ██   ██ ██      ██ ███████    ██    ███████ ██   ██ 
+ */
+
+
+-- Table  parameter ---------------------------------------------------------------------------------------
+CREATE TABLE parameter
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name                       TEXT NOT NULL, 
+    value                      TEXT NOT NULL, 
+    idobservation TEXT,
+    FOREIGN KEY (idobservation) 
+      REFERENCES observation(guidkey)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+);
+
+-- Contents parameter ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_contents (
+  table_name,
+  data_type,
+  identifier,
+  description,
+  last_change,
+  min_x,
+  min_y,
+  max_x,
+  max_y,
+  srs_id
+) VALUES (
+  'parameter', -- table name
+  'attributes', -- data type
+  't_pa', -- unique table identifier
+  'parameter Table', -- table description
+  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
+  NULL,  
+  NULL,
+  NULL,
+  NULL,
+  NULL  -- EPSG spatial reference system code
+);
+
+
+/* 
+██    ██ ███    ██ ██ ████████  ██████  ███████ ███    ███ ███████  █████  ███████ ██    ██ ██████  ███████ 
+██    ██ ████   ██ ██    ██    ██    ██ ██      ████  ████ ██      ██   ██ ██      ██    ██ ██   ██ ██      
+██    ██ ██ ██  ██ ██    ██    ██    ██ █████   ██ ████ ██ █████   ███████ ███████ ██    ██ ██████  █████   
+██    ██ ██  ██ ██ ██    ██    ██    ██ ██      ██  ██  ██ ██      ██   ██      ██ ██    ██ ██   ██ ██      
+ ██████  ██   ████ ██    ██     ██████  ██      ██      ██ ███████ ██   ██ ███████  ██████  ██   ██ ███████ 
+ */
+
+
+-- Table  unitofmeasure ---------------------------------------------------------------------------------------
+CREATE TABLE unitofmeasure 
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    guidkey TEXT UNIQUE,
+    uomname               TEXT,
+    uomsymbol             TEXT,
+    measuretype           TEXT,
+    namestandardunit      TEXT,
+    scaletostandardunit   REAL,
+    offsettostandardunit  REAL,
+    formula               TEXT
+);
+
+-- Contents unitofmeasure ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_contents (
+  table_name,
+  data_type,
+  identifier,
+  description,
+  last_change,
+  min_x,
+  min_y,
+  max_x,
+  max_y,
+  srs_id
+) VALUES (
+  'unitofmeasure', -- table name
+  'attributes', -- data type
+  't_uom', -- unique table identifier
+  'unitofmeasure  Table', -- table description
+  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
+  NULL,  
+  NULL,
+  NULL,
+  NULL,
+  NULL  -- EPSG spatial reference system code
+);
+
+-- Trigger unitofmeasure ---------------------------------------------------------------------------------------
+CREATE TRIGGER uomguid
+AFTER INSERT ON unitofmeasure
+FOR EACH ROW
+WHEN (NEW.guidkey IS NULL)
+BEGIN
+   UPDATE unitofmeasure SET guidkey = (select hex( randomblob(4)) || '-' || hex( randomblob(2))
+             || '-' || '4' || substr( hex( randomblob(2)), 2) || '-'
+             || substr('AB89', 1 + (abs(random()) % 4) , 1)  ||
+             substr(hex(randomblob(2)), 2) || '-' || hex(randomblob(6)) ) WHERE rowid = NEW.rowid;
+END;
+
+CREATE TRIGGER uomguidupdate
+AFTER UPDATE OF guidkey ON unitofmeasure
+BEGIN
+    SELECT CASE
+        WHEN NEW.guidkey != OLD.guidkey THEN
+            RAISE (ABORT, 'Cannot update guidkey column.')
+    END;
+END;
+--
+
+
+/* 
+ ██████  ██████  ███████ ███████ ██████  ██    ██  █████  ██████  ██      ███████ ██████  ██████   ██████  ██████  ███████ ██████  ████████ ██    ██ 
+██    ██ ██   ██ ██      ██      ██   ██ ██    ██ ██   ██ ██   ██ ██      ██      ██   ██ ██   ██ ██    ██ ██   ██ ██      ██   ██    ██     ██  ██  
+██    ██ ██████  ███████ █████   ██████  ██    ██ ███████ ██████  ██      █████   ██████  ██████  ██    ██ ██████  █████   ██████     ██      ████   
+██    ██ ██   ██      ██ ██      ██   ██  ██  ██  ██   ██ ██   ██ ██      ██      ██      ██   ██ ██    ██ ██      ██      ██   ██    ██       ██    
+ ██████  ██████  ███████ ███████ ██   ██   ████   ██   ██ ██████  ███████ ███████ ██      ██   ██  ██████  ██      ███████ ██   ██    ██       ██  
+ */
+
+-- Table  observableproperty ---------------------------------------------------------------------------------------
+CREATE TABLE observableproperty
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    guidkey TEXT UNIQUE,
+    name                      TEXT, 
+    definition                TEXT, 
+    description               TEXT,
+    foi                       TEXT,
+    phenomenontype            TEXT,
+    basephenomenon            TEXT NOT NULL, 
+    domain_min                REAL, 
+    domain_max                REAL, 
+    domain_typeofvalue        TEXT CHECK (domain_typeofvalue IN ('result_value', 'result_uri')),
+    domain_code               TEXT,
+    iduom                     TEXT,
+    CHECK ((domain_min IS NULL AND domain_max IS NULL) OR (domain_min IS NOT NULL AND domain_max IS NOT NULL)),
+    FOREIGN KEY (iduom) 
+      REFERENCES unitofmeasure(guidkey) 
+
+);
+
+-- Contents observableproperty ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_contents (
+  table_name,
+  data_type,
+  identifier,
+  description,
+  last_change,
+  min_x,
+  min_y,
+  max_x,
+  max_y,
+  srs_id
+) VALUES (
+  'observableproperty', -- table name
+  'attributes', -- data type
+  't_op', -- unique table identifier
+  'observableproperty Table', -- table description
+  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
+  NULL,  
+  NULL,
+  NULL,
+  NULL,
+  NULL  -- EPSG spatial reference system code
+);
+
+-- Trigger observableproperty ---------------------------------------------------------------------------------------
+CREATE TRIGGER observablepropertyguid
+AFTER INSERT ON observableproperty
+FOR EACH ROW
+WHEN (NEW.guidkey IS NULL)
+BEGIN
+   UPDATE observableproperty SET guidkey = (select hex( randomblob(4)) || '-' || hex( randomblob(2))
+             || '-' || '4' || substr( hex( randomblob(2)), 2) || '-'
+             || substr('AB89', 1 + (abs(random()) % 4) , 1)  ||
+             substr(hex(randomblob(2)), 2) || '-' || hex(randomblob(6)) ) WHERE rowid = NEW.rowid;
+END;
+
+CREATE TRIGGER observablepropertyguidupdate
+AFTER UPDATE OF guidkey ON observableproperty
+BEGIN
+    SELECT CASE
+        WHEN NEW.guidkey != OLD.guidkey THEN
+            RAISE (ABORT, 'Cannot update guidkey column.')
+    END;
+END;
+--
+
+
+CREATE TRIGGER i_foi
+BEFORE INSERT ON observableproperty
+FOR EACH ROW
+WHEN NEW.foi NOT IN (SELECT id FROM codelist WHERE collection = 'FOIType')
+BEGIN
+    SELECT RAISE(ABORT, 'Table observableproperty: Invalid value for foi. Must be present in id of foi codelist.');
+END;
+
+CREATE TRIGGER u_foi
+BEFORE UPDATE ON observableproperty
+FOR EACH ROW
+WHEN NEW.foi NOT IN (SELECT id FROM codelist WHERE collection = 'FOIType')
+BEGIN
+    SELECT RAISE(ABORT, 'Table observableproperty: Invalid value for foi. Must be present in id of foi codelist.');
+END;
+--
+
+
+CREATE TRIGGER i_phenomenonType
+BEFORE INSERT ON observableproperty
+FOR EACH ROW
+WHEN NEW.phenomenontype NOT IN (SELECT id FROM codelist WHERE collection = 'PhenomenonType')
+BEGIN
+    SELECT RAISE(ABORT, 'Table observableproperty: Invalid value for phenomenonType. Must be present in PhenomenonType.');
+END;
+
+CREATE TRIGGER u_phenomenonType
+BEFORE UPDATE ON observableproperty
+FOR EACH ROW
+WHEN NEW.phenomenontype NOT IN (SELECT id FROM codelist WHERE collection = 'PhenomenonType')
+BEGIN
+    SELECT RAISE(ABORT, 'Table observableproperty: Invalid value for phenomenonType. Must be present in PhenomenonType.');
+END;
+--
+
+
+CREATE TRIGGER i_basephenomenon
+BEFORE INSERT ON observableproperty
+FOR EACH ROW
+WHEN NEW.basephenomenon NOT IN (SELECT id FROM codelist WHERE foi_phenomenon IN(NEW.foi ||NEW.phenomenonType))
+BEGIN
+    SELECT RAISE(ABORT, 'Table observableproperty: Invalid value for basephenomenon. The values must be present in the PhenomenonTypevalue of the Feature Of Interest and the Phenomenon type defined in the record.');
+END;
+
+CREATE TRIGGER u_basephenomenon
+BEFORE UPDATE ON observableproperty
+FOR EACH ROW
+WHEN NEW.basephenomenon NOT IN (SELECT id FROM codelist WHERE foi_phenomenon IN(NEW.foi ||NEW.phenomenonType))
+BEGIN
+    SELECT RAISE(ABORT, 'Table observableproperty: Invalid value for basephenomenon. The values must be present in the PhenomenonTypevalue of the Feature Of Interest and the Phenomenon type defined in the record.');
+END;
+--
+
+
+CREATE TRIGGER i_ceckdomain
+BEFORE INSERT ON observableproperty
+WHEN NEW.domain_min > NEW.domain_max 
+BEGIN
+    SELECT RAISE(ABORT, 'Table observableproperty: domain_min must be less than domain_max');
+END;
+
+CREATE TRIGGER u_ceckdomain
+BEFORE UPDATE ON observableproperty
+WHEN NEW.domain_min > NEW.domain_max 
+BEGIN
+    SELECT RAISE(ABORT, 'Table observableproperty: domain_min must be less than domain_max');
+END; 
+--
+
+
+CREATE TRIGGER i_ceckdomain_value
+BEFORE INSERT ON observableproperty
+WHEN NEW.domain_typeofvalue = 'result_uri' AND (NEW.domain_min IS NOT NULL OR NEW.domain_max IS NOT NULL)
+BEGIN
+    SELECT RAISE(ABORT, 'Table observableproperty:  For domain_typeofvalue = result_uri , domdomain_min and domain_max  must be NULL'); 
+END;
+
+CREATE TRIGGER u_ceckdomain_value
+BEFORE UPDATE ON observableproperty
+WHEN NEW.domain_typeofvalue = 'result_uri' AND (NEW.domain_min IS NOT NULL OR NEW.domain_max IS NOT NULL)
+BEGIN
+    SELECT RAISE(ABORT, 'Table observableproperty:  For domain_typeofvalue = result_uri , domdomain_min and domain_max  must be NULL'); 
+END;
+--
+
+
+/* 
+███████ ███████ ███    ██ ███████  ██████  ██████  
+██      ██      ████   ██ ██      ██    ██ ██   ██ 
+███████ █████   ██ ██  ██ ███████ ██    ██ ██████  
+     ██ ██      ██  ██ ██      ██ ██    ██ ██   ██ 
+███████ ███████ ██   ████ ███████  ██████  ██   ██                                                  
+ */
+
+-- Table sensor  ---------------------------------------------------------------------------------------
+CREATE TABLE sensor 
+(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  guidkey TEXT UNIQUE,
+  name TEXT NOT NULL, 
+  description TEXT NOT NULL 
+);
+
+-- Contents sensor ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_contents (
+  table_name,
+  data_type,
+  identifier,
+  description,
+  last_change,
+  min_x,
+  min_y,
+  max_x,
+  max_y,
+  srs_id
+) VALUES (
+  'sensor', -- table name
+  'attributes', -- data type
+  't_sen', -- unique table identifier
+  'sensor Table', -- table description
+  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
+  NULL,  
+  NULL,
+  NULL,
+  NULL,
+  NULL  -- EPSG spatial reference system code
+);
+
+-- Trigger sensor ---------------------------------------------------------------------------------------
+CREATE TRIGGER sensorguid
+AFTER INSERT ON sensor
+FOR EACH ROW
+WHEN (NEW.guidkey IS NULL)
+BEGIN
+   UPDATE sensor SET guidkey = (select hex( randomblob(4)) || '-' || hex( randomblob(2))
+             || '-' || '4' || substr( hex( randomblob(2)), 2) || '-'
+             || substr('AB89', 1 + (abs(random()) % 4) , 1)  ||
+             substr(hex(randomblob(2)), 2) || '-' || hex(randomblob(6)) ) WHERE rowid = NEW.rowid;
+END;
+
+CREATE TRIGGER sensorguidupdate
+AFTER UPDATE OF guidkey ON sensor
+BEGIN
+    SELECT CASE
+        WHEN NEW.guidkey != OLD.guidkey THEN
+            RAISE (ABORT, 'Cannot update guidkey column.')
+    END;
+END;
+--
+
+
+/* 
+████████ ██   ██ ██ ███    ██  ██████  
+   ██    ██   ██ ██ ████   ██ ██       
+   ██    ███████ ██ ██ ██  ██ ██   ███ 
+   ██    ██   ██ ██ ██  ██ ██ ██    ██ 
+   ██    ██   ██ ██ ██   ████  ██████  
+ */
+
+-- Table thing  ---------------------------------------------------------------------------------------
+CREATE TABLE thing 
+(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  guidkey TEXT UNIQUE,
+  name TEXT NOT NULL, 
+  description TEXT NOT NULL, 
+  properties BLOB 
+);
+
+-- Contents thing ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_contents (
+  table_name,
+  data_type,
+  identifier,
+  description,
+  last_change,
+  min_x,
+  min_y,
+  max_x,
+  max_y,
+  srs_id
+) VALUES (
+  'thing', -- table name
+  'attributes', -- data type
+  't_thi', -- unique table identifier
+  'thing Table', -- table description
+  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
+  NULL,  
+  NULL,
+  NULL,
+  NULL,
+  NULL  -- EPSG spatial reference system code
+);
+
+-- Trigger thing ---------------------------------------------------------------------------------------
+CREATE TRIGGER thingguid
+AFTER INSERT ON thing
+FOR EACH ROW
+WHEN (NEW.guidkey IS NULL)
+BEGIN
+   UPDATE thing SET guidkey = (select hex( randomblob(4)) || '-' || hex( randomblob(2))
+             || '-' || '4' || substr( hex( randomblob(2)), 2) || '-'
+             || substr('AB89', 1 + (abs(random()) % 4) , 1)  ||
+             substr(hex(randomblob(2)), 2) || '-' || hex(randomblob(6)) ) WHERE rowid = NEW.rowid;
+END;
+
+CREATE TRIGGER thingguidupdate
+AFTER UPDATE OF guidkey ON thing
+BEGIN
+    SELECT CASE
+        WHEN NEW.guidkey != OLD.guidkey THEN
+            RAISE (ABORT, 'Cannot update guidkey column.')
+    END;
+END;
+
+
+/* 
+██████  ██████   ██████   ██████ ███████ ███████ ███████ 
+██   ██ ██   ██ ██    ██ ██      ██      ██      ██      
+██████  ██████  ██    ██ ██      █████   ███████ ███████ 
+██      ██   ██ ██    ██ ██      ██           ██      ██ 
+██      ██   ██  ██████   ██████ ███████ ███████ ███████ 
+ */
+
+
+-- Table  process ---------------------------------------------------------------------------------------
+ CREATE TABLE process
+( 
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    guidkey                  TEXT UNIQUE,
+    inspireid_localid        TEXT, 
+    inspireid_namespace      TEXT, 
+    inspireid_versionid      TEXT, 
+    name                     TEXT, 
+    description              TEXT, 
+    type             TEXT NOT NULL, 
+    idrelatedparty1  TEXT NOT NULL,
+    idrelatedparty2  TEXT,
+    iddocumentcitation1 TEXT,
+    iddocumentcitation2 TEXT,
+    FOREIGN KEY (idrelatedparty1)
+      REFERENCES relatedparty(guidkey),
+    FOREIGN KEY (idrelatedparty2)
+      REFERENCES relatedparty(guidkey),       
+    FOREIGN KEY (iddocumentcitation1)
+      REFERENCES documentcitation(guidkey),
+    FOREIGN KEY (iddocumentcitation2)
+      REFERENCES documentcitation(guidkey)
+);
+
+-- Contents process ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_contents (
+  table_name,
+  data_type,
+  identifier,
+  description,
+  last_change,
+  min_x,
+  min_y,
+  max_x,
+  max_y,
+  srs_id
+) VALUES (
+  'process', -- table name
+  'attributes', -- data type
+  't_pro', -- unique table identifier
+  'process Table', -- table description
+  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
+  NULL,  
+  NULL,
+  NULL,
+  NULL,
+  NULL  -- EPSG spatial reference system code
+);
+
+-- Trigger process ---------------------------------------------------------------------------------------
+CREATE TRIGGER processguid
+AFTER INSERT ON process
+FOR EACH ROW
+WHEN (NEW.guidkey IS NULL)
+BEGIN
+   UPDATE process SET guidkey = (select hex( randomblob(4)) || '-' || hex( randomblob(2))
+             || '-' || '4' || substr( hex( randomblob(2)), 2) || '-'
+             || substr('AB89', 1 + (abs(random()) % 4) , 1)  ||
+             substr(hex(randomblob(2)), 2) || '-' || hex(randomblob(6)) ) WHERE rowid = NEW.rowid;
+END;
+
+CREATE TRIGGER processguidupdate
+AFTER UPDATE OF guidkey ON process
+BEGIN
+    SELECT CASE
+        WHEN NEW.guidkey != OLD.guidkey THEN
+            RAISE (ABORT, 'Cannot update guidkey column.')
+    END;
+END;
+--
+
+
+/* 
+██████   ██████   ██████ ██    ██ ███    ███ ███████ ███    ██ ████████  ██████ ██ ████████  █████  ████████ ██  ██████  ███    ██ 
+██   ██ ██    ██ ██      ██    ██ ████  ████ ██      ████   ██    ██    ██      ██    ██    ██   ██    ██    ██ ██    ██ ████   ██ 
+██   ██ ██    ██ ██      ██    ██ ██ ████ ██ █████   ██ ██  ██    ██    ██      ██    ██    ███████    ██    ██ ██    ██ ██ ██  ██ 
+██   ██ ██    ██ ██      ██    ██ ██  ██  ██ ██      ██  ██ ██    ██    ██      ██    ██    ██   ██    ██    ██ ██    ██ ██  ██ ██ 
+██████   ██████   ██████  ██████  ██      ██ ███████ ██   ████    ██     ██████ ██    ██    ██   ██    ██    ██  ██████  ██   ████ 
+ */
+
+
+-- Table  documentcitation
+CREATE TABLE documentcitation 
+(     
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    guidkey TEXT UNIQUE,
+    name                  TEXT, 
+    shortname             TEXT, 
+    date                  DATETIME,
+    link                  TEXT, 
+    specificreference     TEXT 
+);
+
+-- Contents documentcitation
+INSERT INTO gpkg_contents (
+  table_name,
+  data_type,
+  identifier,
+  description,
+  last_change,
+  min_x,
+  min_y,
+  max_x,
+  max_y,
+  srs_id
+) VALUES (
+  'documentcitation', -- table name
+  'attributes', -- data type
+  't_docc', -- unique table identifier
+  'documentcitation Table', -- table description
+  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
+  NULL,  
+  NULL,
+  NULL,
+  NULL,
+  NULL  -- EPSG spatial reference system code
+);
+
+-- Trigger documentcitation ---------------------------------------------------------------------------------------
+CREATE TRIGGER documentcitationguid
+AFTER INSERT ON documentcitation
+FOR EACH ROW
+WHEN (NEW.guidkey IS NULL)
+BEGIN
+   UPDATE documentcitation SET guidkey = (select hex( randomblob(4)) || '-' || hex( randomblob(2))
+             || '-' || '4' || substr( hex( randomblob(2)), 2) || '-'
+             || substr('AB89', 1 + (abs(random()) % 4) , 1)  ||
+             substr(hex(randomblob(2)), 2) || '-' || hex(randomblob(6)) ) WHERE rowid = NEW.rowid;
+END;
+
+CREATE TRIGGER documentcitationguidupdate
+AFTER UPDATE OF guidkey ON documentcitation
+BEGIN
+    SELECT CASE
+        WHEN NEW.guidkey != OLD.guidkey THEN
+            RAISE (ABORT, 'Cannot update guidkey column.')
+    END;
+END;
+--
+
+
+/* 
+██████  ██████   ██████   ██████ ███████ ███████ ███████ ██████   █████  ██████   █████  ███    ███ ███████ ████████ ███████ ██████  
+██   ██ ██   ██ ██    ██ ██      ██      ██      ██      ██   ██ ██   ██ ██   ██ ██   ██ ████  ████ ██         ██    ██      ██   ██ 
+██████  ██████  ██    ██ ██      █████   ███████ ███████ ██████  ███████ ██████  ███████ ██ ████ ██ █████      ██    █████   ██████  
+██      ██   ██ ██    ██ ██      ██           ██      ██ ██      ██   ██ ██   ██ ██   ██ ██  ██  ██ ██         ██    ██      ██   ██ 
+██      ██   ██  ██████   ██████ ███████ ███████ ███████ ██      ██   ██ ██   ██ ██   ██ ██      ██ ███████    ██    ███████ ██   ██ 
+ */
+
+
+-- Table  processparameter ---------------------------------------------------------------------------------------
+CREATE TABLE processparameter
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    name                             TEXT  NOT NULL,  -- Codelist processparameternamevalue 
+    description                      TEXT,  
+    idprocess               TEXT,
+        FOREIGN KEY (idprocess)
+          REFERENCES process(guidkey)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE
+
+);
+
+-- Contents processparameter ---------------------------------------------------------------------------------------
+INSERT INTO gpkg_contents (
+  table_name,
+  data_type,
+  identifier,
+  description,
+  last_change,
+  min_x,
+  min_y,
+  max_x,
+  max_y,
+  srs_id
+) VALUES (
+  'processparameter', -- table name
+  'attributes', -- data type
+  't_prp', -- unique table identifier
+  'processparameter Table', -- table description
+  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
+  NULL,  
+  NULL,
+  NULL,
+  NULL,
+  NULL  -- EPSG spatial reference system code
+);
+
+-- Trigger processparameter ---------------------------------------------------------------------------------------
+CREATE TRIGGER i_name
+BEFORE INSERT ON processparameter
+FOR EACH ROW
+WHEN NEW.name NOT IN (SELECT id FROM codelist WHERE collection = 'ProcessParameterNameValue')
+BEGIN
+    SELECT RAISE(ABORT, 'Table processparameter: Invalid value for name. Must be present in id of processparameternamevalue codelist.');
+END;
+
+CREATE TRIGGER u_name
+BEFORE UPDATE ON processparameter
+FOR EACH ROW
+WHEN NEW.name NOT IN (SELECT id FROM codelist WHERE collection = 'ProcessParameterNameValue')
+BEGIN
+    SELECT RAISE(ABORT, 'Table processparameter: Invalid value for name. Must be present in id of processparameternamevalue codelist.');
+END;
+--
+
+
+/* 
+██████  ███████ ██       █████  ████████ ███████ ██████  ██████   █████  ██████  ████████ ██    ██ 
+██   ██ ██      ██      ██   ██    ██    ██      ██   ██ ██   ██ ██   ██ ██   ██    ██     ██  ██  
+██████  █████   ██      ███████    ██    █████   ██   ██ ██████  ███████ ██████     ██      ████   
+██   ██ ██      ██      ██   ██    ██    ██      ██   ██ ██      ██   ██ ██   ██    ██       ██    
+██   ██ ███████ ███████ ██   ██    ██    ███████ ██████  ██      ██   ██ ██   ██    ██       ██    
+
+ */
+
+
+-- Table  relatedparty --------------------------------------------------------------------------------------
+CREATE TABLE  relatedparty
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    guidkey TEXT UNIQUE,
+    individualname                      TEXT, 
+    organizationname                    TEXT, 
+    positionname                        TEXT, 
+    address                             TEXT, 
+    contactinstructions                 TEXT, 
+    electronicmailaddress               TEXT, 
+    hoursofservice                      TEXT, 
+    telephonefacsimile                  INTEGER, 
+    telephonevoice                      INTEGER, 
+    website                             TEXT, 
+    role                                TEXT  
+);
+
+-- Contents relatedparty --------------------------------------------------------------------------------------
+INSERT INTO gpkg_contents (
+  table_name,
+  data_type,
+  identifier,
+  description,
+  last_change,
+  min_x,
+  min_y,
+  max_x,
+  max_y,
+  srs_id
+) VALUES (
+  'relatedparty', -- table name
+  'attributes', -- data type
+  't_rp', -- unique table identifier
+  'relatedparty Table', -- table description
+  strftime('%Y-%m-%dT%H:%M:%fZ','now'), -- last modification date and time
+  NULL,  
+  NULL,
+  NULL,
+  NULL,
+  NULL  -- EPSG spatial reference system code
+);
+
+-- Trigger relatedparty ---------------------------------------------------------------------------------------
+CREATE TRIGGER relatedpartyguid
+AFTER INSERT ON relatedparty
+FOR EACH ROW
+WHEN (NEW.guidkey IS NULL)
+BEGIN
+   UPDATE relatedparty SET guidkey = (select hex( randomblob(4)) || '-' || hex( randomblob(2))
+             || '-' || '4' || substr( hex( randomblob(2)), 2) || '-'
+             || substr('AB89', 1 + (abs(random()) % 4) , 1)  ||
+             substr(hex(randomblob(2)), 2) || '-' || hex(randomblob(6)) ) WHERE rowid = NEW.rowid;
+END;
+
+CREATE TRIGGER relatedpartyguidupdate
+AFTER UPDATE OF guidkey ON relatedparty
+BEGIN
+    SELECT CASE
+        WHEN NEW.guidkey != OLD.guidkey THEN
+            RAISE (ABORT, 'Cannot update guidkey column.')
+    END;
+END;
+--
+
+
+CREATE TRIGGER i_role
+BEFORE INSERT ON relatedparty
+FOR EACH ROW
+WHEN NEW.role NOT IN (SELECT id FROM codelist WHERE collection = 'ResponsiblePartyRole') AND NEW.role NOT NULL
+BEGIN
+    SELECT RAISE(ABORT, 'Table relatedparty: Invalid value for role. Must be present in id of responsiblepartyrole codelist.');
+END;
+
+CREATE TRIGGER u_role
+BEFORE UPDATE ON relatedparty
+FOR EACH ROW
+WHEN NEW.role NOT IN (SELECT id FROM codelist WHERE collection = 'ResponsiblePartyRole') AND NEW.role NOT NULL
+BEGIN
+    SELECT RAISE(ABORT, 'Table relatedparty: Invalid value for role. Must be present in id of responsiblepartyrole codelist.');
 END;
 --
 
@@ -1881,9 +3243,6 @@ create table codelist
     phenomenon     TEXT,
     foi_phenomenon TEXT
 );
-
-
-
 
 -- Contents  codelist -----------------------------------------------------------------------------
 INSERT INTO gpkg_contents (
@@ -1914,7 +3273,7 @@ INSERT INTO gpkg_contents (
 
 -- LayerTypeValue
 -- profileelement
--- inspire
+-- INSPIRE
 -- http://inspire.ec.europa.eu/codelist/LayerTypeValue
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/LayerTypeValue/depthInterval', 'depth interval', 'Fixed depth range where soil is described and/or samples are taken.', 'LayerTypeValue', null, null, null);
@@ -1924,7 +3283,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- EventProcessValue
 -- profileelement
--- inspire
+-- INSPIRE
 --http://inspire.ec.europa.eu/codelist/EventProcessValue
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/EventProcessValue/bolideImpact', 'bolide impact', 'The impact of an extraterrestrial body on the surface of the earth.', 'EventProcessValue', null, null, null);
@@ -1985,72 +3344,81 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- LayerGenesisProcessStateValue
 -- profileelement
--- inspire
+-- INSPIRE
 -- http://inspire.ec.europa.eu/codelist/LayerGenesisProcessStateValue
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/LayerGenesisProcessStateValue/ongoing', 'on-going', 'The process has started in the past and is still active.', 'LayerGenesisProcessStateValue', null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/LayerGenesisProcessStateValue/terminated', 'terminated', 'The process is no longer active.', 'LayerGenesisProcessStateValue', null, null, null);
 
+
 -- FAOHorizonMaster
 -- faohorizonnotationtype
--- crea
+-- INSPIRE
+-- https://inspire.ec.europa.eu/codelist/FAOHorizonMasterValue
 
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonMaster/A', 'A', 'A horizons', 'FAOHorizonMaster', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonMaster/B', 'B', 'B horizons', 'FAOHorizonMaster', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonMaster/C', 'C', 'C horizons or layers', 'FAOHorizonMaster', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonMaster/E', 'E', 'E horizons', 'FAOHorizonMaster', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonMaster/H', 'H', 'H horizons or layers', 'FAOHorizonMaster', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonMaster/I', 'I', 'I layers', 'FAOHorizonMaster', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonMaster/L', 'L', 'L layers', 'FAOHorizonMaster', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonMaster/O', 'O', 'O horizons or layers', 'FAOHorizonMaster', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonMaster/R', 'R', 'R layers', 'FAOHorizonMaster', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonMaster/W', 'W', 'W layers', 'FAOHorizonMaster', null, null, null);
+
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonMasterValue/B', 'B', 'B horizons', 'FAOHorizonMasterValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonMasterValue/O', 'O', 'O horizons or layers', 'FAOHorizonMasterValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonMasterValue/C', 'C', 'C horizons or layers', 'FAOHorizonMasterValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonMasterValue/E', 'E', 'E horizons', 'FAOHorizonMasterValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonMasterValue/I', 'I', 'I layers', 'FAOHorizonMasterValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonMasterValue/W', 'W', 'W layers', 'FAOHorizonMasterValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonMasterValue/H', 'H', 'H horizons or layers', 'FAOHorizonMasterValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonMasterValue/A', 'A', 'A horizons', 'FAOHorizonMasterValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonMasterValue/R', 'R', 'R layers', 'FAOHorizonMasterValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonMasterValue/L', 'L', 'L layers', 'FAOHorizonMasterValue', null, null, null);
+
 
 -- FAOHorizonSubordinate
 -- faohorizonnotationtype
--- crea
+-- INSPIRE
+-- https://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue
 
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/k', 'k', 'Accumulation of carbonates', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/y', 'y', 'Accumulation of gypsum', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/j', 'j', 'Accumulation of jarosite', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/z', 'z', 'Accumulation of salts more soluble than gypsum', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/q', 'q', 'Accumulation of pedogenetic silica', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/t', 't', 'Accumulation of silicate clay', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/n', 'n', 'Accumulation of sodium', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/b', 'b', 'Buried genetic horizon', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/l', 'l', 'Capillary fringe mottling (gleying)', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/m', 'm', 'Cementation or induration', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/c', 'c', 'concretions or nodules', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/Lc', 'Lc', 'Coprogenic material (only with L)', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/w', 'w', 'Development of color or structure', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/Ld', 'Ld', 'Diatomaceous earth (only with L)', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/@', '@', 'evidence of cryoturbation', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/x', 'x', 'Fragipan character', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/f', 'f', 'Frozen soil or water', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/r', 'r', 'Strong reduction', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/a', 'a', 'highly decomposed organic material', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/u', 'u', 'human artifacts', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/h', 'h', 'Illuvial accumulation of organic matter', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/s', 's', 'Illuvial accumulation of sesquioxides and organic matter', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/Lm', 'Lm', 'limnic marl (only with L)', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/e', 'e', 'Organic material of intermediate decomposition', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/d', 'd', 'Physical root restriction', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/v', 'v', 'Plinthite', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/o', 'o', 'Residual accumulation of sesquioxides', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/i', 'i', 'slickensides', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/Hi', 'Hi', 'Slightly decomposed organic material', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/g', 'g', 'Stagnic conditions', 'FAOHorizonSubordinate', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOHorizonSubordinate/p', 'p', 'Ploughing or other human disturbance', 'FAOHorizonSubordinate', null, null, null);
+
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/a', 'a', 'Highly decomposed organic material', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/b', 'b', 'Buried genetic horizon', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/c', 'c', 'Concretions or nodules', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/c-L', 'c-L', 'Coprogenous earth', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/f', 'f', 'Frozen soil', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/d-L', 'd-L', 'Diatomaceous earth', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/e', 'e', 'Moderately decomposed organic material', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/g', 'g', 'Stagnic conditions', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/d', 'd', 'Dense layer (physically root restrictive)', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/i-HO', 'i-HO', 'Slightly decomposed organic material;"Slightly decomposed organic material: In organic soils and used in combination with H or O horizons, it indicates the state of decomposition of the organic material', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/r', 'r', 'Strong reduction', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/u', 'u', 'Urban and other human-made materials', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/x', 'x', 'Fragipan characteristics', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/k', 'k', 'Accumulation of pedogenetic carbonates', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/l', 'l', 'Capillary fringe mottling (gleying)', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/z', 'z', 'Pedogenetic accumulation of salts more soluble than gypsum', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/@', '@', 'Evidence of cryoturbation', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/j', 'j', 'Jarosite accumulation', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/v', 'v', 'Occurrence of plinthite', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/t', 't', 'Illuvial accumulation of silicate clay', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/m-L', 'm-L', 'Marl', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/n', 'n', 'Pedogenetic accumulation of exchangeable sodium', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/h', 'h', 'Accumulation of organic matter', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/w', 'w', 'Development of colour or structure', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/m', 'm', 'Strong cementation or induration (pedogenetic, massive)', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/q', 'q', 'Accumulation of pedogenetic silica', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/o', 'o', 'Residual accumulation of sesquioxides (pedogenetic)', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/p', 'p', 'Ploughing or other human disturbance', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/s', 's', 'Illuvial accumulation of sesquioxides', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/i', 'i', 'Slickensides', 'FAOHorizonSubordinateValue', null, null, null);
+INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue/y', 'y', 'Pedogenetic accumulation of gypsum', 'FAOHorizonSubordinateValue', null, null, null);
 
 -- FAOPrime
 -- faohorizonnotationtype
--- crea
+-- INSPIRE
+-- http://inspire.ec.europa.eu/codelist/FAOPrimeValue
 
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOPrime/14375', '''', 'A prime is used with the master horizon symbol of the lower of two horizons having identical letter designations. The prime is applied to the capital letter designation, and any lower case symbol follows it.', 'FAOPrime', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/FAOPrime/14376', '''''', 'Rarely, three layers have identical letter symbols; a double prime can be used', 'FAOPrime', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOPrimeValue/0','0','No Prime applies to this layer or horizon', 'FAOPrimeValue', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOPrimeValue/1','1','One Prime applies to this layer or horizon', 'FAOPrimeValue', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOPrimeValue/2','2','Two Primes apply to this layer or horizon', 'FAOPrimeValue', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/FAOPrimeValue/3','3','Three Primes apply to this layer or horizon', 'FAOPrimeValue', null, null, null);
 
 -- ResponsiblePartyRole
 -- relatedparty
--- inspire
+-- INSPIRE
 -- http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/resourceProvider', 'Resource Provider', 'Party that supplies the resource.', 'ResponsiblePartyRole', null, null, null);
@@ -2067,7 +3435,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- SoilInvestigationPurposeValue
 -- soilsite
--- inspire
+-- INSPIRE
 -- http://inspire.ec.europa.eu/codelist/SoilInvestigationPurposeValue
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/SoilInvestigationPurposeValue/generalSoilSurvey', 'general soil survey', 'Soil characterisation with unbiased selection of investigation location.', 'SoilInvestigationPurposeValue', null, null, null);
@@ -2075,7 +3443,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- SoilPlotTypeValue
 -- soilplot
--- inspire
+-- INSPIRE
 -- http://inspire.ec.europa.eu/codelist/SoilPlotTypeValue
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/SoilPlotTypeValue/borehole', 'borehole', 'Penetration into the sub-surface with removal of soil/rock material by using, for instance, a hollow tube-shaped tool, in order to carry out profile descriptions, sampling and/or field tests.', 'SoilPlotTypeValue', null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/SoilPlotTypeValue/sample', 'sample', 'Exacavation where soil material is removed as a soil sample without doing any soil profile description.', 'SoilPlotTypeValue', null, null, null);
@@ -2083,7 +3451,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- WRBReferenceSoilGroupValue
 -- soilprofile
--- inspire
+-- INSPIRE
 -- http://inspire.ec.europa.eu/codelist/WRBReferenceSoilGroupValue
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/WRBReferenceSoilGroupValue/acrisol', 'Acrisols', 'Soil having an argic horizon, CECclay < 50%.', 'WRBReferenceSoilGroupValue', null, null, null);
@@ -2121,7 +3489,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- WRBQualifierPlaceValue
 -- wrbqualifiergrouptype
--- inspire
+-- INSPIRE
 -- http://inspire.ec.europa.eu/codelist/WRBQualifierPlaceValue
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/WRBQualifierPlaceValue/suffix', 'suffix', 'Suffix', 'WRBQualifierPlaceValue', null, null, null);
@@ -2129,7 +3497,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- WRBQualifierValue
 -- wrbqualifiergrouptype
--- inspire
+-- INSPIRE
 -- http://inspire.ec.europa.eu/codelist/WRBQualifierValue
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/WRBQualifierValue/Abruptic', 'Abruptic', 'Abruptic', 'WRBQualifierValue', null, null, null);
@@ -2214,87 +3582,92 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/WRBQualifierValue/Yermic', 'Yermic', 'Yermic', 'WRBQualifierValue', null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/WRBQualifierValue/Bathi', 'Bathi', 'Bathi', 'WRBQualifierValue', null, null, null);
 
+-- Example codelist not published online -------------------------------------------------------------
 -- WRBSpecifiers
 -- wrbqualifiergrouptype
--- crea
+-- CREA 
+-- http://inspire.ec.europa.eu/codelist/WRBSpecifierValue (void)
 
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBSpecifiers/Bathi', 'Bathi', 'Bathi', 'WRBSpecifiers', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBSpecifiers/Cumuli', 'Cumuli', 'Cumuli', 'WRBSpecifiers', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBSpecifiers/Endo', 'Endo', 'Endo', 'WRBSpecifiers', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBSpecifiers/Epi', 'Epi', 'Epi', 'WRBSpecifiers', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBSpecifiers/Hyper', 'Hyper', 'Hyper', 'WRBSpecifiers', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBSpecifiers/Hypo', 'Hypo', 'Hypo', 'WRBSpecifiers', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBSpecifiers/Orthi', 'Orthi', 'Orthi', 'WRBSpecifiers', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBSpecifiers/Para', 'Para', 'Para', 'WRBSpecifiers', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBSpecifiers/Proto', 'Proto', 'Proto', 'WRBSpecifiers', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBSpecifiers/Thapto', 'Thapto', 'Thapto', 'WRBSpecifiers', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBSpecifiers/Bathi', 'Bathi', 'Bathi', 'WRBSpecifierValue', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBSpecifiers/Cumuli', 'Cumuli', 'Cumuli', 'WRBSpecifierValue', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBSpecifiers/Endo', 'Endo', 'Endo', 'WRBSpecifierValue', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBSpecifiers/Epi', 'Epi', 'Epi', 'WRBSpecifierValue', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBSpecifiers/Hyper', 'Hyper', 'Hyper', 'WRBSpecifierValue', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBSpecifiers/Hypo', 'Hypo', 'Hypo', 'WRBSpecifierValue', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBSpecifiers/Orthi', 'Orthi', 'Orthi', 'WRBSpecifierValue', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBSpecifiers/Para', 'Para', 'Para', 'WRBSpecifierValue', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBSpecifiers/Proto', 'Proto', 'Proto', 'WRBSpecifierValue', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBSpecifiers/Thapto', 'Thapto', 'Thapto', 'WRBSpecifierValue', null, null, null);
 
+-- Internal codelist for managing forms -------------------------------------------------------------
 -- OtherHorizonNotationType
 -- otherhorizonnotationtype
--- crea
+-- CREA
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('WRBdiagnostichorizon', 'WRB', 'WRB Diagnostic Horizon', 'OtherHorizonNotationTypeValue', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('USDAdiagnostichorizon', 'USDA', 'USDA Diagnostic Horizon', 'OtherHorizonNotationTypeValue', null, null, null);
 
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', 'WRB', 'WRB Diagnostic Horizon', 'OtherHorizonNotationTypeValue', null, null, null);
-INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/USDA', 'USDA', 'USDA Diagnostic Horizon', 'OtherHorizonNotationTypeValue', null, null, null);
-
+-- Example codelist not published online -------------------------------------------------------------
 -- WRBdiagnostichorizon
 -- otherhorizonnotationtype
--- crea
+-- CREA
 
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/albic', 'albic', 'albico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/andic', 'andic', 'andico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/anthraquic', 'anthraquic', 'antraquico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/argic', 'argic', 'argico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/calcic', 'calcic', 'calcico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/cambic', 'cambic', 'cambico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/chernic', 'chernic', 'chernico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/cryic', 'cryic', 'cryico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/duric', 'duric', 'durico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/ferralic', 'ferralic', 'ferralico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/ferric', 'ferric', 'ferrico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/folistic', 'folistic', 'folico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/fragic', 'fragic', 'fragico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/fulvic', 'fulvic', 'fulvico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/gypsic', 'gypsic', 'gypsico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/histic', 'histic', 'histico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/idragric', 'idragric', 'idragrico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/irragric', 'irragric', 'irragrico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/melanic', 'melanic', 'melanico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/mollic', 'mollic', 'mollico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/natric', 'natric', 'natrico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/nitic', 'nitic', 'nitico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/ochric', 'ochric', 'ocrico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/ortic', 'ortic', 'ortico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/petrocalcic', 'petrocalcic', 'petrocalcico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/petroduric', 'petroduric', 'petrodurico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/petrogypsic', 'petrogypsic', 'petrogypsico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/petroplinthic', 'petroplinthic', 'petroplintico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/plaggen', 'plaggen', 'plaggico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/plinthic', 'plinthic', 'plintico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/salic', 'salic', 'salico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/spodic', 'spodic', 'spodico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/sulfuric', 'sulfuric', 'solforico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/takyric', 'takyric', 'takyrico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/terric', 'terric', 'terrico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/umbric', 'umbric', 'umbrico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/vertic', 'vertic', 'vertico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/vitric', 'vitric', 'vitrico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
-INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/yermic', 'yermic', 'yermico', 'WRBdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/WRB', null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/albic', 'albic', 'albico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/andic', 'andic', 'andico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/anthraquic', 'anthraquic', 'antraquico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/argic', 'argic', 'argico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/calcic', 'calcic', 'calcico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/cambic', 'cambic', 'cambico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/chernic', 'chernic', 'chernico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/cryic', 'cryic', 'cryico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/duric', 'duric', 'durico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/ferralic', 'ferralic', 'ferralico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/ferric', 'ferric', 'ferrico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/folistic', 'folistic', 'folico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/fragic', 'fragic', 'fragico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/fulvic', 'fulvic', 'fulvico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/gypsic', 'gypsic', 'gypsico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/histic', 'histic', 'histico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/idragric', 'idragric', 'idragrico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/irragric', 'irragric', 'irragrico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/melanic', 'melanic', 'melanico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/mollic', 'mollic', 'mollico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/natric', 'natric', 'natrico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/nitic', 'nitic', 'nitico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/ochric', 'ochric', 'ocrico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/ortic', 'ortic', 'ortico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/petrocalcic', 'petrocalcic', 'petrocalcico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/petroduric', 'petroduric', 'petrodurico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/petrogypsic', 'petrogypsic', 'petrogypsico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/petroplinthic', 'petroplinthic', 'petroplintico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/plaggen', 'plaggen', 'plaggico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/plinthic', 'plinthic', 'plintico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/salic', 'salic', 'salico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/spodic', 'spodic', 'spodico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/sulfuric', 'sulfuric', 'solforico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/takyric', 'takyric', 'takyrico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/terric', 'terric', 'terrico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/umbric', 'umbric', 'umbrico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/vertic', 'vertic', 'vertico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/vitric', 'vitric', 'vitrico', 'WRBdiagnostichorizon', null, null, null);
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/yermic', 'yermic', 'yermico', 'WRBdiagnostichorizon', null, null, null);
 
+-- Example codelist not published online -------------------------------------------------------------
 -- diagnostichorizon
 -- otherhorizonnotationtype
--- crea
+-- CREA
 
 INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/USDA/diagnostichorizon/12386', 'Void', 'Void', 'USDAdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/USDA', null, null);
 
+-- Example codelist not published online -------------------------------------------------------------
 -- OtherSoilNameTypeValue
 -- othersoilnametype
--- crea
+-- CREA
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('https://crea.gov.it/infosuoli/vocabularies/OtherSoilNameTypeValue/OSN', 'Void', 'Void', 'OtherSoilNameTypeValue', null, null, null);
 
 -- SoilSiteParameterNameValue
 -- soilsite
--- inspire
+-- INSPIRE
 -- http://inspire.ec.europa.eu/codelist/SoilSiteParameterNameValue
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/SoilSiteParameterNameValue/metalAs', 'Arsenic and compounds (as As)', 'as in E-PRTR, CAS-Nr.: 7440-38-2', 'SoilSiteParameterNameValue', 'soilsite', 'chemical', 'soilsitechemical');
@@ -2433,16 +3806,17 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- SoilProfileParameterNameValue
 -- soilprofile
--- inspire
---
+-- INSPIRE
+-- http://inspire.ec.europa.eu/codelist/SoilProfileParameterNameValue
+
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/SoilProfileParameterNameValue/carbonStock', 'carbon stock', 'The total mass of carbon in soil for a given depth.', 'SoilProfileParameterNameValue', 'soilprofile', 'chemical', 'soilprofilechemical');
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/SoilProfileParameterNameValue/potentialRootDepth', 'potential root depth', 'Potential depth of the soil profile where roots develop (in cm).', 'SoilProfileParameterNameValue', 'soilprofile', 'physical', 'soilprofilephysical');
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/SoilProfileParameterNameValue/availableWaterCapacity', 'available water capacity', 'Amount of water that a soil can store that is usable by plants, based on the potential root depth.', 'SoilProfileParameterNameValue', 'soilprofile', 'physical', 'soilprofilephysical');
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/SoilProfileParameterNameValue/waterDrainage', 'water drainage', 'Natural internal water drainage class of the soil profile.', 'SoilProfileParameterNameValue', 'soilprofile', 'physical', 'soilprofilephysical');
 
 -- SoilDerivedObjectParameterNameValue
--- inspire
--- http://inspire.ec.europa.eu/codelist/SoilProfileParameterNameValue
+-- INSPIRE
+-- http://inspire.ec.europa.eu/codelist/SoilDerivedObjectParameterNameValue
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/SoilDerivedObjectParameterNameValue/carbonStock', 'carbon stock', 'The total mass of carbon in soil for a given depth.', 'SoilDerivedObjectParameterNameValue', 'soilderivedobject', 'chemical', 'soilderivedobjectchemical');
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/SoilDerivedObjectParameterNameValue/organicCarbonContent', 'organic carbon content', 'Portion of the soil measured as carbon in organic form, excluding living macro and mesofauna and living plant tissue.', 'SoilDerivedObjectParameterNameValue', 'soilderivedobject', 'chemical', 'soilderivedobjectchemical');
@@ -2461,7 +3835,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- ProfileElementParameterNameValue
 -- profileelement
--- inspire
+-- INSPIRE
 -- http://inspire.ec.europa.eu/codelist/ProfileElementParameterNameValue
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/ProfileElementParameterNameValue/organicCarbonContent', 'organic carbon content', 'Portion of the soil measured as carbon in organic forms, excluding living macro and mesofauna and living plant tissue.', 'ProfileElementParameterNameValue', 'profileelement', 'chemical', 'profileelementchemical');
@@ -2476,7 +3850,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- SoilProfileParameterNameValue
 -- soilprofile
--- inspire
+-- INSPIRE
 -- http://inspire.ec.europa.eu/codelist/SoilProfileParameterNameValue
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/SoilProfileParameterNameValue/pe_phisical', 'Void', 'Void', 'SoilProfileParameterNameValue', null, null, null);
@@ -2484,7 +3858,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- LithologyValue
 -- profileelement
--- inspire
+-- INSPIRE
 -- http://inspire.ec.europa.eu/codelist/LithologyValue
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/LithologyValue/acidicIgneousMaterial', 'acidicIgneousMaterial', 'acidicIgneousMaterial', 'LithologyValue', null, null, null);
@@ -2561,7 +3935,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- EventEnvironmentValue
 -- profileelement
--- inspire
+-- INSPIRE
 -- http://inspire.ec.europa.eu/codelist/EventEnvironmentValue
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/EventEnvironmentValue/agriculturalAndForestryLandSetting''', 'agricultural and forestry land setting', 'Human influence setting with intensive agricultural activity or forestry land use,  including forest plantations.', 'EventEnvironmentValue', null, null, null);
@@ -2730,3 +4104,44 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/EventEnvironmentValue/riverPlainSystemSetting', 'river plain system setting', '''Geologic setting dominated by a river system; river plains may occur in any climatic setting. Includes active channels, abandoned channels, levees, oxbow lakes, flood plain. May be part of an alluvial plain that includes terraces composed of abandoned river plain deposits.''', 'EventEnvironmentValue', null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/EventEnvironmentValue/tidalFlatSetting', 'tidal flat setting', 'An extensive, nearly horizontal, barren tract of land that is alternately covered and uncovered by the tide, and consisting of unconsolidated sediment (mostly mud and sand). It may form the top surface of a deltaic deposit.', 'EventEnvironmentValue', null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/EventEnvironmentValue/swampOrMarshSetting', 'swamp or marsh setting', 'A water-saturated, periodically wet or continually flooded area with the surface not deeply submerged, essentially without the formation of peat. Marshes are characterized by sedges, cattails, rushes, or other aquatic and grasslike vegetation. Swamps are characterized by tree and brush vegetation.', 'EventEnvironmentValue', null, null, null);
+
+-- Example codelist not published online -------------------------------------------------------------
+-- ProcessParameterNameValue
+-- processparameter
+-- CREA
+-- http://inspire.ec.europa.eu/codelist/ProcessParameterNameValue (void)
+
+INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://crea.gov.it/codelist/12345', 'Void', 'Void', 'ProcessParameterNameValue', null, null, null);
+
+-- Internal codelist for managing forms -------------------------------------------------------------
+-- CREA
+INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('profileelement', 'profileelement', null, 'FOIType', '', null, null);
+INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('soilprofile', 'soilprofile', null, 'FOIType', '', null, null);
+INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('soilderivedobject', 'soilderivedobject', null, 'FOIType', '', null, null);
+INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('soilsite', 'soilsite', null, 'FOIType', '', null, null);
+INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('chemical', 'chemical', null, 'PhenomenonType', '', null, null);
+INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('biological', 'biological', null, 'PhenomenonType', '', null, null);
+INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('physical', 'physical', null, 'PhenomenonType', '', null, null);
+
+--- Internal codelist for managing forms -------------------------------------------------------------
+-- CREA
+INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/pc01', 'excessively drained', 'excessively drained', 'WaterDrainage', null, null, null);
+INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/pc02', 'somewhat excessively', 'somewhat excessively', 'WaterDrainage', null, null, null);
+INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/pc03', 'well drained', 'well drained', 'WaterDrainage', null, null, null);
+INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/pc04', 'moderately well drained', 'moderately well drained', 'WaterDrainage', null, null, null);
+INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/pc05', 'somewhat poorly drained', 'somewhat poorly drained', 'WaterDrainage', null, null, null);
+INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/pc06', 'poorly drained', 'poorly drained', 'WaterDrainage', null, null, null);
+INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('http://inspire.ec.europa.eu/codelist/pc07', 'very poorly drained', 'very poorly drained', 'WaterDrainage', null, null, null);
+
+-- Internal codelist for managing forms -------------------------------------------------------------
+-- CREA
+INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('WaterDrainage', 'WaterDrainage', 'WaterDrainage', 'PropertyCoded', null, null, null);
+INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('effervescence', 'effervescence', 'effervescence', 'PropertyCoded', null, null, null);
+
+-- Internal codelist for managing forms -------------------------------------------------------------
+-- CREA
+INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('Test_01', 'Test_01', 'Test_01', 'effervescence', null, null, null);
+INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('Test_02', 'Test_02', 'Test_02', 'effervescence', null, null, null);
+INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon) VALUES ('Test_03', 'Test_03', 'Test_03', 'effervescence', null, null, null);
+
+

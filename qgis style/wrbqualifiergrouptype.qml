@@ -1,24 +1,27 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.32.3-Lima" readOnly="0" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations">
+<qgis version="3.32.3-Lima" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
     <Searchable>1</Searchable>
     <Private>0</Private>
   </flags>
-  <referencedLayers>
-    <relation referencedLayer="soilprofile_70463919_e765_4575_a6dd_732282d87450" strength="Composition" dataSource="./Vector.gpkg|layername=soilprofile" referencingLayer="wrbqualifiergrouptype_8401ec45_b4ba_4080_85bc_8713f5992f09" id="soilprofile_wrbqualifiergrouptype" layerId="soilprofile_70463919_e765_4575_a6dd_732282d87450" providerKey="ogr" name="soilprofile_wrbqualifiergrouptype" layerName="soilprofile">
-      <fieldRef referencingField="wrbqualifiergroup" referencedField="guidkey"/>
-    </relation>
-  </referencedLayers>
+  <referencedLayers/>
   <fieldConfiguration>
     <field configurationFlags="None" name="id">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="IsMultiline"/>
-            <Option type="bool" value="false" name="UseHtml"/>
+            <Option value="false" name="IsMultiline" type="bool"/>
+            <Option value="false" name="UseHtml" type="bool"/>
           </Option>
+        </config>
+      </editWidget>
+    </field>
+    <field configurationFlags="None" name="guidkey">
+      <editWidget type="TextEdit">
+        <config>
+          <Option/>
         </config>
       </editWidget>
     </field>
@@ -26,19 +29,19 @@
       <editWidget type="ValueRelation">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="AllowMulti"/>
-            <Option type="bool" value="false" name="AllowNull"/>
-            <Option type="QString" value="&quot;label&quot;" name="Description"/>
-            <Option type="QString" value="&quot;collection&quot; IN('WRBQualifierPlaceValue') " name="FilterExpression"/>
-            <Option type="QString" value="id" name="Key"/>
-            <Option type="QString" value="codelist_44009776_a9a6_4371_91e7_8f3009ac5748" name="Layer"/>
-            <Option type="QString" value="codelist" name="LayerName"/>
-            <Option type="QString" value="ogr" name="LayerProviderName"/>
-            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_08 newcodelist/Vector.gpkg|layername=codelist" name="LayerSource"/>
-            <Option type="int" value="1" name="NofColumns"/>
-            <Option type="bool" value="false" name="OrderByValue"/>
-            <Option type="bool" value="false" name="UseCompleter"/>
-            <Option type="QString" value="label" name="Value"/>
+            <Option value="false" name="AllowMulti" type="bool"/>
+            <Option value="false" name="AllowNull" type="bool"/>
+            <Option value="&quot;label&quot;" name="Description" type="QString"/>
+            <Option value="&quot;collection&quot; IN('WRBQualifierPlaceValue') " name="FilterExpression" type="QString"/>
+            <Option value="id" name="Key" type="QString"/>
+            <Option value="codelist_44009776_a9a6_4371_91e7_8f3009ac5748" name="Layer" type="QString"/>
+            <Option value="codelist" name="LayerName" type="QString"/>
+            <Option value="ogr" name="LayerProviderName" type="QString"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_08 newcodelist/Vector.gpkg|layername=codelist" name="LayerSource" type="QString"/>
+            <Option value="1" name="NofColumns" type="int"/>
+            <Option value="false" name="OrderByValue" type="bool"/>
+            <Option value="false" name="UseCompleter" type="bool"/>
+            <Option value="label" name="Value" type="QString"/>
           </Option>
         </config>
       </editWidget>
@@ -47,8 +50,8 @@
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="IsMultiline"/>
-            <Option type="bool" value="false" name="UseHtml"/>
+            <Option value="false" name="IsMultiline" type="bool"/>
+            <Option value="false" name="UseHtml" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -57,19 +60,19 @@
       <editWidget type="ValueRelation">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="AllowMulti"/>
-            <Option type="bool" value="false" name="AllowNull"/>
-            <Option type="QString" value="&quot;label&quot;" name="Description"/>
-            <Option type="QString" value="&quot;collection&quot; IN('WRBQualifierValue')  " name="FilterExpression"/>
-            <Option type="QString" value="id" name="Key"/>
-            <Option type="QString" value="codelist_44009776_a9a6_4371_91e7_8f3009ac5748" name="Layer"/>
-            <Option type="QString" value="codelist" name="LayerName"/>
-            <Option type="QString" value="ogr" name="LayerProviderName"/>
-            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_08 newcodelist/Vector.gpkg|layername=codelist" name="LayerSource"/>
-            <Option type="int" value="1" name="NofColumns"/>
-            <Option type="bool" value="false" name="OrderByValue"/>
-            <Option type="bool" value="false" name="UseCompleter"/>
-            <Option type="QString" value="label" name="Value"/>
+            <Option value="false" name="AllowMulti" type="bool"/>
+            <Option value="false" name="AllowNull" type="bool"/>
+            <Option value="&quot;label&quot;" name="Description" type="QString"/>
+            <Option value="&quot;collection&quot; IN('WRBQualifierValue')  " name="FilterExpression" type="QString"/>
+            <Option value="id" name="Key" type="QString"/>
+            <Option value="codelist_44009776_a9a6_4371_91e7_8f3009ac5748" name="Layer" type="QString"/>
+            <Option value="codelist" name="LayerName" type="QString"/>
+            <Option value="ogr" name="LayerProviderName" type="QString"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_08 newcodelist/Vector.gpkg|layername=codelist" name="LayerSource" type="QString"/>
+            <Option value="1" name="NofColumns" type="int"/>
+            <Option value="false" name="OrderByValue" type="bool"/>
+            <Option value="false" name="UseCompleter" type="bool"/>
+            <Option value="label" name="Value" type="QString"/>
           </Option>
         </config>
       </editWidget>
@@ -78,19 +81,19 @@
       <editWidget type="ValueRelation">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="AllowMulti"/>
-            <Option type="bool" value="true" name="AllowNull"/>
-            <Option type="QString" value="&quot;label&quot;" name="Description"/>
-            <Option type="QString" value="&quot;collection&quot; IN('WRBSpecifiers') " name="FilterExpression"/>
-            <Option type="QString" value="id" name="Key"/>
-            <Option type="QString" value="codelist_44009776_a9a6_4371_91e7_8f3009ac5748" name="Layer"/>
-            <Option type="QString" value="codelist" name="LayerName"/>
-            <Option type="QString" value="ogr" name="LayerProviderName"/>
-            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_08 newcodelist/Vector.gpkg|layername=codelist" name="LayerSource"/>
-            <Option type="int" value="1" name="NofColumns"/>
-            <Option type="bool" value="false" name="OrderByValue"/>
-            <Option type="bool" value="false" name="UseCompleter"/>
-            <Option type="QString" value="label" name="Value"/>
+            <Option value="false" name="AllowMulti" type="bool"/>
+            <Option value="true" name="AllowNull" type="bool"/>
+            <Option value="&quot;label&quot;" name="Description" type="QString"/>
+            <Option value="&quot;collection&quot; IN('WRBSpecifierValue') " name="FilterExpression" type="QString"/>
+            <Option value="id" name="Key" type="QString"/>
+            <Option value="codelist_dca3491b_79c9_4c76_afe9_83b8d8e331a2" name="Layer" type="QString"/>
+            <Option value="codelist" name="LayerName" type="QString"/>
+            <Option value="ogr" name="LayerProviderName" type="QString"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=codelist" name="LayerSource" type="QString"/>
+            <Option value="1" name="NofColumns" type="int"/>
+            <Option value="false" name="OrderByValue" type="bool"/>
+            <Option value="false" name="UseCompleter" type="bool"/>
+            <Option value="label" name="Value" type="QString"/>
           </Option>
         </config>
       </editWidget>
@@ -99,89 +102,68 @@
       <editWidget type="ValueRelation">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="AllowMulti"/>
-            <Option type="bool" value="true" name="AllowNull"/>
-            <Option type="QString" value="&quot;label&quot;" name="Description"/>
-            <Option type="QString" value="&quot;collection&quot; IN('WRBSpecifiers') " name="FilterExpression"/>
-            <Option type="QString" value="id" name="Key"/>
-            <Option type="QString" value="codelist_44009776_a9a6_4371_91e7_8f3009ac5748" name="Layer"/>
-            <Option type="QString" value="codelist" name="LayerName"/>
-            <Option type="QString" value="ogr" name="LayerProviderName"/>
-            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_08 newcodelist/Vector.gpkg|layername=codelist" name="LayerSource"/>
-            <Option type="int" value="1" name="NofColumns"/>
-            <Option type="bool" value="false" name="OrderByValue"/>
-            <Option type="bool" value="false" name="UseCompleter"/>
-            <Option type="QString" value="label" name="Value"/>
-          </Option>
-        </config>
-      </editWidget>
-    </field>
-    <field configurationFlags="None" name="wrbqualifiergroup">
-      <editWidget type="RelationReference">
-        <config>
-          <Option type="Map">
-            <Option type="bool" value="false" name="AllowAddFeatures"/>
-            <Option type="bool" value="false" name="AllowNULL"/>
-            <Option type="bool" value="true" name="FetchLimitActive"/>
-            <Option type="int" value="100" name="FetchLimitNumber"/>
-            <Option type="bool" value="false" name="MapIdentification"/>
-            <Option type="bool" value="false" name="ReadOnly"/>
-            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_08 newcodelist/Vector.gpkg|layername=soilprofile" name="ReferencedLayerDataSource"/>
-            <Option type="QString" value="soilprofile_70463919_e765_4575_a6dd_732282d87450" name="ReferencedLayerId"/>
-            <Option type="QString" value="soilprofile" name="ReferencedLayerName"/>
-            <Option type="QString" value="ogr" name="ReferencedLayerProviderKey"/>
-            <Option type="QString" value="soilprofile_wrbqualifiergrouptype" name="Relation"/>
-            <Option type="bool" value="false" name="ShowForm"/>
-            <Option type="bool" value="true" name="ShowOpenFormButton"/>
+            <Option value="false" name="AllowMulti" type="bool"/>
+            <Option value="true" name="AllowNull" type="bool"/>
+            <Option value="&quot;label&quot;" name="Description" type="QString"/>
+            <Option value="&quot;collection&quot; IN('WRBSpecifierValue') " name="FilterExpression" type="QString"/>
+            <Option value="id" name="Key" type="QString"/>
+            <Option value="codelist_dca3491b_79c9_4c76_afe9_83b8d8e331a2" name="Layer" type="QString"/>
+            <Option value="codelist" name="LayerName" type="QString"/>
+            <Option value="ogr" name="LayerProviderName" type="QString"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=codelist" name="LayerSource" type="QString"/>
+            <Option value="1" name="NofColumns" type="int"/>
+            <Option value="false" name="OrderByValue" type="bool"/>
+            <Option value="false" name="UseCompleter" type="bool"/>
+            <Option value="label" name="Value" type="QString"/>
           </Option>
         </config>
       </editWidget>
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias index="0" field="id" name=""/>
-    <alias index="1" field="qualifierplace" name="Qualifier Place"/>
-    <alias index="2" field="qualifierposition" name="Qualifier Position"/>
-    <alias index="3" field="wrbqualifier" name="WBR Qualifier"/>
-    <alias index="4" field="wrbspecifier_1" name="First"/>
-    <alias index="5" field="wrbspecifier_2" name="Second"/>
-    <alias index="6" field="wrbqualifiergroup" name="Soil Profile"/>
+    <alias index="0" name="" field="id"/>
+    <alias index="1" name="" field="guidkey"/>
+    <alias index="2" name="Qualifier Place" field="qualifierplace"/>
+    <alias index="3" name="Qualifier Position" field="qualifierposition"/>
+    <alias index="4" name="WBR Qualifier" field="wrbqualifier"/>
+    <alias index="5" name="First" field="wrbspecifier_1"/>
+    <alias index="6" name="Second" field="wrbspecifier_2"/>
   </aliases>
   <splitPolicies>
-    <policy field="id" policy="DefaultValue"/>
-    <policy field="qualifierplace" policy="DefaultValue"/>
-    <policy field="qualifierposition" policy="DefaultValue"/>
-    <policy field="wrbqualifier" policy="DefaultValue"/>
-    <policy field="wrbspecifier_1" policy="DefaultValue"/>
-    <policy field="wrbspecifier_2" policy="DefaultValue"/>
-    <policy field="wrbqualifiergroup" policy="DefaultValue"/>
+    <policy policy="DefaultValue" field="id"/>
+    <policy policy="Duplicate" field="guidkey"/>
+    <policy policy="DefaultValue" field="qualifierplace"/>
+    <policy policy="DefaultValue" field="qualifierposition"/>
+    <policy policy="DefaultValue" field="wrbqualifier"/>
+    <policy policy="DefaultValue" field="wrbspecifier_1"/>
+    <policy policy="DefaultValue" field="wrbspecifier_2"/>
   </splitPolicies>
   <defaults>
-    <default field="id" expression="" applyOnUpdate="0"/>
-    <default field="qualifierplace" expression="" applyOnUpdate="0"/>
-    <default field="qualifierposition" expression="" applyOnUpdate="0"/>
-    <default field="wrbqualifier" expression="" applyOnUpdate="0"/>
-    <default field="wrbspecifier_1" expression="" applyOnUpdate="0"/>
-    <default field="wrbspecifier_2" expression="" applyOnUpdate="0"/>
-    <default field="wrbqualifiergroup" expression="" applyOnUpdate="0"/>
+    <default applyOnUpdate="0" expression="" field="id"/>
+    <default applyOnUpdate="0" expression="" field="guidkey"/>
+    <default applyOnUpdate="0" expression="" field="qualifierplace"/>
+    <default applyOnUpdate="0" expression="" field="qualifierposition"/>
+    <default applyOnUpdate="0" expression="" field="wrbqualifier"/>
+    <default applyOnUpdate="0" expression="" field="wrbspecifier_1"/>
+    <default applyOnUpdate="0" expression="" field="wrbspecifier_2"/>
   </defaults>
   <constraints>
-    <constraint constraints="3" unique_strength="1" field="id" notnull_strength="1" exp_strength="0"/>
-    <constraint constraints="1" unique_strength="0" field="qualifierplace" notnull_strength="1" exp_strength="0"/>
-    <constraint constraints="1" unique_strength="0" field="qualifierposition" notnull_strength="1" exp_strength="0"/>
-    <constraint constraints="1" unique_strength="0" field="wrbqualifier" notnull_strength="1" exp_strength="0"/>
-    <constraint constraints="0" unique_strength="0" field="wrbspecifier_1" notnull_strength="0" exp_strength="0"/>
-    <constraint constraints="0" unique_strength="0" field="wrbspecifier_2" notnull_strength="0" exp_strength="0"/>
-    <constraint constraints="0" unique_strength="0" field="wrbqualifiergroup" notnull_strength="0" exp_strength="0"/>
+    <constraint exp_strength="0" notnull_strength="1" unique_strength="1" constraints="3" field="id"/>
+    <constraint exp_strength="0" notnull_strength="0" unique_strength="1" constraints="2" field="guidkey"/>
+    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="qualifierplace"/>
+    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="qualifierposition"/>
+    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="wrbqualifier"/>
+    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="wrbspecifier_1"/>
+    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="wrbspecifier_2"/>
   </constraints>
   <constraintExpressions>
-    <constraint field="id" exp="" desc=""/>
-    <constraint field="qualifierplace" exp="" desc=""/>
-    <constraint field="qualifierposition" exp="" desc=""/>
-    <constraint field="wrbqualifier" exp="" desc=""/>
-    <constraint field="wrbspecifier_1" exp="" desc=""/>
-    <constraint field="wrbspecifier_2" exp="" desc=""/>
-    <constraint field="wrbqualifiergroup" exp="" desc=""/>
+    <constraint exp="" desc="" field="id"/>
+    <constraint exp="" desc="" field="guidkey"/>
+    <constraint exp="" desc="" field="qualifierplace"/>
+    <constraint exp="" desc="" field="qualifierposition"/>
+    <constraint exp="" desc="" field="wrbqualifier"/>
+    <constraint exp="" desc="" field="wrbspecifier_1"/>
+    <constraint exp="" desc="" field="wrbspecifier_2"/>
   </constraintExpressions>
   <expressionfields/>
   <editform tolerant="1"></editform>
@@ -207,49 +189,44 @@ control = dialog.findChild(QWidget, "MyLineEdit")
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-      <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+      <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
     </labelStyle>
-    <attributeEditorField index="0" showLabel="1" verticalStretch="0" name="id" horizontalStretch="0">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <attributeEditorField showLabel="1" index="0" name="id" horizontalStretch="0" verticalStretch="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField index="1" showLabel="1" verticalStretch="0" name="qualifierplace" horizontalStretch="0">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <attributeEditorField showLabel="1" index="2" name="qualifierplace" horizontalStretch="0" verticalStretch="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField index="2" showLabel="1" verticalStretch="0" name="qualifierposition" horizontalStretch="0">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <attributeEditorField showLabel="1" index="3" name="qualifierposition" horizontalStretch="0" verticalStretch="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField index="3" showLabel="1" verticalStretch="0" name="wrbqualifier" horizontalStretch="0">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <attributeEditorField showLabel="1" index="4" name="wrbqualifier" horizontalStretch="0" verticalStretch="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer collapsedExpressionEnabled="0" showLabel="1" verticalStretch="0" columnCount="1" visibilityExpressionEnabled="0" collapsed="0" visibilityExpression="" type="GroupBox" groupBox="1" name="WBR Specidfier" horizontalStretch="0" collapsedExpression="">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <attributeEditorContainer columnCount="1" showLabel="1" collapsedExpressionEnabled="0" collapsedExpression="" name="WBR Specifier" visibilityExpressionEnabled="0" horizontalStretch="0" verticalStretch="0" groupBox="1" type="GroupBox" collapsed="0" visibilityExpression="">
+      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
       </labelStyle>
-      <attributeEditorField index="4" showLabel="1" verticalStretch="0" name="wrbspecifier_1" horizontalStretch="0">
-        <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-          <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+      <attributeEditorField showLabel="1" index="5" name="wrbspecifier_1" horizontalStretch="0" verticalStretch="0">
+        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField index="5" showLabel="1" verticalStretch="0" name="wrbspecifier_2" horizontalStretch="0">
-        <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-          <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+      <attributeEditorField showLabel="1" index="6" name="wrbspecifier_2" horizontalStretch="0" verticalStretch="0">
+        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorField index="6" showLabel="1" verticalStretch="0" name="wrbqualifiergroup" horizontalStretch="0">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
-      </labelStyle>
-    </attributeEditorField>
   </attributeEditorForm>
   <editable>
     <field editable="1" name="guidkey"/>

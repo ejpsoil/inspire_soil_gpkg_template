@@ -7,25 +7,22 @@
     <Private>0</Private>
   </flags>
   <referencedLayers>
-    <relation id="soilderivedobject_isbasedonobservedsoilprofile_2" providerKey="ogr" referencedLayer="soilderivedobject_a71785e5_025c_4b3e_815a_d38e26008c1c" layerName="soilderivedobject" name="soilderivedobject_isbasedonobservedsoilprofile_2" dataSource="./INSPIRE_Selection_4.gpkg|layername=soilderivedobject" referencingLayer="isbasedonobservedsoilprofile_709f69fd_62cd_4a72_9f5e_ecdde1445562" layerId="soilderivedobject_a71785e5_025c_4b3e_815a_d38e26008c1c" strength="Association">
-      <fieldRef referencedField="guidkey" referencingField="idsoilderivedobject"/>
+    <relation id="otherhorizonnotationtype_otherhorizon_profileelement" providerKey="ogr" referencedLayer="otherhorizonnotationtype_d52d4ee1_52c4_4eb4_a1aa_f71bcb71bcfb" layerName="otherhorizonnotationtype" name="otherhorizonnotationtype_otherhorizon_profileelement" dataSource="./INSPIRE_Selection_4.gpkg|layername=otherhorizonnotationtype" referencingLayer="otherhorizon_profileelement_8d7be0a8_41d9_4af6_8cc6_3f8fa530d0f2" layerId="otherhorizonnotationtype_d52d4ee1_52c4_4eb4_a1aa_f71bcb71bcfb" strength="Composition">
+      <fieldRef referencedField="guidkey" referencingField="idotherhorizonnotationtype"/>
     </relation>
-    <relation id="soilprofile_isbasedonobservedsoilprofile" providerKey="ogr" referencedLayer="soilprofile_e19d0f33_d3eb_4c7f_86d4_7b842ac7e511" layerName="soilprofile" name="soilprofile_isbasedonobservedsoilprofile" dataSource="./INSPIRE_Selection_4.gpkg|layername=soilprofile" referencingLayer="isbasedonobservedsoilprofile_709f69fd_62cd_4a72_9f5e_ecdde1445562" layerId="soilprofile_e19d0f33_d3eb_4c7f_86d4_7b842ac7e511" strength="Association">
-      <fieldRef referencedField="guidkey" referencingField="idsoilprofile"/>
+    <relation id="profileelement_otherhorizon_profileelement_2" providerKey="ogr" referencedLayer="profileelement_e0037153_3a70_46eb_9cb8_8b365ffbe8f7" layerName="profileelement" name="profileelement_otherhorizon_profileelement_2" dataSource="./INSPIRE_Selection_4.gpkg|layername=profileelement" referencingLayer="otherhorizon_profileelement_8d7be0a8_41d9_4af6_8cc6_3f8fa530d0f2" layerId="profileelement_e0037153_3a70_46eb_9cb8_8b365ffbe8f7" strength="Composition">
+      <fieldRef referencedField="guidkey" referencingField="idprofileelement"/>
     </relation>
   </referencedLayers>
   <fieldConfiguration>
     <field configurationFlags="None" name="id">
       <editWidget type="TextEdit">
         <config>
-          <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
-          </Option>
+          <Option/>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="idsoilderivedobject">
+    <field configurationFlags="None" name="idprofileelement">
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
@@ -35,18 +32,18 @@
             <Option value="100" name="FetchLimitNumber" type="int"/>
             <Option value="false" name="MapIdentification" type="bool"/>
             <Option value="false" name="ReadOnly" type="bool"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=soilderivedobject" name="ReferencedLayerDataSource" type="QString"/>
-            <Option value="soilderivedobject_a71785e5_025c_4b3e_815a_d38e26008c1c" name="ReferencedLayerId" type="QString"/>
-            <Option value="soilderivedobject" name="ReferencedLayerName" type="QString"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=profileelement" name="ReferencedLayerDataSource" type="QString"/>
+            <Option value="profileelement_e0037153_3a70_46eb_9cb8_8b365ffbe8f7" name="ReferencedLayerId" type="QString"/>
+            <Option value="profileelement" name="ReferencedLayerName" type="QString"/>
             <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
-            <Option value="soilderivedobject_isbasedonobservedsoilprofile_2" name="Relation" type="QString"/>
+            <Option value="profileelement_otherhorizon_profileelement_2" name="Relation" type="QString"/>
             <Option value="false" name="ShowForm" type="bool"/>
             <Option value="true" name="ShowOpenFormButton" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="idsoilprofile">
+    <field configurationFlags="None" name="idotherhorizonnotationtype">
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
@@ -56,11 +53,11 @@
             <Option value="100" name="FetchLimitNumber" type="int"/>
             <Option value="false" name="MapIdentification" type="bool"/>
             <Option value="false" name="ReadOnly" type="bool"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=soilprofile" name="ReferencedLayerDataSource" type="QString"/>
-            <Option value="soilprofile_e19d0f33_d3eb_4c7f_86d4_7b842ac7e511" name="ReferencedLayerId" type="QString"/>
-            <Option value="soilprofile" name="ReferencedLayerName" type="QString"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=otherhorizonnotationtype" name="ReferencedLayerDataSource" type="QString"/>
+            <Option value="otherhorizonnotationtype_d52d4ee1_52c4_4eb4_a1aa_f71bcb71bcfb" name="ReferencedLayerId" type="QString"/>
+            <Option value="otherhorizonnotationtype" name="ReferencedLayerName" type="QString"/>
             <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
-            <Option value="soilprofile_isbasedonobservedsoilprofile" name="Relation" type="QString"/>
+            <Option value="otherhorizonnotationtype_otherhorizon_profileelement" name="Relation" type="QString"/>
             <Option value="false" name="ShowForm" type="bool"/>
             <Option value="true" name="ShowOpenFormButton" type="bool"/>
           </Option>
@@ -70,28 +67,28 @@
   </fieldConfiguration>
   <aliases>
     <alias index="0" name="" field="id"/>
-    <alias index="1" name="Soil Derived Object" field="idsoilderivedobject"/>
-    <alias index="2" name="Soil Profile" field="idsoilprofile"/>
+    <alias index="1" name="Profile Element" field="idprofileelement"/>
+    <alias index="2" name="Other Notation Type" field="idotherhorizonnotationtype"/>
   </aliases>
   <splitPolicies>
-    <policy policy="DefaultValue" field="id"/>
-    <policy policy="DefaultValue" field="idsoilderivedobject"/>
-    <policy policy="DefaultValue" field="idsoilprofile"/>
+    <policy policy="Duplicate" field="id"/>
+    <policy policy="DefaultValue" field="idprofileelement"/>
+    <policy policy="DefaultValue" field="idotherhorizonnotationtype"/>
   </splitPolicies>
   <defaults>
     <default applyOnUpdate="0" expression="" field="id"/>
-    <default applyOnUpdate="0" expression="" field="idsoilderivedobject"/>
-    <default applyOnUpdate="0" expression="" field="idsoilprofile"/>
+    <default applyOnUpdate="0" expression="" field="idprofileelement"/>
+    <default applyOnUpdate="0" expression="" field="idotherhorizonnotationtype"/>
   </defaults>
   <constraints>
     <constraint exp_strength="0" notnull_strength="1" unique_strength="1" constraints="3" field="id"/>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="idsoilderivedobject"/>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="idsoilprofile"/>
+    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="idprofileelement"/>
+    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="idotherhorizonnotationtype"/>
   </constraints>
   <constraintExpressions>
     <constraint exp="" desc="" field="id"/>
-    <constraint exp="" desc="" field="idsoilderivedobject"/>
-    <constraint exp="" desc="" field="idsoilprofile"/>
+    <constraint exp="" desc="" field="idprofileelement"/>
+    <constraint exp="" desc="" field="idotherhorizonnotationtype"/>
   </constraintExpressions>
   <expressionfields/>
   <editform tolerant="1"></editform>
@@ -100,19 +97,20 @@
   <editforminitfilepath></editforminitfilepath>
   <editforminitcode><![CDATA[# -*- coding: utf-8 -*-
 """
-I moduli di QGIS possono avere una funzione Python che può essere chiamata quando un modulo viene aperto.
+QGIS forms can have a Python function that is called when the form is
+opened.
 
-Usa questa funzione per aggiungere logica extra ai tuoi moduli.
+Use this function to add extra logic to your forms.
 
-Inserisci il nome della funzione nel campo "Funzione Python di avvio".
-
-Segue un esempio:
+Enter the name of the function in the "Python Init function"
+field.
+An example follows:
 """
 from qgis.PyQt.QtWidgets import QWidget
 
 def my_form_open(dialog, layer, feature):
-geom = feature.geometry()
-control = dialog.findChild(QWidget, "MyLineEdit")
+    geom = feature.geometry()
+    control = dialog.findChild(QWidget, "MyLineEdit")
 ]]></editforminitcode>
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
@@ -125,12 +123,12 @@ control = dialog.findChild(QWidget, "MyLineEdit")
         <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="1" name="idsoilderivedobject" horizontalStretch="0" verticalStretch="0">
+    <attributeEditorField showLabel="1" index="1" name="idprofileelement" horizontalStretch="0" verticalStretch="0">
       <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
         <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="2" name="idsoilprofile" horizontalStretch="0" verticalStretch="0">
+    <attributeEditorField showLabel="1" index="2" name="idotherhorizonnotationtype" horizontalStretch="0" verticalStretch="0">
       <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
         <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
       </labelStyle>
@@ -138,30 +136,21 @@ control = dialog.findChild(QWidget, "MyLineEdit")
   </attributeEditorForm>
   <editable>
     <field editable="1" name="id"/>
-    <field editable="1" name="idsoilderivedobject"/>
-    <field editable="1" name="idsoilprofile"/>
+    <field editable="1" name="idotherhorizonnotationtype"/>
+    <field editable="1" name="idprofileelement"/>
   </editable>
   <labelOnTop>
     <field labelOnTop="0" name="id"/>
-    <field labelOnTop="0" name="idsoilderivedobject"/>
-    <field labelOnTop="0" name="idsoilprofile"/>
+    <field labelOnTop="0" name="idotherhorizonnotationtype"/>
+    <field labelOnTop="0" name="idprofileelement"/>
   </labelOnTop>
   <reuseLastValue>
     <field reuseLastValue="0" name="id"/>
-    <field reuseLastValue="0" name="idsoilderivedobject"/>
-    <field reuseLastValue="0" name="idsoilprofile"/>
+    <field reuseLastValue="0" name="idotherhorizonnotationtype"/>
+    <field reuseLastValue="0" name="idprofileelement"/>
   </reuseLastValue>
   <dataDefinedFieldProperties/>
   <widgets/>
-  <previewExpression>'Based on '|| COALESCE(attribute(get_feature&#xd;
-	(&#xd;
-		'soilprofile',  &#xd;
-		'guidkey',&#xd;
-		"idsoilprofile"&#xd;
-	) &#xd;
-	,'inspireid_localid' &#xd;
-	)&#xd;
-)&#xd;
-</previewExpression>
+  <previewExpression>COALESCE( "idotherhorizonnotationtype", '&lt;NULL>' )</previewExpression>
   <layerGeometryType>4</layerGeometryType>
 </qgis>

@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.32.3-Lima" readOnly="0" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations">
+<qgis version="3.32.3-Lima" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
@@ -7,15 +7,18 @@
     <Private>0</Private>
   </flags>
   <referencedLayers>
-    <relation referencedLayer="profileelement_0057e95f_935c_4f95_a2a2_2bf7a03462fa" strength="Association" dataSource="./Vector.gpkg|layername=profileelement" referencingLayer="faohorizonnotationtype_8c21b470_ae59_4bb0_ade7_7f2569196f79" id="profileelement_faohorizonnotationtype" layerId="profileelement_0057e95f_935c_4f95_a2a2_2bf7a03462fa" providerKey="ogr" name="profileelement_faohorizonnotationtype" layerName="profileelement">
-      <fieldRef referencingField="idprofileelement" referencedField="guidkey"/>
+    <relation id="profileelement_faohorizonnotationtype" providerKey="ogr" referencedLayer="profileelement_e0037153_3a70_46eb_9cb8_8b365ffbe8f7" layerName="profileelement" name="profileelement_faohorizonnotationtype" dataSource="./INSPIRE_Selection_4.gpkg|layername=profileelement" referencingLayer="faohorizonnotationtype_7354cb4c_6a01_4e2f_9316_e2b8e011fb3b" layerId="profileelement_e0037153_3a70_46eb_9cb8_8b365ffbe8f7" strength="Association">
+      <fieldRef referencedField="guidkey" referencingField="idprofileelement"/>
     </relation>
   </referencedLayers>
   <fieldConfiguration>
     <field configurationFlags="None" name="id">
       <editWidget type="TextEdit">
         <config>
-          <Option/>
+          <Option type="Map">
+            <Option value="false" name="IsMultiline" type="bool"/>
+            <Option value="false" name="UseHtml" type="bool"/>
+          </Option>
         </config>
       </editWidget>
     </field>
@@ -23,8 +26,8 @@
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="IsMultiline"/>
-            <Option type="bool" value="false" name="UseHtml"/>
+            <Option value="false" name="IsMultiline" type="bool"/>
+            <Option value="false" name="UseHtml" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -33,19 +36,19 @@
       <editWidget type="ValueRelation">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="AllowMulti"/>
-            <Option type="bool" value="true" name="AllowNull"/>
-            <Option type="QString" value="&quot;label&quot;" name="Description"/>
-            <Option type="QString" value="&quot;collection&quot; IN('FAOHorizonMaster') " name="FilterExpression"/>
-            <Option type="QString" value="id" name="Key"/>
-            <Option type="QString" value="codelist_44009776_a9a6_4371_91e7_8f3009ac5748" name="Layer"/>
-            <Option type="QString" value="codelist" name="LayerName"/>
-            <Option type="QString" value="ogr" name="LayerProviderName"/>
-            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_08 newcodelist/Vector.gpkg|layername=codelist" name="LayerSource"/>
-            <Option type="int" value="1" name="NofColumns"/>
-            <Option type="bool" value="false" name="OrderByValue"/>
-            <Option type="bool" value="false" name="UseCompleter"/>
-            <Option type="QString" value="label" name="Value"/>
+            <Option value="false" name="AllowMulti" type="bool"/>
+            <Option value="false" name="AllowNull" type="bool"/>
+            <Option value="&quot;label&quot;" name="Description" type="QString"/>
+            <Option value="&quot;collection&quot; IN('FAOHorizonMasterValue') " name="FilterExpression" type="QString"/>
+            <Option value="id" name="Key" type="QString"/>
+            <Option value="codelist_dca3491b_79c9_4c76_afe9_83b8d8e331a2" name="Layer" type="QString"/>
+            <Option value="codelist" name="LayerName" type="QString"/>
+            <Option value="ogr" name="LayerProviderName" type="QString"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=codelist" name="LayerSource" type="QString"/>
+            <Option value="1" name="NofColumns" type="int"/>
+            <Option value="false" name="OrderByValue" type="bool"/>
+            <Option value="false" name="UseCompleter" type="bool"/>
+            <Option value="label" name="Value" type="QString"/>
           </Option>
         </config>
       </editWidget>
@@ -54,19 +57,19 @@
       <editWidget type="ValueRelation">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="AllowMulti"/>
-            <Option type="bool" value="true" name="AllowNull"/>
-            <Option type="QString" value="&quot;label&quot;" name="Description"/>
-            <Option type="QString" value="&quot;collection&quot; IN('FAOHorizonSubordinate') " name="FilterExpression"/>
-            <Option type="QString" value="id" name="Key"/>
-            <Option type="QString" value="codelist_44009776_a9a6_4371_91e7_8f3009ac5748" name="Layer"/>
-            <Option type="QString" value="codelist" name="LayerName"/>
-            <Option type="QString" value="ogr" name="LayerProviderName"/>
-            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_08 newcodelist/Vector.gpkg|layername=codelist" name="LayerSource"/>
-            <Option type="int" value="1" name="NofColumns"/>
-            <Option type="bool" value="false" name="OrderByValue"/>
-            <Option type="bool" value="false" name="UseCompleter"/>
-            <Option type="QString" value="label" name="Value"/>
+            <Option value="false" name="AllowMulti" type="bool"/>
+            <Option value="true" name="AllowNull" type="bool"/>
+            <Option value="&quot;label&quot;" name="Description" type="QString"/>
+            <Option value="&quot;collection&quot; IN('FAOHorizonSubordinateValue') " name="FilterExpression" type="QString"/>
+            <Option value="id" name="Key" type="QString"/>
+            <Option value="codelist_dca3491b_79c9_4c76_afe9_83b8d8e331a2" name="Layer" type="QString"/>
+            <Option value="codelist" name="LayerName" type="QString"/>
+            <Option value="ogr" name="LayerProviderName" type="QString"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=codelist" name="LayerSource" type="QString"/>
+            <Option value="1" name="NofColumns" type="int"/>
+            <Option value="false" name="OrderByValue" type="bool"/>
+            <Option value="false" name="UseCompleter" type="bool"/>
+            <Option value="label" name="Value" type="QString"/>
           </Option>
         </config>
       </editWidget>
@@ -75,8 +78,8 @@
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="IsMultiline"/>
-            <Option type="bool" value="false" name="UseHtml"/>
+            <Option value="false" name="IsMultiline" type="bool"/>
+            <Option value="false" name="UseHtml" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -85,19 +88,19 @@
       <editWidget type="ValueRelation">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="AllowMulti"/>
-            <Option type="bool" value="true" name="AllowNull"/>
-            <Option type="QString" value="" name="Description"/>
-            <Option type="QString" value="&quot;collection&quot; IN('FAOPrime') &#xa;&#xa;" name="FilterExpression"/>
-            <Option type="QString" value="id" name="Key"/>
-            <Option type="QString" value="codelist_44009776_a9a6_4371_91e7_8f3009ac5748" name="Layer"/>
-            <Option type="QString" value="codelist" name="LayerName"/>
-            <Option type="QString" value="ogr" name="LayerProviderName"/>
-            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_08 newcodelist/Vector.gpkg|layername=codelist" name="LayerSource"/>
-            <Option type="int" value="1" name="NofColumns"/>
-            <Option type="bool" value="false" name="OrderByValue"/>
-            <Option type="bool" value="false" name="UseCompleter"/>
-            <Option type="QString" value="label" name="Value"/>
+            <Option value="false" name="AllowMulti" type="bool"/>
+            <Option value="false" name="AllowNull" type="bool"/>
+            <Option value="" name="Description" type="QString"/>
+            <Option value="&quot;collection&quot; IN('FAOPrimeValue') &#xa;&#xa;" name="FilterExpression" type="QString"/>
+            <Option value="id" name="Key" type="QString"/>
+            <Option value="codelist_dca3491b_79c9_4c76_afe9_83b8d8e331a2" name="Layer" type="QString"/>
+            <Option value="codelist" name="LayerName" type="QString"/>
+            <Option value="ogr" name="LayerProviderName" type="QString"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=codelist" name="LayerSource" type="QString"/>
+            <Option value="1" name="NofColumns" type="int"/>
+            <Option value="false" name="OrderByValue" type="bool"/>
+            <Option value="false" name="UseCompleter" type="bool"/>
+            <Option value="label" name="Value" type="QString"/>
           </Option>
         </config>
       </editWidget>
@@ -106,9 +109,9 @@
       <editWidget type="CheckBox">
         <config>
           <Option type="Map">
-            <Option type="QString" value="" name="CheckedState"/>
-            <Option type="int" value="0" name="TextDisplayMethod"/>
-            <Option type="QString" value="" name="UncheckedState"/>
+            <Option value="" name="CheckedState" type="QString"/>
+            <Option value="0" name="TextDisplayMethod" type="int"/>
+            <Option value="" name="UncheckedState" type="QString"/>
           </Option>
         </config>
       </editWidget>
@@ -117,73 +120,73 @@
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="AllowAddFeatures"/>
-            <Option type="bool" value="false" name="AllowNULL"/>
-            <Option type="bool" value="true" name="FetchLimitActive"/>
-            <Option type="int" value="100" name="FetchLimitNumber"/>
-            <Option type="bool" value="false" name="MapIdentification"/>
-            <Option type="bool" value="false" name="ReadOnly"/>
-            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_08 newcodelist/Vector.gpkg|layername=profileelement" name="ReferencedLayerDataSource"/>
-            <Option type="QString" value="profileelement_0057e95f_935c_4f95_a2a2_2bf7a03462fa" name="ReferencedLayerId"/>
-            <Option type="QString" value="profileelement" name="ReferencedLayerName"/>
-            <Option type="QString" value="ogr" name="ReferencedLayerProviderKey"/>
-            <Option type="QString" value="profileelement_faohorizonnotationtype" name="Relation"/>
-            <Option type="bool" value="false" name="ShowForm"/>
-            <Option type="bool" value="true" name="ShowOpenFormButton"/>
+            <Option value="false" name="AllowAddFeatures" type="bool"/>
+            <Option value="false" name="AllowNULL" type="bool"/>
+            <Option value="true" name="FetchLimitActive" type="bool"/>
+            <Option value="100" name="FetchLimitNumber" type="int"/>
+            <Option value="false" name="MapIdentification" type="bool"/>
+            <Option value="false" name="ReadOnly" type="bool"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=profileelement" name="ReferencedLayerDataSource" type="QString"/>
+            <Option value="profileelement_e0037153_3a70_46eb_9cb8_8b365ffbe8f7" name="ReferencedLayerId" type="QString"/>
+            <Option value="profileelement" name="ReferencedLayerName" type="QString"/>
+            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
+            <Option value="profileelement_faohorizonnotationtype" name="Relation" type="QString"/>
+            <Option value="false" name="ShowForm" type="bool"/>
+            <Option value="true" name="ShowOpenFormButton" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias index="0" field="id" name=""/>
-    <alias index="1" field="faohorizondiscontinuity" name=""/>
-    <alias index="2" field="faohorizonmaster" name=""/>
-    <alias index="3" field="faohorizonsubordinate" name=""/>
-    <alias index="4" field="faohorizonverical" name=""/>
-    <alias index="5" field="faoprime" name=""/>
-    <alias index="6" field="isoriginalclassification" name=""/>
-    <alias index="7" field="idprofileelement" name=""/>
+    <alias index="0" name="" field="id"/>
+    <alias index="1" name="FAO Horizon Discontinuity" field="faohorizondiscontinuity"/>
+    <alias index="2" name="FAO Horizon Masterity" field="faohorizonmaster"/>
+    <alias index="3" name="FAO Horizon Subordinate" field="faohorizonsubordinate"/>
+    <alias index="4" name="FAO Horizon Vertical" field="faohorizonverical"/>
+    <alias index="5" name="FAO Prime" field="faoprime"/>
+    <alias index="6" name="It is an Original classification" field="isoriginalclassification"/>
+    <alias index="7" name="Profile Element" field="idprofileelement"/>
   </aliases>
   <splitPolicies>
-    <policy field="id" policy="Duplicate"/>
-    <policy field="faohorizondiscontinuity" policy="DefaultValue"/>
-    <policy field="faohorizonmaster" policy="DefaultValue"/>
-    <policy field="faohorizonsubordinate" policy="DefaultValue"/>
-    <policy field="faohorizonverical" policy="DefaultValue"/>
-    <policy field="faoprime" policy="DefaultValue"/>
-    <policy field="isoriginalclassification" policy="DefaultValue"/>
-    <policy field="idprofileelement" policy="DefaultValue"/>
+    <policy policy="DefaultValue" field="id"/>
+    <policy policy="DefaultValue" field="faohorizondiscontinuity"/>
+    <policy policy="DefaultValue" field="faohorizonmaster"/>
+    <policy policy="DefaultValue" field="faohorizonsubordinate"/>
+    <policy policy="DefaultValue" field="faohorizonverical"/>
+    <policy policy="DefaultValue" field="faoprime"/>
+    <policy policy="DefaultValue" field="isoriginalclassification"/>
+    <policy policy="DefaultValue" field="idprofileelement"/>
   </splitPolicies>
   <defaults>
-    <default field="id" expression="" applyOnUpdate="0"/>
-    <default field="faohorizondiscontinuity" expression="" applyOnUpdate="0"/>
-    <default field="faohorizonmaster" expression="" applyOnUpdate="0"/>
-    <default field="faohorizonsubordinate" expression="" applyOnUpdate="0"/>
-    <default field="faohorizonverical" expression="" applyOnUpdate="0"/>
-    <default field="faoprime" expression="" applyOnUpdate="0"/>
-    <default field="isoriginalclassification" expression="" applyOnUpdate="0"/>
-    <default field="idprofileelement" expression="" applyOnUpdate="0"/>
+    <default applyOnUpdate="0" expression="" field="id"/>
+    <default applyOnUpdate="0" expression="" field="faohorizondiscontinuity"/>
+    <default applyOnUpdate="0" expression="" field="faohorizonmaster"/>
+    <default applyOnUpdate="0" expression="" field="faohorizonsubordinate"/>
+    <default applyOnUpdate="0" expression="" field="faohorizonverical"/>
+    <default applyOnUpdate="0" expression="" field="faoprime"/>
+    <default applyOnUpdate="0" expression="" field="isoriginalclassification"/>
+    <default applyOnUpdate="0" expression="" field="idprofileelement"/>
   </defaults>
   <constraints>
-    <constraint constraints="3" unique_strength="1" field="id" notnull_strength="1" exp_strength="0"/>
-    <constraint constraints="0" unique_strength="0" field="faohorizondiscontinuity" notnull_strength="0" exp_strength="0"/>
-    <constraint constraints="0" unique_strength="0" field="faohorizonmaster" notnull_strength="0" exp_strength="0"/>
-    <constraint constraints="0" unique_strength="0" field="faohorizonsubordinate" notnull_strength="0" exp_strength="0"/>
-    <constraint constraints="0" unique_strength="0" field="faohorizonverical" notnull_strength="0" exp_strength="0"/>
-    <constraint constraints="0" unique_strength="0" field="faoprime" notnull_strength="0" exp_strength="0"/>
-    <constraint constraints="0" unique_strength="0" field="isoriginalclassification" notnull_strength="0" exp_strength="0"/>
-    <constraint constraints="2" unique_strength="1" field="idprofileelement" notnull_strength="0" exp_strength="0"/>
+    <constraint exp_strength="0" notnull_strength="1" unique_strength="1" constraints="3" field="id"/>
+    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="faohorizondiscontinuity"/>
+    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="faohorizonmaster"/>
+    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="faohorizonsubordinate"/>
+    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="faohorizonverical"/>
+    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="faoprime"/>
+    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="isoriginalclassification"/>
+    <constraint exp_strength="0" notnull_strength="0" unique_strength="1" constraints="2" field="idprofileelement"/>
   </constraints>
   <constraintExpressions>
-    <constraint field="id" exp="" desc=""/>
-    <constraint field="faohorizondiscontinuity" exp="" desc=""/>
-    <constraint field="faohorizonmaster" exp="" desc=""/>
-    <constraint field="faohorizonsubordinate" exp="" desc=""/>
-    <constraint field="faohorizonverical" exp="" desc=""/>
-    <constraint field="faoprime" exp="" desc=""/>
-    <constraint field="isoriginalclassification" exp="" desc=""/>
-    <constraint field="idprofileelement" exp="" desc=""/>
+    <constraint exp="" desc="" field="id"/>
+    <constraint exp="" desc="" field="faohorizondiscontinuity"/>
+    <constraint exp="" desc="" field="faohorizonmaster"/>
+    <constraint exp="" desc="" field="faohorizonsubordinate"/>
+    <constraint exp="" desc="" field="faohorizonverical"/>
+    <constraint exp="" desc="" field="faoprime"/>
+    <constraint exp="" desc="" field="isoriginalclassification"/>
+    <constraint exp="" desc="" field="idprofileelement"/>
   </constraintExpressions>
   <expressionfields/>
   <editform tolerant="1"></editform>
@@ -209,47 +212,47 @@ control = dialog.findChild(QWidget, "MyLineEdit")
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-      <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+      <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
     </labelStyle>
-    <attributeEditorField index="0" showLabel="1" verticalStretch="0" name="id" horizontalStretch="0">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <attributeEditorField showLabel="1" index="0" name="id" horizontalStretch="0" verticalStretch="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField index="1" showLabel="1" verticalStretch="0" name="faohorizondiscontinuity" horizontalStretch="0">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <attributeEditorField showLabel="1" index="1" name="faohorizondiscontinuity" horizontalStretch="0" verticalStretch="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField index="2" showLabel="1" verticalStretch="0" name="faohorizonmaster" horizontalStretch="0">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <attributeEditorField showLabel="1" index="2" name="faohorizonmaster" horizontalStretch="0" verticalStretch="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField index="3" showLabel="1" verticalStretch="0" name="faohorizonsubordinate" horizontalStretch="0">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <attributeEditorField showLabel="1" index="3" name="faohorizonsubordinate" horizontalStretch="0" verticalStretch="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField index="4" showLabel="1" verticalStretch="0" name="faohorizonverical" horizontalStretch="0">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <attributeEditorField showLabel="1" index="4" name="faohorizonverical" horizontalStretch="0" verticalStretch="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField index="5" showLabel="1" verticalStretch="0" name="faoprime" horizontalStretch="0">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <attributeEditorField showLabel="1" index="5" name="faoprime" horizontalStretch="0" verticalStretch="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField index="6" showLabel="1" verticalStretch="0" name="isoriginalclassification" horizontalStretch="0">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <attributeEditorField showLabel="1" index="6" name="isoriginalclassification" horizontalStretch="0" verticalStretch="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField index="7" showLabel="1" verticalStretch="0" name="idprofileelement" horizontalStretch="0">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <attributeEditorField showLabel="1" index="7" name="idprofileelement" horizontalStretch="0" verticalStretch="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
   </attributeEditorForm>

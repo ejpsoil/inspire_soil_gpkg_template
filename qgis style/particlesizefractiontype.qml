@@ -7,68 +7,68 @@
     <Private>0</Private>
   </flags>
   <referencedLayers>
-    <relation layerName="profileelement" name="profileelement_particlesizefractiontype" dataSource="./Vector.gpkg|layername=profileelement" layerId="profileelement_8af1614f_54a2_483f_83ff_f52e8f55a005" id="profileelement_particlesizefractiontype" referencedLayer="profileelement_8af1614f_54a2_483f_83ff_f52e8f55a005" strength="Association" referencingLayer="particlesizefractiontype_64e90840_bfad_49d1_bc92_2b49dc2600ac" providerKey="ogr">
-      <fieldRef referencingField="idprofileelement" referencedField="guidkey"/>
+    <relation id="profileelement_particlesizefractiontype" providerKey="ogr" referencedLayer="profileelement_e0037153_3a70_46eb_9cb8_8b365ffbe8f7" layerName="profileelement" name="profileelement_particlesizefractiontype" dataSource="./INSPIRE_Selection_4.gpkg|layername=profileelement" referencingLayer="particlesizefractiontype_207bae84_461b_4dd9_931b_e550f2b8e398" layerId="profileelement_e0037153_3a70_46eb_9cb8_8b365ffbe8f7" strength="Association">
+      <fieldRef referencedField="guidkey" referencingField="idprofileelement"/>
     </relation>
   </referencedLayers>
   <fieldConfiguration>
-    <field name="id" configurationFlags="None">
+    <field configurationFlags="None" name="id">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option name="IsMultiline" value="false" type="bool"/>
-            <Option name="UseHtml" value="false" type="bool"/>
+            <Option value="false" name="IsMultiline" type="bool"/>
+            <Option value="false" name="UseHtml" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field name="fractioncontent" configurationFlags="None">
+    <field configurationFlags="None" name="fractioncontent">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option name="IsMultiline" value="false" type="bool"/>
-            <Option name="UseHtml" value="false" type="bool"/>
+            <Option value="false" name="IsMultiline" type="bool"/>
+            <Option value="false" name="UseHtml" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field name="pariclesize_min" configurationFlags="None">
+    <field configurationFlags="None" name="pariclesize_min">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option name="IsMultiline" value="false" type="bool"/>
-            <Option name="UseHtml" value="false" type="bool"/>
+            <Option value="false" name="IsMultiline" type="bool"/>
+            <Option value="false" name="UseHtml" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field name="pariclesize_max" configurationFlags="None">
+    <field configurationFlags="None" name="pariclesize_max">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option name="IsMultiline" value="false" type="bool"/>
-            <Option name="UseHtml" value="false" type="bool"/>
+            <Option value="false" name="IsMultiline" type="bool"/>
+            <Option value="false" name="UseHtml" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field name="idprofileelement" configurationFlags="None">
+    <field configurationFlags="None" name="idprofileelement">
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option name="AllowAddFeatures" value="false" type="bool"/>
-            <Option name="AllowNULL" value="false" type="bool"/>
-            <Option name="FetchLimitActive" value="true" type="bool"/>
-            <Option name="FetchLimitNumber" value="100" type="int"/>
-            <Option name="MapIdentification" value="false" type="bool"/>
-            <Option name="ReadOnly" value="false" type="bool"/>
-            <Option name="ReferencedLayerDataSource" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_07 Dati OK/Vector.gpkg|layername=profileelement" type="QString"/>
-            <Option name="ReferencedLayerId" value="profileelement_8af1614f_54a2_483f_83ff_f52e8f55a005" type="QString"/>
-            <Option name="ReferencedLayerName" value="profileelement" type="QString"/>
-            <Option name="ReferencedLayerProviderKey" value="ogr" type="QString"/>
-            <Option name="Relation" value="profileelement_particlesizefractiontype" type="QString"/>
-            <Option name="ShowForm" value="false" type="bool"/>
-            <Option name="ShowOpenFormButton" value="true" type="bool"/>
+            <Option value="false" name="AllowAddFeatures" type="bool"/>
+            <Option value="false" name="AllowNULL" type="bool"/>
+            <Option value="true" name="FetchLimitActive" type="bool"/>
+            <Option value="100" name="FetchLimitNumber" type="int"/>
+            <Option value="false" name="MapIdentification" type="bool"/>
+            <Option value="false" name="ReadOnly" type="bool"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_07 Dati OK/Vector.gpkg|layername=profileelement" name="ReferencedLayerDataSource" type="QString"/>
+            <Option value="profileelement_8af1614f_54a2_483f_83ff_f52e8f55a005" name="ReferencedLayerId" type="QString"/>
+            <Option value="profileelement" name="ReferencedLayerName" type="QString"/>
+            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
+            <Option value="profileelement_particlesizefractiontype" name="Relation" type="QString"/>
+            <Option value="false" name="ShowForm" type="bool"/>
+            <Option value="true" name="ShowOpenFormButton" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -82,32 +82,32 @@
     <alias index="4" name="" field="idprofileelement"/>
   </aliases>
   <splitPolicies>
-    <policy field="id" policy="DefaultValue"/>
-    <policy field="fractioncontent" policy="DefaultValue"/>
-    <policy field="pariclesize_min" policy="DefaultValue"/>
-    <policy field="pariclesize_max" policy="DefaultValue"/>
-    <policy field="idprofileelement" policy="DefaultValue"/>
+    <policy policy="DefaultValue" field="id"/>
+    <policy policy="DefaultValue" field="fractioncontent"/>
+    <policy policy="DefaultValue" field="pariclesize_min"/>
+    <policy policy="DefaultValue" field="pariclesize_max"/>
+    <policy policy="DefaultValue" field="idprofileelement"/>
   </splitPolicies>
   <defaults>
-    <default applyOnUpdate="0" field="id" expression=""/>
-    <default applyOnUpdate="0" field="fractioncontent" expression=""/>
-    <default applyOnUpdate="0" field="pariclesize_min" expression=""/>
-    <default applyOnUpdate="0" field="pariclesize_max" expression=""/>
-    <default applyOnUpdate="0" field="idprofileelement" expression=""/>
+    <default applyOnUpdate="0" expression="" field="id"/>
+    <default applyOnUpdate="0" expression="" field="fractioncontent"/>
+    <default applyOnUpdate="0" expression="" field="pariclesize_min"/>
+    <default applyOnUpdate="0" expression="" field="pariclesize_max"/>
+    <default applyOnUpdate="0" expression="" field="idprofileelement"/>
   </defaults>
   <constraints>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="1" field="id" constraints="3"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" field="fractioncontent" constraints="0"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" field="pariclesize_min" constraints="0"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" field="pariclesize_max" constraints="0"/>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" field="idprofileelement" constraints="1"/>
+    <constraint exp_strength="0" notnull_strength="1" unique_strength="1" constraints="3" field="id"/>
+    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="fractioncontent"/>
+    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="pariclesize_min"/>
+    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="pariclesize_max"/>
+    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="idprofileelement"/>
   </constraints>
   <constraintExpressions>
-    <constraint desc="" exp="" field="id"/>
-    <constraint desc="" exp="" field="fractioncontent"/>
-    <constraint desc="" exp="" field="pariclesize_min"/>
-    <constraint desc="" exp="" field="pariclesize_max"/>
-    <constraint desc="" exp="" field="idprofileelement"/>
+    <constraint exp="" desc="" field="id"/>
+    <constraint exp="" desc="" field="fractioncontent"/>
+    <constraint exp="" desc="" field="pariclesize_min"/>
+    <constraint exp="" desc="" field="pariclesize_max"/>
+    <constraint exp="" desc="" field="idprofileelement"/>
   </constraintExpressions>
   <expressionfields/>
   <editform tolerant="1"></editform>
@@ -133,58 +133,58 @@ control = dialog.findChild(QWidget, "MyLineEdit")
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-      <labelFont bold="0" italic="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style=""/>
+    <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+      <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
     </labelStyle>
-    <attributeEditorField name="idprofileelement" showLabel="1" index="4" horizontalStretch="0" verticalStretch="0">
-      <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-        <labelFont bold="0" italic="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style=""/>
+    <attributeEditorField showLabel="1" index="4" name="idprofileelement" horizontalStretch="0" verticalStretch="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField name="fractioncontent" showLabel="1" index="1" horizontalStretch="0" verticalStretch="0">
-      <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-        <labelFont bold="0" italic="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style=""/>
+    <attributeEditorField showLabel="1" index="1" name="fractioncontent" horizontalStretch="0" verticalStretch="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer name="Particle Size" showLabel="1" columnCount="1" visibilityExpressionEnabled="0" collapsed="0" collapsedExpressionEnabled="0" collapsedExpression="" visibilityExpression="" horizontalStretch="0" verticalStretch="0" type="GroupBox" groupBox="1">
-      <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-        <labelFont bold="0" italic="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style=""/>
+    <attributeEditorContainer columnCount="1" showLabel="1" collapsedExpressionEnabled="0" collapsedExpression="" name="Particle Size" visibilityExpressionEnabled="0" horizontalStretch="0" verticalStretch="0" groupBox="1" type="GroupBox" collapsed="0" visibilityExpression="">
+      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
       </labelStyle>
-      <attributeEditorField name="pariclesize_min" showLabel="0" index="2" horizontalStretch="0" verticalStretch="0">
-        <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-          <labelFont bold="0" italic="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style=""/>
+      <attributeEditorField showLabel="0" index="2" name="pariclesize_min" horizontalStretch="0" verticalStretch="0">
+        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField name="pariclesize_max" showLabel="0" index="3" horizontalStretch="0" verticalStretch="0">
-        <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-          <labelFont bold="0" italic="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style=""/>
+      <attributeEditorField showLabel="0" index="3" name="pariclesize_max" horizontalStretch="0" verticalStretch="0">
+        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
   </attributeEditorForm>
   <editable>
-    <field name="fractioncontent" editable="1"/>
-    <field name="guidkey" editable="1"/>
-    <field name="id" editable="1"/>
-    <field name="idprofileelement" editable="1"/>
-    <field name="pariclesize_max" editable="1"/>
-    <field name="pariclesize_min" editable="1"/>
+    <field editable="1" name="fractioncontent"/>
+    <field editable="1" name="guidkey"/>
+    <field editable="1" name="id"/>
+    <field editable="1" name="idprofileelement"/>
+    <field editable="1" name="pariclesize_max"/>
+    <field editable="1" name="pariclesize_min"/>
   </editable>
   <labelOnTop>
-    <field name="fractioncontent" labelOnTop="0"/>
-    <field name="guidkey" labelOnTop="0"/>
-    <field name="id" labelOnTop="0"/>
-    <field name="idprofileelement" labelOnTop="0"/>
-    <field name="pariclesize_max" labelOnTop="0"/>
-    <field name="pariclesize_min" labelOnTop="0"/>
+    <field labelOnTop="0" name="fractioncontent"/>
+    <field labelOnTop="0" name="guidkey"/>
+    <field labelOnTop="0" name="id"/>
+    <field labelOnTop="0" name="idprofileelement"/>
+    <field labelOnTop="0" name="pariclesize_max"/>
+    <field labelOnTop="0" name="pariclesize_min"/>
   </labelOnTop>
   <reuseLastValue>
-    <field name="fractioncontent" reuseLastValue="0"/>
-    <field name="guidkey" reuseLastValue="0"/>
-    <field name="id" reuseLastValue="0"/>
-    <field name="idprofileelement" reuseLastValue="0"/>
-    <field name="pariclesize_max" reuseLastValue="0"/>
-    <field name="pariclesize_min" reuseLastValue="0"/>
+    <field reuseLastValue="0" name="fractioncontent"/>
+    <field reuseLastValue="0" name="guidkey"/>
+    <field reuseLastValue="0" name="id"/>
+    <field reuseLastValue="0" name="idprofileelement"/>
+    <field reuseLastValue="0" name="pariclesize_max"/>
+    <field reuseLastValue="0" name="pariclesize_min"/>
   </reuseLastValue>
   <dataDefinedFieldProperties/>
   <widgets/>

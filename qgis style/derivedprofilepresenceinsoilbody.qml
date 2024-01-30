@@ -1,116 +1,124 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.32.3-Lima" readOnly="0" styleCategories="LayerConfiguration|Symbology|Fields|Forms">
+<qgis version="3.32.3-Lima" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
     <Searchable>1</Searchable>
     <Private>0</Private>
   </flags>
+  <referencedLayers>
+    <relation id="soilbody_derivedprofilepresenceinsoilbody_2" providerKey="ogr" referencedLayer="soilbody_9e604eb5_eab1_4147_aaa8_8d7a59ca703f" layerName="soilbody" name="soilbody_derivedprofilepresenceinsoilbody_2" dataSource="./INSPIRE_Selection_4.gpkg|layername=soilbody" referencingLayer="derivedprofilepresenceinsoilbody_4fe2b15a_cf2f_4b4c_a295_47eab82da527" layerId="soilbody_9e604eb5_eab1_4147_aaa8_8d7a59ca703f" strength="Association">
+      <fieldRef referencedField="guidkey" referencingField="idsoilbody"/>
+    </relation>
+    <relation id="soilprofile_derivedprofilepresenceinsoilbody" providerKey="ogr" referencedLayer="soilprofile_e19d0f33_d3eb_4c7f_86d4_7b842ac7e511" layerName="soilprofile" name="soilprofile_derivedprofilepresenceinsoilbody" dataSource="./INSPIRE_Selection_4.gpkg|layername=soilprofile" referencingLayer="derivedprofilepresenceinsoilbody_4fe2b15a_cf2f_4b4c_a295_47eab82da527" layerId="soilprofile_e19d0f33_d3eb_4c7f_86d4_7b842ac7e511" strength="Association">
+      <fieldRef referencedField="guidkey" referencingField="idsoilprofile"/>
+    </relation>
+  </referencedLayers>
   <fieldConfiguration>
-    <field name="id" configurationFlags="None">
+    <field configurationFlags="None" name="id">
       <editWidget type="TextEdit">
         <config>
           <Option/>
         </config>
       </editWidget>
     </field>
-    <field name="idsoilbody" configurationFlags="None">
+    <field configurationFlags="None" name="idsoilbody">
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="AllowAddFeatures"/>
-            <Option type="bool" value="false" name="AllowNULL"/>
-            <Option type="bool" value="true" name="FetchLimitActive"/>
-            <Option type="int" value="100" name="FetchLimitNumber"/>
-            <Option type="bool" value="false" name="MapIdentification"/>
-            <Option type="bool" value="false" name="ReadOnly"/>
-            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_02/Vector.gpkg|layername=soilbody" name="ReferencedLayerDataSource"/>
-            <Option type="QString" value="soilbody_49ee5b40_2f4e_4325_9e05_d4c3f3af67bc" name="ReferencedLayerId"/>
-            <Option type="QString" value="soilbody" name="ReferencedLayerName"/>
-            <Option type="QString" value="ogr" name="ReferencedLayerProviderKey"/>
-            <Option type="QString" value="soilbody_derivedprofilepresenceinsoilbody_2" name="Relation"/>
-            <Option type="bool" value="false" name="ShowForm"/>
-            <Option type="bool" value="true" name="ShowOpenFormButton"/>
+            <Option value="false" name="AllowAddFeatures" type="bool"/>
+            <Option value="false" name="AllowNULL" type="bool"/>
+            <Option value="true" name="FetchLimitActive" type="bool"/>
+            <Option value="100" name="FetchLimitNumber" type="int"/>
+            <Option value="false" name="MapIdentification" type="bool"/>
+            <Option value="false" name="ReadOnly" type="bool"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_02/Vector.gpkg|layername=soilbody" name="ReferencedLayerDataSource" type="QString"/>
+            <Option value="soilbody_49ee5b40_2f4e_4325_9e05_d4c3f3af67bc" name="ReferencedLayerId" type="QString"/>
+            <Option value="soilbody" name="ReferencedLayerName" type="QString"/>
+            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
+            <Option value="soilbody_derivedprofilepresenceinsoilbody_2" name="Relation" type="QString"/>
+            <Option value="false" name="ShowForm" type="bool"/>
+            <Option value="true" name="ShowOpenFormButton" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field name="idsoilprofile" configurationFlags="None">
+    <field configurationFlags="None" name="idsoilprofile">
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="AllowAddFeatures"/>
-            <Option type="bool" value="false" name="AllowNULL"/>
-            <Option type="bool" value="true" name="FetchLimitActive"/>
-            <Option type="int" value="100" name="FetchLimitNumber"/>
-            <Option type="bool" value="false" name="MapIdentification"/>
-            <Option type="bool" value="false" name="ReadOnly"/>
-            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_02/Vector.gpkg|layername=soilprofile" name="ReferencedLayerDataSource"/>
-            <Option type="QString" value="soilprofile_45e0cba8_1aea_4f5e_8c05_d955ca7c7659" name="ReferencedLayerId"/>
-            <Option type="QString" value="soilprofile" name="ReferencedLayerName"/>
-            <Option type="QString" value="ogr" name="ReferencedLayerProviderKey"/>
-            <Option type="QString" value="soilprofile_derivedprofilepresenceinsoilbody" name="Relation"/>
-            <Option type="bool" value="false" name="ShowForm"/>
-            <Option type="bool" value="true" name="ShowOpenFormButton"/>
+            <Option value="false" name="AllowAddFeatures" type="bool"/>
+            <Option value="false" name="AllowNULL" type="bool"/>
+            <Option value="true" name="FetchLimitActive" type="bool"/>
+            <Option value="100" name="FetchLimitNumber" type="int"/>
+            <Option value="false" name="MapIdentification" type="bool"/>
+            <Option value="false" name="ReadOnly" type="bool"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_02/Vector.gpkg|layername=soilprofile" name="ReferencedLayerDataSource" type="QString"/>
+            <Option value="soilprofile_45e0cba8_1aea_4f5e_8c05_d955ca7c7659" name="ReferencedLayerId" type="QString"/>
+            <Option value="soilprofile" name="ReferencedLayerName" type="QString"/>
+            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
+            <Option value="soilprofile_derivedprofilepresenceinsoilbody" name="Relation" type="QString"/>
+            <Option value="false" name="ShowForm" type="bool"/>
+            <Option value="true" name="ShowOpenFormButton" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field name="lowervalue" configurationFlags="None">
+    <field configurationFlags="None" name="lowervalue">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="IsMultiline"/>
-            <Option type="bool" value="false" name="UseHtml"/>
+            <Option value="false" name="IsMultiline" type="bool"/>
+            <Option value="false" name="UseHtml" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field name="uppervalue" configurationFlags="None">
+    <field configurationFlags="None" name="uppervalue">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="IsMultiline"/>
-            <Option type="bool" value="false" name="UseHtml"/>
+            <Option value="false" name="IsMultiline" type="bool"/>
+            <Option value="false" name="UseHtml" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias name="" field="id" index="0"/>
-    <alias name="Soil Body" field="idsoilbody" index="1"/>
-    <alias name="Soil Profile" field="idsoilprofile" index="2"/>
-    <alias name="% Lower Value" field="lowervalue" index="3"/>
-    <alias name="% Upper Value" field="uppervalue" index="4"/>
+    <alias index="0" name="" field="id"/>
+    <alias index="1" name="Soil Body" field="idsoilbody"/>
+    <alias index="2" name="Soil Profile" field="idsoilprofile"/>
+    <alias index="3" name="% Lower Value" field="lowervalue"/>
+    <alias index="4" name="% Upper Value" field="uppervalue"/>
   </aliases>
   <splitPolicies>
-    <policy field="id" policy="Duplicate"/>
-    <policy field="idsoilbody" policy="DefaultValue"/>
-    <policy field="idsoilprofile" policy="DefaultValue"/>
-    <policy field="lowervalue" policy="DefaultValue"/>
-    <policy field="uppervalue" policy="DefaultValue"/>
+    <policy policy="Duplicate" field="id"/>
+    <policy policy="DefaultValue" field="idsoilbody"/>
+    <policy policy="DefaultValue" field="idsoilprofile"/>
+    <policy policy="DefaultValue" field="lowervalue"/>
+    <policy policy="DefaultValue" field="uppervalue"/>
   </splitPolicies>
   <defaults>
-    <default applyOnUpdate="0" field="id" expression=""/>
-    <default applyOnUpdate="0" field="idsoilbody" expression=""/>
-    <default applyOnUpdate="0" field="idsoilprofile" expression=""/>
-    <default applyOnUpdate="0" field="lowervalue" expression=""/>
-    <default applyOnUpdate="0" field="uppervalue" expression=""/>
+    <default applyOnUpdate="0" expression="" field="id"/>
+    <default applyOnUpdate="0" expression="" field="idsoilbody"/>
+    <default applyOnUpdate="0" expression="" field="idsoilprofile"/>
+    <default applyOnUpdate="0" expression="" field="lowervalue"/>
+    <default applyOnUpdate="0" expression="" field="uppervalue"/>
   </defaults>
   <constraints>
-    <constraint notnull_strength="1" exp_strength="0" constraints="3" unique_strength="1" field="id"/>
-    <constraint notnull_strength="1" exp_strength="0" constraints="1" unique_strength="0" field="idsoilbody"/>
-    <constraint notnull_strength="1" exp_strength="0" constraints="1" unique_strength="0" field="idsoilprofile"/>
-    <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="lowervalue"/>
-    <constraint notnull_strength="0" exp_strength="0" constraints="0" unique_strength="0" field="uppervalue"/>
+    <constraint exp_strength="0" notnull_strength="1" unique_strength="1" constraints="3" field="id"/>
+    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="idsoilbody"/>
+    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="idsoilprofile"/>
+    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="lowervalue"/>
+    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="uppervalue"/>
   </constraints>
   <constraintExpressions>
-    <constraint desc="" field="id" exp=""/>
-    <constraint desc="" field="idsoilbody" exp=""/>
-    <constraint desc="" field="idsoilprofile" exp=""/>
-    <constraint desc="" field="lowervalue" exp=""/>
-    <constraint desc="" field="uppervalue" exp=""/>
+    <constraint exp="" desc="" field="id"/>
+    <constraint exp="" desc="" field="idsoilbody"/>
+    <constraint exp="" desc="" field="idsoilprofile"/>
+    <constraint exp="" desc="" field="lowervalue"/>
+    <constraint exp="" desc="" field="uppervalue"/>
   </constraintExpressions>
   <expressionfields/>
   <editform tolerant="1"></editform>
@@ -136,60 +144,60 @@ control = dialog.findChild(QWidget, "MyLineEdit")
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-      <labelFont bold="0" italic="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style=""/>
+    <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+      <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
     </labelStyle>
-    <attributeEditorField horizontalStretch="0" name="id" showLabel="1" verticalStretch="0" index="0">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style=""/>
+    <attributeEditorField showLabel="1" index="0" name="id" horizontalStretch="0" verticalStretch="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField horizontalStretch="0" name="idsoilbody" showLabel="1" verticalStretch="0" index="1">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style=""/>
+    <attributeEditorField showLabel="1" index="1" name="idsoilbody" horizontalStretch="0" verticalStretch="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField horizontalStretch="0" name="idsoilprofile" showLabel="1" verticalStretch="0" index="2">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style=""/>
+    <attributeEditorField showLabel="1" index="2" name="idsoilprofile" horizontalStretch="0" verticalStretch="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer collapsedExpression="" horizontalStretch="0" groupBox="1" type="GroupBox" name="Presence in SoilBody" visibilityExpression="" showLabel="1" collapsedExpressionEnabled="0" collapsed="0" verticalStretch="0" columnCount="1" visibilityExpressionEnabled="0">
-      <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style=""/>
+    <attributeEditorContainer columnCount="1" showLabel="1" collapsedExpressionEnabled="0" collapsedExpression="" name="Presence in SoilBody" visibilityExpressionEnabled="0" horizontalStretch="0" verticalStretch="0" groupBox="1" type="GroupBox" collapsed="0" visibilityExpression="">
+      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
       </labelStyle>
-      <attributeEditorField horizontalStretch="0" name="lowervalue" showLabel="1" verticalStretch="0" index="3">
-        <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-          <labelFont bold="0" italic="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style=""/>
+      <attributeEditorField showLabel="1" index="3" name="lowervalue" horizontalStretch="0" verticalStretch="0">
+        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField horizontalStretch="0" name="uppervalue" showLabel="1" verticalStretch="0" index="4">
-        <labelStyle overrideLabelFont="0" labelColor="0,0,0,255" overrideLabelColor="0">
-          <labelFont bold="0" italic="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style=""/>
+      <attributeEditorField showLabel="1" index="4" name="uppervalue" horizontalStretch="0" verticalStretch="0">
+        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
   </attributeEditorForm>
   <editable>
-    <field name="id" editable="1"/>
-    <field name="idsoilbody" editable="1"/>
-    <field name="idsoilprofile" editable="1"/>
-    <field name="lowervalue" editable="1"/>
-    <field name="uppervalue" editable="1"/>
+    <field editable="1" name="id"/>
+    <field editable="1" name="idsoilbody"/>
+    <field editable="1" name="idsoilprofile"/>
+    <field editable="1" name="lowervalue"/>
+    <field editable="1" name="uppervalue"/>
   </editable>
   <labelOnTop>
-    <field name="id" labelOnTop="0"/>
-    <field name="idsoilbody" labelOnTop="0"/>
-    <field name="idsoilprofile" labelOnTop="0"/>
-    <field name="lowervalue" labelOnTop="0"/>
-    <field name="uppervalue" labelOnTop="0"/>
+    <field labelOnTop="0" name="id"/>
+    <field labelOnTop="0" name="idsoilbody"/>
+    <field labelOnTop="0" name="idsoilprofile"/>
+    <field labelOnTop="0" name="lowervalue"/>
+    <field labelOnTop="0" name="uppervalue"/>
   </labelOnTop>
   <reuseLastValue>
-    <field name="id" reuseLastValue="0"/>
-    <field name="idsoilbody" reuseLastValue="0"/>
-    <field name="idsoilprofile" reuseLastValue="0"/>
-    <field name="lowervalue" reuseLastValue="0"/>
-    <field name="uppervalue" reuseLastValue="0"/>
+    <field reuseLastValue="0" name="id"/>
+    <field reuseLastValue="0" name="idsoilbody"/>
+    <field reuseLastValue="0" name="idsoilprofile"/>
+    <field reuseLastValue="0" name="lowervalue"/>
+    <field reuseLastValue="0" name="uppervalue"/>
   </reuseLastValue>
   <dataDefinedFieldProperties/>
   <widgets/>
