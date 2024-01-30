@@ -6,7 +6,7 @@ The [Good practice on GeoPackage encodings for INSPIRE data](https://github.com/
 
 The repository has several aspects:
 - A Documentation on how to best use the template (as producer or consumer);
-- The Project Deliverable folder with Encoding rules and related files
+- The Project Deliverable 6.4 folder with Encoding rules and related files
 - An [Hale Studio](https://wetransform.to/halestudio/) transformation project, which facilitates the transformation of GeoPackage to INSPIRE GML;
 - [QGIS](https://qgis.org/) style files, whith forms to facilitates editing of features;
 - A set of SQL statements to update a plain geopackage template to the INSPIRE Soil template.
