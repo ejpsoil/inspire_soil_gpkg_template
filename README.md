@@ -9,7 +9,7 @@ This repository hosts the design of a template for a relational database to capt
 The [Good practice on GeoPackage encodings for INSPIRE data](https://github.com/INSPIRE-MIF/gp-geopackage-encodings) introduced a mechanism to share INSPIRE data in a way which makes it much easier for producers to produce the data and consumers to consume the data.
 
 The repository has several aspects:
-- A Documentation with The Project Deliverable 6.4 folder with Encoding rules and other files for the best use the template (as producer or consumer);
+- A Documentation with The Project Deliverable 6.4 file describing Encoding rules and other files for the best use the template (as producer or consumer);
 - The Geopackage folder with empty and demo versions
 - An [Hale Studio](https://wetransform.to/halestudio/) transformation project, which facilitates the transformation of GeoPackage to INSPIRE GML;
 - [QGIS](https://qgis.org/) style files, whith forms to facilitates editing of features;
