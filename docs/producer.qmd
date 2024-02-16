@@ -1,5 +1,5 @@
 ---
 title: "Howto: produce a GeoPackage template for INSPIRE Soil data"
-date: 
-author: 
+date: 2024-02-14
+author: Stefania Morrone
 ---
