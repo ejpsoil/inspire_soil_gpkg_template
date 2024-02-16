@@ -1,0 +1,1 @@
+Sitemap: https://ejpsoil.github.io/inspire_soil_gpkg_template/sitemap.xml
