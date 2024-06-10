@@ -228,3 +228,5 @@ OTHERHORIZON_PROFILEELEMENT
 - "sensorguid" - INSERT - Manages the creation of the GUID in INSERT
 - "sensorguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
 
+## PostGis version
+In the file "create_PostGis.sql," there is a draft of SQL code for defining a data model in PostgreSQL, which mirrors the INSPIRE Geopackage structure.
