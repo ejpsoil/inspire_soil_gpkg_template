@@ -17,3 +17,5 @@ The file "DB_Schema.png" contains the database schema.
 
 ---
 **-- QGIS version 3.32.3-Lima or higher is required. --**
+
+For tutorials, please access https://www.youtube.com/playlist?list=PLTSoR0k66zmMbeBsY85IzItRI0f5CeqxU
