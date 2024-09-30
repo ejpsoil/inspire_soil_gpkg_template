@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ejpsoil.github.io/inspire_soil_gpkg_template/index.html</loc>
-    <lastmod>2024-07-11T13:06:26.262Z</lastmod>
-  </url>
-  <url>
     <loc>https://ejpsoil.github.io/inspire_soil_gpkg_template/producer.html</loc>
-    <lastmod>2024-07-11T13:06:26.262Z</lastmod>
+    <lastmod>2024-09-30T08:07:29.270Z</lastmod>
   </url>
   <url>
     <loc>https://ejpsoil.github.io/inspire_soil_gpkg_template/user.html</loc>
-    <lastmod>2024-07-11T13:06:26.262Z</lastmod>
+    <lastmod>2024-09-30T08:07:29.270Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ejpsoil.github.io/inspire_soil_gpkg_template/index.html</loc>
+    <lastmod>2024-09-30T08:07:29.270Z</lastmod>
   </url>
 </urlset>
