@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.32.3-Lima" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0">
+<qgis readOnly="0" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" version="3.32.3-Lima">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
@@ -8,104 +8,104 @@
   </flags>
   <referencedLayers/>
   <fieldConfiguration>
-    <field configurationFlags="None" name="id">
+    <field name="id" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option/>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="guidkey">
+    <field name="guidkey" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option type="bool" value="false" name="IsMultiline"/>
+            <Option type="bool" value="false" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="uomname">
+    <field name="uomname" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option type="bool" value="false" name="IsMultiline"/>
+            <Option type="bool" value="false" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="uomsymbol">
+    <field name="uomsymbol" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option type="bool" value="false" name="IsMultiline"/>
+            <Option type="bool" value="false" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="measuretype">
+    <field name="measuretype" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option type="bool" value="false" name="IsMultiline"/>
+            <Option type="bool" value="false" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="namestandardunit">
+    <field name="namestandardunit" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option type="bool" value="false" name="IsMultiline"/>
+            <Option type="bool" value="false" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="scaletostandardunit">
+    <field name="scaletostandardunit" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option type="bool" value="false" name="IsMultiline"/>
+            <Option type="bool" value="false" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="offsettostandardunit">
+    <field name="offsettostandardunit" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option type="bool" value="false" name="IsMultiline"/>
+            <Option type="bool" value="false" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="formula">
+    <field name="formula" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option type="bool" value="false" name="IsMultiline"/>
+            <Option type="bool" value="false" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias index="0" name="" field="id"/>
-    <alias index="1" name="" field="guidkey"/>
-    <alias index="2" name="Name" field="uomname"/>
-    <alias index="3" name="Symbol" field="uomsymbol"/>
-    <alias index="4" name="Measure Type" field="measuretype"/>
-    <alias index="5" name="Name" field="namestandardunit"/>
-    <alias index="6" name="Scale" field="scaletostandardunit"/>
-    <alias index="7" name="Offset" field="offsettostandardunit"/>
-    <alias index="8" name="Formula" field="formula"/>
+    <alias field="id" name="" index="0"/>
+    <alias field="guidkey" name="" index="1"/>
+    <alias field="uomname" name="Name" index="2"/>
+    <alias field="uomsymbol" name="Symbol" index="3"/>
+    <alias field="measuretype" name="Measure Type" index="4"/>
+    <alias field="namestandardunit" name="Name" index="5"/>
+    <alias field="scaletostandardunit" name="Scale" index="6"/>
+    <alias field="offsettostandardunit" name="Offset" index="7"/>
+    <alias field="formula" name="Formula" index="8"/>
   </aliases>
   <splitPolicies>
     <policy policy="Duplicate" field="id"/>
@@ -119,37 +119,37 @@
     <policy policy="DefaultValue" field="formula"/>
   </splitPolicies>
   <defaults>
-    <default applyOnUpdate="0" expression="" field="id"/>
-    <default applyOnUpdate="0" expression="" field="guidkey"/>
-    <default applyOnUpdate="0" expression="" field="uomname"/>
-    <default applyOnUpdate="0" expression="" field="uomsymbol"/>
-    <default applyOnUpdate="0" expression="" field="measuretype"/>
-    <default applyOnUpdate="0" expression="" field="namestandardunit"/>
-    <default applyOnUpdate="0" expression="" field="scaletostandardunit"/>
-    <default applyOnUpdate="0" expression="" field="offsettostandardunit"/>
-    <default applyOnUpdate="0" expression="" field="formula"/>
+    <default field="id" applyOnUpdate="0" expression=""/>
+    <default field="guidkey" applyOnUpdate="0" expression=""/>
+    <default field="uomname" applyOnUpdate="0" expression=""/>
+    <default field="uomsymbol" applyOnUpdate="0" expression=""/>
+    <default field="measuretype" applyOnUpdate="0" expression=""/>
+    <default field="namestandardunit" applyOnUpdate="0" expression=""/>
+    <default field="scaletostandardunit" applyOnUpdate="0" expression=""/>
+    <default field="offsettostandardunit" applyOnUpdate="0" expression=""/>
+    <default field="formula" applyOnUpdate="0" expression=""/>
   </defaults>
   <constraints>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="1" constraints="3" field="id"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="1" constraints="2" field="guidkey"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="uomname"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="uomsymbol"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="measuretype"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="namestandardunit"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="scaletostandardunit"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="offsettostandardunit"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="1" constraints="2" field="formula"/>
+    <constraint field="id" unique_strength="1" exp_strength="0" constraints="3" notnull_strength="1"/>
+    <constraint field="guidkey" unique_strength="1" exp_strength="0" constraints="2" notnull_strength="0"/>
+    <constraint field="uomname" unique_strength="0" exp_strength="0" constraints="0" notnull_strength="0"/>
+    <constraint field="uomsymbol" unique_strength="0" exp_strength="0" constraints="0" notnull_strength="0"/>
+    <constraint field="measuretype" unique_strength="0" exp_strength="0" constraints="0" notnull_strength="0"/>
+    <constraint field="namestandardunit" unique_strength="0" exp_strength="0" constraints="0" notnull_strength="0"/>
+    <constraint field="scaletostandardunit" unique_strength="0" exp_strength="0" constraints="0" notnull_strength="0"/>
+    <constraint field="offsettostandardunit" unique_strength="0" exp_strength="0" constraints="0" notnull_strength="0"/>
+    <constraint field="formula" unique_strength="1" exp_strength="0" constraints="2" notnull_strength="0"/>
   </constraints>
   <constraintExpressions>
-    <constraint exp="" desc="" field="id"/>
-    <constraint exp="" desc="" field="guidkey"/>
-    <constraint exp="" desc="" field="uomname"/>
-    <constraint exp="" desc="" field="uomsymbol"/>
-    <constraint exp="" desc="" field="measuretype"/>
-    <constraint exp="" desc="" field="namestandardunit"/>
-    <constraint exp="" desc="" field="scaletostandardunit"/>
-    <constraint exp="" desc="" field="offsettostandardunit"/>
-    <constraint exp="" desc="" field="formula"/>
+    <constraint exp="" field="id" desc=""/>
+    <constraint exp="" field="guidkey" desc=""/>
+    <constraint exp="" field="uomname" desc=""/>
+    <constraint exp="" field="uomsymbol" desc=""/>
+    <constraint exp="" field="measuretype" desc=""/>
+    <constraint exp="" field="namestandardunit" desc=""/>
+    <constraint exp="" field="scaletostandardunit" desc=""/>
+    <constraint exp="" field="offsettostandardunit" desc=""/>
+    <constraint exp="" field="formula" desc=""/>
   </constraintExpressions>
   <expressionfields/>
   <editform tolerant="1"></editform>
@@ -176,102 +176,102 @@ def my_form_open(dialog, layer, feature):
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-      <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="0,0,0,255">
+      <labelFont underline="0" bold="0" strikethrough="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style=""/>
     </labelStyle>
-    <attributeEditorField showLabel="1" index="0" name="id" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField verticalStretch="0" name="id" showLabel="1" horizontalStretch="0" index="0">
+      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="0,0,0,255">
+        <labelFont underline="0" bold="0" strikethrough="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="2" name="uomname" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField verticalStretch="0" name="uomname" showLabel="1" horizontalStretch="0" index="2">
+      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="0,0,0,255">
+        <labelFont underline="0" bold="0" strikethrough="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="3" name="uomsymbol" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField verticalStretch="0" name="uomsymbol" showLabel="1" horizontalStretch="0" index="3">
+      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="0,0,0,255">
+        <labelFont underline="0" bold="0" strikethrough="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer columnCount="1" showLabel="1" collapsedExpressionEnabled="0" collapsedExpression="" name="Standard Unit" visibilityExpressionEnabled="0" horizontalStretch="0" verticalStretch="0" groupBox="1" type="GroupBox" collapsed="0" visibilityExpression="">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorContainer verticalStretch="0" type="GroupBox" visibilityExpression="" collapsedExpression="" columnCount="1" name="Standard Unit" groupBox="1" showLabel="1" visibilityExpressionEnabled="0" horizontalStretch="0" collapsedExpressionEnabled="0" collapsed="0">
+      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="0,0,0,255">
+        <labelFont underline="0" bold="0" strikethrough="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style=""/>
       </labelStyle>
-      <attributeEditorField showLabel="1" index="5" name="namestandardunit" horizontalStretch="0" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+      <attributeEditorField verticalStretch="0" name="namestandardunit" showLabel="1" horizontalStretch="0" index="5">
+        <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="0,0,0,255">
+          <labelFont underline="0" bold="0" strikethrough="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style=""/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField showLabel="1" index="6" name="scaletostandardunit" horizontalStretch="0" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+      <attributeEditorField verticalStretch="0" name="scaletostandardunit" showLabel="1" horizontalStretch="0" index="6">
+        <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="0,0,0,255">
+          <labelFont underline="0" bold="0" strikethrough="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style=""/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField showLabel="1" index="7" name="offsettostandardunit" horizontalStretch="0" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+      <attributeEditorField verticalStretch="0" name="offsettostandardunit" showLabel="1" horizontalStretch="0" index="7">
+        <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="0,0,0,255">
+          <labelFont underline="0" bold="0" strikethrough="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style=""/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorField showLabel="1" index="4" name="measuretype" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField verticalStretch="0" name="measuretype" showLabel="1" horizontalStretch="0" index="4">
+      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="0,0,0,255">
+        <labelFont underline="0" bold="0" strikethrough="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="8" name="formula" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField verticalStretch="0" name="formula" showLabel="1" horizontalStretch="0" index="8">
+      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="0,0,0,255">
+        <labelFont underline="0" bold="0" strikethrough="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer columnCount="1" showLabel="1" collapsedExpressionEnabled="0" collapsedExpression="" name="Observable Properties" visibilityExpressionEnabled="0" horizontalStretch="0" verticalStretch="0" groupBox="0" type="Tab" collapsed="0" visibilityExpression="">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorContainer verticalStretch="0" type="GroupBox" visibilityExpression="" collapsedExpression="" columnCount="1" name="Observable Properties" groupBox="1" showLabel="1" visibilityExpressionEnabled="0" horizontalStretch="0" collapsedExpressionEnabled="0" collapsed="0">
+      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="0,0,0,255">
+        <labelFont underline="0" bold="0" strikethrough="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style=""/>
       </labelStyle>
-      <attributeEditorRelation showLabel="0" relation="unitofmeasure_observableproperty" label="" name="unitofmeasure_observableproperty" forceSuppressFormPopup="0" nmRelationId="" horizontalStretch="0" verticalStretch="0" relationWidgetTypeId="relation_editor">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+      <attributeEditorRelation forceSuppressFormPopup="0" verticalStretch="0" nmRelationId="" relation="unitofmeasure_observableproperty" label="" relationWidgetTypeId="relation_editor" name="unitofmeasure_observableproperty" showLabel="0" horizontalStretch="0">
+        <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="0,0,0,255">
+          <labelFont underline="0" bold="0" strikethrough="0" italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style=""/>
         </labelStyle>
         <editor_configuration type="Map">
-          <Option value="false" name="allow_add_child_feature_with_no_geometry" type="bool"/>
-          <Option value="AllButtons" name="buttons" type="QString"/>
-          <Option value="true" name="show_first_feature" type="bool"/>
+          <Option type="bool" value="false" name="allow_add_child_feature_with_no_geometry"/>
+          <Option type="QString" value="AllButtons" name="buttons"/>
+          <Option type="bool" value="true" name="show_first_feature"/>
         </editor_configuration>
       </attributeEditorRelation>
     </attributeEditorContainer>
   </attributeEditorForm>
   <editable>
-    <field editable="1" name="formula"/>
-    <field editable="1" name="guidkey"/>
-    <field editable="1" name="id"/>
-    <field editable="1" name="measuretype"/>
-    <field editable="1" name="namestandardunit"/>
-    <field editable="1" name="offsettostandardunit"/>
-    <field editable="1" name="scaletostandardunit"/>
-    <field editable="1" name="uomname"/>
-    <field editable="1" name="uomsymbol"/>
+    <field name="formula" editable="1"/>
+    <field name="guidkey" editable="1"/>
+    <field name="id" editable="1"/>
+    <field name="measuretype" editable="1"/>
+    <field name="namestandardunit" editable="1"/>
+    <field name="offsettostandardunit" editable="1"/>
+    <field name="scaletostandardunit" editable="1"/>
+    <field name="uomname" editable="1"/>
+    <field name="uomsymbol" editable="1"/>
   </editable>
   <labelOnTop>
-    <field labelOnTop="0" name="formula"/>
-    <field labelOnTop="0" name="guidkey"/>
-    <field labelOnTop="0" name="id"/>
-    <field labelOnTop="0" name="measuretype"/>
-    <field labelOnTop="0" name="namestandardunit"/>
-    <field labelOnTop="0" name="offsettostandardunit"/>
-    <field labelOnTop="0" name="scaletostandardunit"/>
-    <field labelOnTop="0" name="uomname"/>
-    <field labelOnTop="0" name="uomsymbol"/>
+    <field name="formula" labelOnTop="0"/>
+    <field name="guidkey" labelOnTop="0"/>
+    <field name="id" labelOnTop="0"/>
+    <field name="measuretype" labelOnTop="0"/>
+    <field name="namestandardunit" labelOnTop="0"/>
+    <field name="offsettostandardunit" labelOnTop="0"/>
+    <field name="scaletostandardunit" labelOnTop="0"/>
+    <field name="uomname" labelOnTop="0"/>
+    <field name="uomsymbol" labelOnTop="0"/>
   </labelOnTop>
   <reuseLastValue>
-    <field reuseLastValue="0" name="formula"/>
-    <field reuseLastValue="0" name="guidkey"/>
-    <field reuseLastValue="0" name="id"/>
-    <field reuseLastValue="0" name="measuretype"/>
-    <field reuseLastValue="0" name="namestandardunit"/>
-    <field reuseLastValue="0" name="offsettostandardunit"/>
-    <field reuseLastValue="0" name="scaletostandardunit"/>
-    <field reuseLastValue="0" name="uomname"/>
-    <field reuseLastValue="0" name="uomsymbol"/>
+    <field name="formula" reuseLastValue="0"/>
+    <field name="guidkey" reuseLastValue="0"/>
+    <field name="id" reuseLastValue="0"/>
+    <field name="measuretype" reuseLastValue="0"/>
+    <field name="namestandardunit" reuseLastValue="0"/>
+    <field name="offsettostandardunit" reuseLastValue="0"/>
+    <field name="scaletostandardunit" reuseLastValue="0"/>
+    <field name="uomname" reuseLastValue="0"/>
+    <field name="uomsymbol" reuseLastValue="0"/>
   </reuseLastValue>
   <dataDefinedFieldProperties/>
   <widgets/>

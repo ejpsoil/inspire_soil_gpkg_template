@@ -63,10 +63,14 @@ CREATE INDEX soiBody_geom_idxsi ON soilbody_newname(geom);  ** CHANGE NAME INDEX
 - "u_ceckprofileLocation" - UPDATE - checks that in the soilprofile table, in the case of a Derived profile, the foreign key for soilplot is NULL
 - "i_ceckprofileLocationobserved" - INSERT - checks that in the soilprofile table, in the case of an Observed profile, the foreign key for soilplot is NOT NULL
 - "u_ceckprofileLocationobserved" - UPDATE - checks that in the soilprofile table, in the case of an Observed profile, the foreign key for soilplot is NOT NULL
-- "i_wrbreferencesoilgroup" - INSERT - checks that only valid values from the CODELIST wrbreferencesoilgroupvalue are entered in the "wrbreferencesoilgroup" field
-- "u_wrbreferencesoilgroup" - UPDATE - checks that only valid values from the CODELIST wrbreferencesoilgroupvalue are entered in the "wrbreferencesoilgroup" field
+- "i_wrbreferencesoilgroup" - INSERT - check that only valid values ​​from the CODELIST of the version selected in the wrbversion field are entered in the "wrbreferencesoilgroup" field
+- "u_wrbreferencesoilgroup" - UPDATE - check that only valid values ​​from the CODELIST of the version selected in the wrbversion field are entered in the "wrbreferencesoilgroup" field
 - "u_begin_today_soilprofile" - UPDATE - checks that, upon updating the table, beginlifespanversion is updated to today
 - "u_begin_today_soilprofile_error" - UPDATE - checks that, upon updating, endlifespanversion is greater than today
+- "i_check_depth_range" - INSERT - checks that at least one of profileelementdepthrange_uppervalue and profileelementdepthrange_lowervalue is not null.
+- "u_check_depth_range" - UPDATE - checks that at least one of profileelementdepthrange_uppervalue and profileelementdepthrange_lowervalue is not null.
+- "i_wrbproversion" - INSERT - checks that only valid values from the CODELIST wrbversion are entered in the "wrbversion" field
+- "u_wrbproversion" - UPDATE - checks that only valid values from the CODELIST wrbversion are entered in the "wrbversion" field
 
 **OTHERSOILNAMETYPE**
 - "i_soilname" - INSERT - Checks that only valid values from the CODELIST othersoilnametypevalue are entered in the "soilname" field
@@ -119,6 +123,12 @@ CREATE INDEX soiBody_geom_idxsi ON soilbody_newname(geom);  ** CHANGE NAME INDEX
 - "u_layerrocktype" - UPDATE - Checks that only valid values from the CODELIST lithologyvalue are entered in the "layerrocktype" field
 - "u_begin_today_profileelement" - UPDATE - Checks that, upon updating the table, beginlifespanversion is updated to today
 - "u_begin_today_profileelement_error" - UPDATE - Checks that, upon updating, endlifespanversion is greater than today
+- "i_checkgeogenicfieldsnull" - INSERT - checks that if in the “layertype” field the value is different from “geogenic” the values ​​in the “layerrocktype”, “layergenesisprocess”, “layergenesisenviroment” and “layergenesisprocessstate” fields are null
+- "u_checkgeogenicfieldsnull" - INUPDATE - checks that if in the “layertype” field the value is different from “geogenic” the values ​​in the “layerrocktype”, “layergenesisprocess”, “layergenesisenviroment” and “layergenesisprocessstate” fields are null
+
+**PARTICLESIZEFRACTIONTYPE**
+- "i_check_fraction_sum" - INSERT - checks that the sum of "fractioncontent" does not exceed 100. 
+- "u_check_fraction_sum" - UPDATE - checks that the sum of "fractioncontent" does not exceed 100.
 
 **FAOHORIZONNOTATIONTYPE**
 - "i_ceckfaoprofileelementtype" - INSERT - Checks that the profileelementtype is = 1, meaning that it is a HORIZON
@@ -143,14 +153,26 @@ OTHERHORIZON_PROFILEELEMENT
 -"u_ceckothprofileelementtype" - UPDATE - Checks that in the profileelement table, the profileelementtype is = 0, meaning that it is an HORIZON
 
 **WRBQUALIFIERGROUPTYPE**
-- "i_wrbqualifier" - INSERT - Checks that only valid values from the CODELIST wrbqualifiervalue are entered in the "wrbqualifier" field
-- "u_wrbqualifier" - UPDATE - Checks that only valid values from the CODELIST wrbqualifiervalue are entered in the "wrbqualifier" field
+- "i_wrbqualifier" - INSERT - Check that only valid values ​​from the CODELIST of the version selected in the wrbversion field are entered in the "wrbqualifier" field
+- "u_wrbqualifier" - UPDATE - Check that only valid values ​​from the CODELIST of the version selected in the wrbversion field are entered in the "wrbqualifier" field
 - "i_qualifierplace" - INSERT - Checks that only valid values from the CODELIST wrbqualifierplacevalue are entered in the "qualifierplace" field
 - "u_qualifierplace" - UPDATE - Checks that only valid values from the CODELIST wrbqualifierplacevalue are entered in the "qualifierplace" field
-- "i_wrbspecifier_1" - INSERT - Checks that only valid values from the CODELIST wrbspecifiervalue are entered in the "wrbspecifier_1" field
-- "u_wrbspecifier_1" - UPDATE - Checks that only valid values from the CODELIST wrbspecifiervalue are entered in the "wrbspecifier_1" field
-- "i_wrbspecifier_2" - INSERT - Checks that only valid values from the CODELIST wrbspecifiervalue are entered in the "wrbspecifier_2" field
-- "u_wrbspecifier_2" - UPDATE - Checks that only valid values from the CODELIST wrbspecifiervalue are entered in the "wrbspecifier_2" field
+- "i_wrbspecifier_1" - INSERT - Check that only valid values ​​from the CODELIST of the version selected in the wrbversion field are entered in the "wrbspecifier_1" field
+- "u_wrbspecifier_1" - UPDATE - Check that only valid values ​​from the CODELIST of the version selected in the wrbversion field are entered in the "wrbspecifier_1" field
+- "i_wrbspecifier_2" - INSERT -Check that only valid values ​​from the CODELIST of the version selected in the wrbversion field are entered in the "wrbspecifier_2" field
+- "u_wrbspecifier_2" - UPDATE - Check that only valid values ​​from the CODELIST of the version selected in the wrbversion field are entered in the "wrbspecifier_2" field
+- "i_wrbqualversion" - INSERT - Checks that only valid values from the CODELIST wrbversion are entered in the "wrbversion" field
+- "u_wrbqualversion" - UPDATE - Checks that only valid values from the CODELIST wrbversion are entered in the "wrbversion" field
+- "i_unique_wrbqualifiergrouptype" - INSERT - Check that there are no duplicate rows
+- "u_unique_wrbqualifiergrouptype" - UPDATE - Check that there are no duplicate rows
+- "i_check_specifiers_not_equal" - INSERT - Checks that wrbspecifier_1 and wrbspecifier_2 are not equal and that if wrbspecifier_2 is not NULL, wrbspecifier_1 must also not be NULL
+- "u_check_specifiers_not_equal" - UPDATE - checks that wrbspecifier_1 and wrbspecifier_2 are not equal and that if wrbspecifier_2 is not NULL, wrbspecifier_1 must also not be NULL
+
+**WRBQUALIFIERGROUP_PROFILE**
+- "i_check_wrbversion_match" - INSERT - Check for each row that  soilprofile and wrbqualifiergrouptype have the same version as WRB
+- "u_check_wrbversion_match" - UPDATE - Check for each row that  soilprofile and wrbqualifiergrouptype have the same version as WRB
+- "i_check_qualifier_position_unique" - INSERT - Check if an idwrbqualifiergrouptype and qualifierposition record already exists for the same soilprofile
+- "u_check_qualifier_position_unique" - UPDATE - Check if an idwrbqualifiergrouptype and qualifierposition record already exists for the same soilprofile
 
 **DATASTREAM**
 - "datastreamguid" - INSERT - Manages the creation of the GUID in INSERT

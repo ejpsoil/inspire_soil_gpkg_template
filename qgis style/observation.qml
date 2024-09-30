@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.32.3-Lima" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0">
+<qgis styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" version="3.32.3-Lima" readOnly="0">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
@@ -7,208 +7,224 @@
     <Private>0</Private>
   </flags>
   <referencedLayers>
-    <relation id="datastream_observation" providerKey="ogr" referencedLayer="datastream_41c8894d_6c71_4607_a42c_ca410c56a19d" layerName="datastream" name="datastream_observation" dataSource="./INSPIRE_Selection_4.gpkg|layername=datastream" referencingLayer="observation_d5ffb748_b58c_4d49_bc5b_7d71f48f37d8" layerId="datastream_41c8894d_6c71_4607_a42c_ca410c56a19d" strength="Composition">
-      <fieldRef referencedField="guidkey" referencingField="iddatastream"/>
+    <relation id="datastream_observation" referencedLayer="datastream_2ac05955_6e7e_44b2_a564_b096ca480269" layerName="datastream" referencingLayer="observation_32d9f945_59fe_43ae_9cf6_bbd6c55fc2af" dataSource="./INSPIRE_SO_12.gpkg|layername=datastream" providerKey="ogr" name="datastream_observation" layerId="datastream_2ac05955_6e7e_44b2_a564_b096ca480269" strength="Composition">
+      <fieldRef referencingField="iddatastream" referencedField="guidkey"/>
     </relation>
   </referencedLayers>
   <fieldConfiguration>
-    <field configurationFlags="None" name="id">
+    <field name="id" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option type="bool" value="false" name="IsMultiline"/>
+            <Option type="bool" value="false" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="guidkey">
+    <field name="guidkey" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option type="bool" value="false" name="IsMultiline"/>
+            <Option type="bool" value="false" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="phenomenontime">
+    <field name="phenomenontime" configurationFlags="None">
       <editWidget type="DateTime">
         <config>
           <Option type="Map">
-            <Option value="false" name="allow_null" type="bool"/>
-            <Option value="true" name="calendar_popup" type="bool"/>
-            <Option value="yyyy-MM-dd HH:mm:ss" name="display_format" type="QString"/>
-            <Option value="yyyy-MM-dd HH:mm:ss" name="field_format" type="QString"/>
-            <Option value="false" name="field_format_overwrite" type="bool"/>
-            <Option value="false" name="field_iso_format" type="bool"/>
+            <Option type="bool" value="false" name="allow_null"/>
+            <Option type="bool" value="true" name="calendar_popup"/>
+            <Option type="QString" value="d MMM yyyy HH:mm:ss" name="display_format"/>
+            <Option type="QString" value="yyyy-MM-dd HH:mm:ss" name="field_format"/>
+            <Option type="bool" value="false" name="field_format_overwrite"/>
+            <Option type="bool" value="false" name="field_iso_format"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="resulttime">
+    <field name="resulttime" configurationFlags="None">
       <editWidget type="DateTime">
         <config>
           <Option type="Map">
-            <Option value="true" name="allow_null" type="bool"/>
-            <Option value="true" name="calendar_popup" type="bool"/>
-            <Option value="dd/MM/yyyy HH:mm:ss" name="display_format" type="QString"/>
-            <Option value="yyyy-MM-dd HH:mm:ss" name="field_format" type="QString"/>
-            <Option value="false" name="field_format_overwrite" type="bool"/>
-            <Option value="false" name="field_iso_format" type="bool"/>
+            <Option type="bool" value="false" name="allow_null"/>
+            <Option type="bool" value="true" name="calendar_popup"/>
+            <Option type="QString" value="d MMM yyyy HH:mm:ss" name="display_format"/>
+            <Option type="QString" value="yyyy-MM-dd HH:mm:ss" name="field_format"/>
+            <Option type="bool" value="false" name="field_format_overwrite"/>
+            <Option type="bool" value="false" name="field_iso_format"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="validtime">
+    <field name="validtime" configurationFlags="None">
       <editWidget type="DateTime">
         <config>
           <Option type="Map">
-            <Option value="true" name="allow_null" type="bool"/>
-            <Option value="true" name="calendar_popup" type="bool"/>
-            <Option value="yyyy-MM-dd HH:mm:ss" name="display_format" type="QString"/>
-            <Option value="yyyy-MM-dd HH:mm:ss" name="field_format" type="QString"/>
-            <Option value="false" name="field_format_overwrite" type="bool"/>
-            <Option value="false" name="field_iso_format" type="bool"/>
+            <Option type="bool" value="true" name="allow_null"/>
+            <Option type="bool" value="true" name="calendar_popup"/>
+            <Option type="QString" value="d MMM yyyy HH:mm:ss" name="display_format"/>
+            <Option type="QString" value="yyyy-MM-dd HH:mm:ss" name="field_format"/>
+            <Option type="bool" value="false" name="field_format_overwrite"/>
+            <Option type="bool" value="false" name="field_iso_format"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="resultquality">
+    <field name="resultquality" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option type="bool" value="false" name="IsMultiline"/>
+            <Option type="bool" value="false" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="result_value">
+    <field name="result_value" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option type="bool" value="false" name="IsMultiline"/>
+            <Option type="bool" value="false" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="result_uri">
+    <field name="result_uri" configurationFlags="None">
       <editWidget type="ValueRelation">
         <config>
           <Option type="Map">
-            <Option value="false" name="AllowMulti" type="bool"/>
-            <Option value="false" name="AllowNull" type="bool"/>
-            <Option value="&quot;label&quot;" name="Description" type="QString"/>
-            <Option value="&quot;collection&quot;  IN (attribute(get_feature&#xa;(&#xa;&#x9;'observableproperty',&#xa;&#x9;'guidkey',&#xa;&#x9;&#xa;&#x9;attribute(get_feature&#xa;&#x9;(&#xa;&#x9;&#x9;'datastream',&#xa;&#x9;&#x9;'guidkey',&#xa;&#x9;&#x9; current_value('iddatastream')&#xa;&#x9;) &#xa;&#x9;,'idobservedproperty'&#xa;&#x9;)&#x9;&#xa;) &#xa;,'domain_code'))" name="FilterExpression" type="QString"/>
-            <Option value="id" name="Key" type="QString"/>
-            <Option value="codelist_dca3491b_79c9_4c76_afe9_83b8d8e331a2" name="Layer" type="QString"/>
-            <Option value="codelist" name="LayerName" type="QString"/>
-            <Option value="ogr" name="LayerProviderName" type="QString"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=codelist" name="LayerSource" type="QString"/>
-            <Option value="1" name="NofColumns" type="int"/>
-            <Option value="false" name="OrderByValue" type="bool"/>
-            <Option value="false" name="UseCompleter" type="bool"/>
-            <Option value="label" name="Value" type="QString"/>
+            <Option type="bool" value="false" name="AllowMulti"/>
+            <Option type="bool" value="false" name="AllowNull"/>
+            <Option type="QString" value="" name="Description"/>
+            <Option type="QString" value="&quot;collection&quot;  IN (attribute(get_feature&#xa;(&#xa;&#x9;'observableproperty',&#xa;&#x9;'guidkey',&#xa;&#x9;&#xa;&#x9;attribute(get_feature&#xa;&#x9;(&#xa;&#x9;&#x9;'datastream',&#xa;&#x9;&#x9;'guidkey',&#xa;&#x9;&#x9; current_value('iddatastream')&#xa;&#x9;) &#xa;&#x9;,'idobservedproperty'&#xa;&#x9;)&#x9;&#xa;) &#xa;,'domain_code'))" name="FilterExpression"/>
+            <Option type="QString" value="id" name="Key"/>
+            <Option type="QString" value="codelist_3d50a9dd_4d09_4b58_ba39_e41d239fc7fc" name="Layer"/>
+            <Option type="QString" value="codelist" name="LayerName"/>
+            <Option type="QString" value="ogr" name="LayerProviderName"/>
+            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage_Sicily_Import/GPKG/Sicily_05 - O&amp;M/INSPIRE_SO_12.gpkg|layername=codelist" name="LayerSource"/>
+            <Option type="int" value="1" name="NofColumns"/>
+            <Option type="bool" value="false" name="OrderByValue"/>
+            <Option type="bool" value="false" name="UseCompleter"/>
+            <Option type="QString" value="label" name="Value"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="iddatastream">
+    <field name="iddatastream" configurationFlags="None">
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option value="false" name="AllowAddFeatures" type="bool"/>
-            <Option value="false" name="AllowNULL" type="bool"/>
-            <Option value="true" name="FetchLimitActive" type="bool"/>
-            <Option value="100" name="FetchLimitNumber" type="int"/>
-            <Option value="false" name="MapIdentification" type="bool"/>
-            <Option value="false" name="ReadOnly" type="bool"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=datastream" name="ReferencedLayerDataSource" type="QString"/>
-            <Option value="datastream_41c8894d_6c71_4607_a42c_ca410c56a19d" name="ReferencedLayerId" type="QString"/>
-            <Option value="datastream" name="ReferencedLayerName" type="QString"/>
-            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
-            <Option value="datastream_observation" name="Relation" type="QString"/>
-            <Option value="false" name="ShowForm" type="bool"/>
-            <Option value="true" name="ShowOpenFormButton" type="bool"/>
+            <Option type="bool" value="false" name="AllowAddFeatures"/>
+            <Option type="bool" value="false" name="AllowNULL"/>
+            <Option type="bool" value="true" name="FetchLimitActive"/>
+            <Option type="int" value="100" name="FetchLimitNumber"/>
+            <Option type="bool" value="false" name="MapIdentification"/>
+            <Option type="bool" value="false" name="ReadOnly"/>
+            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage_Sicily_Import/GPKG/Sicily_05 - O&amp;M/INSPIRE_SO_12.gpkg|layername=datastream" name="ReferencedLayerDataSource"/>
+            <Option type="QString" value="datastream_2ac05955_6e7e_44b2_a564_b096ca480269" name="ReferencedLayerId"/>
+            <Option type="QString" value="datastream" name="ReferencedLayerName"/>
+            <Option type="QString" value="ogr" name="ReferencedLayerProviderKey"/>
+            <Option type="QString" value="datastream_observation" name="Relation"/>
+            <Option type="bool" value="false" name="ShowForm"/>
+            <Option type="bool" value="true" name="ShowOpenFormButton"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="typeofdata">
+    <field name="typeofdata" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option type="bool" value="false" name="IsMultiline"/>
+            <Option type="bool" value="false" name="UseHtml"/>
+          </Option>
+        </config>
+      </editWidget>
+    </field>
+    <field name="domain" configurationFlags="None">
+      <editWidget type="TextEdit">
+        <config>
+          <Option type="Map">
+            <Option type="bool" value="false" name="IsMultiline"/>
+            <Option type="bool" value="false" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias index="0" name="" field="id"/>
-    <alias index="1" name="" field="guidkey"/>
-    <alias index="2" name="Phenomenon Time" field="phenomenontime"/>
-    <alias index="3" name="Result Time" field="resulttime"/>
-    <alias index="4" name="Valid Time" field="validtime"/>
-    <alias index="5" name="Result Quality" field="resultquality"/>
-    <alias index="6" name="" field="result_value"/>
-    <alias index="7" name="" field="result_uri"/>
-    <alias index="8" name="Datastream" field="iddatastream"/>
-    <alias index="9" name="" field="typeofdata"/>
+    <alias field="id" index="0" name=""/>
+    <alias field="guidkey" index="1" name=""/>
+    <alias field="phenomenontime" index="2" name="Phenomenon Time"/>
+    <alias field="resulttime" index="3" name="Result Time"/>
+    <alias field="validtime" index="4" name="Valid Time"/>
+    <alias field="resultquality" index="5" name="Result Quality"/>
+    <alias field="result_value" index="6" name=""/>
+    <alias field="result_uri" index="7" name=""/>
+    <alias field="iddatastream" index="8" name="Datastream"/>
+    <alias field="typeofdata" index="9" name=""/>
+    <alias field="domain" index="10" name=""/>
   </aliases>
   <splitPolicies>
-    <policy policy="DefaultValue" field="id"/>
-    <policy policy="DefaultValue" field="guidkey"/>
-    <policy policy="DefaultValue" field="phenomenontime"/>
-    <policy policy="DefaultValue" field="resulttime"/>
-    <policy policy="DefaultValue" field="validtime"/>
-    <policy policy="DefaultValue" field="resultquality"/>
-    <policy policy="DefaultValue" field="result_value"/>
-    <policy policy="DefaultValue" field="result_uri"/>
-    <policy policy="DefaultValue" field="iddatastream"/>
-    <policy policy="DefaultValue" field="typeofdata"/>
+    <policy field="id" policy="DefaultValue"/>
+    <policy field="guidkey" policy="DefaultValue"/>
+    <policy field="phenomenontime" policy="DefaultValue"/>
+    <policy field="resulttime" policy="DefaultValue"/>
+    <policy field="validtime" policy="DefaultValue"/>
+    <policy field="resultquality" policy="DefaultValue"/>
+    <policy field="result_value" policy="DefaultValue"/>
+    <policy field="result_uri" policy="DefaultValue"/>
+    <policy field="iddatastream" policy="DefaultValue"/>
+    <policy field="typeofdata" policy="DefaultValue"/>
+    <policy field="domain" policy="DefaultValue"/>
   </splitPolicies>
   <defaults>
-    <default applyOnUpdate="0" expression="" field="id"/>
-    <default applyOnUpdate="0" expression="" field="guidkey"/>
-    <default applyOnUpdate="0" expression="" field="phenomenontime"/>
-    <default applyOnUpdate="0" expression="" field="resulttime"/>
-    <default applyOnUpdate="0" expression="" field="validtime"/>
-    <default applyOnUpdate="0" expression="" field="resultquality"/>
-    <default applyOnUpdate="0" expression="" field="result_value"/>
-    <default applyOnUpdate="0" expression="" field="result_uri"/>
-    <default applyOnUpdate="0" expression="" field="iddatastream"/>
-    <default applyOnUpdate="0" expression="" field="typeofdata"/>
+    <default field="id" applyOnUpdate="0" expression=""/>
+    <default field="guidkey" applyOnUpdate="0" expression=""/>
+    <default field="phenomenontime" applyOnUpdate="0" expression=""/>
+    <default field="resulttime" applyOnUpdate="0" expression=""/>
+    <default field="validtime" applyOnUpdate="0" expression=""/>
+    <default field="resultquality" applyOnUpdate="0" expression=""/>
+    <default field="result_value" applyOnUpdate="1" expression="if ( &quot;typeofdata&quot;  = 'result_uri',Null, &quot;result_value&quot; )"/>
+    <default field="result_uri" applyOnUpdate="0" expression=""/>
+    <default field="iddatastream" applyOnUpdate="0" expression=""/>
+    <default field="typeofdata" applyOnUpdate="0" expression=""/>
+    <default field="domain" applyOnUpdate="0" expression=""/>
   </defaults>
   <constraints>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="1" constraints="3" field="id"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="1" constraints="2" field="guidkey"/>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="phenomenontime"/>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="resulttime"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="validtime"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="resultquality"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="result_value"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="result_uri"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="iddatastream"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="typeofdata"/>
+    <constraint field="id" notnull_strength="1" constraints="3" exp_strength="0" unique_strength="1"/>
+    <constraint field="guidkey" notnull_strength="0" constraints="2" exp_strength="0" unique_strength="1"/>
+    <constraint field="phenomenontime" notnull_strength="1" constraints="1" exp_strength="0" unique_strength="0"/>
+    <constraint field="resulttime" notnull_strength="1" constraints="1" exp_strength="0" unique_strength="0"/>
+    <constraint field="validtime" notnull_strength="0" constraints="0" exp_strength="0" unique_strength="0"/>
+    <constraint field="resultquality" notnull_strength="0" constraints="0" exp_strength="0" unique_strength="0"/>
+    <constraint field="result_value" notnull_strength="0" constraints="0" exp_strength="0" unique_strength="0"/>
+    <constraint field="result_uri" notnull_strength="0" constraints="0" exp_strength="0" unique_strength="0"/>
+    <constraint field="iddatastream" notnull_strength="0" constraints="0" exp_strength="0" unique_strength="0"/>
+    <constraint field="typeofdata" notnull_strength="0" constraints="0" exp_strength="0" unique_strength="0"/>
+    <constraint field="domain" notnull_strength="0" constraints="0" exp_strength="0" unique_strength="0"/>
   </constraints>
   <constraintExpressions>
-    <constraint exp="" desc="" field="id"/>
-    <constraint exp="" desc="" field="guidkey"/>
-    <constraint exp="" desc="" field="phenomenontime"/>
-    <constraint exp="" desc="" field="resulttime"/>
-    <constraint exp="" desc="" field="validtime"/>
-    <constraint exp="" desc="" field="resultquality"/>
-    <constraint exp="" desc="" field="result_value"/>
-    <constraint exp="" desc="" field="result_uri"/>
-    <constraint exp="" desc="" field="iddatastream"/>
-    <constraint exp="" desc="" field="typeofdata"/>
+    <constraint field="id" exp="" desc=""/>
+    <constraint field="guidkey" exp="" desc=""/>
+    <constraint field="phenomenontime" exp="" desc=""/>
+    <constraint field="resulttime" exp="" desc=""/>
+    <constraint field="validtime" exp="" desc=""/>
+    <constraint field="resultquality" exp="" desc=""/>
+    <constraint field="result_value" exp="" desc=""/>
+    <constraint field="result_uri" exp="" desc=""/>
+    <constraint field="iddatastream" exp="" desc=""/>
+    <constraint field="typeofdata" exp="" desc=""/>
+    <constraint field="domain" exp="" desc=""/>
   </constraintExpressions>
   <expressionfields>
-    <field subType="0" precision="0" name="typeofdata" length="0" type="10" expression="attribute(get_feature&#xd;&#xa;&#x9;&#x9;(&#xd;&#xa;&#x9;&#x9;&#x9;'observableproperty',&#xd;&#xa;&#x9;&#x9;&#x9;'guidkey',&#xd;&#xa;&#x9;&#x9;&#x9;&#xd;&#xa;&#x9;&#x9;&#x9;attribute(get_feature&#xd;&#xa;&#x9;&#x9;&#x9;(&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;'datastream',&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;'guidkey',&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;&quot;iddatastream&quot;&#xd;&#xa;&#x9;&#x9;&#x9;) &#xd;&#xa;&#x9;&#x9;&#x9;,'idobservedproperty'&#xd;&#xa;&#x9;&#x9;&#x9;)&#x9;&#x9;&#xd;&#xa;&#x9;&#x9;) &#xd;&#xa;&#x9;&#x9;,'domain_typeofvalue'&#xd;&#xa;&#x9;)" typeName="string" comment=""/>
+    <field type="10" subType="0" precision="0" comment="" typeName="string" expression="attribute(get_feature&#xd;&#xa;&#x9;&#x9;(&#xd;&#xa;&#x9;&#x9;&#x9;'observableproperty',&#xd;&#xa;&#x9;&#x9;&#x9;'guidkey',&#xd;&#xa;&#x9;&#x9;&#x9;&#xd;&#xa;&#x9;&#x9;&#x9;attribute(get_feature&#xd;&#xa;&#x9;&#x9;&#x9;(&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;'datastream',&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;'guidkey',&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;&quot;iddatastream&quot;&#xd;&#xa;&#x9;&#x9;&#x9;) &#xd;&#xa;&#x9;&#x9;&#x9;,'idobservedproperty'&#xd;&#xa;&#x9;&#x9;&#x9;)&#x9;&#x9;&#xd;&#xa;&#x9;&#x9;) &#xd;&#xa;&#x9;&#x9;,'domain_typeofvalue'&#xd;&#xa;&#x9;)" length="0" name="typeofdata"/>
+    <field type="10" subType="0" precision="0" comment="" typeName="string" expression="'Domain Value: '||&#xd;&#xa;IF(&#xd;&#xa;COALESCE(attribute(get_feature&#xd;&#xa;(&#xd;&#xa;&#x9;'observableproperty',&#xd;&#xa;&#x9;'guidkey',&#xd;&#xa;&#x9;&#xd;&#xa;&#x9;COALESCE(attribute(get_feature&#xd;&#xa;&#x9;(&#xd;&#xa;&#x9;&#x9;'datastream',&#xd;&#xa;&#x9;&#x9;'guidkey',&#xd;&#xa;&#x9;&#x9;&quot;iddatastream&quot;&#xd;&#xa;&#x9;) &#xd;&#xa;&#x9;,'idobservedproperty'&#xd;&#xa;&#x9;))&#x9;&#x9;&#xd;&#xa;) &#xd;&#xa;,'domain_min'&#xd;&#xa;)) IS NOT NULL,&#xd;&#xa;--True&#xd;&#xa;'Min '||&#xd;&#xa;COALESCE(attribute(get_feature&#xd;&#xa;(&#xd;&#xa;&#x9;'observableproperty',&#xd;&#xa;&#x9;'guidkey',&#xd;&#xa;&#x9;&#xd;&#xa;&#x9;COALESCE(attribute(get_feature&#xd;&#xa;&#x9;(&#xd;&#xa;&#x9;&#x9;'datastream',&#xd;&#xa;&#x9;&#x9;'guidkey',&#xd;&#xa;&#x9;&#x9;&quot;iddatastream&quot;&#xd;&#xa;&#x9;) &#xd;&#xa;&#x9;,'idobservedproperty'&#xd;&#xa;&#x9;))&#x9;&#x9;&#xd;&#xa;) &#xd;&#xa;,'domain_min'&#xd;&#xa;))&#xd;&#xa;&#xd;&#xa;|| ' and Max ' ||&#xd;&#xa;COALESCE(attribute(get_feature&#xd;&#xa;(&#xd;&#xa;&#x9;'observableproperty',&#xd;&#xa;&#x9;'guidkey',&#xd;&#xa;&#x9;&#xd;&#xa;&#x9;COALESCE(attribute(get_feature&#xd;&#xa;&#x9;(&#xd;&#xa;&#x9;&#x9;'datastream',&#xd;&#xa;&#x9;&#x9;'guidkey',&#xd;&#xa;&#x9;&#x9;&quot;iddatastream&quot;&#xd;&#xa;&#x9;) &#xd;&#xa;&#x9;,'idobservedproperty'&#xd;&#xa;&#x9;))&#x9;&#x9;&#xd;&#xa;) &#xd;&#xa;,'domain_max'&#xd;&#xa;))&#xd;&#xa;--FALSE&#xd;&#xa;, '')&#xd;&#xa;&#xd;&#xa;&#xd;&#xa;||&#xd;&#xa;&#xd;&#xa;IF(&#xd;&#xa;COALESCE(attribute(get_feature&#xd;&#xa;(&#xd;&#xa;&#x9;'unitofmeasure',&#xd;&#xa;&#x9;'guidkey',&#xd;&#xa;&#x9;&#xd;&#xa;&#xd;&#xa;&#x9;&#x9;COALESCE(attribute(get_feature&#xd;&#xa;&#x9;&#x9;(&#xd;&#xa;&#x9;&#x9;&#x9;'observableproperty',&#xd;&#xa;&#x9;&#x9;&#x9;'guidkey',&#xd;&#xa;&#x9;&#x9;&#x9;&#xd;&#xa;&#x9;&#x9;&#x9;COALESCE(attribute(get_feature&#xd;&#xa;&#x9;&#x9;&#x9;(&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;'datastream',&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;'guidkey',&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;&quot;iddatastream&quot;&#xd;&#xa;&#x9;&#x9;&#x9;) &#xd;&#xa;&#x9;&#x9;&#x9;,'idobservedproperty'&#xd;&#xa;&#x9;&#x9;&#x9;))&#x9;&#x9;&#xd;&#xa;&#x9;&#x9;) &#xd;&#xa;&#x9;&#x9;,'iduom'&#xd;&#xa;&#x9;&#x9;))&#xd;&#xa;) &#xd;&#xa;,'uomsymbol'&#xd;&#xa;)) &#xd;&#xa;&#xd;&#xa;is NOT NULL ,&#xd;&#xa;&#xd;&#xa;--TRUE&#xd;&#xa;' - ' ||&#xd;&#xa;&#xd;&#xa;COALESCE(attribute(get_feature&#xd;&#xa;(&#xd;&#xa;&#x9;'unitofmeasure',&#xd;&#xa;&#x9;'guidkey',&#xd;&#xa;&#x9;&#xd;&#xa;&#xd;&#xa;&#x9;&#x9;COALESCE(attribute(get_feature&#xd;&#xa;&#x9;&#x9;(&#xd;&#xa;&#x9;&#x9;&#x9;'observableproperty',&#xd;&#xa;&#x9;&#x9;&#x9;'guidkey',&#xd;&#xa;&#x9;&#x9;&#x9;&#xd;&#xa;&#x9;&#x9;&#x9;COALESCE(attribute(get_feature&#xd;&#xa;&#x9;&#x9;&#x9;(&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;'datastream',&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;'guidkey',&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;&quot;iddatastream&quot;&#xd;&#xa;&#x9;&#x9;&#x9;) &#xd;&#xa;&#x9;&#x9;&#x9;,'idobservedproperty'&#xd;&#xa;&#x9;&#x9;&#x9;))&#x9;&#x9;&#xd;&#xa;&#x9;&#x9;) &#xd;&#xa;&#x9;&#x9;,'iduom'&#xd;&#xa;&#x9;&#x9;))&#xd;&#xa;) &#xd;&#xa;,'uomsymbol'&#xd;&#xa;)) ,&#xd;&#xa;--FALSE&#xd;&#xa;' ')" length="0" name="domain"/>
   </expressionfields>
   <editform tolerant="1"></editform>
   <editforminit/>
@@ -235,65 +251,71 @@ def my_form_open(dialog, layer, feature):
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
     <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-      <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+      <labelFont bold="0" italic="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" style=""/>
     </labelStyle>
-    <attributeEditorField showLabel="1" index="2" name="phenomenontime" horizontalStretch="0" verticalStretch="0">
+    <attributeEditorField horizontalStretch="0" verticalStretch="0" index="2" showLabel="1" name="phenomenontime">
       <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+        <labelFont bold="0" italic="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="3" name="resulttime" horizontalStretch="0" verticalStretch="0">
+    <attributeEditorField horizontalStretch="0" verticalStretch="0" index="3" showLabel="1" name="resulttime">
       <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+        <labelFont bold="0" italic="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="4" name="validtime" horizontalStretch="0" verticalStretch="0">
+    <attributeEditorField horizontalStretch="0" verticalStretch="0" index="4" showLabel="1" name="validtime">
       <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+        <labelFont bold="0" italic="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer columnCount="1" showLabel="1" collapsedExpressionEnabled="0" collapsedExpression="" name="Numeric Value" visibilityExpressionEnabled="1" horizontalStretch="0" verticalStretch="0" groupBox="1" type="GroupBox" collapsed="0" visibilityExpression=" &quot;typeofdata&quot;  = 'result_value'&#xa;&#xa;">
+    <attributeEditorContainer collapsed="0" type="GroupBox" collapsedExpressionEnabled="0" horizontalStretch="0" verticalStretch="0" groupBox="1" collapsedExpression="" showLabel="1" columnCount="1" name="Numeric_Value" visibilityExpressionEnabled="1" visibilityExpression=" &quot;typeofdata&quot;  = 'result_value'&#xa;">
       <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+        <labelFont bold="0" italic="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" style=""/>
       </labelStyle>
-      <attributeEditorField showLabel="1" index="6" name="result_value" horizontalStretch="0" verticalStretch="0">
+      <attributeEditorField horizontalStretch="0" verticalStretch="0" index="10" showLabel="0" name="domain">
         <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+          <labelFont bold="0" italic="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" style=""/>
+        </labelStyle>
+      </attributeEditorField>
+      <attributeEditorField horizontalStretch="0" verticalStretch="0" index="6" showLabel="0" name="result_value">
+        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+          <labelFont bold="0" italic="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" style=""/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorContainer columnCount="1" showLabel="1" collapsedExpressionEnabled="0" collapsedExpression="" name="Coded Value" visibilityExpressionEnabled="1" horizontalStretch="0" verticalStretch="0" groupBox="1" type="GroupBox" collapsed="0" visibilityExpression=" &quot;typeofdata&quot;  = 'result_uri'">
+    <attributeEditorContainer collapsed="0" type="GroupBox" collapsedExpressionEnabled="0" horizontalStretch="0" verticalStretch="0" groupBox="1" collapsedExpression="" showLabel="1" columnCount="1" name="Coded_Value" visibilityExpressionEnabled="1" visibilityExpression=" &quot;typeofdata&quot;  = 'result_uri'">
       <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+        <labelFont bold="0" italic="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" style=""/>
       </labelStyle>
-      <attributeEditorField showLabel="0" index="7" name="result_uri" horizontalStretch="0" verticalStretch="0">
+      <attributeEditorField horizontalStretch="0" verticalStretch="0" index="7" showLabel="1" name="result_uri">
         <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+          <labelFont bold="0" italic="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" style=""/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorField showLabel="1" index="8" name="iddatastream" horizontalStretch="0" verticalStretch="0">
+    <attributeEditorField horizontalStretch="0" verticalStretch="0" index="8" showLabel="0" name="iddatastream">
       <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+        <labelFont bold="0" italic="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="5" name="resultquality" horizontalStretch="0" verticalStretch="0">
+    <attributeEditorField horizontalStretch="0" verticalStretch="0" index="5" showLabel="1" name="resultquality">
       <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+        <labelFont bold="0" italic="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer columnCount="1" showLabel="1" collapsedExpressionEnabled="0" collapsedExpression="" name="Hidden" visibilityExpressionEnabled="1" horizontalStretch="0" verticalStretch="0" groupBox="1" type="GroupBox" collapsed="0" visibilityExpression="1=0">
+    <attributeEditorContainer collapsed="0" type="GroupBox" collapsedExpressionEnabled="0" horizontalStretch="0" verticalStretch="0" groupBox="1" collapsedExpression="" showLabel="1" columnCount="1" name="Hidden" visibilityExpressionEnabled="1" visibilityExpression="1=0">
       <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+        <labelFont bold="0" italic="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" style=""/>
       </labelStyle>
-      <attributeEditorField showLabel="1" index="9" name="typeofdata" horizontalStretch="0" verticalStretch="0">
+      <attributeEditorField horizontalStretch="0" verticalStretch="0" index="9" showLabel="1" name="typeofdata">
         <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+          <labelFont bold="0" italic="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" style=""/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
   </attributeEditorForm>
   <editable>
+    <field editable="0" name="domain"/>
     <field editable="1" name="guidkey"/>
     <field editable="1" name="id"/>
     <field editable="1" name="iddatastream"/>
@@ -306,18 +328,20 @@ def my_form_open(dialog, layer, feature):
     <field editable="1" name="validtime"/>
   </editable>
   <labelOnTop>
+    <field labelOnTop="0" name="domain"/>
     <field labelOnTop="0" name="guidkey"/>
     <field labelOnTop="0" name="id"/>
     <field labelOnTop="0" name="iddatastream"/>
     <field labelOnTop="0" name="phenomenontime"/>
     <field labelOnTop="0" name="result_uri"/>
-    <field labelOnTop="1" name="result_value"/>
+    <field labelOnTop="0" name="result_value"/>
     <field labelOnTop="0" name="resultquality"/>
     <field labelOnTop="0" name="resulttime"/>
     <field labelOnTop="0" name="typeofdata"/>
     <field labelOnTop="0" name="validtime"/>
   </labelOnTop>
   <reuseLastValue>
+    <field reuseLastValue="0" name="domain"/>
     <field reuseLastValue="0" name="guidkey"/>
     <field reuseLastValue="0" name="id"/>
     <field reuseLastValue="0" name="iddatastream"/>
@@ -329,40 +353,8 @@ def my_form_open(dialog, layer, feature):
     <field reuseLastValue="0" name="typeofdata"/>
     <field reuseLastValue="0" name="validtime"/>
   </reuseLastValue>
-  <dataDefinedFieldProperties>
-    <field name="result_value">
-      <Option type="Map">
-        <Option value="" name="name" type="QString"/>
-        <Option name="properties" type="Map">
-          <Option name="dataDefinedAlias" type="Map">
-            <Option value="true" name="active" type="bool"/>
-            <Option value="'Domain Value: '&#xd;&#xa;&#xd;&#xa;||&#xd;&#xa;&#xd;&#xa;&#xd;&#xa;IF(&#xd;&#xa;COALESCE(attribute(get_feature&#xd;&#xa;(&#xd;&#xa;&#x9;'observableproperty',&#xd;&#xa;&#x9;'guidkey',&#xd;&#xa;&#x9;&#xd;&#xa;&#x9;COALESCE(attribute(get_feature&#xd;&#xa;&#x9;(&#xd;&#xa;&#x9;&#x9;'datastream',&#xd;&#xa;&#x9;&#x9;'guidkey',&#xd;&#xa;&#x9;&#x9;&quot;iddatastream&quot;&#xd;&#xa;&#x9;) &#xd;&#xa;&#x9;,'idobservedproperty'&#xd;&#xa;&#x9;))&#x9;&#x9;&#xd;&#xa;) &#xd;&#xa;,'domain_min'&#xd;&#xa;)) IS NOT NULL,&#xd;&#xa;--True&#xd;&#xa;'Min '||&#xd;&#xa;COALESCE(attribute(get_feature&#xd;&#xa;(&#xd;&#xa;&#x9;'observableproperty',&#xd;&#xa;&#x9;'guidkey',&#xd;&#xa;&#x9;&#xd;&#xa;&#x9;COALESCE(attribute(get_feature&#xd;&#xa;&#x9;(&#xd;&#xa;&#x9;&#x9;'datastream',&#xd;&#xa;&#x9;&#x9;'guidkey',&#xd;&#xa;&#x9;&#x9;&quot;iddatastream&quot;&#xd;&#xa;&#x9;) &#xd;&#xa;&#x9;,'idobservedproperty'&#xd;&#xa;&#x9;))&#x9;&#x9;&#xd;&#xa;) &#xd;&#xa;,'domain_min'&#xd;&#xa;))&#xd;&#xa;&#xd;&#xa;|| ' - Max ' ||&#xd;&#xa;COALESCE(attribute(get_feature&#xd;&#xa;(&#xd;&#xa;&#x9;'observableproperty',&#xd;&#xa;&#x9;'guidkey',&#xd;&#xa;&#x9;&#xd;&#xa;&#x9;COALESCE(attribute(get_feature&#xd;&#xa;&#x9;(&#xd;&#xa;&#x9;&#x9;'datastream',&#xd;&#xa;&#x9;&#x9;'guidkey',&#xd;&#xa;&#x9;&#x9;&quot;iddatastream&quot;&#xd;&#xa;&#x9;) &#xd;&#xa;&#x9;,'idobservedproperty'&#xd;&#xa;&#x9;))&#x9;&#x9;&#xd;&#xa;) &#xd;&#xa;,'domain_max'&#xd;&#xa;))&#xd;&#xa;--FALSE&#xd;&#xa;, '')&#xd;&#xa;&#xd;&#xa;&#xd;&#xa;||&#xd;&#xa;&#xd;&#xa;IF(&#xd;&#xa;COALESCE(attribute(get_feature&#xd;&#xa;(&#xd;&#xa;&#x9;'unitofmeasure',&#xd;&#xa;&#x9;'guidkey',&#xd;&#xa;&#x9;&#xd;&#xa;&#xd;&#xa;&#x9;&#x9;COALESCE(attribute(get_feature&#xd;&#xa;&#x9;&#x9;(&#xd;&#xa;&#x9;&#x9;&#x9;'observableproperty',&#xd;&#xa;&#x9;&#x9;&#x9;'guidkey',&#xd;&#xa;&#x9;&#x9;&#x9;&#xd;&#xa;&#x9;&#x9;&#x9;COALESCE(attribute(get_feature&#xd;&#xa;&#x9;&#x9;&#x9;(&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;'datastream',&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;'guidkey',&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;&quot;iddatastream&quot;&#xd;&#xa;&#x9;&#x9;&#x9;) &#xd;&#xa;&#x9;&#x9;&#x9;,'idobservedproperty'&#xd;&#xa;&#x9;&#x9;&#x9;))&#x9;&#x9;&#xd;&#xa;&#x9;&#x9;) &#xd;&#xa;&#x9;&#x9;,'iduom'&#xd;&#xa;&#x9;&#x9;))&#xd;&#xa;) &#xd;&#xa;,'uomsymbol'&#xd;&#xa;)) &#xd;&#xa;&#xd;&#xa;is NOT NULL ,&#xd;&#xa;&#xd;&#xa;--TRUE&#xd;&#xa;' - ' ||&#xd;&#xa;&#xd;&#xa;COALESCE(attribute(get_feature&#xd;&#xa;(&#xd;&#xa;&#x9;'unitofmeasure',&#xd;&#xa;&#x9;'guidkey',&#xd;&#xa;&#x9;&#xd;&#xa;&#xd;&#xa;&#x9;&#x9;COALESCE(attribute(get_feature&#xd;&#xa;&#x9;&#x9;(&#xd;&#xa;&#x9;&#x9;&#x9;'observableproperty',&#xd;&#xa;&#x9;&#x9;&#x9;'guidkey',&#xd;&#xa;&#x9;&#x9;&#x9;&#xd;&#xa;&#x9;&#x9;&#x9;COALESCE(attribute(get_feature&#xd;&#xa;&#x9;&#x9;&#x9;(&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;'datastream',&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;'guidkey',&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;&quot;iddatastream&quot;&#xd;&#xa;&#x9;&#x9;&#x9;) &#xd;&#xa;&#x9;&#x9;&#x9;,'idobservedproperty'&#xd;&#xa;&#x9;&#x9;&#x9;))&#x9;&#x9;&#xd;&#xa;&#x9;&#x9;) &#xd;&#xa;&#x9;&#x9;,'iduom'&#xd;&#xa;&#x9;&#x9;))&#xd;&#xa;) &#xd;&#xa;,'uomsymbol'&#xd;&#xa;)) ,&#xd;&#xa;--FALSE&#xd;&#xa;' ')" name="expression" type="QString"/>
-            <Option value="3" name="type" type="int"/>
-          </Option>
-        </Option>
-        <Option value="collection" name="type" type="QString"/>
-      </Option>
-    </field>
-  </dataDefinedFieldProperties>
+  <dataDefinedFieldProperties/>
   <widgets/>
-  <previewExpression>regexp_replace(  &#xd;
-&#xd;
-attribute(get_feature&#xd;
-(&#xd;
-	'observableproperty',&#xd;
-	'guidkey',&#xd;
-	&#xd;
-	COALESCE(attribute(get_feature&#xd;
-	(&#xd;
-		'datastream',&#xd;
-		'guidkey',&#xd;
-		"iddatastream"&#xd;
-	) &#xd;
-	,'idobservedproperty'&#xd;
-	))		&#xd;
-) &#xd;
-,'basephenomenon'),&#xd;
-&#xd;
-'.*/', '')</previewExpression>
+  <previewExpression>"phenomenontime"</previewExpression>
   <layerGeometryType>4</layerGeometryType>
 </qgis>

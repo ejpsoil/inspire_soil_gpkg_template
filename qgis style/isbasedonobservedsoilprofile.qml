@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.32.3-Lima" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0">
+<qgis version="3.32.3-Lima" readOnly="0" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
@@ -7,11 +7,11 @@
     <Private>0</Private>
   </flags>
   <referencedLayers>
-    <relation id="soilderivedobject_isbasedonobservedsoilprofile_2" providerKey="ogr" referencedLayer="soilderivedobject_a71785e5_025c_4b3e_815a_d38e26008c1c" layerName="soilderivedobject" name="soilderivedobject_isbasedonobservedsoilprofile_2" dataSource="./INSPIRE_Selection_4.gpkg|layername=soilderivedobject" referencingLayer="isbasedonobservedsoilprofile_709f69fd_62cd_4a72_9f5e_ecdde1445562" layerId="soilderivedobject_a71785e5_025c_4b3e_815a_d38e26008c1c" strength="Association">
-      <fieldRef referencedField="guidkey" referencingField="idsoilderivedobject"/>
+    <relation referencedLayer="soilderivedobject_400edfe0_1a33_46b2_a140_e8724dd33dee" name="soilderivedobject_isbasedonobservedsoilprofile_2" referencingLayer="isbasedonobservedsoilprofile_32c9b637_10af_44f4_8479_f2d50e31efcd" dataSource="./INSPIRE_SO_DEMO_QGIS_V02.gpkg|layername=soilderivedobject" layerName="soilderivedobject" strength="Association" id="soilderivedobject_isbasedonobservedsoilprofile_2" layerId="soilderivedobject_400edfe0_1a33_46b2_a140_e8724dd33dee" providerKey="ogr">
+      <fieldRef referencingField="idsoilderivedobject" referencedField="guidkey"/>
     </relation>
-    <relation id="soilprofile_isbasedonobservedsoilprofile" providerKey="ogr" referencedLayer="soilprofile_e19d0f33_d3eb_4c7f_86d4_7b842ac7e511" layerName="soilprofile" name="soilprofile_isbasedonobservedsoilprofile" dataSource="./INSPIRE_Selection_4.gpkg|layername=soilprofile" referencingLayer="isbasedonobservedsoilprofile_709f69fd_62cd_4a72_9f5e_ecdde1445562" layerId="soilprofile_e19d0f33_d3eb_4c7f_86d4_7b842ac7e511" strength="Association">
-      <fieldRef referencedField="guidkey" referencingField="idsoilprofile"/>
+    <relation referencedLayer="soilprofile_1946ea4d_1688_4089_b461_dd7c31a24f04" name="soilprofile_isbasedonobservedsoilprofile" referencingLayer="isbasedonobservedsoilprofile_32c9b637_10af_44f4_8479_f2d50e31efcd" dataSource="./INSPIRE_SO_DEMO_QGIS_V02.gpkg|layername=soilprofile" layerName="soilprofile" strength="Association" id="soilprofile_isbasedonobservedsoilprofile" layerId="soilprofile_1946ea4d_1688_4089_b461_dd7c31a24f04" providerKey="ogr">
+      <fieldRef referencingField="idsoilprofile" referencedField="guidkey"/>
     </relation>
   </referencedLayers>
   <fieldConfiguration>
@@ -19,8 +19,8 @@
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option name="IsMultiline" value="false" type="bool"/>
+            <Option name="UseHtml" value="false" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -29,19 +29,19 @@
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option value="false" name="AllowAddFeatures" type="bool"/>
-            <Option value="false" name="AllowNULL" type="bool"/>
-            <Option value="true" name="FetchLimitActive" type="bool"/>
-            <Option value="100" name="FetchLimitNumber" type="int"/>
-            <Option value="false" name="MapIdentification" type="bool"/>
-            <Option value="false" name="ReadOnly" type="bool"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=soilderivedobject" name="ReferencedLayerDataSource" type="QString"/>
-            <Option value="soilderivedobject_a71785e5_025c_4b3e_815a_d38e26008c1c" name="ReferencedLayerId" type="QString"/>
-            <Option value="soilderivedobject" name="ReferencedLayerName" type="QString"/>
-            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
-            <Option value="soilderivedobject_isbasedonobservedsoilprofile_2" name="Relation" type="QString"/>
-            <Option value="false" name="ShowForm" type="bool"/>
-            <Option value="true" name="ShowOpenFormButton" type="bool"/>
+            <Option name="AllowAddFeatures" value="false" type="bool"/>
+            <Option name="AllowNULL" value="false" type="bool"/>
+            <Option name="FetchLimitActive" value="true" type="bool"/>
+            <Option name="FetchLimitNumber" value="100" type="int"/>
+            <Option name="MapIdentification" value="false" type="bool"/>
+            <Option name="ReadOnly" value="false" type="bool"/>
+            <Option name="ReferencedLayerDataSource" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=soilderivedobject" type="QString"/>
+            <Option name="ReferencedLayerId" value="soilderivedobject_a71785e5_025c_4b3e_815a_d38e26008c1c" type="QString"/>
+            <Option name="ReferencedLayerName" value="soilderivedobject" type="QString"/>
+            <Option name="ReferencedLayerProviderKey" value="ogr" type="QString"/>
+            <Option name="Relation" value="soilderivedobject_isbasedonobservedsoilprofile_2" type="QString"/>
+            <Option name="ShowForm" value="false" type="bool"/>
+            <Option name="ShowOpenFormButton" value="true" type="bool"/>
           </Option>
         </config>
       </editWidget>
@@ -50,33 +50,36 @@
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option value="false" name="AllowAddFeatures" type="bool"/>
-            <Option value="false" name="AllowNULL" type="bool"/>
-            <Option value="true" name="FetchLimitActive" type="bool"/>
-            <Option value="100" name="FetchLimitNumber" type="int"/>
-            <Option value="false" name="MapIdentification" type="bool"/>
-            <Option value="false" name="ReadOnly" type="bool"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=soilprofile" name="ReferencedLayerDataSource" type="QString"/>
-            <Option value="soilprofile_e19d0f33_d3eb_4c7f_86d4_7b842ac7e511" name="ReferencedLayerId" type="QString"/>
-            <Option value="soilprofile" name="ReferencedLayerName" type="QString"/>
-            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
-            <Option value="soilprofile_isbasedonobservedsoilprofile" name="Relation" type="QString"/>
-            <Option value="false" name="ShowForm" type="bool"/>
-            <Option value="true" name="ShowOpenFormButton" type="bool"/>
+            <Option name="AllowAddFeatures" value="false" type="bool"/>
+            <Option name="AllowNULL" value="false" type="bool"/>
+            <Option name="ChainFilters" value="false" type="bool"/>
+            <Option name="FetchLimitActive" value="true" type="bool"/>
+            <Option name="FetchLimitNumber" value="100" type="int"/>
+            <Option name="FilterExpression" value="isDerived = False" type="QString"/>
+            <Option name="FilterFields"/>
+            <Option name="MapIdentification" value="false" type="bool"/>
+            <Option name="ReadOnly" value="false" type="bool"/>
+            <Option name="ReferencedLayerDataSource" value="C:/Users/andrea.lachi/Documents/Geopackage_INSPIRE_Import/Tutorials/dati_github/INSPIRE_SO_DEMO_QGIS_V02.gpkg|layername=soilprofile" type="QString"/>
+            <Option name="ReferencedLayerId" value="soilprofile_1946ea4d_1688_4089_b461_dd7c31a24f04" type="QString"/>
+            <Option name="ReferencedLayerName" value="soilprofile" type="QString"/>
+            <Option name="ReferencedLayerProviderKey" value="ogr" type="QString"/>
+            <Option name="Relation" value="soilprofile_isbasedonobservedsoilprofile" type="QString"/>
+            <Option name="ShowForm" value="false" type="bool"/>
+            <Option name="ShowOpenFormButton" value="true" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias index="0" name="" field="id"/>
-    <alias index="1" name="Soil Derived Object" field="idsoilderivedobject"/>
-    <alias index="2" name="Soil Profile" field="idsoilprofile"/>
+    <alias field="id" name="" index="0"/>
+    <alias field="idsoilderivedobject" name="Soil Derived Object" index="1"/>
+    <alias field="idsoilprofile" name="Soil Profile" index="2"/>
   </aliases>
   <splitPolicies>
-    <policy policy="DefaultValue" field="id"/>
-    <policy policy="DefaultValue" field="idsoilderivedobject"/>
-    <policy policy="DefaultValue" field="idsoilprofile"/>
+    <policy field="id" policy="DefaultValue"/>
+    <policy field="idsoilderivedobject" policy="DefaultValue"/>
+    <policy field="idsoilprofile" policy="DefaultValue"/>
   </splitPolicies>
   <defaults>
     <default applyOnUpdate="0" expression="" field="id"/>
@@ -84,14 +87,14 @@
     <default applyOnUpdate="0" expression="" field="idsoilprofile"/>
   </defaults>
   <constraints>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="1" constraints="3" field="id"/>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="idsoilderivedobject"/>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="idsoilprofile"/>
+    <constraint field="id" unique_strength="1" constraints="3" exp_strength="0" notnull_strength="1"/>
+    <constraint field="idsoilderivedobject" unique_strength="0" constraints="1" exp_strength="0" notnull_strength="1"/>
+    <constraint field="idsoilprofile" unique_strength="0" constraints="1" exp_strength="0" notnull_strength="1"/>
   </constraints>
   <constraintExpressions>
-    <constraint exp="" desc="" field="id"/>
-    <constraint exp="" desc="" field="idsoilderivedobject"/>
-    <constraint exp="" desc="" field="idsoilprofile"/>
+    <constraint exp="" field="id" desc=""/>
+    <constraint exp="" field="idsoilderivedobject" desc=""/>
+    <constraint exp="" field="idsoilprofile" desc=""/>
   </constraintExpressions>
   <expressionfields/>
   <editform tolerant="1"></editform>
@@ -117,22 +120,22 @@ control = dialog.findChild(QWidget, "MyLineEdit")
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-      <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+      <labelFont underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style="" italic="0" bold="0"/>
     </labelStyle>
-    <attributeEditorField showLabel="1" index="0" name="id" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField name="id" horizontalStretch="0" index="0" showLabel="1" verticalStretch="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style="" italic="0" bold="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="1" name="idsoilderivedobject" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField name="idsoilderivedobject" horizontalStretch="0" index="1" showLabel="1" verticalStretch="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style="" italic="0" bold="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="2" name="idsoilprofile" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField name="idsoilprofile" horizontalStretch="0" index="2" showLabel="1" verticalStretch="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" style="" italic="0" bold="0"/>
       </labelStyle>
     </attributeEditorField>
   </attributeEditorForm>
@@ -147,9 +150,9 @@ control = dialog.findChild(QWidget, "MyLineEdit")
     <field labelOnTop="0" name="idsoilprofile"/>
   </labelOnTop>
   <reuseLastValue>
-    <field reuseLastValue="0" name="id"/>
-    <field reuseLastValue="0" name="idsoilderivedobject"/>
-    <field reuseLastValue="0" name="idsoilprofile"/>
+    <field name="id" reuseLastValue="0"/>
+    <field name="idsoilderivedobject" reuseLastValue="0"/>
+    <field name="idsoilprofile" reuseLastValue="0"/>
   </reuseLastValue>
   <dataDefinedFieldProperties/>
   <widgets/>

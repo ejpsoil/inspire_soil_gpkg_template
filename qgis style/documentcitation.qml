@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.32.3-Lima" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0">
+<qgis version="3.32.3-Lima" readOnly="0" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
@@ -19,8 +19,8 @@
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option type="bool" value="false" name="IsMultiline"/>
+            <Option type="bool" value="false" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
@@ -29,8 +29,8 @@
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option type="bool" value="false" name="IsMultiline"/>
+            <Option type="bool" value="false" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
@@ -39,8 +39,8 @@
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option type="bool" value="false" name="IsMultiline"/>
+            <Option type="bool" value="false" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
@@ -49,12 +49,12 @@
       <editWidget type="DateTime">
         <config>
           <Option type="Map">
-            <Option value="true" name="allow_null" type="bool"/>
-            <Option value="true" name="calendar_popup" type="bool"/>
-            <Option value="yyyy-MM-dd HH:mm:ss" name="display_format" type="QString"/>
-            <Option value="yyyy-MM-dd HH:mm:ss" name="field_format" type="QString"/>
-            <Option value="false" name="field_format_overwrite" type="bool"/>
-            <Option value="false" name="field_iso_format" type="bool"/>
+            <Option type="bool" value="true" name="allow_null"/>
+            <Option type="bool" value="true" name="calendar_popup"/>
+            <Option type="QString" value="yyyy-MM-dd HH:mm:ss" name="display_format"/>
+            <Option type="QString" value="yyyy-MM-dd HH:mm:ss" name="field_format"/>
+            <Option type="bool" value="false" name="field_format_overwrite"/>
+            <Option type="bool" value="false" name="field_iso_format"/>
           </Option>
         </config>
       </editWidget>
@@ -63,8 +63,8 @@
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option type="bool" value="false" name="IsMultiline"/>
+            <Option type="bool" value="false" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
@@ -73,57 +73,57 @@
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option type="bool" value="false" name="IsMultiline"/>
+            <Option type="bool" value="false" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias index="0" name="" field="id"/>
-    <alias index="1" name="" field="guidkey"/>
-    <alias index="2" name="Name" field="name"/>
-    <alias index="3" name="Short Name" field="shortname"/>
-    <alias index="4" name="Date" field="date"/>
-    <alias index="5" name="Uri" field="link"/>
-    <alias index="6" name="Specific Reference" field="specificreference"/>
+    <alias field="id" index="0" name=""/>
+    <alias field="guidkey" index="1" name=""/>
+    <alias field="name" index="2" name="Name"/>
+    <alias field="shortname" index="3" name="Short Name"/>
+    <alias field="date" index="4" name="Date"/>
+    <alias field="link" index="5" name="Uri"/>
+    <alias field="specificreference" index="6" name="Specific Reference"/>
   </aliases>
   <splitPolicies>
-    <policy policy="Duplicate" field="id"/>
-    <policy policy="DefaultValue" field="guidkey"/>
-    <policy policy="DefaultValue" field="name"/>
-    <policy policy="DefaultValue" field="shortname"/>
-    <policy policy="DefaultValue" field="date"/>
-    <policy policy="DefaultValue" field="link"/>
-    <policy policy="DefaultValue" field="specificreference"/>
+    <policy field="id" policy="Duplicate"/>
+    <policy field="guidkey" policy="DefaultValue"/>
+    <policy field="name" policy="DefaultValue"/>
+    <policy field="shortname" policy="DefaultValue"/>
+    <policy field="date" policy="DefaultValue"/>
+    <policy field="link" policy="DefaultValue"/>
+    <policy field="specificreference" policy="DefaultValue"/>
   </splitPolicies>
   <defaults>
-    <default applyOnUpdate="0" expression="" field="id"/>
-    <default applyOnUpdate="0" expression="" field="guidkey"/>
-    <default applyOnUpdate="0" expression="" field="name"/>
-    <default applyOnUpdate="0" expression="" field="shortname"/>
-    <default applyOnUpdate="0" expression="" field="date"/>
-    <default applyOnUpdate="0" expression="" field="link"/>
-    <default applyOnUpdate="0" expression="" field="specificreference"/>
+    <default applyOnUpdate="0" field="id" expression=""/>
+    <default applyOnUpdate="0" field="guidkey" expression=""/>
+    <default applyOnUpdate="0" field="name" expression=""/>
+    <default applyOnUpdate="0" field="shortname" expression=""/>
+    <default applyOnUpdate="0" field="date" expression=""/>
+    <default applyOnUpdate="0" field="link" expression=""/>
+    <default applyOnUpdate="0" field="specificreference" expression=""/>
   </defaults>
   <constraints>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="1" constraints="3" field="id"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="1" constraints="2" field="guidkey"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="name"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="shortname"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="date"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="link"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="specificreference"/>
+    <constraint unique_strength="1" field="id" notnull_strength="1" exp_strength="0" constraints="3"/>
+    <constraint unique_strength="1" field="guidkey" notnull_strength="0" exp_strength="0" constraints="2"/>
+    <constraint unique_strength="0" field="name" notnull_strength="0" exp_strength="0" constraints="0"/>
+    <constraint unique_strength="0" field="shortname" notnull_strength="0" exp_strength="0" constraints="0"/>
+    <constraint unique_strength="0" field="date" notnull_strength="0" exp_strength="0" constraints="0"/>
+    <constraint unique_strength="0" field="link" notnull_strength="0" exp_strength="0" constraints="0"/>
+    <constraint unique_strength="0" field="specificreference" notnull_strength="0" exp_strength="0" constraints="0"/>
   </constraints>
   <constraintExpressions>
-    <constraint exp="" desc="" field="id"/>
-    <constraint exp="" desc="" field="guidkey"/>
-    <constraint exp="" desc="" field="name"/>
-    <constraint exp="" desc="" field="shortname"/>
-    <constraint exp="" desc="" field="date"/>
-    <constraint exp="" desc="" field="link"/>
-    <constraint exp="" desc="" field="specificreference"/>
+    <constraint field="id" exp="" desc=""/>
+    <constraint field="guidkey" exp="" desc=""/>
+    <constraint field="name" exp="" desc=""/>
+    <constraint field="shortname" exp="" desc=""/>
+    <constraint field="date" exp="" desc=""/>
+    <constraint field="link" exp="" desc=""/>
+    <constraint field="specificreference" exp="" desc=""/>
   </constraintExpressions>
   <expressionfields/>
   <editform tolerant="1"></editform>
@@ -150,94 +150,109 @@ def my_form_open(dialog, layer, feature):
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-      <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+      <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
     </labelStyle>
-    <attributeEditorField showLabel="1" index="0" name="id" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField index="0" name="id" showLabel="1" verticalStretch="0" horizontalStretch="0">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer columnCount="1" showLabel="1" collapsedExpressionEnabled="0" collapsedExpression="" name="Name" visibilityExpressionEnabled="0" horizontalStretch="0" verticalStretch="0" groupBox="1" type="GroupBox" collapsed="0" visibilityExpression="">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorContainer type="GroupBox" columnCount="1" collapsed="0" visibilityExpressionEnabled="0" name="Name" showLabel="1" collapsedExpressionEnabled="0" verticalStretch="0" groupBox="1" collapsedExpression="" visibilityExpression="" horizontalStretch="0">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
       </labelStyle>
-      <attributeEditorField showLabel="1" index="2" name="name" horizontalStretch="0" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+      <attributeEditorField index="2" name="name" showLabel="1" verticalStretch="0" horizontalStretch="0">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField showLabel="1" index="3" name="shortname" horizontalStretch="0" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+      <attributeEditorField index="3" name="shortname" showLabel="1" verticalStretch="0" horizontalStretch="0">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorField showLabel="1" index="4" name="date" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField index="4" name="date" showLabel="1" verticalStretch="0" horizontalStretch="0">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="5" name="link" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField index="5" name="link" showLabel="1" verticalStretch="0" horizontalStretch="0">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="6" name="specificreference" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField index="6" name="specificreference" showLabel="1" verticalStretch="0" horizontalStretch="0">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorRelation showLabel="1" relation="documentcitation_process_2" label="Process" name="documentcitation_process_2" forceSuppressFormPopup="0" nmRelationId="" horizontalStretch="0" verticalStretch="0" relationWidgetTypeId="relation_editor">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorContainer type="GroupBox" columnCount="2" collapsed="1" visibilityExpressionEnabled="0" name="Process" showLabel="1" collapsedExpressionEnabled="0" verticalStretch="0" groupBox="1" collapsedExpression="" visibilityExpression="" horizontalStretch="0">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
       </labelStyle>
-      <editor_configuration type="Map">
-        <Option value="false" name="allow_add_child_feature_with_no_geometry" type="bool"/>
-        <Option value="AllButtons" name="buttons" type="QString"/>
-        <Option value="true" name="show_first_feature" type="bool"/>
-      </editor_configuration>
-    </attributeEditorRelation>
+      <attributeEditorRelation forceSuppressFormPopup="0" name="documentcitation_process_2" showLabel="0" verticalStretch="0" relationWidgetTypeId="relation_editor" relation="documentcitation_process_2" nmRelationId="" horizontalStretch="0" label="Process">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
+        </labelStyle>
+        <editor_configuration type="Map">
+          <Option type="bool" value="false" name="allow_add_child_feature_with_no_geometry"/>
+          <Option type="QString" value="AllButtons" name="buttons"/>
+          <Option type="bool" value="true" name="show_first_feature"/>
+        </editor_configuration>
+      </attributeEditorRelation>
+      <attributeEditorRelation forceSuppressFormPopup="0" name="documentcitation_process" showLabel="0" verticalStretch="0" relationWidgetTypeId="relation_editor" relation="documentcitation_process" nmRelationId="" horizontalStretch="0" label="">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
+        </labelStyle>
+        <editor_configuration type="Map">
+          <Option type="bool" value="false" name="allow_add_child_feature_with_no_geometry"/>
+          <Option type="QString" value="AllButtons" name="buttons"/>
+          <Option type="bool" value="true" name="show_first_feature"/>
+        </editor_configuration>
+      </attributeEditorRelation>
+    </attributeEditorContainer>
   </attributeEditorForm>
   <editable>
-    <field editable="1" name="date"/>
-    <field editable="1" name="guidkey"/>
-    <field editable="1" name="id"/>
-    <field editable="1" name="link"/>
-    <field editable="1" name="name"/>
-    <field editable="1" name="shortname"/>
-    <field editable="1" name="specificreference"/>
+    <field name="date" editable="1"/>
+    <field name="guidkey" editable="1"/>
+    <field name="id" editable="1"/>
+    <field name="link" editable="1"/>
+    <field name="name" editable="1"/>
+    <field name="shortname" editable="1"/>
+    <field name="specificreference" editable="1"/>
   </editable>
   <labelOnTop>
-    <field labelOnTop="0" name="date"/>
-    <field labelOnTop="0" name="guidkey"/>
-    <field labelOnTop="0" name="id"/>
-    <field labelOnTop="0" name="link"/>
-    <field labelOnTop="0" name="name"/>
-    <field labelOnTop="0" name="shortname"/>
-    <field labelOnTop="0" name="specificreference"/>
+    <field name="date" labelOnTop="0"/>
+    <field name="guidkey" labelOnTop="0"/>
+    <field name="id" labelOnTop="0"/>
+    <field name="link" labelOnTop="0"/>
+    <field name="name" labelOnTop="0"/>
+    <field name="shortname" labelOnTop="0"/>
+    <field name="specificreference" labelOnTop="0"/>
   </labelOnTop>
   <reuseLastValue>
-    <field reuseLastValue="0" name="date"/>
-    <field reuseLastValue="0" name="guidkey"/>
-    <field reuseLastValue="0" name="id"/>
-    <field reuseLastValue="0" name="link"/>
-    <field reuseLastValue="0" name="name"/>
-    <field reuseLastValue="0" name="shortname"/>
-    <field reuseLastValue="0" name="specificreference"/>
+    <field name="date" reuseLastValue="0"/>
+    <field name="guidkey" reuseLastValue="0"/>
+    <field name="id" reuseLastValue="0"/>
+    <field name="link" reuseLastValue="0"/>
+    <field name="name" reuseLastValue="0"/>
+    <field name="shortname" reuseLastValue="0"/>
+    <field name="specificreference" reuseLastValue="0"/>
   </reuseLastValue>
   <dataDefinedFieldProperties/>
   <widgets>
     <widget name="documentcitation_process">
       <config type="Map">
-        <Option value="false" name="force-suppress-popup" type="bool"/>
-        <Option name="nm-rel" type="invalid"/>
+        <Option type="bool" value="false" name="force-suppress-popup"/>
+        <Option type="invalid" name="nm-rel"/>
       </config>
     </widget>
     <widget name="documentcitation_process_2">
       <config type="Map">
-        <Option value="false" name="force-suppress-popup" type="bool"/>
-        <Option value="" name="nm-rel" type="QString"/>
+        <Option type="bool" value="false" name="force-suppress-popup"/>
+        <Option type="QString" value="" name="nm-rel"/>
       </config>
     </widget>
   </widgets>

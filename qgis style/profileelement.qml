@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.32.3-Lima" readOnly="0" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations">
+<qgis readOnly="0" version="3.32.3-Lima" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
@@ -7,247 +7,261 @@
     <Private>0</Private>
   </flags>
   <referencedLayers>
-    <relation dataSource="./INSPIRE_SO_DEMO_QGIS_V01.gpkg|layername=soilprofile" layerId="soilprofile_8ce3bd32_cf10_4c90_8870_2b9420461acf" referencedLayer="soilprofile_8ce3bd32_cf10_4c90_8870_2b9420461acf" name="soilprofile_profileelement" layerName="soilprofile" providerKey="ogr" id="soilprofile_profileelement" referencingLayer="profileelement_918dfbb9_c077_4a30_95ac_4ecf73ee27d1" strength="Association">
-      <fieldRef referencingField="ispartof" referencedField="guidkey"/>
+    <relation referencingLayer="profileelement_eb6bed83_91c6_4b85_baa7_bbb9469e94e0" layerName="soilprofile" strength="Association" name="soilprofile_profileelement" referencedLayer="soilprofile_4533a9b5_5d1e_4a04_a667_5768367b31b7" dataSource="./INSPIRE_SO_07.gpkg|layername=soilprofile" layerId="soilprofile_4533a9b5_5d1e_4a04_a667_5768367b31b7" providerKey="ogr" id="soilprofile_profileelement">
+      <fieldRef referencedField="guidkey" referencingField="ispartof"/>
     </relation>
   </referencedLayers>
   <fieldConfiguration>
-    <field configurationFlags="None" name="id">
+    <field name="id" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option/>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="guidkey">
+    <field name="guidkey" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="IsMultiline"/>
-            <Option type="bool" value="false" name="UseHtml"/>
+            <Option value="false" type="bool" name="IsMultiline"/>
+            <Option value="false" type="bool" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="inspireid_localid">
+    <field name="inspireid_localid" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="IsMultiline"/>
-            <Option type="bool" value="false" name="UseHtml"/>
+            <Option value="false" type="bool" name="IsMultiline"/>
+            <Option value="false" type="bool" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="inspireid_namespace">
+    <field name="inspireid_namespace" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="IsMultiline"/>
-            <Option type="bool" value="false" name="UseHtml"/>
+            <Option value="false" type="bool" name="IsMultiline"/>
+            <Option value="false" type="bool" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="inspireid_versionid">
+    <field name="inspireid_versionid" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="IsMultiline"/>
-            <Option type="bool" value="false" name="UseHtml"/>
+            <Option value="false" type="bool" name="IsMultiline"/>
+            <Option value="false" type="bool" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="profileelementdepthrange_uppervalue">
+    <field name="profileelementdepthrange_uppervalue" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="IsMultiline"/>
-            <Option type="bool" value="false" name="UseHtml"/>
+            <Option value="false" type="bool" name="IsMultiline"/>
+            <Option value="false" type="bool" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="profileelementdepthrange_lowervalue">
+    <field name="profileelementdepthrange_lowervalue" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="IsMultiline"/>
-            <Option type="bool" value="false" name="UseHtml"/>
+            <Option value="false" type="bool" name="IsMultiline"/>
+            <Option value="false" type="bool" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="beginlifespanversion">
+    <field name="beginlifespanversion" configurationFlags="None">
       <editWidget type="DateTime">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="allow_null"/>
-            <Option type="bool" value="true" name="calendar_popup"/>
-            <Option type="QString" value="yyyy-MM-dd HH:mm:ss" name="display_format"/>
-            <Option type="QString" value="yyyy-MM-dd HH:mm:ss" name="field_format"/>
-            <Option type="bool" value="false" name="field_format_overwrite"/>
-            <Option type="bool" value="false" name="field_iso_format"/>
+            <Option value="false" type="bool" name="allow_null"/>
+            <Option value="true" type="bool" name="calendar_popup"/>
+            <Option value="yyyy-MM-dd HH:mm:ss" type="QString" name="display_format"/>
+            <Option value="yyyy-MM-dd HH:mm:ss" type="QString" name="field_format"/>
+            <Option value="false" type="bool" name="field_format_overwrite"/>
+            <Option value="false" type="bool" name="field_iso_format"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="endlifespanversion">
+    <field name="endlifespanversion" configurationFlags="None">
       <editWidget type="DateTime">
         <config>
           <Option type="Map">
-            <Option type="bool" value="true" name="allow_null"/>
-            <Option type="bool" value="true" name="calendar_popup"/>
-            <Option type="QString" value="yyyy-MM-dd HH:mm:ss" name="display_format"/>
-            <Option type="QString" value="yyyy-MM-dd HH:mm:ss" name="field_format"/>
-            <Option type="bool" value="false" name="field_format_overwrite"/>
-            <Option type="bool" value="false" name="field_iso_format"/>
+            <Option value="true" type="bool" name="allow_null"/>
+            <Option value="true" type="bool" name="calendar_popup"/>
+            <Option value="yyyy-MM-dd HH:mm:ss" type="QString" name="display_format"/>
+            <Option value="yyyy-MM-dd HH:mm:ss" type="QString" name="field_format"/>
+            <Option value="false" type="bool" name="field_format_overwrite"/>
+            <Option value="false" type="bool" name="field_iso_format"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="layertype">
+    <field name="layertype" configurationFlags="None">
       <editWidget type="ValueRelation">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="AllowMulti"/>
-            <Option type="bool" value="true" name="AllowNull"/>
-            <Option type="QString" value="&quot;label&quot;" name="Description"/>
-            <Option type="QString" value="&quot;collection&quot; IN('LayerTypeValue') " name="FilterExpression"/>
-            <Option type="QString" value="id" name="Key"/>
-            <Option type="QString" value="codelist_44009776_a9a6_4371_91e7_8f3009ac5748" name="Layer"/>
-            <Option type="QString" value="codelist" name="LayerName"/>
-            <Option type="QString" value="ogr" name="LayerProviderName"/>
-            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_08 newcodelist/Vector.gpkg|layername=codelist" name="LayerSource"/>
-            <Option type="int" value="1" name="NofColumns"/>
-            <Option type="bool" value="false" name="OrderByValue"/>
-            <Option type="bool" value="false" name="UseCompleter"/>
-            <Option type="QString" value="label" name="Value"/>
+            <Option value="false" type="bool" name="AllowMulti"/>
+            <Option value="true" type="bool" name="AllowNull"/>
+            <Option value="&quot;label&quot;" type="QString" name="Description"/>
+            <Option value="&quot;collection&quot; IN('LayerTypeValue') " type="QString" name="FilterExpression"/>
+            <Option value="id" type="QString" name="Key"/>
+            <Option value="codelist_95efcf3a_4eef_4602_995d_4010a96ab058" type="QString" name="Layer"/>
+            <Option value="codelist" type="QString" name="LayerName"/>
+            <Option value="ogr" type="QString" name="LayerProviderName"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Corso Qgis/INSPIRE_SO_DEMO_QGIS_V02.gpkg|layername=codelist" type="QString" name="LayerSource"/>
+            <Option value="1" type="int" name="NofColumns"/>
+            <Option value="false" type="bool" name="OrderByValue"/>
+            <Option value="false" type="bool" name="UseCompleter"/>
+            <Option value="label" type="QString" name="Value"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="layerrocktype">
+    <field name="layerrocktype" configurationFlags="None">
       <editWidget type="ValueRelation">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="AllowMulti"/>
-            <Option type="bool" value="true" name="AllowNull"/>
-            <Option type="QString" value="&quot;label&quot;" name="Description"/>
-            <Option type="QString" value="&quot;collection&quot; IN('LithologyValue') " name="FilterExpression"/>
-            <Option type="QString" value="id" name="Key"/>
-            <Option type="QString" value="codelist_44009776_a9a6_4371_91e7_8f3009ac5748" name="Layer"/>
-            <Option type="QString" value="codelist" name="LayerName"/>
-            <Option type="QString" value="ogr" name="LayerProviderName"/>
-            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_08 newcodelist/Vector.gpkg|layername=codelist" name="LayerSource"/>
-            <Option type="int" value="1" name="NofColumns"/>
-            <Option type="bool" value="false" name="OrderByValue"/>
-            <Option type="bool" value="false" name="UseCompleter"/>
-            <Option type="QString" value="label" name="Value"/>
+            <Option value="false" type="bool" name="AllowMulti"/>
+            <Option value="true" type="bool" name="AllowNull"/>
+            <Option value="&quot;label&quot;" type="QString" name="Description"/>
+            <Option value="&quot;collection&quot; IN('LithologyValue') " type="QString" name="FilterExpression"/>
+            <Option value="id" type="QString" name="Key"/>
+            <Option value="codelist_95efcf3a_4eef_4602_995d_4010a96ab058" type="QString" name="Layer"/>
+            <Option value="codelist" type="QString" name="LayerName"/>
+            <Option value="ogr" type="QString" name="LayerProviderName"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Corso Qgis/INSPIRE_SO_DEMO_QGIS_V02.gpkg|layername=codelist" type="QString" name="LayerSource"/>
+            <Option value="1" type="int" name="NofColumns"/>
+            <Option value="false" type="bool" name="OrderByValue"/>
+            <Option value="false" type="bool" name="UseCompleter"/>
+            <Option value="label" type="QString" name="Value"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="layergenesisprocess">
+    <field name="layergenesisprocess" configurationFlags="None">
       <editWidget type="ValueRelation">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="AllowMulti"/>
-            <Option type="bool" value="true" name="AllowNull"/>
-            <Option type="QString" value="&quot;label&quot;" name="Description"/>
-            <Option type="QString" value="&quot;collection&quot; IN('EventProcessValue') " name="FilterExpression"/>
-            <Option type="QString" value="id" name="Key"/>
-            <Option type="QString" value="codelist_44009776_a9a6_4371_91e7_8f3009ac5748" name="Layer"/>
-            <Option type="QString" value="codelist" name="LayerName"/>
-            <Option type="QString" value="ogr" name="LayerProviderName"/>
-            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_08 newcodelist/Vector.gpkg|layername=codelist" name="LayerSource"/>
-            <Option type="int" value="1" name="NofColumns"/>
-            <Option type="bool" value="false" name="OrderByValue"/>
-            <Option type="bool" value="false" name="UseCompleter"/>
-            <Option type="QString" value="label" name="Value"/>
+            <Option value="false" type="bool" name="AllowMulti"/>
+            <Option value="true" type="bool" name="AllowNull"/>
+            <Option value="&quot;label&quot;" type="QString" name="Description"/>
+            <Option value="&quot;collection&quot; IN('EventProcessValue') " type="QString" name="FilterExpression"/>
+            <Option value="id" type="QString" name="Key"/>
+            <Option value="codelist_95efcf3a_4eef_4602_995d_4010a96ab058" type="QString" name="Layer"/>
+            <Option value="codelist" type="QString" name="LayerName"/>
+            <Option value="ogr" type="QString" name="LayerProviderName"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Corso Qgis/INSPIRE_SO_DEMO_QGIS_V02.gpkg|layername=codelist" type="QString" name="LayerSource"/>
+            <Option value="1" type="int" name="NofColumns"/>
+            <Option value="false" type="bool" name="OrderByValue"/>
+            <Option value="false" type="bool" name="UseCompleter"/>
+            <Option value="label" type="QString" name="Value"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="layergenesisenviroment">
+    <field name="layergenesisenviroment" configurationFlags="None">
       <editWidget type="ValueRelation">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="AllowMulti"/>
-            <Option type="bool" value="true" name="AllowNull"/>
-            <Option type="QString" value="&quot;label&quot;" name="Description"/>
-            <Option type="QString" value="&quot;collection&quot; IN('EventEnvironmentValue') " name="FilterExpression"/>
-            <Option type="QString" value="id" name="Key"/>
-            <Option type="QString" value="codelist_44009776_a9a6_4371_91e7_8f3009ac5748" name="Layer"/>
-            <Option type="QString" value="codelist" name="LayerName"/>
-            <Option type="QString" value="ogr" name="LayerProviderName"/>
-            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_08 newcodelist/Vector.gpkg|layername=codelist" name="LayerSource"/>
-            <Option type="int" value="1" name="NofColumns"/>
-            <Option type="bool" value="false" name="OrderByValue"/>
-            <Option type="bool" value="false" name="UseCompleter"/>
-            <Option type="QString" value="label" name="Value"/>
+            <Option value="false" type="bool" name="AllowMulti"/>
+            <Option value="true" type="bool" name="AllowNull"/>
+            <Option value="&quot;label&quot;" type="QString" name="Description"/>
+            <Option value="&quot;collection&quot; IN('EventEnvironmentValue') " type="QString" name="FilterExpression"/>
+            <Option value="id" type="QString" name="Key"/>
+            <Option value="codelist_95efcf3a_4eef_4602_995d_4010a96ab058" type="QString" name="Layer"/>
+            <Option value="codelist" type="QString" name="LayerName"/>
+            <Option value="ogr" type="QString" name="LayerProviderName"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Corso Qgis/INSPIRE_SO_DEMO_QGIS_V02.gpkg|layername=codelist" type="QString" name="LayerSource"/>
+            <Option value="1" type="int" name="NofColumns"/>
+            <Option value="false" type="bool" name="OrderByValue"/>
+            <Option value="false" type="bool" name="UseCompleter"/>
+            <Option value="label" type="QString" name="Value"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="layergenesisprocessstate">
+    <field name="layergenesisprocessstate" configurationFlags="None">
       <editWidget type="ValueRelation">
         <config>
           <Option type="Map">
-            <Option type="bool" value="false" name="AllowMulti"/>
-            <Option type="bool" value="true" name="AllowNull"/>
-            <Option type="QString" value="&quot;label&quot;" name="Description"/>
-            <Option type="QString" value="&quot;collection&quot; IN('LayerGenesisProcessStateValue') " name="FilterExpression"/>
-            <Option type="QString" value="id" name="Key"/>
-            <Option type="QString" value="codelist_44009776_a9a6_4371_91e7_8f3009ac5748" name="Layer"/>
-            <Option type="QString" value="codelist" name="LayerName"/>
-            <Option type="QString" value="ogr" name="LayerProviderName"/>
-            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/Vector_08 newcodelist/Vector.gpkg|layername=codelist" name="LayerSource"/>
-            <Option type="int" value="1" name="NofColumns"/>
-            <Option type="bool" value="false" name="OrderByValue"/>
-            <Option type="bool" value="false" name="UseCompleter"/>
-            <Option type="QString" value="label" name="Value"/>
+            <Option value="false" type="bool" name="AllowMulti"/>
+            <Option value="true" type="bool" name="AllowNull"/>
+            <Option value="&quot;label&quot;" type="QString" name="Description"/>
+            <Option value="&quot;collection&quot; IN('LayerGenesisProcessStateValue') " type="QString" name="FilterExpression"/>
+            <Option value="id" type="QString" name="Key"/>
+            <Option value="codelist_95efcf3a_4eef_4602_995d_4010a96ab058" type="QString" name="Layer"/>
+            <Option value="codelist" type="QString" name="LayerName"/>
+            <Option value="ogr" type="QString" name="LayerProviderName"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Corso Qgis/INSPIRE_SO_DEMO_QGIS_V02.gpkg|layername=codelist" type="QString" name="LayerSource"/>
+            <Option value="1" type="int" name="NofColumns"/>
+            <Option value="false" type="bool" name="OrderByValue"/>
+            <Option value="false" type="bool" name="UseCompleter"/>
+            <Option value="label" type="QString" name="Value"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="profileelementtype">
+    <field name="profileelementtype" configurationFlags="None">
       <editWidget type="CheckBox">
         <config>
           <Option type="Map">
-            <Option type="QString" value="" name="CheckedState"/>
-            <Option type="int" value="0" name="TextDisplayMethod"/>
-            <Option type="QString" value="" name="UncheckedState"/>
+            <Option value="" type="QString" name="CheckedState"/>
+            <Option value="0" type="int" name="TextDisplayMethod"/>
+            <Option value="" type="QString" name="UncheckedState"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="ispartof">
+    <field name="ispartof" configurationFlags="None">
       <editWidget type="RelationReference">
         <config>
-          <Option/>
+          <Option type="Map">
+            <Option value="false" type="bool" name="AllowAddFeatures"/>
+            <Option value="true" type="bool" name="AllowNULL"/>
+            <Option value="true" type="bool" name="FetchLimitActive"/>
+            <Option value="100" type="int" name="FetchLimitNumber"/>
+            <Option value="false" type="bool" name="MapIdentification"/>
+            <Option value="false" type="bool" name="ReadOnly"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Geopackage_Sicily_Import/GPKG/Sicily_02/INSPIRE_SO_07.gpkg|layername=soilprofile" type="QString" name="ReferencedLayerDataSource"/>
+            <Option value="soilprofile_4533a9b5_5d1e_4a04_a667_5768367b31b7" type="QString" name="ReferencedLayerId"/>
+            <Option value="soilprofile" type="QString" name="ReferencedLayerName"/>
+            <Option value="ogr" type="QString" name="ReferencedLayerProviderKey"/>
+            <Option value="soilprofile_profileelement" type="QString" name="Relation"/>
+            <Option value="false" type="bool" name="ShowForm"/>
+            <Option value="true" type="bool" name="ShowOpenFormButton"/>
+          </Option>
         </config>
       </editWidget>
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias field="id" index="0" name=""/>
-    <alias field="guidkey" index="1" name=""/>
-    <alias field="inspireid_localid" index="2" name=""/>
-    <alias field="inspireid_namespace" index="3" name=""/>
-    <alias field="inspireid_versionid" index="4" name=""/>
-    <alias field="profileelementdepthrange_uppervalue" index="5" name="Upper Value"/>
-    <alias field="profileelementdepthrange_lowervalue" index="6" name="Lower Value"/>
-    <alias field="beginlifespanversion" index="7" name=""/>
-    <alias field="endlifespanversion" index="8" name=""/>
-    <alias field="layertype" index="9" name="Type"/>
-    <alias field="layerrocktype" index="10" name="Lithology"/>
-    <alias field="layergenesisprocess" index="11" name="Event Process"/>
-    <alias field="layergenesisenviroment" index="12" name="Event Enviroment"/>
-    <alias field="layergenesisprocessstate" index="13" name="Genesys Process State"/>
-    <alias field="profileelementtype" index="14" name="Is a Layer"/>
-    <alias field="ispartof" index="15" name=""/>
+    <alias field="id" name="" index="0"/>
+    <alias field="guidkey" name="" index="1"/>
+    <alias field="inspireid_localid" name="" index="2"/>
+    <alias field="inspireid_namespace" name="" index="3"/>
+    <alias field="inspireid_versionid" name="" index="4"/>
+    <alias field="profileelementdepthrange_uppervalue" name="Upper Value" index="5"/>
+    <alias field="profileelementdepthrange_lowervalue" name="Lower Value" index="6"/>
+    <alias field="beginlifespanversion" name="" index="7"/>
+    <alias field="endlifespanversion" name="" index="8"/>
+    <alias field="layertype" name="Type" index="9"/>
+    <alias field="layerrocktype" name="Lithology" index="10"/>
+    <alias field="layergenesisprocess" name="Event Process" index="11"/>
+    <alias field="layergenesisenviroment" name="Event Enviroment" index="12"/>
+    <alias field="layergenesisprocessstate" name="Genesys Process State" index="13"/>
+    <alias field="profileelementtype" name="Is a Layer" index="14"/>
+    <alias field="ispartof" name="Is a part of" index="15"/>
   </aliases>
   <splitPolicies>
     <policy field="id" policy="Duplicate"/>
@@ -265,61 +279,61 @@
     <policy field="layergenesisenviroment" policy="DefaultValue"/>
     <policy field="layergenesisprocessstate" policy="DefaultValue"/>
     <policy field="profileelementtype" policy="DefaultValue"/>
-    <policy field="ispartof" policy="Duplicate"/>
+    <policy field="ispartof" policy="DefaultValue"/>
   </splitPolicies>
   <defaults>
-    <default applyOnUpdate="0" field="id" expression=""/>
-    <default applyOnUpdate="0" field="guidkey" expression=""/>
-    <default applyOnUpdate="0" field="inspireid_localid" expression=""/>
-    <default applyOnUpdate="0" field="inspireid_namespace" expression=""/>
-    <default applyOnUpdate="0" field="inspireid_versionid" expression=""/>
-    <default applyOnUpdate="0" field="profileelementdepthrange_uppervalue" expression=""/>
-    <default applyOnUpdate="0" field="profileelementdepthrange_lowervalue" expression=""/>
-    <default applyOnUpdate="0" field="beginlifespanversion" expression=""/>
-    <default applyOnUpdate="0" field="endlifespanversion" expression=""/>
-    <default applyOnUpdate="0" field="layertype" expression=""/>
-    <default applyOnUpdate="0" field="layerrocktype" expression=""/>
-    <default applyOnUpdate="0" field="layergenesisprocess" expression=""/>
-    <default applyOnUpdate="0" field="layergenesisenviroment" expression=""/>
-    <default applyOnUpdate="0" field="layergenesisprocessstate" expression=""/>
-    <default applyOnUpdate="0" field="profileelementtype" expression=""/>
-    <default applyOnUpdate="0" field="ispartof" expression=""/>
+    <default expression="" applyOnUpdate="0" field="id"/>
+    <default expression="" applyOnUpdate="0" field="guidkey"/>
+    <default expression="" applyOnUpdate="0" field="inspireid_localid"/>
+    <default expression="" applyOnUpdate="0" field="inspireid_namespace"/>
+    <default expression="" applyOnUpdate="0" field="inspireid_versionid"/>
+    <default expression="" applyOnUpdate="0" field="profileelementdepthrange_uppervalue"/>
+    <default expression="" applyOnUpdate="0" field="profileelementdepthrange_lowervalue"/>
+    <default expression="" applyOnUpdate="0" field="beginlifespanversion"/>
+    <default expression="" applyOnUpdate="0" field="endlifespanversion"/>
+    <default expression="" applyOnUpdate="0" field="layertype"/>
+    <default expression="" applyOnUpdate="0" field="layerrocktype"/>
+    <default expression="" applyOnUpdate="0" field="layergenesisprocess"/>
+    <default expression="" applyOnUpdate="0" field="layergenesisenviroment"/>
+    <default expression="" applyOnUpdate="0" field="layergenesisprocessstate"/>
+    <default expression="" applyOnUpdate="0" field="profileelementtype"/>
+    <default expression="" applyOnUpdate="0" field="ispartof"/>
   </defaults>
   <constraints>
-    <constraint field="id" constraints="3" exp_strength="0" unique_strength="1" notnull_strength="1"/>
-    <constraint field="guidkey" constraints="2" exp_strength="0" unique_strength="1" notnull_strength="0"/>
-    <constraint field="inspireid_localid" constraints="0" exp_strength="0" unique_strength="0" notnull_strength="0"/>
-    <constraint field="inspireid_namespace" constraints="0" exp_strength="0" unique_strength="0" notnull_strength="0"/>
-    <constraint field="inspireid_versionid" constraints="0" exp_strength="0" unique_strength="0" notnull_strength="0"/>
-    <constraint field="profileelementdepthrange_uppervalue" constraints="1" exp_strength="0" unique_strength="0" notnull_strength="1"/>
-    <constraint field="profileelementdepthrange_lowervalue" constraints="5" exp_strength="2" unique_strength="0" notnull_strength="1"/>
-    <constraint field="beginlifespanversion" constraints="1" exp_strength="0" unique_strength="0" notnull_strength="1"/>
-    <constraint field="endlifespanversion" constraints="0" exp_strength="0" unique_strength="0" notnull_strength="0"/>
-    <constraint field="layertype" constraints="0" exp_strength="0" unique_strength="0" notnull_strength="0"/>
-    <constraint field="layerrocktype" constraints="0" exp_strength="0" unique_strength="0" notnull_strength="0"/>
-    <constraint field="layergenesisprocess" constraints="0" exp_strength="0" unique_strength="0" notnull_strength="0"/>
-    <constraint field="layergenesisenviroment" constraints="0" exp_strength="0" unique_strength="0" notnull_strength="0"/>
-    <constraint field="layergenesisprocessstate" constraints="0" exp_strength="0" unique_strength="0" notnull_strength="0"/>
-    <constraint field="profileelementtype" constraints="1" exp_strength="0" unique_strength="0" notnull_strength="1"/>
-    <constraint field="ispartof" constraints="1" exp_strength="0" unique_strength="0" notnull_strength="1"/>
+    <constraint notnull_strength="1" exp_strength="0" unique_strength="1" field="id" constraints="3"/>
+    <constraint notnull_strength="0" exp_strength="0" unique_strength="1" field="guidkey" constraints="2"/>
+    <constraint notnull_strength="0" exp_strength="0" unique_strength="0" field="inspireid_localid" constraints="0"/>
+    <constraint notnull_strength="0" exp_strength="0" unique_strength="0" field="inspireid_namespace" constraints="0"/>
+    <constraint notnull_strength="0" exp_strength="0" unique_strength="0" field="inspireid_versionid" constraints="0"/>
+    <constraint notnull_strength="0" exp_strength="0" unique_strength="0" field="profileelementdepthrange_uppervalue" constraints="0"/>
+    <constraint notnull_strength="0" exp_strength="2" unique_strength="0" field="profileelementdepthrange_lowervalue" constraints="4"/>
+    <constraint notnull_strength="1" exp_strength="0" unique_strength="0" field="beginlifespanversion" constraints="1"/>
+    <constraint notnull_strength="0" exp_strength="0" unique_strength="0" field="endlifespanversion" constraints="0"/>
+    <constraint notnull_strength="0" exp_strength="0" unique_strength="0" field="layertype" constraints="0"/>
+    <constraint notnull_strength="0" exp_strength="0" unique_strength="0" field="layerrocktype" constraints="0"/>
+    <constraint notnull_strength="0" exp_strength="0" unique_strength="0" field="layergenesisprocess" constraints="0"/>
+    <constraint notnull_strength="0" exp_strength="0" unique_strength="0" field="layergenesisenviroment" constraints="0"/>
+    <constraint notnull_strength="0" exp_strength="0" unique_strength="0" field="layergenesisprocessstate" constraints="0"/>
+    <constraint notnull_strength="1" exp_strength="0" unique_strength="0" field="profileelementtype" constraints="1"/>
+    <constraint notnull_strength="1" exp_strength="0" unique_strength="0" field="ispartof" constraints="1"/>
   </constraints>
   <constraintExpressions>
-    <constraint field="id" exp="" desc=""/>
-    <constraint field="guidkey" exp="" desc=""/>
-    <constraint field="inspireid_localid" exp="" desc=""/>
-    <constraint field="inspireid_namespace" exp="" desc=""/>
-    <constraint field="inspireid_versionid" exp="" desc=""/>
-    <constraint field="profileelementdepthrange_uppervalue" exp="" desc=""/>
-    <constraint field="profileelementdepthrange_lowervalue" exp="&quot;profileelementdepthrange_uppervalue&quot; &lt;= &quot;profileelementdepthrange_lowervalue&quot; " desc=""/>
-    <constraint field="beginlifespanversion" exp="" desc=""/>
-    <constraint field="endlifespanversion" exp="" desc=""/>
-    <constraint field="layertype" exp="" desc=""/>
-    <constraint field="layerrocktype" exp="" desc=""/>
-    <constraint field="layergenesisprocess" exp="" desc=""/>
-    <constraint field="layergenesisenviroment" exp="" desc=""/>
-    <constraint field="layergenesisprocessstate" exp="" desc=""/>
-    <constraint field="profileelementtype" exp="" desc=""/>
-    <constraint field="ispartof" exp="" desc=""/>
+    <constraint exp="" desc="" field="id"/>
+    <constraint exp="" desc="" field="guidkey"/>
+    <constraint exp="" desc="" field="inspireid_localid"/>
+    <constraint exp="" desc="" field="inspireid_namespace"/>
+    <constraint exp="" desc="" field="inspireid_versionid"/>
+    <constraint exp="" desc="" field="profileelementdepthrange_uppervalue"/>
+    <constraint exp="&quot;profileelementdepthrange_uppervalue&quot; &lt;= &quot;profileelementdepthrange_lowervalue&quot; or   &quot;profileelementdepthrange_lowervalue&quot; is Null or  &quot;profileelementdepthrange_uppervalue&quot; is Null" desc="" field="profileelementdepthrange_lowervalue"/>
+    <constraint exp="" desc="" field="beginlifespanversion"/>
+    <constraint exp="" desc="" field="endlifespanversion"/>
+    <constraint exp="" desc="" field="layertype"/>
+    <constraint exp="" desc="" field="layerrocktype"/>
+    <constraint exp="" desc="" field="layergenesisprocess"/>
+    <constraint exp="" desc="" field="layergenesisenviroment"/>
+    <constraint exp="" desc="" field="layergenesisprocessstate"/>
+    <constraint exp="" desc="" field="profileelementtype"/>
+    <constraint exp="" desc="" field="ispartof"/>
   </constraintExpressions>
   <expressionfields/>
   <editform tolerant="1"></editform>
@@ -345,183 +359,193 @@ control = dialog.findChild(QWidget, "MyLineEdit")
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-      <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+      <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
     </labelStyle>
-    <attributeEditorField index="0" verticalStretch="0" name="id" showLabel="1" horizontalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <attributeEditorField horizontalStretch="0" verticalStretch="0" showLabel="1" name="id" index="0">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField index="-1" verticalStretch="0" name="idsoilprofile" showLabel="1" horizontalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="1" overrideLabelColor="0">
-        <labelFont bold="1" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,75,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <attributeEditorField horizontalStretch="0" verticalStretch="0" showLabel="1" name="ispartof" index="15">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField index="14" verticalStretch="0" name="profileelementtype" showLabel="1" horizontalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="1" overrideLabelColor="0">
-        <labelFont bold="1" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,75,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <attributeEditorField horizontalStretch="0" verticalStretch="0" showLabel="1" name="profileelementtype" index="14">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="1">
+        <labelFont description="MS Shell Dlg 2,8,-1,5,75,0,0,0,0,0" italic="0" bold="1" strikethrough="0" underline="0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer verticalStretch="0" type="GroupBox" name="INSPIRE ID" showLabel="1" horizontalStretch="0" columnCount="1" collapsedExpression="" visibilityExpression="" groupBox="1" collapsed="0" collapsedExpressionEnabled="0" visibilityExpressionEnabled="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <attributeEditorContainer horizontalStretch="0" collapsed="0" visibilityExpressionEnabled="0" collapsedExpressionEnabled="0" verticalStretch="0" collapsedExpression="" type="GroupBox" showLabel="1" columnCount="1" groupBox="1" visibilityExpression="" name="INSPIRE ID">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
       </labelStyle>
-      <attributeEditorField index="2" verticalStretch="0" name="inspireid_localid" showLabel="1" horizontalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+      <attributeEditorField horizontalStretch="0" verticalStretch="0" showLabel="1" name="inspireid_localid" index="2">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField index="3" verticalStretch="0" name="inspireid_namespace" showLabel="1" horizontalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+      <attributeEditorField horizontalStretch="0" verticalStretch="0" showLabel="1" name="inspireid_namespace" index="3">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField index="4" verticalStretch="0" name="inspireid_versionid" showLabel="1" horizontalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+      <attributeEditorField horizontalStretch="0" verticalStretch="0" showLabel="1" name="inspireid_versionid" index="4">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorContainer verticalStretch="0" type="GroupBox" name="Limits" showLabel="1" horizontalStretch="0" columnCount="1" collapsedExpression="" visibilityExpression="" groupBox="1" collapsed="0" collapsedExpressionEnabled="0" visibilityExpressionEnabled="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <attributeEditorContainer horizontalStretch="0" collapsed="0" visibilityExpressionEnabled="0" collapsedExpressionEnabled="0" verticalStretch="0" collapsedExpression="" type="GroupBox" showLabel="1" columnCount="1" groupBox="1" visibilityExpression="" name="Limits">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
       </labelStyle>
-      <attributeEditorField index="5" verticalStretch="0" name="profileelementdepthrange_uppervalue" showLabel="1" horizontalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+      <attributeEditorField horizontalStretch="0" verticalStretch="0" showLabel="1" name="profileelementdepthrange_uppervalue" index="5">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField index="6" verticalStretch="0" name="profileelementdepthrange_lowervalue" showLabel="1" horizontalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+      <attributeEditorField horizontalStretch="0" verticalStretch="0" showLabel="1" name="profileelementdepthrange_lowervalue" index="6">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorField index="10" verticalStretch="0" name="layerrocktype" showLabel="1" horizontalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <attributeEditorContainer horizontalStretch="0" collapsed="0" visibilityExpressionEnabled="1" collapsedExpressionEnabled="0" verticalStretch="0" collapsedExpression="" type="GroupBox" showLabel="1" columnCount="1" groupBox="1" visibilityExpression="profileelementtype = True" name="Layer Parameters">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
       </labelStyle>
-    </attributeEditorField>
-    <attributeEditorContainer verticalStretch="0" type="GroupBox" name="Layer Parameter" showLabel="1" horizontalStretch="0" columnCount="1" collapsedExpression="" visibilityExpression="profileelementtype = True" groupBox="1" collapsed="0" collapsedExpressionEnabled="0" visibilityExpressionEnabled="1">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+      <attributeEditorField horizontalStretch="0" verticalStretch="0" showLabel="1" name="layertype" index="9">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
+        </labelStyle>
+      </attributeEditorField>
+      <attributeEditorContainer horizontalStretch="0" collapsed="0" visibilityExpressionEnabled="1" collapsedExpressionEnabled="0" verticalStretch="0" collapsedExpression="" type="GroupBox" showLabel="1" columnCount="1" groupBox="1" visibilityExpression=" &quot;layertype&quot; ='http://inspire.ec.europa.eu/codelist/LayerTypeValue/geogenic'" name="Processes geogenetic">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
+        </labelStyle>
+        <attributeEditorField horizontalStretch="0" verticalStretch="0" showLabel="1" name="layerrocktype" index="10">
+          <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+            <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
+          </labelStyle>
+        </attributeEditorField>
+        <attributeEditorField horizontalStretch="0" verticalStretch="0" showLabel="1" name="layergenesisprocess" index="11">
+          <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+            <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
+          </labelStyle>
+        </attributeEditorField>
+        <attributeEditorField horizontalStretch="0" verticalStretch="0" showLabel="1" name="layergenesisenviroment" index="12">
+          <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+            <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
+          </labelStyle>
+        </attributeEditorField>
+        <attributeEditorField horizontalStretch="0" verticalStretch="0" showLabel="1" name="layergenesisprocessstate" index="13">
+          <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+            <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
+          </labelStyle>
+        </attributeEditorField>
+      </attributeEditorContainer>
+    </attributeEditorContainer>
+    <attributeEditorContainer horizontalStretch="0" collapsed="0" visibilityExpressionEnabled="0" collapsedExpressionEnabled="0" verticalStretch="0" collapsedExpression="" type="GroupBox" showLabel="1" columnCount="1" groupBox="1" visibilityExpression="" name="Dates">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
       </labelStyle>
-      <attributeEditorField index="9" verticalStretch="0" name="layertype" showLabel="1" horizontalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+      <attributeEditorField horizontalStretch="0" verticalStretch="0" showLabel="1" name="beginlifespanversion" index="7">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField index="11" verticalStretch="0" name="layergenesisprocess" showLabel="1" horizontalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
-        </labelStyle>
-      </attributeEditorField>
-      <attributeEditorField index="12" verticalStretch="0" name="layergenesisenviroment" showLabel="1" horizontalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
-        </labelStyle>
-      </attributeEditorField>
-      <attributeEditorField index="13" verticalStretch="0" name="layergenesisprocessstate" showLabel="1" horizontalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+      <attributeEditorField horizontalStretch="0" verticalStretch="0" showLabel="1" name="endlifespanversion" index="8">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorContainer verticalStretch="0" type="GroupBox" name="Dates" showLabel="1" horizontalStretch="0" columnCount="1" collapsedExpression="" visibilityExpression="" groupBox="1" collapsed="0" collapsedExpressionEnabled="0" visibilityExpressionEnabled="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <attributeEditorContainer horizontalStretch="0" collapsed="0" visibilityExpressionEnabled="0" collapsedExpressionEnabled="0" verticalStretch="0" collapsedExpression="" type="Tab" showLabel="1" columnCount="1" groupBox="0" visibilityExpression="" name="Particle Size fraction">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
       </labelStyle>
-      <attributeEditorField index="7" verticalStretch="0" name="beginlifespanversion" showLabel="1" horizontalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
-        </labelStyle>
-      </attributeEditorField>
-      <attributeEditorField index="8" verticalStretch="0" name="endlifespanversion" showLabel="1" horizontalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
-        </labelStyle>
-      </attributeEditorField>
-    </attributeEditorContainer>
-    <attributeEditorContainer verticalStretch="0" type="Tab" name="Particle Size fraction" showLabel="1" horizontalStretch="0" columnCount="1" collapsedExpression="" visibilityExpression="" groupBox="0" collapsed="0" collapsedExpressionEnabled="0" visibilityExpressionEnabled="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
-      </labelStyle>
-      <attributeEditorRelation relationWidgetTypeId="relation_editor" verticalStretch="0" name="profileelement_particlesizefractiontype" showLabel="0" horizontalStretch="0" nmRelationId="" label="" forceSuppressFormPopup="0" relation="profileelement_particlesizefractiontype">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+      <attributeEditorRelation horizontalStretch="0" forceSuppressFormPopup="0" verticalStretch="0" label="" nmRelationId="" showLabel="0" name="profileelement_particlesizefractiontype" relationWidgetTypeId="relation_editor" relation="profileelement_particlesizefractiontype">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
         </labelStyle>
         <editor_configuration type="Map">
-          <Option type="bool" value="false" name="allow_add_child_feature_with_no_geometry"/>
-          <Option type="QString" value="AllButtons" name="buttons"/>
-          <Option type="bool" value="true" name="show_first_feature"/>
+          <Option value="false" type="bool" name="allow_add_child_feature_with_no_geometry"/>
+          <Option value="AllButtons" type="QString" name="buttons"/>
+          <Option value="true" type="bool" name="show_first_feature"/>
         </editor_configuration>
       </attributeEditorRelation>
     </attributeEditorContainer>
-    <attributeEditorContainer verticalStretch="0" type="Tab" name="Datastream" showLabel="1" horizontalStretch="0" columnCount="1" collapsedExpression="" visibilityExpression="" groupBox="0" collapsed="0" collapsedExpressionEnabled="0" visibilityExpressionEnabled="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <attributeEditorContainer horizontalStretch="0" collapsed="0" visibilityExpressionEnabled="1" collapsedExpressionEnabled="0" verticalStretch="0" collapsedExpression="" type="Tab" showLabel="1" columnCount="1" groupBox="0" visibilityExpression="profileelementtype = false" name="FAO Horizon Notation Type">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
       </labelStyle>
-      <attributeEditorRelation relationWidgetTypeId="relation_editor" verticalStretch="0" name="profileelement_datastream_6" showLabel="0" horizontalStretch="0" nmRelationId="" label="" forceSuppressFormPopup="0" relation="profileelement_datastream_6">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+      <attributeEditorRelation horizontalStretch="0" forceSuppressFormPopup="0" verticalStretch="0" label="" nmRelationId="" showLabel="0" name="profileelement_faohorizonnotationtype" relationWidgetTypeId="relation_editor" relation="profileelement_faohorizonnotationtype">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
         </labelStyle>
         <editor_configuration type="Map">
-          <Option type="bool" value="false" name="allow_add_child_feature_with_no_geometry"/>
-          <Option type="QString" value="AllButtons" name="buttons"/>
-          <Option type="bool" value="true" name="show_first_feature"/>
+          <Option value="false" type="bool" name="allow_add_child_feature_with_no_geometry"/>
+          <Option value="AllButtons" type="QString" name="buttons"/>
+          <Option value="true" type="bool" name="show_first_feature"/>
         </editor_configuration>
       </attributeEditorRelation>
     </attributeEditorContainer>
-    <attributeEditorContainer verticalStretch="0" type="Tab" name="FAO Horizon Notation Type" showLabel="1" horizontalStretch="0" columnCount="1" collapsedExpression="" visibilityExpression="profileelementtype = false" groupBox="0" collapsed="0" collapsedExpressionEnabled="0" visibilityExpressionEnabled="1">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <attributeEditorContainer horizontalStretch="0" collapsed="0" visibilityExpressionEnabled="1" collapsedExpressionEnabled="0" verticalStretch="0" collapsedExpression="" type="Tab" showLabel="1" columnCount="1" groupBox="0" visibilityExpression="profileelementtype = false" name="Other Horizon Notation Type">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
       </labelStyle>
-      <attributeEditorRelation relationWidgetTypeId="relation_editor" verticalStretch="0" name="profileelement_faohorizonnotationtype" showLabel="0" horizontalStretch="0" nmRelationId="" label="" forceSuppressFormPopup="0" relation="profileelement_faohorizonnotationtype">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+      <attributeEditorRelation horizontalStretch="0" forceSuppressFormPopup="0" verticalStretch="0" label="" nmRelationId="" showLabel="0" name="profileelement_otherhorizon_profileelement_2" relationWidgetTypeId="relation_editor" relation="profileelement_otherhorizon_profileelement_2">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
         </labelStyle>
         <editor_configuration type="Map">
-          <Option type="bool" value="false" name="allow_add_child_feature_with_no_geometry"/>
-          <Option type="QString" value="AllButtons" name="buttons"/>
-          <Option type="bool" value="true" name="show_first_feature"/>
+          <Option value="false" type="bool" name="allow_add_child_feature_with_no_geometry"/>
+          <Option value="AllButtons" type="QString" name="buttons"/>
+          <Option value="true" type="bool" name="show_first_feature"/>
         </editor_configuration>
       </attributeEditorRelation>
     </attributeEditorContainer>
-    <attributeEditorContainer verticalStretch="0" type="Tab" name="Other Horizon Notation Type" showLabel="1" horizontalStretch="0" columnCount="1" collapsedExpression="" visibilityExpression="profileelementtype = false" groupBox="0" collapsed="0" collapsedExpressionEnabled="0" visibilityExpressionEnabled="1">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+    <attributeEditorContainer horizontalStretch="0" collapsed="0" visibilityExpressionEnabled="0" collapsedExpressionEnabled="0" verticalStretch="0" collapsedExpression="" type="GroupBox" showLabel="1" columnCount="1" groupBox="1" visibilityExpression="" name="RELATIONS">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
       </labelStyle>
-      <attributeEditorRelation relationWidgetTypeId="relation_editor" verticalStretch="0" name="profileelement_otherhorizon_profileelement_2" showLabel="0" horizontalStretch="0" nmRelationId="" label="" forceSuppressFormPopup="0" relation="profileelement_otherhorizon_profileelement_2">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" italic="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" strikethrough="0"/>
+      <attributeEditorContainer horizontalStretch="0" collapsed="1" visibilityExpressionEnabled="0" collapsedExpressionEnabled="0" verticalStretch="0" collapsedExpression="" type="GroupBox" showLabel="1" columnCount="1" groupBox="1" visibilityExpression="" name="Datastream">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
         </labelStyle>
-        <editor_configuration type="Map">
-          <Option type="bool" value="false" name="allow_add_child_feature_with_no_geometry"/>
-          <Option type="QString" value="AllButtons" name="buttons"/>
-          <Option type="bool" value="true" name="show_first_feature"/>
-        </editor_configuration>
-      </attributeEditorRelation>
+        <attributeEditorRelation horizontalStretch="0" forceSuppressFormPopup="0" verticalStretch="0" label="" nmRelationId="" showLabel="0" name="profileelement_datastream_6" relationWidgetTypeId="relation_editor" relation="profileelement_datastream_6">
+          <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+            <labelFont description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" bold="0" strikethrough="0" underline="0" style=""/>
+          </labelStyle>
+          <editor_configuration type="Map">
+            <Option value="false" type="bool" name="allow_add_child_feature_with_no_geometry"/>
+            <Option value="AllButtons" type="QString" name="buttons"/>
+            <Option value="true" type="bool" name="show_first_feature"/>
+          </editor_configuration>
+        </attributeEditorRelation>
+      </attributeEditorContainer>
     </attributeEditorContainer>
   </attributeEditorForm>
   <editable>
-    <field name="beginlifespanversion" editable="1"/>
-    <field name="endlifespanversion" editable="1"/>
-    <field name="guidkey" editable="1"/>
-    <field name="id" editable="1"/>
-    <field name="idsoilprofile" editable="1"/>
-    <field name="inspireid_localid" editable="1"/>
-    <field name="inspireid_namespace" editable="1"/>
-    <field name="inspireid_versionid" editable="1"/>
-    <field name="ispartof" editable="1"/>
-    <field name="layergenesisenviroment" editable="1"/>
-    <field name="layergenesisprocess" editable="1"/>
-    <field name="layergenesisprocessstate" editable="1"/>
-    <field name="layerrocktype" editable="1"/>
-    <field name="layertype" editable="1"/>
-    <field name="profileelementdepthrange_lowervalue" editable="1"/>
-    <field name="profileelementdepthrange_uppervalue" editable="1"/>
-    <field name="profileelementtype" editable="1"/>
+    <field editable="1" name="beginlifespanversion"/>
+    <field editable="1" name="endlifespanversion"/>
+    <field editable="1" name="guidkey"/>
+    <field editable="1" name="id"/>
+    <field editable="1" name="idsoilprofile"/>
+    <field editable="1" name="inspireid_localid"/>
+    <field editable="1" name="inspireid_namespace"/>
+    <field editable="1" name="inspireid_versionid"/>
+    <field editable="1" name="ispartof"/>
+    <field editable="1" name="layergenesisenviroment"/>
+    <field editable="1" name="layergenesisprocess"/>
+    <field editable="1" name="layergenesisprocessstate"/>
+    <field editable="1" name="layerrocktype"/>
+    <field editable="1" name="layertype"/>
+    <field editable="1" name="profileelementdepthrange_lowervalue"/>
+    <field editable="1" name="profileelementdepthrange_uppervalue"/>
+    <field editable="1" name="profileelementtype"/>
   </editable>
   <labelOnTop>
     <field name="beginlifespanversion" labelOnTop="0"/>
@@ -543,23 +567,23 @@ control = dialog.findChild(QWidget, "MyLineEdit")
     <field name="profileelementtype" labelOnTop="0"/>
   </labelOnTop>
   <reuseLastValue>
-    <field name="beginlifespanversion" reuseLastValue="0"/>
-    <field name="endlifespanversion" reuseLastValue="0"/>
-    <field name="guidkey" reuseLastValue="0"/>
-    <field name="id" reuseLastValue="0"/>
-    <field name="idsoilprofile" reuseLastValue="0"/>
-    <field name="inspireid_localid" reuseLastValue="0"/>
-    <field name="inspireid_namespace" reuseLastValue="0"/>
-    <field name="inspireid_versionid" reuseLastValue="0"/>
-    <field name="ispartof" reuseLastValue="0"/>
-    <field name="layergenesisenviroment" reuseLastValue="0"/>
-    <field name="layergenesisprocess" reuseLastValue="0"/>
-    <field name="layergenesisprocessstate" reuseLastValue="0"/>
-    <field name="layerrocktype" reuseLastValue="0"/>
-    <field name="layertype" reuseLastValue="0"/>
-    <field name="profileelementdepthrange_lowervalue" reuseLastValue="0"/>
-    <field name="profileelementdepthrange_uppervalue" reuseLastValue="0"/>
-    <field name="profileelementtype" reuseLastValue="0"/>
+    <field reuseLastValue="0" name="beginlifespanversion"/>
+    <field reuseLastValue="0" name="endlifespanversion"/>
+    <field reuseLastValue="0" name="guidkey"/>
+    <field reuseLastValue="0" name="id"/>
+    <field reuseLastValue="0" name="idsoilprofile"/>
+    <field reuseLastValue="0" name="inspireid_localid"/>
+    <field reuseLastValue="0" name="inspireid_namespace"/>
+    <field reuseLastValue="0" name="inspireid_versionid"/>
+    <field reuseLastValue="0" name="ispartof"/>
+    <field reuseLastValue="0" name="layergenesisenviroment"/>
+    <field reuseLastValue="0" name="layergenesisprocess"/>
+    <field reuseLastValue="0" name="layergenesisprocessstate"/>
+    <field reuseLastValue="0" name="layerrocktype"/>
+    <field reuseLastValue="0" name="layertype"/>
+    <field reuseLastValue="0" name="profileelementdepthrange_lowervalue"/>
+    <field reuseLastValue="0" name="profileelementdepthrange_uppervalue"/>
+    <field reuseLastValue="0" name="profileelementtype"/>
   </reuseLastValue>
   <dataDefinedFieldProperties/>
   <widgets/>

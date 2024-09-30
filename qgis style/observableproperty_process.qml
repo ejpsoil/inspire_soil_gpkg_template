@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.32.3-Lima" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0">
+<qgis styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0" version="3.32.3-Lima">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
@@ -7,10 +7,10 @@
     <Private>0</Private>
   </flags>
   <referencedLayers>
-    <relation id="observableproperty_observableproperty_process" providerKey="ogr" referencedLayer="observableproperty_f892a84a_e3f5_40d1_82d1_d5a70fbafff0" layerName="observableproperty" name="observableproperty_observableproperty_process" dataSource="./INSPIRE_Selection_4.gpkg|layername=observableproperty" referencingLayer="observableproperty_process_dbb706f2_690c_482d_8d97_d29ea9500844" layerId="observableproperty_f892a84a_e3f5_40d1_82d1_d5a70fbafff0" strength="Composition">
+    <relation referencedLayer="observableproperty_52f5120f_6406_4f30_9d6a_6a2408ea4da4" id="observableproperty_observableproperty_process" referencingLayer="observableproperty_process_9fe326a2_bdac_4d28_af71_64eeb743e976" layerId="observableproperty_52f5120f_6406_4f30_9d6a_6a2408ea4da4" providerKey="ogr" dataSource="./INSPIRE_SO_DEMO_V01.gpkg|layername=observableproperty" layerName="observableproperty" name="observableproperty_observableproperty_process" strength="Association">
       <fieldRef referencedField="guidkey" referencingField="idobservedproperty"/>
     </relation>
-    <relation id="process_observableproperty_process_2" providerKey="ogr" referencedLayer="process_f67eda7c_192e_4137_b95f_e414d5ab4a77" layerName="process" name="process_observableproperty_process_2" dataSource="./INSPIRE_Selection_4.gpkg|layername=process" referencingLayer="observableproperty_process_dbb706f2_690c_482d_8d97_d29ea9500844" layerId="process_f67eda7c_192e_4137_b95f_e414d5ab4a77" strength="Composition">
+    <relation referencedLayer="process_16cd52cc_8b30_417e_9d38_3de72c774e16" id="process_observableproperty_process_2" referencingLayer="observableproperty_process_9fe326a2_bdac_4d28_af71_64eeb743e976" layerId="process_16cd52cc_8b30_417e_9d38_3de72c774e16" providerKey="ogr" dataSource="./INSPIRE_SO_DEMO_V01.gpkg|layername=process" layerName="process" name="process_observableproperty_process_2" strength="Association">
       <fieldRef referencedField="guidkey" referencingField="idprocess"/>
     </relation>
   </referencedLayers>
@@ -19,19 +19,19 @@
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option value="false" name="AllowAddFeatures" type="bool"/>
-            <Option value="false" name="AllowNULL" type="bool"/>
-            <Option value="true" name="FetchLimitActive" type="bool"/>
-            <Option value="100" name="FetchLimitNumber" type="int"/>
-            <Option value="false" name="MapIdentification" type="bool"/>
-            <Option value="false" name="ReadOnly" type="bool"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=process" name="ReferencedLayerDataSource" type="QString"/>
-            <Option value="process_f67eda7c_192e_4137_b95f_e414d5ab4a77" name="ReferencedLayerId" type="QString"/>
-            <Option value="process" name="ReferencedLayerName" type="QString"/>
-            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
-            <Option value="process_observableproperty_process_2" name="Relation" type="QString"/>
-            <Option value="false" name="ShowForm" type="bool"/>
-            <Option value="true" name="ShowOpenFormButton" type="bool"/>
+            <Option value="false" type="bool" name="AllowAddFeatures"/>
+            <Option value="false" type="bool" name="AllowNULL"/>
+            <Option value="true" type="bool" name="FetchLimitActive"/>
+            <Option value="100" type="int" name="FetchLimitNumber"/>
+            <Option value="false" type="bool" name="MapIdentification"/>
+            <Option value="false" type="bool" name="ReadOnly"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=process" type="QString" name="ReferencedLayerDataSource"/>
+            <Option value="process_f67eda7c_192e_4137_b95f_e414d5ab4a77" type="QString" name="ReferencedLayerId"/>
+            <Option value="process" type="QString" name="ReferencedLayerName"/>
+            <Option value="ogr" type="QString" name="ReferencedLayerProviderKey"/>
+            <Option value="process_observableproperty_process_2" type="QString" name="Relation"/>
+            <Option value="false" type="bool" name="ShowForm"/>
+            <Option value="true" type="bool" name="ShowOpenFormButton"/>
           </Option>
         </config>
       </editWidget>
@@ -40,43 +40,43 @@
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option value="false" name="AllowAddFeatures" type="bool"/>
-            <Option value="false" name="AllowNULL" type="bool"/>
-            <Option value="true" name="FetchLimitActive" type="bool"/>
-            <Option value="100" name="FetchLimitNumber" type="int"/>
-            <Option value="false" name="MapIdentification" type="bool"/>
-            <Option value="false" name="ReadOnly" type="bool"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=observableproperty" name="ReferencedLayerDataSource" type="QString"/>
-            <Option value="observableproperty_f892a84a_e3f5_40d1_82d1_d5a70fbafff0" name="ReferencedLayerId" type="QString"/>
-            <Option value="observableproperty" name="ReferencedLayerName" type="QString"/>
-            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
-            <Option value="observableproperty_observableproperty_process" name="Relation" type="QString"/>
-            <Option value="false" name="ShowForm" type="bool"/>
-            <Option value="true" name="ShowOpenFormButton" type="bool"/>
+            <Option value="false" type="bool" name="AllowAddFeatures"/>
+            <Option value="false" type="bool" name="AllowNULL"/>
+            <Option value="true" type="bool" name="FetchLimitActive"/>
+            <Option value="100" type="int" name="FetchLimitNumber"/>
+            <Option value="false" type="bool" name="MapIdentification"/>
+            <Option value="false" type="bool" name="ReadOnly"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=observableproperty" type="QString" name="ReferencedLayerDataSource"/>
+            <Option value="observableproperty_f892a84a_e3f5_40d1_82d1_d5a70fbafff0" type="QString" name="ReferencedLayerId"/>
+            <Option value="observableproperty" type="QString" name="ReferencedLayerName"/>
+            <Option value="ogr" type="QString" name="ReferencedLayerProviderKey"/>
+            <Option value="observableproperty_observableproperty_process" type="QString" name="Relation"/>
+            <Option value="false" type="bool" name="ShowForm"/>
+            <Option value="true" type="bool" name="ShowOpenFormButton"/>
           </Option>
         </config>
       </editWidget>
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias index="0" name="Process" field="idprocess"/>
-    <alias index="1" name="Observable Properrty" field="idobservedproperty"/>
+    <alias field="idprocess" index="0" name="Process"/>
+    <alias field="idobservedproperty" index="1" name="Observable Properrty"/>
   </aliases>
   <splitPolicies>
-    <policy policy="DefaultValue" field="idprocess"/>
-    <policy policy="DefaultValue" field="idobservedproperty"/>
+    <policy field="idprocess" policy="DefaultValue"/>
+    <policy field="idobservedproperty" policy="DefaultValue"/>
   </splitPolicies>
   <defaults>
-    <default applyOnUpdate="0" expression="" field="idprocess"/>
-    <default applyOnUpdate="0" expression="" field="idobservedproperty"/>
+    <default field="idprocess" applyOnUpdate="0" expression=""/>
+    <default field="idobservedproperty" applyOnUpdate="0" expression=""/>
   </defaults>
   <constraints>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="idprocess"/>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="idobservedproperty"/>
+    <constraint field="idprocess" unique_strength="0" notnull_strength="1" exp_strength="0" constraints="1"/>
+    <constraint field="idobservedproperty" unique_strength="0" notnull_strength="1" exp_strength="0" constraints="1"/>
   </constraints>
   <constraintExpressions>
-    <constraint exp="" desc="" field="idprocess"/>
-    <constraint exp="" desc="" field="idobservedproperty"/>
+    <constraint field="idprocess" exp="" desc=""/>
+    <constraint field="idobservedproperty" exp="" desc=""/>
   </constraintExpressions>
   <expressionfields/>
   <editform tolerant="1"></editform>
@@ -103,17 +103,17 @@ def my_form_open(dialog, layer, feature):
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-      <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
+      <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" bold="0" italic="0" style=""/>
     </labelStyle>
-    <attributeEditorField showLabel="1" index="0" name="idprocess" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField horizontalStretch="0" index="0" name="idprocess" showLabel="1" verticalStretch="0">
+      <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
+        <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" bold="0" italic="0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="1" name="idobservedproperty" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField horizontalStretch="0" index="1" name="idobservedproperty" showLabel="1" verticalStretch="0">
+      <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
+        <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" bold="0" italic="0" style=""/>
       </labelStyle>
     </attributeEditorField>
   </attributeEditorForm>
@@ -131,6 +131,25 @@ def my_form_open(dialog, layer, feature):
   </reuseLastValue>
   <dataDefinedFieldProperties/>
   <widgets/>
-  <previewExpression>COALESCE( "name", '&lt;NULL>' )</previewExpression>
+  <previewExpression>'Proc:'||' '|| &#xd;
+COALESCE(attribute(get_feature&#xd;
+						(&#xd;
+							'process',&#xd;
+							'guidkey',&#xd;
+							"idprocess"&#xd;
+						),&#xd;
+					'name'&#xd;
+					),&#xd;
+		'&lt;NULL>')&#xd;
+||' - ObsProp: '|| &#xd;
+COALESCE(attribute(get_feature&#xd;
+						(&#xd;
+							'observableproperty',&#xd;
+							'guidkey',&#xd;
+							"idobservedproperty"&#xd;
+						),&#xd;
+					'name'&#xd;
+					),&#xd;
+		'&lt;NULL>')</previewExpression>
   <layerGeometryType>4</layerGeometryType>
 </qgis>
