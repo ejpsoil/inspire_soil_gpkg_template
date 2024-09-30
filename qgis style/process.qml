@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.32.3-Lima" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0">
+<qgis readOnly="0" version="3.32.3-Lima" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
@@ -7,195 +7,195 @@
     <Private>0</Private>
   </flags>
   <referencedLayers>
-    <relation id="documentcitation_process" providerKey="ogr" referencedLayer="documentcitation_f547b78e_ac4c_4b31_8ea4_fd313135ed2c" layerName="documentcitation" name="documentcitation_process" dataSource="./INSPIRE_Selection_4.gpkg|layername=documentcitation" referencingLayer="process_f67eda7c_192e_4137_b95f_e414d5ab4a77" layerId="documentcitation_f547b78e_ac4c_4b31_8ea4_fd313135ed2c" strength="Association">
+    <relation name="documentcitation_process" providerKey="ogr" id="documentcitation_process" strength="Association" dataSource="./Python_Test.gpkg|layername=documentcitation" referencedLayer="documentcitation_7bdd83be_95f3_4736_8b44_bdbf8d357a3c" layerId="documentcitation_7bdd83be_95f3_4736_8b44_bdbf8d357a3c" referencingLayer="process_23086fd7_cc0a_4797_958f_7308949ff729" layerName="documentcitation">
       <fieldRef referencedField="guidkey" referencingField="iddocumentcitation2"/>
     </relation>
-    <relation id="documentcitation_process_2" providerKey="ogr" referencedLayer="documentcitation_f547b78e_ac4c_4b31_8ea4_fd313135ed2c" layerName="documentcitation" name="documentcitation_process_2" dataSource="./INSPIRE_Selection_4.gpkg|layername=documentcitation" referencingLayer="process_f67eda7c_192e_4137_b95f_e414d5ab4a77" layerId="documentcitation_f547b78e_ac4c_4b31_8ea4_fd313135ed2c" strength="Association">
+    <relation name="documentcitation_process_2" providerKey="ogr" id="documentcitation_process_2" strength="Association" dataSource="./Python_Test.gpkg|layername=documentcitation" referencedLayer="documentcitation_7bdd83be_95f3_4736_8b44_bdbf8d357a3c" layerId="documentcitation_7bdd83be_95f3_4736_8b44_bdbf8d357a3c" referencingLayer="process_23086fd7_cc0a_4797_958f_7308949ff729" layerName="documentcitation">
       <fieldRef referencedField="guidkey" referencingField="iddocumentcitation1"/>
     </relation>
-    <relation id="relatedparty_process_3" providerKey="ogr" referencedLayer="relatedparty_15f394ef_43cd_44d2_99e6_6dbcee041171" layerName="relatedparty" name="relatedparty_process_3" dataSource="./INSPIRE_Selection_4.gpkg|layername=relatedparty" referencingLayer="process_f67eda7c_192e_4137_b95f_e414d5ab4a77" layerId="relatedparty_15f394ef_43cd_44d2_99e6_6dbcee041171" strength="Association">
+    <relation name="relatedparty_process_3" providerKey="ogr" id="relatedparty_process_3" strength="Association" dataSource="./Python_Test.gpkg|layername=relatedparty" referencedLayer="relatedparty_0ba1b03b_2a59_4996_abde_f9cc588f30b3" layerId="relatedparty_0ba1b03b_2a59_4996_abde_f9cc588f30b3" referencingLayer="process_23086fd7_cc0a_4797_958f_7308949ff729" layerName="relatedparty">
       <fieldRef referencedField="guidkey" referencingField="idrelatedparty2"/>
     </relation>
-    <relation id="relatedparty_process_4" providerKey="ogr" referencedLayer="relatedparty_15f394ef_43cd_44d2_99e6_6dbcee041171" layerName="relatedparty" name="relatedparty_process_4" dataSource="./INSPIRE_Selection_4.gpkg|layername=relatedparty" referencingLayer="process_f67eda7c_192e_4137_b95f_e414d5ab4a77" layerId="relatedparty_15f394ef_43cd_44d2_99e6_6dbcee041171" strength="Association">
+    <relation name="relatedparty_process_4" providerKey="ogr" id="relatedparty_process_4" strength="Association" dataSource="./Python_Test.gpkg|layername=relatedparty" referencedLayer="relatedparty_0ba1b03b_2a59_4996_abde_f9cc588f30b3" layerId="relatedparty_0ba1b03b_2a59_4996_abde_f9cc588f30b3" referencingLayer="process_23086fd7_cc0a_4797_958f_7308949ff729" layerName="relatedparty">
       <fieldRef referencedField="guidkey" referencingField="idrelatedparty1"/>
     </relation>
   </referencedLayers>
   <fieldConfiguration>
-    <field configurationFlags="None" name="id">
+    <field name="id" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option/>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="guidkey">
+    <field name="guidkey" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option name="IsMultiline" value="false" type="bool"/>
+            <Option name="UseHtml" value="false" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="inspireid_localid">
+    <field name="inspireid_localid" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option name="IsMultiline" value="false" type="bool"/>
+            <Option name="UseHtml" value="false" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="inspireid_namespace">
+    <field name="inspireid_namespace" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option name="IsMultiline" value="false" type="bool"/>
+            <Option name="UseHtml" value="false" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="inspireid_versionid">
+    <field name="inspireid_versionid" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option name="IsMultiline" value="false" type="bool"/>
+            <Option name="UseHtml" value="false" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="name">
+    <field name="name" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option name="IsMultiline" value="false" type="bool"/>
+            <Option name="UseHtml" value="false" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="description">
+    <field name="description" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option name="IsMultiline" value="false" type="bool"/>
+            <Option name="UseHtml" value="false" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="type">
+    <field name="type" configurationFlags="None">
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option name="IsMultiline" value="false" type="bool"/>
+            <Option name="UseHtml" value="false" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="idrelatedparty1">
+    <field name="idrelatedparty1" configurationFlags="None">
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option value="false" name="AllowAddFeatures" type="bool"/>
-            <Option value="false" name="AllowNULL" type="bool"/>
-            <Option value="true" name="FetchLimitActive" type="bool"/>
-            <Option value="100" name="FetchLimitNumber" type="int"/>
-            <Option value="false" name="MapIdentification" type="bool"/>
-            <Option value="false" name="ReadOnly" type="bool"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=relatedparty" name="ReferencedLayerDataSource" type="QString"/>
-            <Option value="relatedparty_15f394ef_43cd_44d2_99e6_6dbcee041171" name="ReferencedLayerId" type="QString"/>
-            <Option value="relatedparty" name="ReferencedLayerName" type="QString"/>
-            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
-            <Option value="relatedparty_process_4" name="Relation" type="QString"/>
-            <Option value="false" name="ShowForm" type="bool"/>
-            <Option value="true" name="ShowOpenFormButton" type="bool"/>
+            <Option name="AllowAddFeatures" value="false" type="bool"/>
+            <Option name="AllowNULL" value="false" type="bool"/>
+            <Option name="FetchLimitActive" value="true" type="bool"/>
+            <Option name="FetchLimitNumber" value="100" type="int"/>
+            <Option name="MapIdentification" value="false" type="bool"/>
+            <Option name="ReadOnly" value="false" type="bool"/>
+            <Option name="ReferencedLayerDataSource" value="C:/Users/andrea.lachi/Documents/Geopackage_Soil_Import/Geop_TEST/Python_Test.gpkg|layername=relatedparty" type="QString"/>
+            <Option name="ReferencedLayerId" value="relatedparty_0ba1b03b_2a59_4996_abde_f9cc588f30b3" type="QString"/>
+            <Option name="ReferencedLayerName" value="relatedparty" type="QString"/>
+            <Option name="ReferencedLayerProviderKey" value="ogr" type="QString"/>
+            <Option name="Relation" value="relatedparty_process_4" type="QString"/>
+            <Option name="ShowForm" value="false" type="bool"/>
+            <Option name="ShowOpenFormButton" value="true" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="idrelatedparty2">
+    <field name="idrelatedparty2" configurationFlags="None">
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option value="false" name="AllowAddFeatures" type="bool"/>
-            <Option value="false" name="AllowNULL" type="bool"/>
-            <Option value="true" name="FetchLimitActive" type="bool"/>
-            <Option value="100" name="FetchLimitNumber" type="int"/>
-            <Option value="false" name="MapIdentification" type="bool"/>
-            <Option value="false" name="ReadOnly" type="bool"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=relatedparty" name="ReferencedLayerDataSource" type="QString"/>
-            <Option value="relatedparty_15f394ef_43cd_44d2_99e6_6dbcee041171" name="ReferencedLayerId" type="QString"/>
-            <Option value="relatedparty" name="ReferencedLayerName" type="QString"/>
-            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
-            <Option value="relatedparty_process_3" name="Relation" type="QString"/>
-            <Option value="false" name="ShowForm" type="bool"/>
-            <Option value="true" name="ShowOpenFormButton" type="bool"/>
+            <Option name="AllowAddFeatures" value="false" type="bool"/>
+            <Option name="AllowNULL" value="true" type="bool"/>
+            <Option name="FetchLimitActive" value="true" type="bool"/>
+            <Option name="FetchLimitNumber" value="100" type="int"/>
+            <Option name="MapIdentification" value="false" type="bool"/>
+            <Option name="ReadOnly" value="false" type="bool"/>
+            <Option name="ReferencedLayerDataSource" value="C:/Users/andrea.lachi/Documents/Geopackage_Soil_Import/Geop_TEST/Python_Test.gpkg|layername=relatedparty" type="QString"/>
+            <Option name="ReferencedLayerId" value="relatedparty_0ba1b03b_2a59_4996_abde_f9cc588f30b3" type="QString"/>
+            <Option name="ReferencedLayerName" value="relatedparty" type="QString"/>
+            <Option name="ReferencedLayerProviderKey" value="ogr" type="QString"/>
+            <Option name="Relation" value="relatedparty_process_3" type="QString"/>
+            <Option name="ShowForm" value="false" type="bool"/>
+            <Option name="ShowOpenFormButton" value="true" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="iddocumentcitation1">
+    <field name="iddocumentcitation1" configurationFlags="None">
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option value="false" name="AllowAddFeatures" type="bool"/>
-            <Option value="false" name="AllowNULL" type="bool"/>
-            <Option value="true" name="FetchLimitActive" type="bool"/>
-            <Option value="100" name="FetchLimitNumber" type="int"/>
-            <Option value="false" name="MapIdentification" type="bool"/>
-            <Option value="false" name="ReadOnly" type="bool"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=documentcitation" name="ReferencedLayerDataSource" type="QString"/>
-            <Option value="documentcitation_f547b78e_ac4c_4b31_8ea4_fd313135ed2c" name="ReferencedLayerId" type="QString"/>
-            <Option value="documentcitation" name="ReferencedLayerName" type="QString"/>
-            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
-            <Option value="documentcitation_process_2" name="Relation" type="QString"/>
-            <Option value="false" name="ShowForm" type="bool"/>
-            <Option value="true" name="ShowOpenFormButton" type="bool"/>
+            <Option name="AllowAddFeatures" value="false" type="bool"/>
+            <Option name="AllowNULL" value="true" type="bool"/>
+            <Option name="FetchLimitActive" value="true" type="bool"/>
+            <Option name="FetchLimitNumber" value="100" type="int"/>
+            <Option name="MapIdentification" value="false" type="bool"/>
+            <Option name="ReadOnly" value="false" type="bool"/>
+            <Option name="ReferencedLayerDataSource" value="C:/Users/andrea.lachi/Documents/Geopackage_Soil_Import/Geop_TEST/Python_Test.gpkg|layername=documentcitation" type="QString"/>
+            <Option name="ReferencedLayerId" value="documentcitation_7bdd83be_95f3_4736_8b44_bdbf8d357a3c" type="QString"/>
+            <Option name="ReferencedLayerName" value="documentcitation" type="QString"/>
+            <Option name="ReferencedLayerProviderKey" value="ogr" type="QString"/>
+            <Option name="Relation" value="documentcitation_process_2" type="QString"/>
+            <Option name="ShowForm" value="false" type="bool"/>
+            <Option name="ShowOpenFormButton" value="true" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="iddocumentcitation2">
+    <field name="iddocumentcitation2" configurationFlags="None">
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option value="false" name="AllowAddFeatures" type="bool"/>
-            <Option value="false" name="AllowNULL" type="bool"/>
-            <Option value="true" name="FetchLimitActive" type="bool"/>
-            <Option value="100" name="FetchLimitNumber" type="int"/>
-            <Option value="false" name="MapIdentification" type="bool"/>
-            <Option value="false" name="ReadOnly" type="bool"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=documentcitation" name="ReferencedLayerDataSource" type="QString"/>
-            <Option value="documentcitation_f547b78e_ac4c_4b31_8ea4_fd313135ed2c" name="ReferencedLayerId" type="QString"/>
-            <Option value="documentcitation" name="ReferencedLayerName" type="QString"/>
-            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
-            <Option value="documentcitation_process" name="Relation" type="QString"/>
-            <Option value="false" name="ShowForm" type="bool"/>
-            <Option value="true" name="ShowOpenFormButton" type="bool"/>
+            <Option name="AllowAddFeatures" value="false" type="bool"/>
+            <Option name="AllowNULL" value="true" type="bool"/>
+            <Option name="FetchLimitActive" value="true" type="bool"/>
+            <Option name="FetchLimitNumber" value="100" type="int"/>
+            <Option name="MapIdentification" value="false" type="bool"/>
+            <Option name="ReadOnly" value="false" type="bool"/>
+            <Option name="ReferencedLayerDataSource" value="C:/Users/andrea.lachi/Documents/Geopackage_Soil_Import/Geop_TEST/Python_Test.gpkg|layername=documentcitation" type="QString"/>
+            <Option name="ReferencedLayerId" value="documentcitation_7bdd83be_95f3_4736_8b44_bdbf8d357a3c" type="QString"/>
+            <Option name="ReferencedLayerName" value="documentcitation" type="QString"/>
+            <Option name="ReferencedLayerProviderKey" value="ogr" type="QString"/>
+            <Option name="Relation" value="documentcitation_process" type="QString"/>
+            <Option name="ShowForm" value="false" type="bool"/>
+            <Option name="ShowOpenFormButton" value="true" type="bool"/>
           </Option>
         </config>
       </editWidget>
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias index="0" name="" field="id"/>
-    <alias index="1" name="" field="guidkey"/>
-    <alias index="2" name="Local id" field="inspireid_localid"/>
-    <alias index="3" name="Namespace" field="inspireid_namespace"/>
-    <alias index="4" name="Version id" field="inspireid_versionid"/>
-    <alias index="5" name="" field="name"/>
-    <alias index="6" name="" field="description"/>
-    <alias index="7" name="" field="type"/>
-    <alias index="8" name="Related Party" field="idrelatedparty1"/>
-    <alias index="9" name="Related Party 2" field="idrelatedparty2"/>
-    <alias index="10" name="Document Citation" field="iddocumentcitation1"/>
-    <alias index="11" name="Document Citation 2" field="iddocumentcitation2"/>
+    <alias name="" field="id" index="0"/>
+    <alias name="" field="guidkey" index="1"/>
+    <alias name="Local id" field="inspireid_localid" index="2"/>
+    <alias name="Namespace" field="inspireid_namespace" index="3"/>
+    <alias name="Version id" field="inspireid_versionid" index="4"/>
+    <alias name="" field="name" index="5"/>
+    <alias name="" field="description" index="6"/>
+    <alias name="" field="type" index="7"/>
+    <alias name="Related Party" field="idrelatedparty1" index="8"/>
+    <alias name="Related Party 2" field="idrelatedparty2" index="9"/>
+    <alias name="Document Citation" field="iddocumentcitation1" index="10"/>
+    <alias name="Document Citation 2" field="iddocumentcitation2" index="11"/>
   </aliases>
   <splitPolicies>
     <policy policy="Duplicate" field="id"/>
@@ -212,46 +212,46 @@
     <policy policy="DefaultValue" field="iddocumentcitation2"/>
   </splitPolicies>
   <defaults>
-    <default applyOnUpdate="0" expression="" field="id"/>
-    <default applyOnUpdate="0" expression="" field="guidkey"/>
-    <default applyOnUpdate="0" expression="" field="inspireid_localid"/>
-    <default applyOnUpdate="0" expression="" field="inspireid_namespace"/>
-    <default applyOnUpdate="0" expression="" field="inspireid_versionid"/>
-    <default applyOnUpdate="0" expression="" field="name"/>
-    <default applyOnUpdate="0" expression="" field="description"/>
-    <default applyOnUpdate="0" expression="" field="type"/>
-    <default applyOnUpdate="0" expression="" field="idrelatedparty1"/>
-    <default applyOnUpdate="0" expression="" field="idrelatedparty2"/>
-    <default applyOnUpdate="0" expression="" field="iddocumentcitation1"/>
-    <default applyOnUpdate="0" expression="" field="iddocumentcitation2"/>
+    <default field="id" expression="" applyOnUpdate="0"/>
+    <default field="guidkey" expression="" applyOnUpdate="0"/>
+    <default field="inspireid_localid" expression="" applyOnUpdate="0"/>
+    <default field="inspireid_namespace" expression="" applyOnUpdate="0"/>
+    <default field="inspireid_versionid" expression="" applyOnUpdate="0"/>
+    <default field="name" expression="" applyOnUpdate="0"/>
+    <default field="description" expression="" applyOnUpdate="0"/>
+    <default field="type" expression="" applyOnUpdate="0"/>
+    <default field="idrelatedparty1" expression="" applyOnUpdate="0"/>
+    <default field="idrelatedparty2" expression="" applyOnUpdate="0"/>
+    <default field="iddocumentcitation1" expression="" applyOnUpdate="0"/>
+    <default field="iddocumentcitation2" expression="" applyOnUpdate="0"/>
   </defaults>
   <constraints>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="1" constraints="3" field="id"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="1" constraints="2" field="guidkey"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="inspireid_localid"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="inspireid_namespace"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="inspireid_versionid"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="name"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="description"/>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="type"/>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="idrelatedparty1"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="idrelatedparty2"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="iddocumentcitation1"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="iddocumentcitation2"/>
+    <constraint constraints="3" notnull_strength="1" field="id" unique_strength="1" exp_strength="0"/>
+    <constraint constraints="2" notnull_strength="0" field="guidkey" unique_strength="1" exp_strength="0"/>
+    <constraint constraints="0" notnull_strength="0" field="inspireid_localid" unique_strength="0" exp_strength="0"/>
+    <constraint constraints="0" notnull_strength="0" field="inspireid_namespace" unique_strength="0" exp_strength="0"/>
+    <constraint constraints="0" notnull_strength="0" field="inspireid_versionid" unique_strength="0" exp_strength="0"/>
+    <constraint constraints="0" notnull_strength="0" field="name" unique_strength="0" exp_strength="0"/>
+    <constraint constraints="0" notnull_strength="0" field="description" unique_strength="0" exp_strength="0"/>
+    <constraint constraints="1" notnull_strength="1" field="type" unique_strength="0" exp_strength="0"/>
+    <constraint constraints="1" notnull_strength="1" field="idrelatedparty1" unique_strength="0" exp_strength="0"/>
+    <constraint constraints="0" notnull_strength="0" field="idrelatedparty2" unique_strength="0" exp_strength="0"/>
+    <constraint constraints="0" notnull_strength="0" field="iddocumentcitation1" unique_strength="0" exp_strength="0"/>
+    <constraint constraints="0" notnull_strength="0" field="iddocumentcitation2" unique_strength="0" exp_strength="0"/>
   </constraints>
   <constraintExpressions>
-    <constraint exp="" desc="" field="id"/>
-    <constraint exp="" desc="" field="guidkey"/>
-    <constraint exp="" desc="" field="inspireid_localid"/>
-    <constraint exp="" desc="" field="inspireid_namespace"/>
-    <constraint exp="" desc="" field="inspireid_versionid"/>
-    <constraint exp="" desc="" field="name"/>
-    <constraint exp="" desc="" field="description"/>
-    <constraint exp="" desc="" field="type"/>
-    <constraint exp="" desc="" field="idrelatedparty1"/>
-    <constraint exp="" desc="" field="idrelatedparty2"/>
-    <constraint exp="" desc="" field="iddocumentcitation1"/>
-    <constraint exp="" desc="" field="iddocumentcitation2"/>
+    <constraint desc="" field="id" exp=""/>
+    <constraint desc="" field="guidkey" exp=""/>
+    <constraint desc="" field="inspireid_localid" exp=""/>
+    <constraint desc="" field="inspireid_namespace" exp=""/>
+    <constraint desc="" field="inspireid_versionid" exp=""/>
+    <constraint desc="" field="name" exp=""/>
+    <constraint desc="" field="description" exp=""/>
+    <constraint desc="" field="type" exp=""/>
+    <constraint desc="" field="idrelatedparty1" exp=""/>
+    <constraint desc="" field="idrelatedparty2" exp=""/>
+    <constraint desc="" field="iddocumentcitation1" exp=""/>
+    <constraint desc="" field="iddocumentcitation2" exp=""/>
   </constraintExpressions>
   <expressionfields/>
   <editform tolerant="1"></editform>
@@ -278,121 +278,121 @@ def my_form_open(dialog, layer, feature):
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-      <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+      <labelFont style="" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" underline="0" bold="0"/>
     </labelStyle>
-    <attributeEditorField showLabel="1" index="0" name="id" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField name="id" verticalStretch="0" horizontalStretch="0" index="0" showLabel="1">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont style="" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" underline="0" bold="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer columnCount="1" showLabel="1" collapsedExpressionEnabled="0" collapsedExpression="" name="INSPIRE ID" visibilityExpressionEnabled="0" horizontalStretch="0" verticalStretch="0" groupBox="1" type="GroupBox" collapsed="0" visibilityExpression="">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorContainer name="INSPIRE ID" verticalStretch="0" collapsedExpression="" groupBox="1" collapsedExpressionEnabled="0" visibilityExpression="" collapsed="0" visibilityExpressionEnabled="0" type="GroupBox" horizontalStretch="0" showLabel="1" columnCount="1">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont style="" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" underline="0" bold="0"/>
       </labelStyle>
-      <attributeEditorField showLabel="1" index="2" name="inspireid_localid" horizontalStretch="0" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+      <attributeEditorField name="inspireid_localid" verticalStretch="0" horizontalStretch="0" index="2" showLabel="1">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont style="" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" underline="0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField showLabel="1" index="3" name="inspireid_namespace" horizontalStretch="0" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+      <attributeEditorField name="inspireid_namespace" verticalStretch="0" horizontalStretch="0" index="3" showLabel="1">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont style="" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" underline="0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField showLabel="1" index="4" name="inspireid_versionid" horizontalStretch="0" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+      <attributeEditorField name="inspireid_versionid" verticalStretch="0" horizontalStretch="0" index="4" showLabel="1">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont style="" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" underline="0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorField showLabel="1" index="5" name="name" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField name="name" verticalStretch="0" horizontalStretch="0" index="5" showLabel="1">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont style="" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" underline="0" bold="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="6" name="description" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField name="description" verticalStretch="0" horizontalStretch="0" index="6" showLabel="1">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont style="" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" underline="0" bold="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="7" name="type" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField name="type" verticalStretch="0" horizontalStretch="0" index="7" showLabel="1">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont style="" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" underline="0" bold="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer columnCount="1" showLabel="1" collapsedExpressionEnabled="0" collapsedExpression="" name="Related Party" visibilityExpressionEnabled="0" horizontalStretch="0" verticalStretch="0" groupBox="1" type="GroupBox" collapsed="0" visibilityExpression="">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorContainer name="Related Party" verticalStretch="0" collapsedExpression="" groupBox="1" collapsedExpressionEnabled="0" visibilityExpression="" collapsed="0" visibilityExpressionEnabled="0" type="GroupBox" horizontalStretch="0" showLabel="1" columnCount="1">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont style="" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" underline="0" bold="0"/>
       </labelStyle>
-      <attributeEditorField showLabel="0" index="8" name="idrelatedparty1" horizontalStretch="0" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+      <attributeEditorField name="idrelatedparty1" verticalStretch="0" horizontalStretch="0" index="8" showLabel="0">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont style="" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" underline="0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField showLabel="0" index="9" name="idrelatedparty2" horizontalStretch="0" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+      <attributeEditorField name="idrelatedparty2" verticalStretch="0" horizontalStretch="0" index="9" showLabel="0">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont style="" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" underline="0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorContainer columnCount="1" showLabel="1" collapsedExpressionEnabled="0" collapsedExpression="" name="Document Citation" visibilityExpressionEnabled="0" horizontalStretch="0" verticalStretch="0" groupBox="1" type="GroupBox" collapsed="0" visibilityExpression="">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorContainer name="Document Citation" verticalStretch="0" collapsedExpression="" groupBox="1" collapsedExpressionEnabled="0" visibilityExpression="" collapsed="0" visibilityExpressionEnabled="0" type="GroupBox" horizontalStretch="0" showLabel="1" columnCount="1">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont style="" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" underline="0" bold="0"/>
       </labelStyle>
-      <attributeEditorField showLabel="0" index="10" name="iddocumentcitation1" horizontalStretch="0" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+      <attributeEditorField name="iddocumentcitation1" verticalStretch="0" horizontalStretch="0" index="10" showLabel="0">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont style="" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" underline="0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField showLabel="0" index="11" name="iddocumentcitation2" horizontalStretch="0" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+      <attributeEditorField name="iddocumentcitation2" verticalStretch="0" horizontalStretch="0" index="11" showLabel="0">
+        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+          <labelFont style="" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0" underline="0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
   </attributeEditorForm>
   <editable>
-    <field editable="1" name="description"/>
-    <field editable="1" name="guidkey"/>
-    <field editable="1" name="id"/>
-    <field editable="1" name="iddocumentcitation1"/>
-    <field editable="1" name="iddocumentcitation2"/>
-    <field editable="1" name="idrelatedparty1"/>
-    <field editable="1" name="idrelatedparty2"/>
-    <field editable="1" name="inspireid_localid"/>
-    <field editable="1" name="inspireid_namespace"/>
-    <field editable="1" name="inspireid_versionid"/>
-    <field editable="1" name="name"/>
-    <field editable="1" name="type"/>
+    <field name="description" editable="1"/>
+    <field name="guidkey" editable="1"/>
+    <field name="id" editable="1"/>
+    <field name="iddocumentcitation1" editable="1"/>
+    <field name="iddocumentcitation2" editable="1"/>
+    <field name="idrelatedparty1" editable="1"/>
+    <field name="idrelatedparty2" editable="1"/>
+    <field name="inspireid_localid" editable="1"/>
+    <field name="inspireid_namespace" editable="1"/>
+    <field name="inspireid_versionid" editable="1"/>
+    <field name="name" editable="1"/>
+    <field name="type" editable="1"/>
   </editable>
   <labelOnTop>
-    <field labelOnTop="0" name="description"/>
-    <field labelOnTop="0" name="guidkey"/>
-    <field labelOnTop="0" name="id"/>
-    <field labelOnTop="0" name="iddocumentcitation1"/>
-    <field labelOnTop="0" name="iddocumentcitation2"/>
-    <field labelOnTop="0" name="idrelatedparty1"/>
-    <field labelOnTop="0" name="idrelatedparty2"/>
-    <field labelOnTop="0" name="inspireid_localid"/>
-    <field labelOnTop="0" name="inspireid_namespace"/>
-    <field labelOnTop="0" name="inspireid_versionid"/>
-    <field labelOnTop="0" name="name"/>
-    <field labelOnTop="0" name="type"/>
+    <field name="description" labelOnTop="0"/>
+    <field name="guidkey" labelOnTop="0"/>
+    <field name="id" labelOnTop="0"/>
+    <field name="iddocumentcitation1" labelOnTop="0"/>
+    <field name="iddocumentcitation2" labelOnTop="0"/>
+    <field name="idrelatedparty1" labelOnTop="0"/>
+    <field name="idrelatedparty2" labelOnTop="0"/>
+    <field name="inspireid_localid" labelOnTop="0"/>
+    <field name="inspireid_namespace" labelOnTop="0"/>
+    <field name="inspireid_versionid" labelOnTop="0"/>
+    <field name="name" labelOnTop="0"/>
+    <field name="type" labelOnTop="0"/>
   </labelOnTop>
   <reuseLastValue>
-    <field reuseLastValue="0" name="description"/>
-    <field reuseLastValue="0" name="guidkey"/>
-    <field reuseLastValue="0" name="id"/>
-    <field reuseLastValue="0" name="iddocumentcitation1"/>
-    <field reuseLastValue="0" name="iddocumentcitation2"/>
-    <field reuseLastValue="0" name="idrelatedparty1"/>
-    <field reuseLastValue="0" name="idrelatedparty2"/>
-    <field reuseLastValue="0" name="inspireid_localid"/>
-    <field reuseLastValue="0" name="inspireid_namespace"/>
-    <field reuseLastValue="0" name="inspireid_versionid"/>
-    <field reuseLastValue="0" name="name"/>
-    <field reuseLastValue="0" name="type"/>
+    <field name="description" reuseLastValue="0"/>
+    <field name="guidkey" reuseLastValue="0"/>
+    <field name="id" reuseLastValue="0"/>
+    <field name="iddocumentcitation1" reuseLastValue="0"/>
+    <field name="iddocumentcitation2" reuseLastValue="0"/>
+    <field name="idrelatedparty1" reuseLastValue="0"/>
+    <field name="idrelatedparty2" reuseLastValue="0"/>
+    <field name="inspireid_localid" reuseLastValue="0"/>
+    <field name="inspireid_namespace" reuseLastValue="0"/>
+    <field name="inspireid_versionid" reuseLastValue="0"/>
+    <field name="name" reuseLastValue="0"/>
+    <field name="type" reuseLastValue="0"/>
   </reuseLastValue>
   <dataDefinedFieldProperties/>
   <widgets/>

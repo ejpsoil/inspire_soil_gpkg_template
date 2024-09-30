@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.32.3-Lima" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0">
+<qgis styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0" version="3.32.3-Lima">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
@@ -59,49 +59,49 @@
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias index="0" name="" field="id"/>
-    <alias index="1" name="" field="label"/>
-    <alias index="2" name="" field="definition"/>
-    <alias index="3" name="" field="collection"/>
-    <alias index="4" name="" field="foi"/>
-    <alias index="5" name="" field="phenomenon"/>
-    <alias index="6" name="" field="foi_phenomenon"/>
+    <alias field="id" index="0" name=""/>
+    <alias field="label" index="1" name=""/>
+    <alias field="definition" index="2" name=""/>
+    <alias field="collection" index="3" name=""/>
+    <alias field="foi" index="4" name=""/>
+    <alias field="phenomenon" index="5" name=""/>
+    <alias field="foi_phenomenon" index="6" name=""/>
   </aliases>
   <splitPolicies>
-    <policy policy="Duplicate" field="id"/>
-    <policy policy="Duplicate" field="label"/>
-    <policy policy="Duplicate" field="definition"/>
-    <policy policy="Duplicate" field="collection"/>
-    <policy policy="Duplicate" field="foi"/>
-    <policy policy="Duplicate" field="phenomenon"/>
-    <policy policy="Duplicate" field="foi_phenomenon"/>
+    <policy field="id" policy="Duplicate"/>
+    <policy field="label" policy="Duplicate"/>
+    <policy field="definition" policy="Duplicate"/>
+    <policy field="collection" policy="Duplicate"/>
+    <policy field="foi" policy="Duplicate"/>
+    <policy field="phenomenon" policy="Duplicate"/>
+    <policy field="foi_phenomenon" policy="Duplicate"/>
   </splitPolicies>
   <defaults>
-    <default applyOnUpdate="0" expression="" field="id"/>
-    <default applyOnUpdate="0" expression="" field="label"/>
-    <default applyOnUpdate="0" expression="" field="definition"/>
-    <default applyOnUpdate="0" expression="" field="collection"/>
-    <default applyOnUpdate="0" expression="" field="foi"/>
-    <default applyOnUpdate="0" expression="" field="phenomenon"/>
-    <default applyOnUpdate="0" expression="" field="foi_phenomenon"/>
+    <default field="id" applyOnUpdate="0" expression=""/>
+    <default field="label" applyOnUpdate="0" expression=""/>
+    <default field="definition" applyOnUpdate="0" expression=""/>
+    <default field="collection" applyOnUpdate="0" expression=""/>
+    <default field="foi" applyOnUpdate="0" expression=""/>
+    <default field="phenomenon" applyOnUpdate="0" expression=""/>
+    <default field="foi_phenomenon" applyOnUpdate="0" expression=""/>
   </defaults>
   <constraints>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="id"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="label"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="definition"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="collection"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="foi"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="phenomenon"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="foi_phenomenon"/>
+    <constraint field="id" unique_strength="0" notnull_strength="0" exp_strength="0" constraints="0"/>
+    <constraint field="label" unique_strength="0" notnull_strength="0" exp_strength="0" constraints="0"/>
+    <constraint field="definition" unique_strength="0" notnull_strength="0" exp_strength="0" constraints="0"/>
+    <constraint field="collection" unique_strength="0" notnull_strength="0" exp_strength="0" constraints="0"/>
+    <constraint field="foi" unique_strength="0" notnull_strength="0" exp_strength="0" constraints="0"/>
+    <constraint field="phenomenon" unique_strength="0" notnull_strength="0" exp_strength="0" constraints="0"/>
+    <constraint field="foi_phenomenon" unique_strength="0" notnull_strength="0" exp_strength="0" constraints="0"/>
   </constraints>
   <constraintExpressions>
-    <constraint exp="" desc="" field="id"/>
-    <constraint exp="" desc="" field="label"/>
-    <constraint exp="" desc="" field="definition"/>
-    <constraint exp="" desc="" field="collection"/>
-    <constraint exp="" desc="" field="foi"/>
-    <constraint exp="" desc="" field="phenomenon"/>
-    <constraint exp="" desc="" field="foi_phenomenon"/>
+    <constraint field="id" exp="" desc=""/>
+    <constraint field="label" exp="" desc=""/>
+    <constraint field="definition" exp="" desc=""/>
+    <constraint field="collection" exp="" desc=""/>
+    <constraint field="foi" exp="" desc=""/>
+    <constraint field="phenomenon" exp="" desc=""/>
+    <constraint field="foi_phenomenon" exp="" desc=""/>
   </constraintExpressions>
   <expressionfields/>
   <editform tolerant="1"></editform>
@@ -156,6 +156,6 @@ def my_form_open(dialog, layer, feature):
   </reuseLastValue>
   <dataDefinedFieldProperties/>
   <widgets/>
-  <previewExpression>"phenomenon"</previewExpression>
+  <previewExpression> regexp_substr("id" , '[^/]*$')</previewExpression>
   <layerGeometryType>4</layerGeometryType>
 </qgis>

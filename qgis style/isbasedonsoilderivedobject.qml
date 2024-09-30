@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.32.3-Lima" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0">
+<qgis version="3.32.3-Lima" readOnly="0" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
@@ -7,11 +7,11 @@
     <Private>0</Private>
   </flags>
   <referencedLayers>
-    <relation id="soilderivedobject_isbasedonsoilderivedobject" providerKey="ogr" referencedLayer="soilderivedobject_a71785e5_025c_4b3e_815a_d38e26008c1c" layerName="soilderivedobject" name="soilderivedobject_isbasedonsoilderivedobject" dataSource="./INSPIRE_Selection_4.gpkg|layername=soilderivedobject" referencingLayer="isbasedonsoilderivedobject_b4c2cdeb_6a4e_4152_bbc9_f14759848273" layerId="soilderivedobject_a71785e5_025c_4b3e_815a_d38e26008c1c" strength="Composition">
-      <fieldRef referencedField="guidkey" referencingField="related_id"/>
+    <relation layerId="soilderivedobject_400edfe0_1a33_46b2_a140_e8724dd33dee" referencingLayer="isbasedonsoilderivedobject_96334304_9dce_492a_9974_e4c27bc848ce" strength="Association" providerKey="ogr" id="soilderivedobject_isbasedonsoilderivedobject" name="soilderivedobject_isbasedonsoilderivedobject" layerName="soilderivedobject" referencedLayer="soilderivedobject_400edfe0_1a33_46b2_a140_e8724dd33dee" dataSource="./INSPIRE_SO_DEMO_QGIS_V02.gpkg|layername=soilderivedobject">
+      <fieldRef referencingField="related_id" referencedField="guidkey"/>
     </relation>
-    <relation id="soilderivedobject_isbasedonsoilderivedobject_2" providerKey="ogr" referencedLayer="soilderivedobject_a71785e5_025c_4b3e_815a_d38e26008c1c" layerName="soilderivedobject" name="soilderivedobject_isbasedonsoilderivedobject_2" dataSource="./INSPIRE_Selection_4.gpkg|layername=soilderivedobject" referencingLayer="isbasedonsoilderivedobject_b4c2cdeb_6a4e_4152_bbc9_f14759848273" layerId="soilderivedobject_a71785e5_025c_4b3e_815a_d38e26008c1c" strength="Composition">
-      <fieldRef referencedField="guidkey" referencingField="base_id"/>
+    <relation layerId="soilderivedobject_400edfe0_1a33_46b2_a140_e8724dd33dee" referencingLayer="isbasedonsoilderivedobject_96334304_9dce_492a_9974_e4c27bc848ce" strength="Association" providerKey="ogr" id="soilderivedobject_isbasedonsoilderivedobject_2" name="soilderivedobject_isbasedonsoilderivedobject_2" layerName="soilderivedobject" referencedLayer="soilderivedobject_400edfe0_1a33_46b2_a140_e8724dd33dee" dataSource="./INSPIRE_SO_DEMO_QGIS_V02.gpkg|layername=soilderivedobject">
+      <fieldRef referencingField="base_id" referencedField="guidkey"/>
     </relation>
   </referencedLayers>
   <fieldConfiguration>
@@ -19,8 +19,8 @@
       <editWidget type="TextEdit">
         <config>
           <Option type="Map">
-            <Option value="false" name="IsMultiline" type="bool"/>
-            <Option value="false" name="UseHtml" type="bool"/>
+            <Option type="bool" value="false" name="IsMultiline"/>
+            <Option type="bool" value="false" name="UseHtml"/>
           </Option>
         </config>
       </editWidget>
@@ -29,19 +29,19 @@
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option value="false" name="AllowAddFeatures" type="bool"/>
-            <Option value="false" name="AllowNULL" type="bool"/>
-            <Option value="true" name="FetchLimitActive" type="bool"/>
-            <Option value="100" name="FetchLimitNumber" type="int"/>
-            <Option value="false" name="MapIdentification" type="bool"/>
-            <Option value="false" name="ReadOnly" type="bool"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=soilderivedobject" name="ReferencedLayerDataSource" type="QString"/>
-            <Option value="soilderivedobject_a71785e5_025c_4b3e_815a_d38e26008c1c" name="ReferencedLayerId" type="QString"/>
-            <Option value="soilderivedobject" name="ReferencedLayerName" type="QString"/>
-            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
-            <Option value="soilderivedobject_isbasedonsoilderivedobject_2" name="Relation" type="QString"/>
-            <Option value="false" name="ShowForm" type="bool"/>
-            <Option value="true" name="ShowOpenFormButton" type="bool"/>
+            <Option type="bool" value="false" name="AllowAddFeatures"/>
+            <Option type="bool" value="false" name="AllowNULL"/>
+            <Option type="bool" value="true" name="FetchLimitActive"/>
+            <Option type="int" value="100" name="FetchLimitNumber"/>
+            <Option type="bool" value="false" name="MapIdentification"/>
+            <Option type="bool" value="false" name="ReadOnly"/>
+            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=soilderivedobject" name="ReferencedLayerDataSource"/>
+            <Option type="QString" value="soilderivedobject_a71785e5_025c_4b3e_815a_d38e26008c1c" name="ReferencedLayerId"/>
+            <Option type="QString" value="soilderivedobject" name="ReferencedLayerName"/>
+            <Option type="QString" value="ogr" name="ReferencedLayerProviderKey"/>
+            <Option type="QString" value="soilderivedobject_isbasedonsoilderivedobject_2" name="Relation"/>
+            <Option type="bool" value="false" name="ShowForm"/>
+            <Option type="bool" value="true" name="ShowOpenFormButton"/>
           </Option>
         </config>
       </editWidget>
@@ -50,28 +50,28 @@
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option value="false" name="AllowAddFeatures" type="bool"/>
-            <Option value="false" name="AllowNULL" type="bool"/>
-            <Option value="true" name="FetchLimitActive" type="bool"/>
-            <Option value="100" name="FetchLimitNumber" type="int"/>
-            <Option value="false" name="MapIdentification" type="bool"/>
-            <Option value="false" name="ReadOnly" type="bool"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=soilderivedobject" name="ReferencedLayerDataSource" type="QString"/>
-            <Option value="soilderivedobject_a71785e5_025c_4b3e_815a_d38e26008c1c" name="ReferencedLayerId" type="QString"/>
-            <Option value="soilderivedobject" name="ReferencedLayerName" type="QString"/>
-            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
-            <Option value="soilderivedobject_isbasedonsoilderivedobject" name="Relation" type="QString"/>
-            <Option value="false" name="ShowForm" type="bool"/>
-            <Option value="true" name="ShowOpenFormButton" type="bool"/>
+            <Option type="bool" value="false" name="AllowAddFeatures"/>
+            <Option type="bool" value="false" name="AllowNULL"/>
+            <Option type="bool" value="true" name="FetchLimitActive"/>
+            <Option type="int" value="100" name="FetchLimitNumber"/>
+            <Option type="bool" value="false" name="MapIdentification"/>
+            <Option type="bool" value="false" name="ReadOnly"/>
+            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=soilderivedobject" name="ReferencedLayerDataSource"/>
+            <Option type="QString" value="soilderivedobject_a71785e5_025c_4b3e_815a_d38e26008c1c" name="ReferencedLayerId"/>
+            <Option type="QString" value="soilderivedobject" name="ReferencedLayerName"/>
+            <Option type="QString" value="ogr" name="ReferencedLayerProviderKey"/>
+            <Option type="QString" value="soilderivedobject_isbasedonsoilderivedobject" name="Relation"/>
+            <Option type="bool" value="false" name="ShowForm"/>
+            <Option type="bool" value="true" name="ShowOpenFormButton"/>
           </Option>
         </config>
       </editWidget>
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias index="0" name="" field="id"/>
-    <alias index="1" name="Base Soil Derived Object" field="base_id"/>
-    <alias index="2" name="Derived Soil Derived Object" field="related_id"/>
+    <alias index="0" field="id" name=""/>
+    <alias index="1" field="base_id" name="Base Soil Derived Object"/>
+    <alias index="2" field="related_id" name="Derived Soil Derived Object"/>
   </aliases>
   <splitPolicies>
     <policy policy="DefaultValue" field="id"/>
@@ -79,19 +79,19 @@
     <policy policy="DefaultValue" field="related_id"/>
   </splitPolicies>
   <defaults>
-    <default applyOnUpdate="0" expression="" field="id"/>
-    <default applyOnUpdate="0" expression="" field="base_id"/>
-    <default applyOnUpdate="0" expression="" field="related_id"/>
+    <default expression="" applyOnUpdate="0" field="id"/>
+    <default expression="" applyOnUpdate="0" field="base_id"/>
+    <default expression="" applyOnUpdate="0" field="related_id"/>
   </defaults>
   <constraints>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="1" constraints="3" field="id"/>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="base_id"/>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="related_id"/>
+    <constraint notnull_strength="1" exp_strength="0" constraints="3" field="id" unique_strength="1"/>
+    <constraint notnull_strength="1" exp_strength="0" constraints="1" field="base_id" unique_strength="0"/>
+    <constraint notnull_strength="1" exp_strength="0" constraints="1" field="related_id" unique_strength="0"/>
   </constraints>
   <constraintExpressions>
-    <constraint exp="" desc="" field="id"/>
-    <constraint exp="" desc="" field="base_id"/>
-    <constraint exp="" desc="" field="related_id"/>
+    <constraint field="id" desc="" exp=""/>
+    <constraint field="base_id" desc="" exp=""/>
+    <constraint field="related_id" desc="" exp=""/>
   </constraintExpressions>
   <expressionfields/>
   <editform tolerant="1"></editform>
@@ -118,22 +118,22 @@ def my_form_open(dialog, layer, feature):
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-      <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+      <labelFont italic="0" strikethrough="0" style="" bold="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0"/>
     </labelStyle>
-    <attributeEditorField showLabel="1" index="0" name="id" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField horizontalStretch="0" index="0" name="id" showLabel="1" verticalStretch="0">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" style="" bold="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="1" name="base_id" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField horizontalStretch="0" index="1" name="base_id" showLabel="1" verticalStretch="0">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" style="" bold="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="2" name="related_id" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField horizontalStretch="0" index="2" name="related_id" showLabel="1" verticalStretch="0">
+      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" style="" bold="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0"/>
       </labelStyle>
     </attributeEditorField>
   </attributeEditorForm>

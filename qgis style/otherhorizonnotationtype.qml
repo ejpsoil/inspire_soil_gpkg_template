@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.32.3-Lima" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0">
+<qgis styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0" version="3.32.3-Lima">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
@@ -7,7 +7,7 @@
     <Private>0</Private>
   </flags>
   <referencedLayers>
-    <relation id="profileelement_otherhorizonnotationtype" providerKey="ogr" referencedLayer="profileelement_e0037153_3a70_46eb_9cb8_8b365ffbe8f7" layerName="profileelement" name="profileelement_otherhorizonnotationtype" dataSource="./INSPIRE_Selection_4.gpkg|layername=profileelement" referencingLayer="otherhorizonnotationtype_d52d4ee1_52c4_4eb4_a1aa_f71bcb71bcfb" layerId="profileelement_e0037153_3a70_46eb_9cb8_8b365ffbe8f7" strength="Association">
+    <relation referencedLayer="profileelement_e3c097e6_b9be_4926_8bd6_13f11448b000" id="profileelement_otherhorizonnotationtype" referencingLayer="otherhorizonnotationtype_9d3923ad_c916_40e0_b96b_7fd6d7c588ef" layerId="profileelement_e3c097e6_b9be_4926_8bd6_13f11448b000" providerKey="ogr" dataSource="./INSPIRE_SO_DEMO_V01.gpkg|layername=profileelement" layerName="profileelement" name="profileelement_otherhorizonnotationtype" strength="Association">
       <fieldRef referencedField="guidkey" referencingField="otherhorizonnotation"/>
     </relation>
   </referencedLayers>
@@ -30,19 +30,19 @@
       <editWidget type="ValueRelation">
         <config>
           <Option type="Map">
-            <Option value="false" name="AllowMulti" type="bool"/>
-            <Option value="false" name="AllowNull" type="bool"/>
-            <Option value="&quot;label&quot;" name="Description" type="QString"/>
-            <Option value="&quot;collection&quot; IN('OtherHorizonNotationTypeValue')" name="FilterExpression" type="QString"/>
-            <Option value="id" name="Key" type="QString"/>
-            <Option value="codelist_dca3491b_79c9_4c76_afe9_83b8d8e331a2" name="Layer" type="QString"/>
-            <Option value="codelist" name="LayerName" type="QString"/>
-            <Option value="ogr" name="LayerProviderName" type="QString"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=codelist" name="LayerSource" type="QString"/>
-            <Option value="1" name="NofColumns" type="int"/>
-            <Option value="false" name="OrderByValue" type="bool"/>
-            <Option value="false" name="UseCompleter" type="bool"/>
-            <Option value="label" name="Value" type="QString"/>
+            <Option value="false" type="bool" name="AllowMulti"/>
+            <Option value="false" type="bool" name="AllowNull"/>
+            <Option value="&quot;label&quot;" type="QString" name="Description"/>
+            <Option value="&quot;collection&quot; IN('OtherHorizonNotationTypeValue')" type="QString" name="FilterExpression"/>
+            <Option value="id" type="QString" name="Key"/>
+            <Option value="codelist_dca3491b_79c9_4c76_afe9_83b8d8e331a2" type="QString" name="Layer"/>
+            <Option value="codelist" type="QString" name="LayerName"/>
+            <Option value="ogr" type="QString" name="LayerProviderName"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=codelist" type="QString" name="LayerSource"/>
+            <Option value="1" type="int" name="NofColumns"/>
+            <Option value="false" type="bool" name="OrderByValue"/>
+            <Option value="false" type="bool" name="UseCompleter"/>
+            <Option value="label" type="QString" name="Value"/>
           </Option>
         </config>
       </editWidget>
@@ -51,19 +51,19 @@
       <editWidget type="ValueRelation">
         <config>
           <Option type="Map">
-            <Option value="false" name="AllowMulti" type="bool"/>
-            <Option value="false" name="AllowNull" type="bool"/>
-            <Option value="&quot;label&quot;" name="Description" type="QString"/>
-            <Option value="&quot;collection&quot; = current_value('horizonnotation')" name="FilterExpression" type="QString"/>
-            <Option value="id" name="Key" type="QString"/>
-            <Option value="codelist_dca3491b_79c9_4c76_afe9_83b8d8e331a2" name="Layer" type="QString"/>
-            <Option value="codelist" name="LayerName" type="QString"/>
-            <Option value="ogr" name="LayerProviderName" type="QString"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=codelist" name="LayerSource" type="QString"/>
-            <Option value="1" name="NofColumns" type="int"/>
-            <Option value="false" name="OrderByValue" type="bool"/>
-            <Option value="false" name="UseCompleter" type="bool"/>
-            <Option value="label" name="Value" type="QString"/>
+            <Option value="false" type="bool" name="AllowMulti"/>
+            <Option value="false" type="bool" name="AllowNull"/>
+            <Option value="&quot;label&quot;" type="QString" name="Description"/>
+            <Option value="&quot;collection&quot; = current_value('horizonnotation')" type="QString" name="FilterExpression"/>
+            <Option value="id" type="QString" name="Key"/>
+            <Option value="codelist_dca3491b_79c9_4c76_afe9_83b8d8e331a2" type="QString" name="Layer"/>
+            <Option value="codelist" type="QString" name="LayerName"/>
+            <Option value="ogr" type="QString" name="LayerProviderName"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=codelist" type="QString" name="LayerSource"/>
+            <Option value="1" type="int" name="NofColumns"/>
+            <Option value="false" type="bool" name="OrderByValue"/>
+            <Option value="false" type="bool" name="UseCompleter"/>
+            <Option value="label" type="QString" name="Value"/>
           </Option>
         </config>
       </editWidget>
@@ -72,9 +72,9 @@
       <editWidget type="CheckBox">
         <config>
           <Option type="Map">
-            <Option value="" name="CheckedState" type="QString"/>
-            <Option value="0" name="TextDisplayMethod" type="int"/>
-            <Option value="" name="UncheckedState" type="QString"/>
+            <Option value="" type="QString" name="CheckedState"/>
+            <Option value="0" type="int" name="TextDisplayMethod"/>
+            <Option value="" type="QString" name="UncheckedState"/>
           </Option>
         </config>
       </editWidget>
@@ -83,63 +83,63 @@
       <editWidget type="RelationReference">
         <config>
           <Option type="Map">
-            <Option value="false" name="AllowAddFeatures" type="bool"/>
-            <Option value="false" name="AllowNULL" type="bool"/>
-            <Option value="true" name="FetchLimitActive" type="bool"/>
-            <Option value="100" name="FetchLimitNumber" type="int"/>
-            <Option value="false" name="MapIdentification" type="bool"/>
-            <Option value="false" name="ReadOnly" type="bool"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=profileelement" name="ReferencedLayerDataSource" type="QString"/>
-            <Option value="profileelement_e0037153_3a70_46eb_9cb8_8b365ffbe8f7" name="ReferencedLayerId" type="QString"/>
-            <Option value="profileelement" name="ReferencedLayerName" type="QString"/>
-            <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
-            <Option value="profileelement_otherhorizonnotationtype" name="Relation" type="QString"/>
-            <Option value="false" name="ShowForm" type="bool"/>
-            <Option value="true" name="ShowOpenFormButton" type="bool"/>
+            <Option value="false" type="bool" name="AllowAddFeatures"/>
+            <Option value="false" type="bool" name="AllowNULL"/>
+            <Option value="true" type="bool" name="FetchLimitActive"/>
+            <Option value="100" type="int" name="FetchLimitNumber"/>
+            <Option value="false" type="bool" name="MapIdentification"/>
+            <Option value="false" type="bool" name="ReadOnly"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=profileelement" type="QString" name="ReferencedLayerDataSource"/>
+            <Option value="profileelement_e0037153_3a70_46eb_9cb8_8b365ffbe8f7" type="QString" name="ReferencedLayerId"/>
+            <Option value="profileelement" type="QString" name="ReferencedLayerName"/>
+            <Option value="ogr" type="QString" name="ReferencedLayerProviderKey"/>
+            <Option value="profileelement_otherhorizonnotationtype" type="QString" name="Relation"/>
+            <Option value="false" type="bool" name="ShowForm"/>
+            <Option value="true" type="bool" name="ShowOpenFormButton"/>
           </Option>
         </config>
       </editWidget>
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias index="0" name="" field="id"/>
-    <alias index="1" name="" field="guidkey"/>
-    <alias index="2" name="Horizon Notation" field="horizonnotation"/>
-    <alias index="3" name="Diagnostic Horizon" field="diagnostichorizon"/>
-    <alias index="4" name="Is original Classificatzion" field="isoriginalclassification"/>
-    <alias index="5" name="Profile Element" field="otherhorizonnotation"/>
+    <alias field="id" index="0" name=""/>
+    <alias field="guidkey" index="1" name=""/>
+    <alias field="horizonnotation" index="2" name="Horizon Notation"/>
+    <alias field="diagnostichorizon" index="3" name="Diagnostic Horizon"/>
+    <alias field="isoriginalclassification" index="4" name="Is original Classificatzion"/>
+    <alias field="otherhorizonnotation" index="5" name="Profile Element"/>
   </aliases>
   <splitPolicies>
-    <policy policy="Duplicate" field="id"/>
-    <policy policy="Duplicate" field="guidkey"/>
-    <policy policy="DefaultValue" field="horizonnotation"/>
-    <policy policy="DefaultValue" field="diagnostichorizon"/>
-    <policy policy="DefaultValue" field="isoriginalclassification"/>
-    <policy policy="DefaultValue" field="otherhorizonnotation"/>
+    <policy field="id" policy="Duplicate"/>
+    <policy field="guidkey" policy="Duplicate"/>
+    <policy field="horizonnotation" policy="DefaultValue"/>
+    <policy field="diagnostichorizon" policy="DefaultValue"/>
+    <policy field="isoriginalclassification" policy="DefaultValue"/>
+    <policy field="otherhorizonnotation" policy="DefaultValue"/>
   </splitPolicies>
   <defaults>
-    <default applyOnUpdate="0" expression="" field="id"/>
-    <default applyOnUpdate="0" expression="" field="guidkey"/>
-    <default applyOnUpdate="0" expression="" field="horizonnotation"/>
-    <default applyOnUpdate="0" expression="" field="diagnostichorizon"/>
-    <default applyOnUpdate="0" expression="" field="isoriginalclassification"/>
-    <default applyOnUpdate="0" expression="" field="otherhorizonnotation"/>
+    <default field="id" applyOnUpdate="0" expression=""/>
+    <default field="guidkey" applyOnUpdate="0" expression=""/>
+    <default field="horizonnotation" applyOnUpdate="0" expression=""/>
+    <default field="diagnostichorizon" applyOnUpdate="0" expression=""/>
+    <default field="isoriginalclassification" applyOnUpdate="0" expression=""/>
+    <default field="otherhorizonnotation" applyOnUpdate="0" expression=""/>
   </defaults>
   <constraints>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="1" constraints="3" field="id"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="1" constraints="2" field="guidkey"/>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="horizonnotation"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="diagnostichorizon"/>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="isoriginalclassification"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="otherhorizonnotation"/>
+    <constraint field="id" unique_strength="1" notnull_strength="1" exp_strength="0" constraints="3"/>
+    <constraint field="guidkey" unique_strength="1" notnull_strength="0" exp_strength="0" constraints="2"/>
+    <constraint field="horizonnotation" unique_strength="0" notnull_strength="1" exp_strength="0" constraints="1"/>
+    <constraint field="diagnostichorizon" unique_strength="0" notnull_strength="0" exp_strength="0" constraints="0"/>
+    <constraint field="isoriginalclassification" unique_strength="0" notnull_strength="1" exp_strength="0" constraints="1"/>
+    <constraint field="otherhorizonnotation" unique_strength="0" notnull_strength="0" exp_strength="0" constraints="0"/>
   </constraints>
   <constraintExpressions>
-    <constraint exp="" desc="" field="id"/>
-    <constraint exp="" desc="" field="guidkey"/>
-    <constraint exp="" desc="" field="horizonnotation"/>
-    <constraint exp="" desc="" field="diagnostichorizon"/>
-    <constraint exp="" desc="" field="isoriginalclassification"/>
-    <constraint exp="" desc="" field="otherhorizonnotation"/>
+    <constraint field="id" exp="" desc=""/>
+    <constraint field="guidkey" exp="" desc=""/>
+    <constraint field="horizonnotation" exp="" desc=""/>
+    <constraint field="diagnostichorizon" exp="" desc=""/>
+    <constraint field="isoriginalclassification" exp="" desc=""/>
+    <constraint field="otherhorizonnotation" exp="" desc=""/>
   </constraintExpressions>
   <expressionfields/>
   <editform tolerant="1"></editform>
@@ -165,37 +165,37 @@ control = dialog.findChild(QWidget, "MyLineEdit")
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-      <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
+      <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" bold="0" italic="0" style=""/>
     </labelStyle>
-    <attributeEditorField showLabel="1" index="0" name="id" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField horizontalStretch="0" index="0" name="id" showLabel="1" verticalStretch="0">
+      <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
+        <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" bold="0" italic="0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer columnCount="1" showLabel="1" collapsedExpressionEnabled="0" collapsedExpression="" name="Notation" visibilityExpressionEnabled="0" horizontalStretch="0" verticalStretch="0" groupBox="1" type="GroupBox" collapsed="0" visibilityExpression="">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorContainer columnCount="1" collapsedExpression="" collapsed="0" horizontalStretch="0" groupBox="1" visibilityExpression="" collapsedExpressionEnabled="0" type="GroupBox" visibilityExpressionEnabled="0" name="Notation" showLabel="1" verticalStretch="0">
+      <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
+        <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" bold="0" italic="0" style=""/>
       </labelStyle>
-      <attributeEditorField showLabel="1" index="2" name="horizonnotation" horizontalStretch="0" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+      <attributeEditorField horizontalStretch="0" index="2" name="horizonnotation" showLabel="1" verticalStretch="0">
+        <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
+          <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" bold="0" italic="0" style=""/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField showLabel="1" index="3" name="diagnostichorizon" horizontalStretch="0" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+      <attributeEditorField horizontalStretch="0" index="3" name="diagnostichorizon" showLabel="1" verticalStretch="0">
+        <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
+          <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" bold="0" italic="0" style=""/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorField showLabel="1" index="4" name="isoriginalclassification" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField horizontalStretch="0" index="4" name="isoriginalclassification" showLabel="1" verticalStretch="0">
+      <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
+        <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" bold="0" italic="0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="5" name="otherhorizonnotation" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField horizontalStretch="0" index="5" name="otherhorizonnotation" showLabel="1" verticalStretch="0">
+      <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
+        <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" bold="0" italic="0" style=""/>
       </labelStyle>
     </attributeEditorField>
   </attributeEditorForm>
@@ -225,6 +225,6 @@ control = dialog.findChild(QWidget, "MyLineEdit")
   </reuseLastValue>
   <dataDefinedFieldProperties/>
   <widgets/>
-  <previewExpression> "horizonnotation" || ' - '||  "diagnostichorizon" </previewExpression>
+  <previewExpression> "horizonnotation" || ' - '|| regexp_substr( "diagnostichorizon" , '[^/]*$')</previewExpression>
   <layerGeometryType>4</layerGeometryType>
 </qgis>
