@@ -4,7 +4,7 @@ A set of sql statements to update a plain geopackage template to a INSPIRE Soil 
 
 Open the empty GeoPackage template, which you can find at http://www.geopackage.org/data/empty.gpkg, in for example, [sqlitebrowser](https://sqlitebrowser.org/)  and execute the SQL statements from the create.sql file in the query window.
 
-The code creates all the necessary tables (only Vector part), inserts the correct references into the Geopackage tables, and populates the table with INSPIRE codelist integrated by a series of codelists defined by CREA.
+The code creates all the necessary tables, inserts the correct references into the Geopackage tables, and populates the table with INSPIRE codelists integrated by a series of codelists defined by CREA.
 
 Some constraints have been managed through both form management and trigger creation. On one hand, we aim to assist user data entry, while on the other hand, the presence of triggers at the engine level ensures data integrity in case of massive data entry.
 
@@ -67,8 +67,6 @@ CREATE INDEX soiBody_geom_idxsi ON soilbody_newname(geom);  ** CHANGE NAME INDEX
 - "u_wrbreferencesoilgroup" - UPDATE - check that only valid values ​​from the CODELIST of the version selected in the wrbversion field are entered in the "wrbreferencesoilgroup" field
 - "u_begin_today_soilprofile" - UPDATE - checks that, upon updating the table, beginlifespanversion is updated to today
 - "u_begin_today_soilprofile_error" - UPDATE - checks that, upon updating, endlifespanversion is greater than today
-- "i_check_depth_range" - INSERT - checks that at least one of profileelementdepthrange_uppervalue and profileelementdepthrange_lowervalue is not null.
-- "u_check_depth_range" - UPDATE - checks that at least one of profileelementdepthrange_uppervalue and profileelementdepthrange_lowervalue is not null.
 - "i_wrbproversion" - INSERT - checks that only valid values from the CODELIST wrbversion are entered in the "wrbversion" field
 - "u_wrbproversion" - UPDATE - checks that only valid values from the CODELIST wrbversion are entered in the "wrbversion" field
 
@@ -77,10 +75,10 @@ CREATE INDEX soiBody_geom_idxsi ON soilbody_newname(geom);  ** CHANGE NAME INDEX
 - "u_soilname" - UPDATE - Checks that only valid values from the CODELIST othersoilnametypevalue are entered in the "soilname" field
 
 **ISDERIVEDFROM**
-- "i_checkisderived" - INSERT - Checks if the value of isderived in soilprofile is equal to 1 because a Soil profile of type "derived" cannot be generated from other profiles of type "derived"
-- "u_checkisderived" - UPDATE - Checks if the value of isderived in soilprofile is equal to 1 because a Soil profile of type "derived" cannot be generated from other profiles of type "derived"
-- "i_checkisobserved" - INSERT - Checks if the value of isderived in soilprofile is equal to 0 because a Soil profile of type "derived" cannot be generated from other profiles of type "derived"
-- "u_checkisobserved" - UPDATE - Checks if the value of isderived in soilprofile is equal to 0 because a Soil profile of type "derived" cannot be generated from other profiles of type "derived"
+- "i_checkisderived" - INSERT - Checks if the value of isderived in soilprofile is equal to 1 because the value of the "base_id" field in the "isderivedfrom" table cannot be inserted because profile is not of type "derived".
+- "u_checkisderived" - UPDATE - Checks if the value of isderived in soilprofile is equal to 1 because the value of the "base_id" field in the "isderivedfrom" table cannot be inserted because profile is not of type "derived".
+- "i_checkisobserved" - INSERT - Checks if the value of isderived in soilprofile is equal to 0 because the value of the "related_id" field in the "isderivedfrom" table cannot be inserted because profile is not of type "observed"
+- "u_checkisobserved" - UPDATE - Checks if the value of isderived in soilprofile is equal to 0 because the value of the "related_id" field in the "isderivedfrom" table cannot be inserted because profile is not of type "observed"
 
 **SOILBODY**
 - "soilbodyguid" - INSERT - Manages the creation of the GUID in INSERT
@@ -106,11 +104,13 @@ CREATE INDEX soiBody_geom_idxsi ON soilbody_newname(geom);  ** CHANGE NAME INDEX
 **PROFILEELEMENT**
 - "profileelementguid" - INSERT - Manages the creation of the GUID in INSERT
 - "profileelementguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
-- "i_ceckhorizonfields" - INSERT - If we have a HORIZON, the values of the fields "layertype," "layerrocktype," "layergenesisprocess," "layergenesisenviroment," and "layergenesisprocessstate" must be NULL
-- "u_ceckhorizonfields" - UPDATE - If we have a HORIZON, the values of the fields "layertype," "layerrocktype," "layergenesisprocess," "layergenesisenviroment," and "layergenesisprocessstate" must be NULL
 - "i_ceckvalidversionprofileelement" - INSERT - Checks that the beginlifespanversion date is always less than or equal to endlifespanversion
 - "i_ceckvaliddeepprofileelement" - INSERT - Checks that the value of profileelementdepthrange_uppervalue is always less than the value of profileelementdepthrange_lowervalue
 - "u_ceckvaliddeepprofileelement" - UPDATE - Checks that the value of profileelementdepthrange_uppervalue is always less than the value of profileelementdepthrange_lowervalue
+- "i_checkgeogenicfieldsnull" - INSERT - checks that if in the “layertype” field the value is different from “geogenic” the values ​​in the “layerrocktype”, “layergenesisprocess”, “layergenesisenviroment” and “layergenesisprocessstate” fields are null
+- "u_checkgeogenicfieldsnull" - INUPDATE - checks that if in the “layertype” field the value is different from “geogenic” the values ​​in the “layerrocktype”, “layergenesisprocess”, “layergenesisenviroment” and “layergenesisprocessstate” fields are null
+- "i_ceckhorizonfields" - INSERT - If we have a HORIZON, the values of the fields "layertype," "layerrocktype," "layergenesisprocess," "layergenesisenviroment," and "layergenesisprocessstate" must be NULL
+- "u_ceckhorizonfields" - UPDATE - If we have a HORIZON, the values of the fields "layertype," "layerrocktype," "layergenesisprocess," "layergenesisenviroment," and "layergenesisprocessstate" must be NULL
 - "i_layertype" - INSERT - Checks that only valid values from the CODELIST layertypevalue are entered in the "layertype" field
 - "u_layertype" - UPDATE - Checks that only valid values from the CODELIST layertypevalue are entered in the "layertype" field
 - "i_layergenesisenviroment" - INSERT - Checks that only valid values from the CODELIST eventenvironmentvalue are entered in the "layergenesisenviroment" field
@@ -121,10 +121,10 @@ CREATE INDEX soiBody_geom_idxsi ON soilbody_newname(geom);  ** CHANGE NAME INDEX
 - "u_layergenesisprocessstate" - UPDATE - Checks that only valid values from the CODELIST layergenesisprocessstatevalue are entered in the "layergenesisprocessstate" field
 - "i_layerrocktype" - INSERT - Checks that only valid values from the CODELIST lithologyvalue are entered in the "layerrocktype" field
 - "u_layerrocktype" - UPDATE - Checks that only valid values from the CODELIST lithologyvalue are entered in the "layerrocktype" field
+- "i_check_depth_range" - INSERT - checks that at least one of profileelementdepthrange_uppervalue and profileelementdepthrange_lowervalue is not null.
+- "u_check_depth_range" - UPDATE - checks that at least one of profileelementdepthrange_uppervalue and profileelementdepthrange_lowervalue is not null.
 - "u_begin_today_profileelement" - UPDATE - Checks that, upon updating the table, beginlifespanversion is updated to today
 - "u_begin_today_profileelement_error" - UPDATE - Checks that, upon updating, endlifespanversion is greater than today
-- "i_checkgeogenicfieldsnull" - INSERT - checks that if in the “layertype” field the value is different from “geogenic” the values ​​in the “layerrocktype”, “layergenesisprocess”, “layergenesisenviroment” and “layergenesisprocessstate” fields are null
-- "u_checkgeogenicfieldsnull" - INUPDATE - checks that if in the “layertype” field the value is different from “geogenic” the values ​​in the “layerrocktype”, “layergenesisprocess”, “layergenesisenviroment” and “layergenesisprocessstate” fields are null
 
 **PARTICLESIZEFRACTIONTYPE**
 - "i_check_fraction_sum" - INSERT - checks that the sum of "fractioncontent" does not exceed 100. 
@@ -133,10 +133,16 @@ CREATE INDEX soiBody_geom_idxsi ON soilbody_newname(geom);  ** CHANGE NAME INDEX
 **FAOHORIZONNOTATIONTYPE**
 - "i_ceckfaoprofileelementtype" - INSERT - Checks that the profileelementtype is = 1, meaning that it is a HORIZON
 - "u_ceckfaoprofileelementtype" - UPDATE - Checks that the profileelementtype is = 1, meaning that it is a HORIZON
-- "i_faohorizonmaster" - INSERT - Checks that only valid values from the CODELIST faohorizonmastervalue are entered in the "faohorizonmaster" field
-- "u_faohorizonmaster" - UPDATE - Checks that only valid values from the CODELIST faohorizonmastervalue are entered in the "faohorizonmaster" field
-- "i_faohorizonsubordinate" - INSERT - Checks that only valid values from the CODELIST faohorizonsubordinatevalue are entered in the "faohorizonsubordinate" field
-- "u_faohorizonsubordinate" - UPDATE - Checks that only valid values from the CODELIST faohorizonsubordinatevalue are entered in the "faohorizonsubordinate" field
+- "i_faohorizonmaster_1" - INSERT - Checks that only valid values from the CODELIST faohorizonmastervalue are entered in the "faohorizonmaster_1" field
+- "u_faohorizonmaster_1" - UPDATE - Checks that only valid values from the CODELIST faohorizonmastervalue are entered in the "faohorizonmaster_1" field
+- "i_faohorizonmaster_2" - INSERT - Checks that only valid values from the CODELIST faohorizonmastervalue are entered in the "faohorizonmaster_2" field
+- "u_faohorizonmaster_2" - UPDATE - Checks that only valid values from the CODELIST faohorizonmastervalue are entered in the "faohorizonmaster_2" field
+- "i_faohorizonsubordinate_1" - INSERT - Checks that only valid values from the CODELIST faohorizonsubordinatevalue are entered in the "faohorizonsubordinate_1" field
+- "u_faohorizonsubordinate_1" - UPDATE - Checks that only valid values from the CODELIST faohorizonsubordinatevalue are entered in the "faohorizonsubordinate_1" field
+- "i_faohorizonsubordinate_2" - INSERT - Checks that only valid values from the CODELIST faohorizonsubordinatevalue are entered in the "faohorizonsubordinate_2" field
+- "u_faohorizonsubordinate_2" - UPDATE - Checks that only valid values from the CODELIST faohorizonsubordinatevalue are entered in the "faohorizonsubordinate_2" field
+- "i_faohorizonsubordinate_3" - INSERT - Checks that only valid values from the CODELIST faohorizonsubordinatevalue are entered in the "faohorizonsubordinate_3" field
+- "u_faohorizonsubordinate_3" - UPDATE - Checks that only valid values from the CODELIST faohorizonsubordinatevalue are entered in the "faohorizonsubordinate_3" field
 - "i_faoprime" - INSERT - Checks that only valid values from the CODELIST faoprimevalue are entered in the "faoprime" field
 - "u_faoprime" - UPDATE - Checks that only valid values from the CODELIST faoprimevalue are entered in the "faoprime" field
 
@@ -148,11 +154,13 @@ CREATE INDEX soiBody_geom_idxsi ON soilbody_newname(geom);  ** CHANGE NAME INDEX
 - "i_diagnostichorizon" - INSERT - Checks that only valid values from the CODELIST wrbdiagnostichorizon (in case OtherHorizonNotationTypeValue = "WRB") are entered in the "diagnostichorizon" field
 - "u_diagnostichorizon" - UPDATE - Checks that only valid values from the CODELIST wrbdiagnostichorizon (in case OtherHorizonNotationTypeValue = "WRB") are entered in the "diagnostichorizon" field
 
-OTHERHORIZON_PROFILEELEMENT
+**OTHERHORIZON_PROFILEELEMENT**
 -"i_ceckothprofileelementtype" - INSERT - Checks that in the profileelement table, the profileelementtype is = 0, meaning that it is an HORIZON
 -"u_ceckothprofileelementtype" - UPDATE - Checks that in the profileelement table, the profileelementtype is = 0, meaning that it is an HORIZON
 
 **WRBQUALIFIERGROUPTYPE**
+- "wrbqualifiergrouptypeguid" - INSERT - Manages the creation of the GUID in INSERT
+- "wrbqualifiergrouptypeguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
 - "i_wrbqualifier" - INSERT - Check that only valid values ​​from the CODELIST of the version selected in the wrbversion field are entered in the "wrbqualifier" field
 - "u_wrbqualifier" - UPDATE - Check that only valid values ​​from the CODELIST of the version selected in the wrbversion field are entered in the "wrbqualifier" field
 - "i_qualifierplace" - INSERT - Checks that only valid values from the CODELIST wrbqualifierplacevalue are entered in the "qualifierplace" field
@@ -186,6 +194,28 @@ OTHERHORIZON_PROFILEELEMENT
 - "i_soilderivedobject_obspro" INSERT - Checks that in the "foi" field of the "observableproperty" defined by the inserted link, there is the value "soilderivedobject."
 - "u_soilderivedobject_obspro" UPDATE - Checks that in the "foi" field of the "observableproperty" defined by the inserted link, there is the value "soilderivedobject."
 
+**OBSERVATION**
+- "observationguid" - INSERT - Manages the creation of the GUID in INSERT
+- "observationguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
+- "i_ceckvalidperiodobservation" INSERT - Checks that the result time is earlier than the valid time
+- "u_ceckvalidperiodobservation" UPDATE - Checks that the result time is earlier than the valid time
+- "i_controlresultvalue" INSERT - Checks that the value is within the Min and Max of the domain specified in the properties.
+- "u_controlresultvalue" UPDATE - Checks that the value is within the Min and Max of the domain specified in the properties.
+- "i_check_result_value_uri" INSERT – Checks that only one of the fields "result_value" and "result_uri" is populated.
+- "u_check_result_value_uri" UPDATE - Checks that only one of the fields "result_value" and "result_uri" is populated.
+
+**DATASTREAMCOLLECTION**
+- "datastreamcollectionguid" - INSERT - Manages the creation of the GUID in INSERT
+- "datastreamcollectionguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
+- "i_ceckvalidphetimedatastreamcollection" INSERT - Checks that the "beginphenomenontime" field is earlier than the "endphenomenontime" field
+- "u_ceckvalidphetimedatastreamcollection" UPDATE - Checks that the "beginphenomenontime" field is earlier than the "endphenomenontime" field
+- "i_ceckvalidrestimedatastreamcollectionINSERT" - Checks that the "beginresulttime" field is earlier than the "endresulttime" field
+- "u_ceckvalidrestimedatastreamcollectionUPDATE" - Checks that the "beginresulttime" field is earlier than the "endresulttime" field
+
+**UNITOFMEASURE**
+- "uomguid" - INSERT - Manages the creation of the GUID in INSERT
+- "uomguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
+
 **OBSERVABLEPROPERTY**
 - "observablepropertyguid" - INSERT - Manages the creation of the GUID in INSERT
 - "observablepropertyguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
@@ -202,53 +232,28 @@ OTHERHORIZON_PROFILEELEMENT
 - "i_ceckdomain_value" INSERT - Checks that in case the "domain_typeofvalue" field takes the value result_uri, the values of the "domain_min" and "domain_max" fields are null.
 - "u_ceckdomain_value" UPDATE - Checks that in case the "domain_typeofvalue" field takes the value result_uri, the values of the "domain_min" and "domain_max" fields are null.
 
-**OBSERVATION**
-- "observationguid" - INSERT - Manages the creation of the GUID in INSERT
-- "observationguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
-- "i_ceckvalidperiodobservation" INSERT - Checks that the result time is earlier than the valid time
-- "u_ceckvalidperiodobservation" UPDATE - Checks that the result time is earlier than the valid time
-- "i_controlresultvalue" INSERT - Checks that the value is within the Min and Max of the domain specified in the properties.
-- "u_controlresultvalue" UPDATE - Checks that the value is within the Min and Max of the domain specified in the properties.
-- "i_check_result_value_uri" INSERT – Checks that only one of the fields "result_value" and "result_uri" is populated.
-- "u_check_result_value_uri" UPDATE - Checks that only one of the fields "result_value" and "result_uri" is populated.
+**SENSOR**
+- "sensorguid" - INSERT - Manages the creation of the GUID in INSERT
+- "sensorguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
+
+**THING**
+- "thingguid" - INSERT - Manages the creation of the GUID in INSERT
+- "thingguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
 
 **PROCESS**
 - "processguid" - INSERT - Manages the creation of the GUID in INSERT
 - "processguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
 
-**UNITOFMEASURE**
-- "uomguid" - INSERT - Manages the creation of the GUID in INSERT
-- "uomguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
+**DOCUMENTCITATION**
+- "documentcitationguid" - INSERT - Manages the creation of the GUID in INSERT
+- "documentcitationguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
+
+**PROCESSPARAMETER**
+- "i_name" INSERT - Checks that only valid values from the CODELIST "ProcessParameterNameValue" are entered in the "name" field.
+- "u_name" UPDATE - Checks that only valid values from the CODELIST "ProcessParameterNameValue" are entered in the "name" field.
 
 **RELATEDPARTY**
 - "relatedpartyguid" - INSERT - Manages the creation of the GUID in INSERT
 - "relatedpartyguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
 - "i_role" INSERT - Checks that only valid values from the CODELIST "ResponsiblePartyRole" are entered in the "role" field.
 - "u_role" UPDATE - Checks that only valid values from the CODELIST "ResponsiblePartyRole" are entered in the "role" field.
-
-**PROCESSPARAMETER**
-- "i_name" INSERT - Checks that only valid values from the CODELIST "ProcessParameterNameValue" are entered in the "name" field.
-- "u_name" UPDATE - Checks that only valid values from the CODELIST "ProcessParameterNameValue" are entered in the "name" field.
-
-**DOCUMENTCITATION**
-- "documentcitationguid" - INSERT - Manages the creation of the GUID in INSERT
-- "documentcitationguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
-
-**DATASTREAMCOLLECTION**
-- "datastreamcollectionguid" - INSERT - Manages the creation of the GUID in INSERT
-- "datastreamcollectionguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
-- "i_ceckvalidphetimedatastreamcollection" INSERT - Checks that the "beginphenomenontime" field is earlier than the "endphenomenontime" field
-- "u_ceckvalidphetimedatastreamcollection" UPDATE - Checks that the "beginphenomenontime" field is earlier than the "endphenomenontime" field
-- "i_ceckvalidrestimedatastreamcollectionINSERT" - Checks that the "beginresulttime" field is earlier than the "endresulttime" field
-- "u_ceckvalidrestimedatastreamcollectionUPDATE" - Checks that the "beginresulttime" field is earlier than the "endresulttime" field
-
-**THING**
-- "thingguid" - INSERT - Manages the creation of the GUID in INSERT
-- "thingguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
-
-**SENSOR**
-- "sensorguid" - INSERT - Manages the creation of the GUID in INSERT
-- "sensorguidupdate" - UPDATE - Prevents the modification of the GUID in UPDATE
-
-## PostGis version
-In the file "create_PostGis.sql," there is a draft of SQL code for defining a data model in PostgreSQL, which mirrors the INSPIRE Geopackage structure.

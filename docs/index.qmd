@@ -20,6 +20,7 @@ The repository has several aspects:
 - An [Hale Studio](https://wetransform.to/halestudio/) transformation project, which facilitates the transformation of GeoPackage to INSPIRE GML;
 - [QGIS](https://qgis.org/) style files, whith forms to facilitates editing of features;
 - A set of SQL statements to update a plain geopackage template to the INSPIRE Soil template.
+- A set of SQL instructions to create a PostgreSQL database that mirrors the structure of the INSPIRE SO Geopackage.
 
 
 ---

@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.32.3-Lima" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0">
+<qgis styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0" version="3.32.3-Lima">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
@@ -7,8 +7,8 @@
     <Private>0</Private>
   </flags>
   <referencedLayers>
-    <relation id="thing_datastreamcollection" providerKey="ogr" referencedLayer="thing_c905e9d6_56b4_44f1_aad5_15a329d33083" layerName="thing" name="thing_datastreamcollection" dataSource="./INSPIRE_Selection_4.gpkg|layername=thing" referencingLayer="datastreamcollection_05997361_72ea_40c3_ac61_ca85ad8ea1c8" layerId="thing_c905e9d6_56b4_44f1_aad5_15a329d33083" strength="Association">
-      <fieldRef referencedField="guidkey" referencingField="idthing"/>
+    <relation layerId="thing_55e436ac_7501_479e_aa13_13e43b168723" referencingLayer="datastreamcollection_66a8e55e_91f7_44dc_b064_d371aca3302d" referencedLayer="thing_55e436ac_7501_479e_aa13_13e43b168723" name="thing_datastreamcollection" providerKey="ogr" layerName="thing" id="thing_datastreamcollection" strength="Association" dataSource="./INSPIRE_SO_DEMO_QGIS_V01.gpkg|layername=thing">
+      <fieldRef referencingField="idthing" referencedField="guidkey"/>
     </relation>
   </referencedLayers>
   <fieldConfiguration>
@@ -129,8 +129,8 @@
             <Option value="100" name="FetchLimitNumber" type="int"/>
             <Option value="false" name="MapIdentification" type="bool"/>
             <Option value="false" name="ReadOnly" type="bool"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=thing" name="ReferencedLayerDataSource" type="QString"/>
-            <Option value="thing_c905e9d6_56b4_44f1_aad5_15a329d33083" name="ReferencedLayerId" type="QString"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/_ConsegnaV01/INSPIRE_SO_DEMO_QGIS_V01.gpkg|layername=thing" name="ReferencedLayerDataSource" type="QString"/>
+            <Option value="thing_55e436ac_7501_479e_aa13_13e43b168723" name="ReferencedLayerId" type="QString"/>
             <Option value="thing" name="ReferencedLayerName" type="QString"/>
             <Option value="ogr" name="ReferencedLayerProviderKey" type="QString"/>
             <Option value="thing_datastreamcollection" name="Relation" type="QString"/>
@@ -142,17 +142,17 @@
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias index="0" name="" field="id"/>
-    <alias index="1" name="" field="guidkey"/>
-    <alias index="2" name="Name" field="name"/>
-    <alias index="3" name="Description" field="description"/>
-    <alias index="4" name="Observed Area" field="observedarea"/>
-    <alias index="5" name="Begin" field="beginphenomenontime"/>
-    <alias index="6" name="End" field="endphenomenontime"/>
-    <alias index="7" name="Begin" field="beginresulttime"/>
-    <alias index="8" name="End" field="endresulttime"/>
-    <alias index="9" name="Properties" field="properties"/>
-    <alias index="10" name="Thing" field="idthing"/>
+    <alias name="" field="id" index="0"/>
+    <alias name="" field="guidkey" index="1"/>
+    <alias name="Name" field="name" index="2"/>
+    <alias name="Description" field="description" index="3"/>
+    <alias name="Observed Area" field="observedarea" index="4"/>
+    <alias name="Begin" field="beginphenomenontime" index="5"/>
+    <alias name="End" field="endphenomenontime" index="6"/>
+    <alias name="Begin" field="beginresulttime" index="7"/>
+    <alias name="End" field="endresulttime" index="8"/>
+    <alias name="Properties" field="properties" index="9"/>
+    <alias name="Thing" field="idthing" index="10"/>
   </aliases>
   <splitPolicies>
     <policy policy="Duplicate" field="id"/>
@@ -168,30 +168,30 @@
     <policy policy="DefaultValue" field="idthing"/>
   </splitPolicies>
   <defaults>
-    <default applyOnUpdate="0" expression="" field="id"/>
-    <default applyOnUpdate="0" expression="" field="guidkey"/>
-    <default applyOnUpdate="0" expression="" field="name"/>
-    <default applyOnUpdate="0" expression="" field="description"/>
-    <default applyOnUpdate="0" expression="" field="observedarea"/>
-    <default applyOnUpdate="0" expression="" field="beginphenomenontime"/>
-    <default applyOnUpdate="0" expression="" field="endphenomenontime"/>
-    <default applyOnUpdate="0" expression="" field="beginresulttime"/>
-    <default applyOnUpdate="0" expression="" field="endresulttime"/>
-    <default applyOnUpdate="0" expression="" field="properties"/>
-    <default applyOnUpdate="0" expression="" field="idthing"/>
+    <default applyOnUpdate="0" field="id" expression=""/>
+    <default applyOnUpdate="0" field="guidkey" expression=""/>
+    <default applyOnUpdate="0" field="name" expression=""/>
+    <default applyOnUpdate="0" field="description" expression=""/>
+    <default applyOnUpdate="0" field="observedarea" expression=""/>
+    <default applyOnUpdate="0" field="beginphenomenontime" expression=""/>
+    <default applyOnUpdate="0" field="endphenomenontime" expression=""/>
+    <default applyOnUpdate="0" field="beginresulttime" expression=""/>
+    <default applyOnUpdate="0" field="endresulttime" expression=""/>
+    <default applyOnUpdate="0" field="properties" expression=""/>
+    <default applyOnUpdate="0" field="idthing" expression=""/>
   </defaults>
   <constraints>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="1" constraints="3" field="id"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="1" constraints="2" field="guidkey"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="name"/>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="description"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="observedarea"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="beginphenomenontime"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="endphenomenontime"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="beginresulttime"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="endresulttime"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="0" constraints="0" field="properties"/>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="idthing"/>
+    <constraint exp_strength="0" unique_strength="1" notnull_strength="1" field="id" constraints="3"/>
+    <constraint exp_strength="0" unique_strength="1" notnull_strength="0" field="guidkey" constraints="2"/>
+    <constraint exp_strength="0" unique_strength="0" notnull_strength="0" field="name" constraints="0"/>
+    <constraint exp_strength="0" unique_strength="0" notnull_strength="1" field="description" constraints="1"/>
+    <constraint exp_strength="0" unique_strength="0" notnull_strength="0" field="observedarea" constraints="0"/>
+    <constraint exp_strength="0" unique_strength="0" notnull_strength="0" field="beginphenomenontime" constraints="0"/>
+    <constraint exp_strength="0" unique_strength="0" notnull_strength="0" field="endphenomenontime" constraints="0"/>
+    <constraint exp_strength="0" unique_strength="0" notnull_strength="0" field="beginresulttime" constraints="0"/>
+    <constraint exp_strength="0" unique_strength="0" notnull_strength="0" field="endresulttime" constraints="0"/>
+    <constraint exp_strength="0" unique_strength="0" notnull_strength="0" field="properties" constraints="0"/>
+    <constraint exp_strength="0" unique_strength="0" notnull_strength="1" field="idthing" constraints="1"/>
   </constraints>
   <constraintExpressions>
     <constraint exp="" desc="" field="id"/>
@@ -231,84 +231,94 @@ def my_form_open(dialog, layer, feature):
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-      <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+      <labelFont strikethrough="0" description="MS Shell Dlg 2,9.6,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
     </labelStyle>
-    <attributeEditorField showLabel="1" index="0" name="id" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField name="id" horizontalStretch="0" verticalStretch="0" showLabel="1" index="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="2" name="name" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField name="name" horizontalStretch="0" verticalStretch="0" showLabel="1" index="2">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="3" name="description" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField name="description" horizontalStretch="0" verticalStretch="0" showLabel="1" index="3">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="10" name="idthing" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField name="idthing" horizontalStretch="0" verticalStretch="0" showLabel="1" index="10">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer columnCount="1" showLabel="1" collapsedExpressionEnabled="0" collapsedExpression="" name="Phenomenon Time" visibilityExpressionEnabled="0" horizontalStretch="0" verticalStretch="0" groupBox="1" type="GroupBox" collapsed="0" visibilityExpression="">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorContainer groupBox="1" visibilityExpressionEnabled="0" collapsed="0" visibilityExpression="" name="Phenomenon Time" horizontalStretch="0" type="GroupBox" verticalStretch="0" collapsedExpression="" showLabel="1" columnCount="1" collapsedExpressionEnabled="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
       </labelStyle>
-      <attributeEditorField showLabel="1" index="5" name="beginphenomenontime" horizontalStretch="0" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+      <attributeEditorField name="beginphenomenontime" horizontalStretch="0" verticalStretch="0" showLabel="1" index="5">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField showLabel="1" index="6" name="endphenomenontime" horizontalStretch="0" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+      <attributeEditorField name="endphenomenontime" horizontalStretch="0" verticalStretch="0" showLabel="1" index="6">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorContainer columnCount="1" showLabel="1" collapsedExpressionEnabled="0" collapsedExpression="" name="Result TIme" visibilityExpressionEnabled="0" horizontalStretch="0" verticalStretch="0" groupBox="1" type="GroupBox" collapsed="0" visibilityExpression="">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorContainer groupBox="1" visibilityExpressionEnabled="0" collapsed="0" visibilityExpression="" name="Result TIme" horizontalStretch="0" type="GroupBox" verticalStretch="0" collapsedExpression="" showLabel="1" columnCount="1" collapsedExpressionEnabled="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
       </labelStyle>
-      <attributeEditorField showLabel="1" index="7" name="beginresulttime" horizontalStretch="0" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+      <attributeEditorField name="beginresulttime" horizontalStretch="0" verticalStretch="0" showLabel="1" index="7">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField showLabel="1" index="8" name="endresulttime" horizontalStretch="0" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+      <attributeEditorField name="endresulttime" horizontalStretch="0" verticalStretch="0" showLabel="1" index="8">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorContainer columnCount="2" showLabel="1" collapsedExpressionEnabled="0" collapsedExpression="" name="Files" visibilityExpressionEnabled="0" horizontalStretch="0" verticalStretch="0" groupBox="1" type="GroupBox" collapsed="1" visibilityExpression="">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorContainer groupBox="1" visibilityExpressionEnabled="0" collapsed="1" visibilityExpression="" name="Files" horizontalStretch="0" type="GroupBox" verticalStretch="0" collapsedExpression="" showLabel="1" columnCount="2" collapsedExpressionEnabled="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
       </labelStyle>
-      <attributeEditorField showLabel="1" index="4" name="observedarea" horizontalStretch="0" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+      <attributeEditorField name="observedarea" horizontalStretch="0" verticalStretch="0" showLabel="1" index="4">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField showLabel="1" index="9" name="properties" horizontalStretch="0" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+      <attributeEditorField name="properties" horizontalStretch="0" verticalStretch="0" showLabel="1" index="9">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorRelation showLabel="1" relation="datastreamcollection_datastream_5" label="Datastream" name="datastreamcollection_datastream_5" forceSuppressFormPopup="0" nmRelationId="" horizontalStretch="0" verticalStretch="0" relationWidgetTypeId="relation_editor">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorContainer groupBox="1" visibilityExpressionEnabled="0" collapsed="0" visibilityExpression="" name="RELATIONS" horizontalStretch="0" type="GroupBox" verticalStretch="0" collapsedExpression="" showLabel="1" columnCount="1" collapsedExpressionEnabled="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont strikethrough="0" description="MS Shell Dlg 2,9.6,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
       </labelStyle>
-      <editor_configuration type="Map">
-        <Option value="false" name="allow_add_child_feature_with_no_geometry" type="bool"/>
-        <Option value="AllButtons" name="buttons" type="QString"/>
-        <Option value="true" name="show_first_feature" type="bool"/>
-      </editor_configuration>
-    </attributeEditorRelation>
+      <attributeEditorContainer groupBox="1" visibilityExpressionEnabled="0" collapsed="1" visibilityExpression="" name="Datastream Collection" horizontalStretch="0" type="GroupBox" verticalStretch="0" collapsedExpression="" showLabel="1" columnCount="1" collapsedExpressionEnabled="0">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont strikethrough="0" description="MS Shell Dlg 2,9.6,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
+        </labelStyle>
+        <attributeEditorRelation nmRelationId="" label="Datastream" relation="datastreamcollection_datastream_5" relationWidgetTypeId="relation_editor" name="datastreamcollection_datastream_5" horizontalStretch="0" forceSuppressFormPopup="0" verticalStretch="0" showLabel="0">
+          <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+            <labelFont strikethrough="0" description="MS Shell Dlg 2,9.6,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
+          </labelStyle>
+          <editor_configuration type="Map">
+            <Option value="false" name="allow_add_child_feature_with_no_geometry" type="bool"/>
+            <Option value="AllButtons" name="buttons" type="QString"/>
+            <Option value="true" name="show_first_feature" type="bool"/>
+          </editor_configuration>
+        </attributeEditorRelation>
+      </attributeEditorContainer>
+    </attributeEditorContainer>
   </attributeEditorForm>
   <editable>
     <field editable="1" name="beginphenomenontime"/>

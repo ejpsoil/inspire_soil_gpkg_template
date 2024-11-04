@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.32.3-Lima" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0">
+<qgis styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0" version="3.32.3-Lima">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
@@ -47,10 +47,10 @@
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias index="0" name="" field="id"/>
-    <alias index="1" name="" field="guidkey"/>
-    <alias index="2" name="Name" field="name"/>
-    <alias index="3" name="Description" field="description"/>
+    <alias name="" field="id" index="0"/>
+    <alias name="" field="guidkey" index="1"/>
+    <alias name="Name" field="name" index="2"/>
+    <alias name="Description" field="description" index="3"/>
   </aliases>
   <splitPolicies>
     <policy policy="Duplicate" field="id"/>
@@ -59,16 +59,16 @@
     <policy policy="DefaultValue" field="description"/>
   </splitPolicies>
   <defaults>
-    <default applyOnUpdate="0" expression="" field="id"/>
-    <default applyOnUpdate="0" expression="" field="guidkey"/>
-    <default applyOnUpdate="0" expression="" field="name"/>
-    <default applyOnUpdate="0" expression="" field="description"/>
+    <default applyOnUpdate="0" field="id" expression=""/>
+    <default applyOnUpdate="0" field="guidkey" expression=""/>
+    <default applyOnUpdate="0" field="name" expression=""/>
+    <default applyOnUpdate="0" field="description" expression=""/>
   </defaults>
   <constraints>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="1" constraints="3" field="id"/>
-    <constraint exp_strength="0" notnull_strength="0" unique_strength="1" constraints="2" field="guidkey"/>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="name"/>
-    <constraint exp_strength="0" notnull_strength="1" unique_strength="0" constraints="1" field="description"/>
+    <constraint exp_strength="0" unique_strength="1" notnull_strength="1" field="id" constraints="3"/>
+    <constraint exp_strength="0" unique_strength="1" notnull_strength="0" field="guidkey" constraints="2"/>
+    <constraint exp_strength="0" unique_strength="0" notnull_strength="1" field="name" constraints="1"/>
+    <constraint exp_strength="0" unique_strength="0" notnull_strength="1" field="description" constraints="1"/>
   </constraints>
   <constraintExpressions>
     <constraint exp="" desc="" field="id"/>
@@ -101,34 +101,44 @@ def my_form_open(dialog, layer, feature):
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-      <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+      <labelFont strikethrough="0" description="MS Shell Dlg 2,9.6,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
     </labelStyle>
-    <attributeEditorField showLabel="1" index="0" name="id" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField name="id" horizontalStretch="0" verticalStretch="0" showLabel="1" index="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="2" name="name" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField name="name" horizontalStretch="0" verticalStretch="0" showLabel="1" index="2">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="3" name="description" horizontalStretch="0" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorField name="description" horizontalStretch="0" verticalStretch="0" showLabel="1" index="3">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorRelation showLabel="1" relation="sensor_datastream_2" label="Datastream" name="sensor_datastream_2" forceSuppressFormPopup="0" nmRelationId="" horizontalStretch="0" verticalStretch="0" relationWidgetTypeId="relation_editor">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont bold="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" italic="0" underline="0"/>
+    <attributeEditorContainer groupBox="1" visibilityExpressionEnabled="0" collapsed="0" visibilityExpression="" name="RELATIONS" horizontalStretch="0" type="GroupBox" verticalStretch="0" collapsedExpression="" showLabel="1" columnCount="1" collapsedExpressionEnabled="0">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont strikethrough="0" description="MS Shell Dlg 2,9.6,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
       </labelStyle>
-      <editor_configuration type="Map">
-        <Option value="false" name="allow_add_child_feature_with_no_geometry" type="bool"/>
-        <Option value="AllButtons" name="buttons" type="QString"/>
-        <Option value="true" name="show_first_feature" type="bool"/>
-      </editor_configuration>
-    </attributeEditorRelation>
+      <attributeEditorContainer groupBox="1" visibilityExpressionEnabled="0" collapsed="1" visibilityExpression="" name="Datastream" horizontalStretch="0" type="GroupBox" verticalStretch="0" collapsedExpression="" showLabel="1" columnCount="1" collapsedExpressionEnabled="0">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont strikethrough="0" description="MS Shell Dlg 2,9.6,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
+        </labelStyle>
+        <attributeEditorRelation nmRelationId="" label="Datastream" relation="sensor_datastream_2" relationWidgetTypeId="relation_editor" name="sensor_datastream_2" horizontalStretch="0" forceSuppressFormPopup="0" verticalStretch="0" showLabel="0">
+          <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+            <labelFont strikethrough="0" description="MS Shell Dlg 2,9.6,-1,5,50,0,0,0,0,0" bold="0" underline="0" style="" italic="0"/>
+          </labelStyle>
+          <editor_configuration type="Map">
+            <Option value="false" name="allow_add_child_feature_with_no_geometry" type="bool"/>
+            <Option value="AllButtons" name="buttons" type="QString"/>
+            <Option value="true" name="show_first_feature" type="bool"/>
+          </editor_configuration>
+        </attributeEditorRelation>
+      </attributeEditorContainer>
+    </attributeEditorContainer>
   </attributeEditorForm>
   <editable>
     <field editable="1" name="description"/>

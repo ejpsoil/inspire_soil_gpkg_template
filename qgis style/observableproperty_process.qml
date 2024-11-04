@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" readOnly="0" version="3.32.3-Lima">
+<qgis styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" version="3.32.3-Lima" readOnly="0">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
@@ -7,11 +7,11 @@
     <Private>0</Private>
   </flags>
   <referencedLayers>
-    <relation referencedLayer="observableproperty_52f5120f_6406_4f30_9d6a_6a2408ea4da4" id="observableproperty_observableproperty_process" referencingLayer="observableproperty_process_9fe326a2_bdac_4d28_af71_64eeb743e976" layerId="observableproperty_52f5120f_6406_4f30_9d6a_6a2408ea4da4" providerKey="ogr" dataSource="./INSPIRE_SO_DEMO_V01.gpkg|layername=observableproperty" layerName="observableproperty" name="observableproperty_observableproperty_process" strength="Association">
-      <fieldRef referencedField="guidkey" referencingField="idobservedproperty"/>
+    <relation id="observableproperty_observableproperty_process" layerId="observableproperty_a6419fbf_f550_4859_9141_c9218696ff8e" referencingLayer="observableproperty_process_d4865a19_5d10_45c6_9d4b_789112629ef7" referencedLayer="observableproperty_a6419fbf_f550_4859_9141_c9218696ff8e" strength="Association" layerName="observableproperty" dataSource="./INSPIRE_SO_12.gpkg|layername=observableproperty" providerKey="ogr" name="observableproperty_observableproperty_process">
+      <fieldRef referencingField="idobservedproperty" referencedField="guidkey"/>
     </relation>
-    <relation referencedLayer="process_16cd52cc_8b30_417e_9d38_3de72c774e16" id="process_observableproperty_process_2" referencingLayer="observableproperty_process_9fe326a2_bdac_4d28_af71_64eeb743e976" layerId="process_16cd52cc_8b30_417e_9d38_3de72c774e16" providerKey="ogr" dataSource="./INSPIRE_SO_DEMO_V01.gpkg|layername=process" layerName="process" name="process_observableproperty_process_2" strength="Association">
-      <fieldRef referencedField="guidkey" referencingField="idprocess"/>
+    <relation id="process_observableproperty_process_2" layerId="process_8af8852e_58f2_4e0f_b76d_477e53a3eda7" referencingLayer="observableproperty_process_d4865a19_5d10_45c6_9d4b_789112629ef7" referencedLayer="process_8af8852e_58f2_4e0f_b76d_477e53a3eda7" strength="Association" layerName="process" dataSource="./INSPIRE_SO_12.gpkg|layername=process" providerKey="ogr" name="process_observableproperty_process_2">
+      <fieldRef referencingField="idprocess" referencedField="guidkey"/>
     </relation>
   </referencedLayers>
   <fieldConfiguration>
@@ -25,8 +25,8 @@
             <Option value="100" type="int" name="FetchLimitNumber"/>
             <Option value="false" type="bool" name="MapIdentification"/>
             <Option value="false" type="bool" name="ReadOnly"/>
-            <Option value="C:/Users/andrea.lachi/Documents/Geopackage Soil/GPKG_Soil_Selection 04/INSPIRE_Selection_4.gpkg|layername=process" type="QString" name="ReferencedLayerDataSource"/>
-            <Option value="process_f67eda7c_192e_4137_b95f_e414d5ab4a77" type="QString" name="ReferencedLayerId"/>
+            <Option value="C:/Users/andrea.lachi/Documents/Geopackage_Sicily_Import/GPKG/Sicily_05 - O&amp;M/INSPIRE_SO_12.gpkg|layername=process" type="QString" name="ReferencedLayerDataSource"/>
+            <Option value="process_8af8852e_58f2_4e0f_b76d_477e53a3eda7" type="QString" name="ReferencedLayerId"/>
             <Option value="process" type="QString" name="ReferencedLayerName"/>
             <Option value="ogr" type="QString" name="ReferencedLayerProviderKey"/>
             <Option value="process_observableproperty_process_2" type="QString" name="Relation"/>
@@ -59,8 +59,8 @@
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias field="idprocess" index="0" name="Process"/>
-    <alias field="idobservedproperty" index="1" name="Observable Properrty"/>
+    <alias index="0" field="idprocess" name="Process"/>
+    <alias index="1" field="idobservedproperty" name="Observable Properrty"/>
   </aliases>
   <splitPolicies>
     <policy field="idprocess" policy="DefaultValue"/>
@@ -71,12 +71,12 @@
     <default field="idobservedproperty" applyOnUpdate="0" expression=""/>
   </defaults>
   <constraints>
-    <constraint field="idprocess" unique_strength="0" notnull_strength="1" exp_strength="0" constraints="1"/>
-    <constraint field="idobservedproperty" unique_strength="0" notnull_strength="1" exp_strength="0" constraints="1"/>
+    <constraint exp_strength="0" unique_strength="0" notnull_strength="1" constraints="1" field="idprocess"/>
+    <constraint exp_strength="0" unique_strength="0" notnull_strength="1" constraints="1" field="idobservedproperty"/>
   </constraints>
   <constraintExpressions>
-    <constraint field="idprocess" exp="" desc=""/>
-    <constraint field="idobservedproperty" exp="" desc=""/>
+    <constraint exp="" field="idprocess" desc=""/>
+    <constraint exp="" field="idobservedproperty" desc=""/>
   </constraintExpressions>
   <expressionfields/>
   <editform tolerant="1"></editform>
@@ -103,17 +103,17 @@ def my_form_open(dialog, layer, feature):
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-      <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" bold="0" italic="0" style=""/>
+    <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="0,0,0,255">
+      <labelFont bold="0" italic="0" underline="0" description="MS Shell Dlg 2,9.6,-1,5,50,0,0,0,0,0" strikethrough="0" style=""/>
     </labelStyle>
-    <attributeEditorField horizontalStretch="0" index="0" name="idprocess" showLabel="1" verticalStretch="0">
-      <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-        <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" bold="0" italic="0" style=""/>
+    <attributeEditorField showLabel="1" index="1" horizontalStretch="0" name="idobservedproperty" verticalStretch="0">
+      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="0,0,0,255">
+        <labelFont bold="0" italic="0" underline="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" strikethrough="0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField horizontalStretch="0" index="1" name="idobservedproperty" showLabel="1" verticalStretch="0">
-      <labelStyle overrideLabelFont="0" overrideLabelColor="0" labelColor="0,0,0,255">
-        <labelFont strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0" bold="0" italic="0" style=""/>
+    <attributeEditorField showLabel="1" index="0" horizontalStretch="0" name="idprocess" verticalStretch="0">
+      <labelStyle overrideLabelColor="0" overrideLabelFont="0" labelColor="0,0,0,255">
+        <labelFont bold="0" italic="0" underline="0" description="MS Shell Dlg 2,9.6,-1,5,50,0,0,0,0,0" strikethrough="0" style=""/>
       </labelStyle>
     </attributeEditorField>
   </attributeEditorForm>
@@ -131,25 +131,36 @@ def my_form_open(dialog, layer, feature):
   </reuseLastValue>
   <dataDefinedFieldProperties/>
   <widgets/>
-  <previewExpression>'Proc:'||' '|| &#xd;
+  <previewExpression>'ObsProp: '|| &#xd;
+&#xd;
 COALESCE(attribute(get_feature&#xd;
+&#xd;
 						(&#xd;
-							'process',&#xd;
-							'guidkey',&#xd;
-							"idprocess"&#xd;
-						),&#xd;
-					'name'&#xd;
-					),&#xd;
-		'&lt;NULL>')&#xd;
-||' - ObsProp: '|| &#xd;
-COALESCE(attribute(get_feature&#xd;
-						(&#xd;
+&#xd;
 							'observableproperty',&#xd;
+&#xd;
 							'guidkey',&#xd;
+&#xd;
 							"idobservedproperty"&#xd;
+&#xd;
 						),&#xd;
+&#xd;
 					'name'&#xd;
+&#xd;
 					),&#xd;
-		'&lt;NULL>')</previewExpression>
+&#xd;
+		'&lt;NULL>')&#xd;
+&#xd;
+||  ' - Proc:'||' '|| &#xd;&#xd;
+COALESCE(attribute(get_feature&#xd;&#xd;
+						(&#xd;&#xd;
+							'process',&#xd;&#xd;
+							'guidkey',&#xd;&#xd;
+							"idprocess"&#xd;&#xd;
+						),&#xd;&#xd;
+					'name'&#xd;&#xd;
+					),&#xd;&#xd;
+		'&lt;NULL>')&#xd;&#xd;
+</previewExpression>
   <layerGeometryType>4</layerGeometryType>
 </qgis>

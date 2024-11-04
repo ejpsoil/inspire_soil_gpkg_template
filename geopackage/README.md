@@ -2,16 +2,15 @@
 
 
 
-The file "INSPIRE_SO_V01.gpkg" is the empty geographic database.
+The folder "INSPIRE SO empty" contains the empty INSPIRE Geopackage. Only the codelist table has been populated with the necessary codelists available in the INSPIRE registry (https://inspire.ec.europa.eu/registry).
 
 **Please note: Some codelists within the geopackage have not been published online yet, while others are internal codelists for managing forms.**
 
-The file "INSPIRE_SO_DEMO_V01.gpkg" is the geographic database containing sample data.
+The folder "INSPIRE SO with data" contains the INSPIRE Geopackage with sample data.
 
-The file "INSPIRE_SO_DEMO_QGIS_V01.gpkg" is the geographic database containing sample data, along with data input and visualization forms.
-For proper use, it is necessary to open the QGIS project "INSPIRE_SO," which you will find inside the geopackage after connecting it to QGIS. 
+The folder "INSPIRE SO with data and QGIS project" contains the INSPIRE Geopackage with sample data, along with data entry and visualization forms.
+For proper use, it is necessary to open the QGIS project "SO_PRJ," which you will find inside the geopackage after connecting it to QGIS. 
 
-**Please note: The style files are still in progress, so they may appear incomplete and in some cases may even function incorrectly.**
 
 The file "DB_Schema.png" contains the database schema.
 

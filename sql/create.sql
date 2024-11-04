@@ -1289,7 +1289,6 @@ BEFORE INSERT ON profileelement
 FOR EACH ROW
 WHEN (NEW.layertype <> 'http://inspire.ec.europa.eu/codelist/LayerTypeValue/geogenic')
 BEGIN
-    -- Verifica se i campi sono NULL, altrimenti solleva un'eccezione
     SELECT CASE
         WHEN (NEW.layerrocktype IS NOT NULL) THEN
             RAISE(ABORT, 'layerrocktype must be NULL when LayerTypeValue is not "geogenic".')
@@ -1307,7 +1306,6 @@ BEFORE UPDATE ON profileelement
 FOR EACH ROW
 WHEN (NEW.layertype <> 'http://inspire.ec.europa.eu/codelist/LayerTypeValue/geogenic')
 BEGIN
-    -- Verifica se i campi sono NULL, altrimenti solleva un'eccezione
     SELECT CASE
         WHEN (NEW.layerrocktype IS NOT NULL) THEN
             RAISE(ABORT, 'layerrocktype must be NULL when LayerTypeValue is not "geogenic".')
@@ -1498,7 +1496,6 @@ END;
 --
 
 
--- NEW TRIGGER ANDREA -- controllo che almeno uno tra     profileelementdepthrange_uppervalue  e profileelementdepthrange_lowervalue sia valorizzato
 
 /* 
 ██████   █████  ██████  ████████ ██  ██████ ██      ███████ ███████ ██ ███████ ███████ ███████ ██████   █████   ██████ ████████ ██  ██████  ███    ██ ████████ ██    ██ ██████  ███████ 
@@ -1555,14 +1552,12 @@ CREATE TRIGGER i_check_fraction_sum
 BEFORE INSERT ON particlesizefractiontype
 FOR EACH ROW
 BEGIN
-    -- Controlla se la somma supera 100
     SELECT CASE
         WHEN (
             SELECT ROUND(SUM(fractioncontent), 1) + ROUND(NEW.fractioncontent, 1)
             FROM particlesizefractiontype
             WHERE idprofileelement = NEW.idprofileelement
         ) > 100 THEN
-            -- Genera un errore se la somma supera 100
             RAISE(ABORT, 'The sum of fractioncontent for idprofileelement cannot exceed 100')
     END;
 END;
@@ -1572,7 +1567,6 @@ CREATE TRIGGER u_check_fraction_sum
 BEFORE UPDATE ON particlesizefractiontype
 FOR EACH ROW
 BEGIN
-    -- Controlla se la somma supera 100 escludendo la riga corrente
     SELECT CASE
         WHEN (
             SELECT ROUND(SUM(fractioncontent), 1)
@@ -1580,7 +1574,6 @@ BEGIN
             WHERE idprofileelement = NEW.idprofileelement
             AND id <> OLD.id
         ) + ROUND(NEW.fractioncontent, 1) > 100 THEN
-            -- Genera un errore se la somma supera 100
             RAISE(ABORT, 'The sum of fractioncontent for idprofileelement cannot exceed 100')
     END;
 END;
@@ -1749,59 +1742,6 @@ BEGIN
 END;
 --
 
-/*
-CREATE TRIGGER i_check_faohorizonmaster_2
-BEFORE INSERT ON faohorizonnotationtype
-FOR EACH ROW
-WHEN NEW.faohorizonmaster_2 IS NOT NULL AND NEW.faohorizonmaster_1 IS NULL
-BEGIN
-    SELECT RAISE(ABORT, 'The field Fao Horizon Master 2 can be populated only if the field Fao Horizon Master 1  is not null.');
-END;
-
-CREATE TRIGGER u_check_faohorizonmaster_2
-BEFORE UPDATE ON faohorizonnotationtype
-FOR EACH ROW
-WHEN NEW.faohorizonmaster_2 IS NOT NULL AND NEW.faohorizonmaster_1 IS NULL
-BEGIN
-    SELECT RAISE(ABORT, 'The field Fao Horizon Master 2 can be populated only if the field Fao Horizon Master 1  is not null.');
-END;
---
-
-CREATE TRIGGER i_check_faohorizonsubordinate_2
-BEFORE INSERT ON faohorizonnotationtype
-FOR EACH ROW
-WHEN NEW.faohorizonsubordinate_2 IS NOT NULL AND NEW.faohorizonsubordinate_1 IS NULL
-BEGIN
-    SELECT RAISE(ABORT, 'The field Fao Horizon SUbordinate 2 can be populated only if the field Fao Horizon SUbordinate 1  is not null.');
-END;
-
-CREATE TRIGGER u_check_faohorizonsubordinate_2
-BEFORE UPDATE ON faohorizonnotationtype
-FOR EACH ROW
-WHEN NEW.faohorizonsubordinate_2 IS NOT NULL AND NEW.faohorizonsubordinate_1 IS NULL
-BEGIN
-    SELECT RAISE(ABORT, 'The field Fao Horizon SUbordinate 2 can be populated only if the field Fao Horizon SUbordinate 1  is not null.');
-END;
---
-
-
-CREATE TRIGGER i_check_faohorizonsubordinate_3
-BEFORE INSERT ON faohorizonnotationtype
-FOR EACH ROW
-WHEN NEW.faohorizonsubordinate_3 IS NOT NULL AND NEW.faohorizonsubordinate_2 IS NULL
-BEGIN
-    SELECT RAISE(ABORT, 'The field Fao Horizon SUbordinate 3 can be populated only if the field Fao Horizon SUbordinate 2  is not null.');
-END;
-
-CREATE TRIGGER u_check_faohorizonsubordinate_3
-BEFORE UPDATE ON faohorizonnotationtype
-FOR EACH ROW
-WHEN NEW.faohorizonsubordinate_3 IS NOT NULL AND NEW.faohorizonsubordinate_2 IS NULL
-BEGIN
-    SELECT RAISE(ABORT, 'The field Fao Horizon SUbordinate 3 can be populated only if the field Fao Horizon SUbordinate 2  is not null.');
-END;
---
-*/
 
 CREATE TRIGGER i_faoprime
 BEFORE INSERT ON faohorizonnotationtype
@@ -2164,7 +2104,6 @@ CREATE TRIGGER i_unique_wrbqualifiergrouptype
 BEFORE INSERT ON wrbqualifiergrouptype
 FOR EACH ROW
 BEGIN
-    -- Check if there exists any row with the same values
     SELECT RAISE(ABORT, 'Duplicate entry found for wrbversion, qualifierplace, wrbqualifier, wrbspecifier_1, wrbspecifier_2.')
     FROM wrbqualifiergrouptype
     WHERE wrbversion = NEW.wrbversion
@@ -2180,7 +2119,6 @@ CREATE TRIGGER u_unique_wrbqualifiergrouptype
 BEFORE UPDATE ON wrbqualifiergrouptype
 FOR EACH ROW
 BEGIN
-    -- Check if there exists any row with the same values
     SELECT RAISE(ABORT, 'Duplicate entry found for wrbversion, qualifierplace, wrbqualifier, wrbspecifier_1, wrbspecifier_2.')
     FROM wrbqualifiergrouptype
     WHERE wrbversion = NEW.wrbversion
@@ -2279,7 +2217,6 @@ CREATE TRIGGER i_check_qualifier_position_unique
 BEFORE INSERT ON wrbqualifiergroup_profile
 FOR EACH ROW
 BEGIN
-    -- Controlla se esiste già un record con lo stesso idsoilprofile, idwrbqualifiergrouptype e qualifierposition
     SELECT RAISE(ABORT, 'qualifierposition must be unique for each qualifierplace within the same soilprofile')
     FROM wrbqualifiergroup_profile
     JOIN wrbqualifiergrouptype ON wrbqualifiergroup_profile.idwrbqualifiergrouptype = wrbqualifiergrouptype.guidkey
@@ -2296,7 +2233,6 @@ CREATE TRIGGER u_check_qualifier_position_unique
 BEFORE UPDATE ON wrbqualifiergroup_profile
 FOR EACH ROW
 BEGIN
-    -- Controlla se esiste già un record con lo stesso idsoilprofile, idwrbqualifiergrouptype e qualifierposition
     SELECT RAISE(ABORT, 'qualifierposition must be unique for each qualifierplace within the same soilprofile')
     FROM wrbqualifiergroup_profile
     JOIN wrbqualifiergrouptype ON wrbqualifiergroup_profile.idwrbqualifiergrouptype = wrbqualifiergrouptype.guidkey
@@ -2346,7 +2282,7 @@ CREATE TABLE datastream
     -------------------------------------------------------------------
     
     FOREIGN KEY (iddatastreamcollection)
-      REFERENCES datastreamcollection(guidkey),
+      REFERENCES datastreamcollection(guidkey) ON DELETE CASCADE ON UPDATE CASCADE,
 
     FOREIGN KEY (idprocess)
       REFERENCES process(guidkey),
@@ -3512,7 +3448,7 @@ CREATE TABLE  relatedparty
     telephonefacsimile                  INTEGER, 
     telephonevoice                      INTEGER, 
     website                             TEXT, 
-    role                                TEXT  
+    role                                TEXT   -- Codelist ResponsiblePartyRole
 );
 
 -- Contents relatedparty --------------------------------------------------------------------------------------
@@ -3631,7 +3567,7 @@ INSERT INTO gpkg_contents (
 
 -- LayerTypeValue
 -- profileelement
--- INSPIRE
+-- CODELIST INSPIRE
 -- http://inspire.ec.europa.eu/codelist/LayerTypeValue
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/LayerTypeValue/depthInterval', 'depth interval', 'Fixed depth range where soil is described and/or samples are taken.', 'LayerTypeValue', null, null, null, null);
@@ -3641,7 +3577,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- EventProcessValue
 -- profileelement
--- INSPIRE
+-- CODELIST INSPIRE
 --http://inspire.ec.europa.eu/codelist/EventProcessValue
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/EventProcessValue/bolideImpact', 'bolide impact', 'The impact of an extraterrestrial body on the surface of the earth.', 'EventProcessValue', null, null, null, null);
@@ -3702,7 +3638,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- LayerGenesisProcessStateValue
 -- profileelement
--- INSPIRE
+-- CODELIST INSPIRE
 -- http://inspire.ec.europa.eu/codelist/LayerGenesisProcessStateValue
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/LayerGenesisProcessStateValue/ongoing', 'on-going', 'The process has started in the past and is still active.', 'LayerGenesisProcessStateValue', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/LayerGenesisProcessStateValue/terminated', 'terminated', 'The process is no longer active.', 'LayerGenesisProcessStateValue', null, null, null, null);
@@ -3710,7 +3646,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- FAOHorizonMaster
 -- faohorizonnotationtype
--- INSPIRE
+-- CODELIST INSPIRE
 -- https://inspire.ec.europa.eu/codelist/FAOHorizonMasterValue
 
 
@@ -3728,7 +3664,7 @@ INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_
 
 -- FAOHorizonSubordinate
 -- faohorizonnotationtype
--- INSPIRE
+-- CODELIST INSPIRE
 -- https://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue
 
 
@@ -3766,7 +3702,7 @@ INSERT INTO "codelist" (ID, label, definition, collection, foi, phenomenon, foi_
 
 -- FAOPrime
 -- faohorizonnotationtype
--- INSPIRE
+-- CODELIST INSPIRE
 -- http://inspire.ec.europa.eu/codelist/FAOPrimeValue
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/FAOPrimeValue/0','0','No Prime applies to this layer or horizon', 'FAOPrimeValue', null, null, null, null);
@@ -3776,7 +3712,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- ResponsiblePartyRole
 -- relatedparty
--- INSPIRE
+-- CODELIST INSPIRE
 -- http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/resourceProvider', 'Resource Provider', 'Party that supplies the resource.', 'ResponsiblePartyRole', null, null, null, null);
@@ -3793,7 +3729,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- SoilInvestigationPurposeValue
 -- soilsite
--- INSPIRE
+-- CODELIST INSPIRE
 -- http://inspire.ec.europa.eu/codelist/SoilInvestigationPurposeValue
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/SoilInvestigationPurposeValue/generalSoilSurvey', 'general soil survey', 'Soil characterisation with unbiased selection of investigation location.', 'SoilInvestigationPurposeValue', null, null, null, null);
@@ -3801,7 +3737,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- SoilPlotTypeValue
 -- soilplot
--- INSPIRE
+-- CODELIST INSPIRE
 -- http://inspire.ec.europa.eu/codelist/SoilPlotTypeValue
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/SoilPlotTypeValue/borehole', 'borehole', 'Penetration into the sub-surface with removal of soil/rock material by using, for instance, a hollow tube-shaped tool, in order to carry out profile descriptions, sampling and/or field tests.', 'SoilPlotTypeValue', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/SoilPlotTypeValue/sample', 'sample', 'Exacavation where soil material is removed as a soil sample without doing any soil profile description.', 'SoilPlotTypeValue', null, null, null, null);
@@ -3809,7 +3745,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- WRBReferenceSoilGroupValue
 -- soilprofile
--- INSPIRE
+-- CODELIST INSPIRE
 -- http://inspire.ec.europa.eu/codelist/WRBReferenceSoilGroupValue
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/WRBReferenceSoilGroupValue/acrisol', 'Acrisols', 'Soil having an argic horizon, CECclay < 50%.', 'WRBReferenceSoilGroupValue', null, null, null, null);
@@ -3847,7 +3783,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- WRBQualifierPlaceValue
 -- wrbqualifiergrouptype
--- INSPIRE
+-- CODELIST INSPIRE
 -- http://inspire.ec.europa.eu/codelist/WRBQualifierPlaceValue
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/WRBQualifierPlaceValue/suffix', 'suffix', 'Suffix', 'WRBQualifierPlaceValue', null, null, null, null);
@@ -3855,7 +3791,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- WRBQualifierValue
 -- wrbqualifiergrouptype
--- INSPIRE
+-- CODELIST INSPIRE
 -- http://inspire.ec.europa.eu/codelist/WRBQualifierValue
 
 
@@ -4040,12 +3976,10 @@ INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_ph
 INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/WRBQualifierValue/Entic', 'Entic', 'Not having an albic horizon and having a loose spodic horizon (in Podzols only)', 'WRBQualifierValue', null, null, null, null);
 
 
-
-
--- Example codelist not published online -------------------------------------------------------------
+-- EXAMPLE --  codelist not published online -------------------------------------------------------------
 -- WRBSpecifiers
 -- wrbqualifiergrouptype
--- INSPIRE 
+-- CODELIST INSPIRE 
 -- http://inspire.ec.europa.eu/codelist/WRBSpecifierValue (void) in corso di accettazione
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/WRBSpecifierValue/bathi', 'Bathi', 'Bathi', 'WRBSpecifierValue', null, null, null, null);
@@ -4062,14 +3996,14 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 -- INTERNAL codelist for managing forms -------------------------------------------------------------
 -- OtherHorizonNotationType
 -- otherhorizonnotationtype
--- CREA
+-- CODELIST CREA
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('WRBdiagnostichorizon', 'WRB', 'WRB Diagnostic Horizon', 'OtherHorizonNotationTypeValue', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('USDAdiagnostichorizon', 'USDA', 'USDA Diagnostic Horizon', 'OtherHorizonNotationTypeValue', null, null, null, null);
 
--- EXAMPLE codelist not published online -------------------------------------------------------------
+-- EXAMPLE -- codelist not published online -------------------------------------------------------------
 -- WRBdiagnostichorizon
 -- otherhorizonnotationtype
--- CREA
+-- CODELIST CREA
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/albic', 'albic', 'albico', 'WRBdiagnostichorizon', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/andic', 'andic', 'andico', 'WRBdiagnostichorizon', null, null, null, null);
@@ -4111,17 +4045,17 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/vitric', 'vitric', 'vitrico', 'WRBdiagnostichorizon', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/yermic', 'yermic', 'yermico', 'WRBdiagnostichorizon', null, null, null, null);
 
--- EXAMPLE codelist not published online -------------------------------------------------------------
+-- EXAMPLE -- codelist not published online -------------------------------------------------------------
 -- diagnostichorizon
 -- otherhorizonnotationtype
--- CREA
+-- CODELIST CREA
 
 INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('https://crea.gov.it/infosuoli/vocabularies/USDA/diagnostichorizon/12386', 'Void', 'Void', 'USDAdiagnostichorizon', 'https://crea.gov.it/infosuoli/vocabularies/OtherHorizonNotationType/USDA', null, null, null);
 
--- EXAMPLE codelist not published online -------------------------------------------------------------
+-- EXAMPLE -- codelist not published online -------------------------------------------------------------
 -- OtherSoilNameTypeValue
 -- othersoilnametype
--- CREA
+-- CODELIST CREA
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('https://crea.gov.it/infosuoli/vocabularies/OtherSoilNameTypeValue/OSN', 'Void', 'Void', 'OtherSoilNameTypeValue', null, null, null, null);
 
@@ -4133,7 +4067,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- SoilSiteParameterNameValue
 -- soilsite
--- INSPIRE
+-- CODELIST INSPIRE
 -- http://inspire.ec.europa.eu/codelist/SoilSiteParameterNameValue
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/SoilSiteParameterNameValue/metalAs', 'Arsenic and compounds (as As)', 'as in E-PRTR, CAS-Nr.: 7440-38-2', 'SoilSiteParameterNameValue', 'soilsite', 'chemical', 'soilsitechemical', null);
@@ -4277,7 +4211,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 -- CONTINUE 
 -- SoilSiteParameterNameValue
 -- soilsite
--- CREA
+-- CODELIST CREA
 -- http:
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -4301,12 +4235,8 @@ INSERT INTO "codelist" (definition, label, id, collection, foi, phenomenon, foi_
 
 -- SoilProfileParameterNameValue
 -- soilprofile
--- INSPIRE
+-- CODELIST INSPIRE
 -- http://inspire.ec.europa.eu/codelist/SoilProfileParameterNameValue
-
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- PHISICAL AND CHEMICAL TOGETHER ?????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/SoilProfileParameterNameValue/carbonStock', 'carbon stock', 'The total mass of carbon in soil for a given depth.', 'SoilProfileParameterNameValue', 'soilprofile', 'chemical', 'soilprofilechemical', null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/SoilProfileParameterNameValue/potentialRootDepth', 'potential root depth', 'Potential depth of the soil profile where roots develop (in cm).', 'SoilProfileParameterNameValue', 'soilprofile', 'physical', 'soilprofilephysical', null);
@@ -4320,7 +4250,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 -- CONTINUE 
 -- SoilProfileParameterNameValue
 -- soilsite
--- CREA
+-- CODELIST CREA
 -- http:
 -- ========================================================================================================================================================================================================================================================================================
 -- ========================================================================================================================================================================================================================================================================================
@@ -4335,7 +4265,7 @@ INSERT INTO "codelist" (definition, label, id, collection, foi, phenomenon, foi_
 
 
 -- SoilDerivedObjectParameterNameValue
--- INSPIRE
+-- CODELIST INSPIRE
 -- http://inspire.ec.europa.eu/codelist/SoilDerivedObjectParameterNameValue
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -4359,7 +4289,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- ProfileElementParameterNameValue
 -- profileelement
--- INSPIRE
+-- CODELIST INSPIRE
 -- http://inspire.ec.europa.eu/codelist/ProfileElementParameterNameValue
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/ProfileElementParameterNameValue/organicCarbonContent', 'organic carbon content', 'Portion of the soil measured as carbon in organic forms, excluding living macro and mesofauna and living plant tissue.', 'ProfileElementParameterNameValue', 'profileelement', 'chemical', 'profileelementchemical', null);
@@ -4379,7 +4309,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 -- ========================================================================================================================================================================================================================================================================================
 -- SoilProfileParameterNameValue   DUPLICATO SOPRA CONTROLLARE
 -- soilprofile
--- INSPIRE
+-- CODELIST INSPIRE
 -- http://inspire.ec.europa.eu/codelist/SoilProfileParameterNameValue
 -- ========================================================================================================================================================================================================================================================================================
 -- ========================================================================================================================================================================================================================================================================================
@@ -4391,7 +4321,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- LithologyValue
 -- profileelement
--- INSPIRE
+-- CODELIST INSPIRE
 -- http://inspire.ec.europa.eu/codelist/LithologyValue
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/LithologyValue/acidicIgneousMaterial', 'acidicIgneousMaterial', 'acidicIgneousMaterial', 'LithologyValue', null, null, null, null);
@@ -4468,7 +4398,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- EventEnvironmentValue
 -- profileelement
--- INSPIRE
+-- CODELIST INSPIRE
 -- http://inspire.ec.europa.eu/codelist/EventEnvironmentValue
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/EventEnvironmentValue/agriculturalAndForestryLandSetting''', 'agricultural and forestry land setting', 'Human influence setting with intensive agricultural activity or forestry land use,  including forest plantations.', 'EventEnvironmentValue', null, null, null, null);
@@ -4638,17 +4568,17 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/EventEnvironmentValue/tidalFlatSetting', 'tidal flat setting', 'An extensive, nearly horizontal, barren tract of land that is alternately covered and uncovered by the tide, and consisting of unconsolidated sediment (mostly mud and sand). It may form the top surface of a deltaic deposit.', 'EventEnvironmentValue', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/EventEnvironmentValue/swampOrMarshSetting', 'swamp or marsh setting', 'A water-saturated, periodically wet or continually flooded area with the surface not deeply submerged, essentially without the formation of peat. Marshes are characterized by sedges, cattails, rushes, or other aquatic and grasslike vegetation. Swamps are characterized by tree and brush vegetation.', 'EventEnvironmentValue', null, null, null, null);
 
--- Example codelist not published online -------------------------------------------------------------
+-- Example --  codelist not published online -------------------------------------------------------------
 -- ProcessParameterNameValue
 -- processparameter
--- CREA
+-- CODELIST CREA
 -- http://inspire.ec.europa.eu/codelist/ProcessParameterNameValue (void)
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://crea.gov.it/codelist/12345', 'Void', 'Void', 'ProcessParameterNameValue', null, null, null, null);
 
 -- INTERNAL codelist for managing forms -------------------------------------------------------------
 -- Define the FOI
--- CREA
+-- CODELIST CREA
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('profileelement', 'profileelement', null, 'FOIType', '', null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('soilprofile', 'soilprofile', null, 'FOIType', '', null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('soilderivedobject', 'soilderivedobject', null, 'FOIType', '', null, null, null);
@@ -4656,13 +4586,13 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- INTERNAL codelist for managing forms -------------------------------------------------------------
 -- Define the PhenomenonType
--- CREA
+-- CODELIST CREA
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('chemical', 'chemical', null, 'PhenomenonType', '', null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('biological', 'biological', null, 'PhenomenonType', '', null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('physical', 'physical', null, 'PhenomenonType', '', null, null, null);
 
 --- INTERNAL codelist for managing forms -------------------------------------------------------------
--- CREA
+-- CODELIST CREA
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/pc01', 'excessively drained', 'excessively drained', 'WaterDrainage', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/pc02', 'somewhat excessively', 'somewhat excessively', 'WaterDrainage', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/pc03', 'well drained', 'well drained', 'WaterDrainage', null, null, null, null);
@@ -4672,25 +4602,19 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/codelist/pc07', 'very poorly drained', 'very poorly drained', 'WaterDrainage', null, null, null, null);
 
 -- INTERNAL codelist for managing forms -------------------------------------------------------------
--- CREA
+-- CODELIST CREA
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('WaterDrainage', 'WaterDrainage', 'WaterDrainage', 'PropertyCoded', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('Effervescence', 'Effervescence', 'Effervescence', 'PropertyCoded', null, null, null, null);
 
 -- INTERNAL codelist for managing forms -------------------------------------------------------------
--- CREA
+-- CODELIST CREA
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('Test_01', 'Test_01', 'Test_01', 'Effervescence', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('Test_02', 'Test_02', 'Test_02', 'Effervescence', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('Test_03', 'Test_03', 'Test_03', 'Effervescence', null, null, null, null);
 
 
-
-
--- =======================================================================================================================================================================================================
--- =======================================================================================================================================================================================================
--- =======================================================================================================================================================================================================
-
 -- INTERNAL codelist for managing PropertyCoded Codelist -------------------------------------------------------------
--- CREA
+-- CODELIST CREA
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('AnthropicAspects','AnthropicAspects','AnthropicAspects','PropertyCoded', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('SuperficialAspects','SuperficialAspects','SuperficialAspects','PropertyCoded', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('PlantCover','PlantCover','PlantCover','PropertyCoded', null, null, null, null);
@@ -4708,11 +4632,9 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('Vegetation','Vegetation','Vegetation','PropertyCoded', null, null, null, null);
 
 
-
-
 -- AnthropicAspects
 -- Domanin Coded Value
--- CREA
+-- CODELIST CREA
 -- http://
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/classification/thesaurus/stratum/AntropogenicSurfaceAspects#65b757df-ae67-49d7-a451-46f93449af01', 'others', 'others', 'AnthropicAspects', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/classification/thesaurus/stratum/AntropogenicSurfaceAspects#5650c978-0eae-457b-bd58-7a70fd974ac0', 'compacted by animals', 'compacted by animals', 'AnthropicAspects', null, null, null, null);
@@ -4723,7 +4645,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- SuperficialAspects
 -- Domanin Coded Value
--- CREA
+-- CODELIST CREA
 -- http://
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/classification/thesaurus/stratum/PedobiologicalSurfaceAspects#cb58b331-35e5-42d9-bf8a-9716dc23acab', 'others', 'others', 'SuperficialAspects', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/classification/thesaurus/stratum/PedobiologicalSurfaceAspects#12dc414c-d379-463b-b708-ae7cdc50e386', 'mounds from burrowing animals', 'mounds from burrowing animals', 'SuperficialAspects', null, null, null, null);
@@ -4739,7 +4661,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- PlantCover
 -- Domanin Coded Value
--- CREA
+-- CODELIST CREA
 -- http://
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/copertveget_01', 'bare soil', 'bare soil', 'PlantCover', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/copertveget_02', '<10% extremely low', '<10% extremely low', 'PlantCover', null, null, null, null);
@@ -4750,7 +4672,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- SiteCurvature
 -- Domanin Coded Value
--- CREA
+-- CODELIST CREA
 -- http://
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/cur_sito_01', 'concave-concave', 'concave-concave', 'SiteCurvature', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/cur_sito_02', 'concave-linear', 'concave-linear', 'SiteCurvature', null, null, null, null);
@@ -4764,7 +4686,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- Deposition
 -- Domanin Coded Value
--- CREA
+-- CODELIST CREA
 -- http://
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/deposizione_01', 'absent', 'absent', 'Deposition', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/deposizione_02', 'hydric', 'hydric', 'Deposition', null, null, null, null);
@@ -4773,7 +4695,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- ExternalDrainage
 -- Domanin Coded Value
--- CREA
+-- CODELIST CREA
 -- http://
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/dren_est_01', 'negligible', 'negligible', 'ExternalDrainage', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/dren_est_02', 'very low', 'very low', 'ExternalDrainage', null, null, null, null);
@@ -4784,7 +4706,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- MorphologicalElements
 -- Domanin Coded Value
--- CREA
+-- CODELIST CREA
 -- http://
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/elem_morf_01', 'depression', 'depression', 'MorphologicalElements', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/elem_morf_02', 'open depression', 'open depression', 'MorphologicalElements', null, null, null, null);
@@ -4804,7 +4726,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- ArealErosion
 -- Domanin Coded Value
--- CREA
+-- CODELIST CREA
 -- http://
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/eros_area_01', '0 - 5 %', '0 - 5 %', 'ArealErosion', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/eros_area_02', '5 - 10 %', '5 - 10 %', 'ArealErosion', null, null, null, null);
@@ -4814,7 +4736,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- Erosion
 -- Domanin Coded Value
--- CREA
+-- CODELIST CREA
 -- http://
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/eros_real_01', 'absent', 'absent', 'Erosion', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/eros_real_02', 'water: sheet erosion moderate', 'water: sheet erosion moderate', 'Erosion', null, null, null, null);
@@ -4831,7 +4753,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- FloodFrequency
 -- Domanin Coded Value
--- CREA
+-- CODELIST CREA
 -- http://
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/inond_freq_01', 'absent', 'absent', 'FloodFrequency', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/inond_freq_02', 'rare ', 'rare (1-5 times/100 years)', 'FloodFrequency', null, null, null, null);
@@ -4842,7 +4764,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- MorphologyLandSystems
 -- Domanin Coded Value
--- CREA
+-- CODELIST CREA
 -- http://
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/morfo_st_01', 'unknown', 'unknown', 'MorphologyLandSystems', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/morfo_st_02', 'upland plains of low mountain with subparallel drainage pattern', 'upland plains of low mountain with subparallel drainage pattern', 'MorphologyLandSystems', null, null, null, null);
@@ -5224,7 +5146,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- PhysiographyForm
 -- Domanin Coded Value
--- CREA
+-- CODELIST CREA
 -- http://
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/fisiogr_forma_01', 'unknown', 'unknown', 'PhysiographyForm', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/fisiogr_forma_02', 'anthropic origin landforms', 'anthropic origin landforms', 'PhysiographyForm', null, null, null, null);
@@ -5492,7 +5414,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- SoilState
 -- Domanin Coded Value
--- CREA
+-- CODELIST CREA
 -- http://
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/stato_suolo_01', 'recently ploughed', 'recently ploughed', 'SoilState', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/stato_suolo_02', 'present gassing or crop cultivation', 'present gassing or crop cultivation', 'SoilState', null, null, null, null);
@@ -5505,7 +5427,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- LandUse
 -- Domanin Coded Value
--- CREA
+-- CODELIST CREA
 -- http://
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/uso_suolo_01', 'urban areas', 'urban areas', 'LandUse', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/uso_suolo_02', 'urban fabric', 'urban fabric', 'LandUse', null, null, null, null);
@@ -5640,7 +5562,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- Vegetation
 -- Domanin Coded Value
--- CREA
+-- CODELIST CREA
 -- http://
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/vegetaz_01', 'unknown', 'unknown', 'Vegetation', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://data.europa.eu/oxm/lucas2022/CXX9', 'broadleaved evergreen formation', 'broadleaved evergreen formation', 'Vegetation', null, null, null, null);
@@ -5730,7 +5652,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- LimProfUtile
 -- Domanin Coded Value
--- CREA
+-- CODELIST CREA
 -- http://
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/prof_ut_lim_01', 'other causes (describe in a note)', 'other causes (describe in a note)', 'LimProfUtile', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/prof_ut_lim_02', 'high compaction', 'high compaction', 'LimProfUtile', null, null, null, null);
@@ -5750,7 +5672,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- TipoFalda
 -- Domanin Coded Value
--- CREA
+-- CODELIST CREA
 -- http://
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/falda_tipo_01', 'not expressed', 'not expressed', 'TipoFalda', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/falda_tipo_02', 'confined', 'confined', 'TipoFalda', null, null, null, null);
@@ -5761,7 +5683,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- GroupHydro
 -- Domanin Coded Value
--- CREA
+-- CODELIST CREA
 -- http://
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/idr_group_01', 'hydrologic soil group (HSG) A', 'hydrologic soil group (HSG) A', 'GroupHydro', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/idr_group_02', 'hydrologic soil group (HSG) B', 'hydrologic soil group (HSG) B', 'GroupHydro', null, null, null, null);
@@ -5770,7 +5692,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- DrenaggInt
 -- Domanin Coded Value
--- CREA
+-- CODELIST CREA
 -- http://
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/dren_int_01', 'excessively drained', 'excessively drained', 'DrenaggInt', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/dren_int_02', 'somewhat excessively drained', 'somewhat excessively drained', 'DrenaggInt', null, null, null, null);
@@ -5782,7 +5704,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- CapUso
 -- Domanin Coded Value
--- CREA
+-- CODELIST CREA
 -- http://
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/cap_uso_01', 'Suitable for Cultivation of Row Crops', 'Suitable for Cultivation of Row Crops', 'CapUso', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/cap_uso_02', 'Suitable for Cultivation of Row Crops with some limitations', 'Suitable for Cultivation of Row Crops with some limitations', 'CapUso', null, null, null, null);
@@ -5796,7 +5718,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- CapUsoSott
 -- Domanin Coded Value
--- CREA
+-- CODELIST CREA
 -- http://
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/cap_uso_sc_01', 'climatic limitation', 'climatic limitation', 'CapUsoSott', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/cap_uso_sc_02', 'erosion risks', 'erosion risks', 'CapUsoSott', null, null, null, null);
@@ -5805,7 +5727,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 
 -- CapUsoUnit
 -- Domanin Coded Value
--- CREA
+-- CODELIST CREA
 -- http://
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/cap_usi_unit_01', 'water availability', 'water availability', 'CapUsoUnit', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://geonetwork-crea-so.westeurope.cloudapp.azure.com/cap_usi_unit_02', 'rocks', 'rocks', 'CapUsoUnit', null, null, null, null);
@@ -5825,7 +5747,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 -- WRBRversion
 -- soilprofile - wrbqualifiergrouptype
 --
--- CREA based on real URI of WRB Classification
+-- CODELIST CREA based on real URI of WRB Classification
 INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('https://inspire.ec.europa.eu/codelist/WRBReferenceSoilGroupValue', 'WRB 2006', null, 'wrbversion', null, null, null, null);
 INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/rsg.html', 'WRB 2014', null, 'wrbversion', null, null, null, null);
 INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('https://obrl-soil.github.io/wrbsoil2022/', 'WRB 2022', null, 'wrbversion', null, null, null, null);
@@ -5834,7 +5756,7 @@ INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_ph
 
 -- WRBReferenceSoilGroupValue 2014
 -- soilprofile
--- UNIROMA
+-- CODELIST UNIROMA
 -- http://stats-class.fao.uniroma2.it/WRB/v2014
 INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Acrisols', 'Acrisols', null, 'WRBReferenceSoilGroupValue2014', null, null, null, null);
 INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Alisols', 'Alisols', null, 'WRBReferenceSoilGroupValue2014', null, null, null, null);
@@ -5872,7 +5794,7 @@ INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_ph
 
 -- WRBReferenceSoilGroupValue 2022
 -- soilprofile
--- ORBL-SOIL
+-- CODELIST ORBL-SOIL
 -- https://obrl-soil.github.io/wrbsoil2022/
 INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-04.html#sec-key-ac', 'Acrisols', null, 'WRBReferenceSoilGroupValue2022', null, null, null, null);
 INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-04.html#sec-key-al', 'Alisols', null, 'WRBReferenceSoilGroupValue2022', null, null, null, null);
@@ -5910,7 +5832,7 @@ INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_ph
 
 -- WRBQualifierValue 2014
 -- 
--- UNIROMA
+-- CODELIST UNIROMA
 -- http://stats-class.fao.uniroma2.it/WRB/v2014
 INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Abruptic', 'Abruptic', null, 'WRBQualifierValue2014', null, null, null, null);
 INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/Aceric', 'Aceric', null, 'WRBQualifierValue2014', null, null, null, null);
@@ -6171,7 +6093,7 @@ INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_ph
 
 -- WRBQualifierValue 2022
 -- 
--- ORBL-SOIL
+-- CODELIST ORBL-SOIL
 -- https://obrl-soil.github.io/wrbsoil2022/
 INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-05.html#sec-ap', 'Abruptic', null, 'WRBQualifierValue2022', null, null, null, null);
 INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-05.html#sec-ae', 'Aceric', null, 'WRBQualifierValue2022', null, null, null, null);
@@ -6393,7 +6315,7 @@ INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_ph
 
 -- WRBSpecifierValue 2022
 -- 
--- ORBL-SOIL
+-- CODELIST ORBL-SOIL
 -- https://obrl-soil.github.io/wrbsoil2022/
 INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-06.html#specifiers#Amphi', 'Amphi', 'The layer starts > 0 and < 50 cm from the (mineral) soil surface and  has its lower limit > 50 and < 100 cm of the (mineral) soil surface; and no such layer occurs < 1 cm of  the (mineral) soil surface; and no such layer occurs between 99 and 100 cm of the (mineral) soil  surface or directly above a limitig layer', 'WRBSpecifierValue2022', null, null, null, null);
 INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('https://obrl-soil.github.io/wrbsoil2022/chapter-06.html#specifiers#Ano', 'Ano', 'The layer starts at the (mineral) soil surface and has its lower limit > 50  and < 100 cm of the (mineral) soil surface; and no such layer occurs between 99 and 100 cm of the  (mineral) soil surface or directly above a limiting layer. ', 'WRBSpecifierValue2022', null, null, null, null);
@@ -6408,7 +6330,7 @@ INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_ph
 
 -- WRBSpecifierValue 2014
 -- 
--- ORBL-SOIL
+-- CODELIST ORBL-SOIL
 -- https:// --- MISTO
 INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('https://openknowledge.fao.org/server/api/core/bitstreams/bcdecec7-f45f-4dc5-beb1-97022d29fab4/content#Amphi', 'Amphi', null, 'WRBSpecifierValue2014', null, null, null, null);
 INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('https://openknowledge.fao.org/server/api/core/bitstreams/bcdecec7-f45f-4dc5-beb1-97022d29fab4/content#Ano', 'Ano', null, 'WRBSpecifierValue2014', null, null, null, null);
