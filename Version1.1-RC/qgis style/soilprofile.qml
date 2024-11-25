@@ -7,8 +7,8 @@
     <Private>0</Private>
   </flags>
   <referencedLayers>
-    <relation strength="Association" referencingLayer="soilprofile_b6d09b5f_42f3_40ac_b072_29d46030c2f0" referencedLayer="soilplot_383f2201_ad95_4184_b8f0_d003966182c7" layerName="soilplot" layerId="soilplot_383f2201_ad95_4184_b8f0_d003966182c7" providerKey="ogr" id="soilplot_soilprofile" name="soilplot_soilprofile" dataSource="./INSPIRE_SO.gpkg|layername=soilplot">
-      <fieldRef referencingField="location" referencedField="guidkey"/>
+    <relation strength="Association" dataSource="./INSPIRE_SO.gpkg|layername=soilplot" referencedLayer="soilplot_8190d140_634f_4bd7_84c1_07e62651b4b7" referencingLayer="soilprofile_fb4e4060_125a_40a1_ab64_0b0e16ec081d" id="soilplot_soilprofile" layerId="soilplot_8190d140_634f_4bd7_84c1_07e62651b4b7" layerName="soilplot" providerKey="ogr" name="soilplot_soilprofile">
+      <fieldRef referencedField="guidkey" referencingField="location"/>
     </relation>
   </referencedLayers>
   <fieldConfiguration>
@@ -145,10 +145,10 @@
             <Option type="QString" value="&quot;label&quot;" name="Description"/>
             <Option type="QString" value="&quot;collection&quot; IN('wrbversion') " name="FilterExpression"/>
             <Option type="QString" value="id" name="Key"/>
-            <Option type="QString" value="codelist_612657c0_5777_49fb_96f7_0ded0115c241" name="Layer"/>
+            <Option type="QString" value="codelist_7257b262_7388_468b_a269_2546711c92b6" name="Layer"/>
             <Option type="QString" value="codelist" name="LayerName"/>
             <Option type="QString" value="ogr" name="LayerProviderName"/>
-            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage_INSPIRE_Import/GPKG/INSP_03_TEST_WRB.gpkg|layername=codelist" name="LayerSource"/>
+            <Option type="QString" value="C:/Users/andrea.lachi/Documents/_INSPIRE_NOV24/INSPIRE_SO.gpkg|layername=codelist" name="LayerSource"/>
             <Option type="int" value="1" name="NofColumns"/>
             <Option type="bool" value="true" name="OrderByValue"/>
             <Option type="bool" value="false" name="UseCompleter"/>
@@ -166,10 +166,10 @@
             <Option type="QString" value="&quot;label&quot;" name="Description"/>
             <Option type="QString" value="CASE &#xa;  WHEN current_value('wrbversion')= 'https://inspire.ec.europa.eu/codelist/WRBReferenceSoilGroupValue'  THEN &quot;collection&quot; IN('WRBReferenceSoilGroupValue') &#xa;  WHEN current_value('wrbversion') = 'http://stats-class.fao.uniroma2.it/WRB/v2014/rsg.html' THEN &quot;collection&quot; IN('WRBReferenceSoilGroupValue2014')  &#xa;  WHEN current_value('wrbversion') = 'https://obrl-soil.github.io/wrbsoil2022/'  THEN &quot;collection&quot; IN('WRBReferenceSoilGroupValue2022')  &#xa;  ELSE 0&#xa;END&#xa;&#xa;&#xa;--&quot;collection&quot; = current_value('wrbversion')&#xa;" name="FilterExpression"/>
             <Option type="QString" value="id" name="Key"/>
-            <Option type="QString" value="codelist_c31ed647_1b11_42f4_8db6_c48e13994a56" name="Layer"/>
+            <Option type="QString" value="codelist_7257b262_7388_468b_a269_2546711c92b6" name="Layer"/>
             <Option type="QString" value="codelist" name="LayerName"/>
             <Option type="QString" value="ogr" name="LayerProviderName"/>
-            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage_Sicily_Import/GPKG/Sicily_06_New/Sicily_TESTFORM/INSPIRE_SO.gpkg|layername=codelist" name="LayerSource"/>
+            <Option type="QString" value="C:/Users/andrea.lachi/Documents/_INSPIRE_NOV24/INSPIRE_SO.gpkg|layername=codelist" name="LayerSource"/>
             <Option type="int" value="1" name="NofColumns"/>
             <Option type="bool" value="false" name="OrderByValue"/>
             <Option type="bool" value="false" name="UseCompleter"/>
@@ -212,21 +212,21 @@
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias index="0" name="" field="id"/>
-    <alias index="1" name="" field="guidkey"/>
-    <alias index="2" name="Local id" field="inspireid_localid"/>
-    <alias index="3" name="Namespace" field="inspireid_namespace"/>
-    <alias index="4" name="Version id" field="inspireid_versionid"/>
-    <alias index="5" name="Local identifier" field="localidentifier"/>
-    <alias index="6" name="Begin Lifespan version" field="beginlifespanversion"/>
-    <alias index="7" name="End Lifespan version" field="endlifespanversion"/>
-    <alias index="8" name="Valid From" field="validfrom"/>
-    <alias index="9" name="Valid To" field="validto"/>
-    <alias index="10" name="Is Derived" field="isderived"/>
-    <alias index="11" name="World Reference Base Version" field="wrbversion"/>
-    <alias index="12" name="World Reference Base" field="wrbreferencesoilgroup"/>
-    <alias index="13" name="It is an Original classification" field="isoriginalclassification"/>
-    <alias index="14" name="" field="location"/>
+    <alias index="0" field="id" name=""/>
+    <alias index="1" field="guidkey" name=""/>
+    <alias index="2" field="inspireid_localid" name="Local id"/>
+    <alias index="3" field="inspireid_namespace" name="Namespace"/>
+    <alias index="4" field="inspireid_versionid" name="Version id"/>
+    <alias index="5" field="localidentifier" name="Local identifier"/>
+    <alias index="6" field="beginlifespanversion" name="Begin Lifespan version"/>
+    <alias index="7" field="endlifespanversion" name="End Lifespan version"/>
+    <alias index="8" field="validfrom" name="Valid From"/>
+    <alias index="9" field="validto" name="Valid To"/>
+    <alias index="10" field="isderived" name="Is Derived"/>
+    <alias index="11" field="wrbversion" name="World Reference Base Version"/>
+    <alias index="12" field="wrbreferencesoilgroup" name="Reference Soil Group"/>
+    <alias index="13" field="isoriginalclassification" name="It is an Original classification"/>
+    <alias index="14" field="location" name=""/>
   </aliases>
   <splitPolicies>
     <policy policy="Duplicate" field="id"/>
@@ -263,21 +263,21 @@
     <default applyOnUpdate="0" expression="" field="location"/>
   </defaults>
   <constraints>
-    <constraint constraints="3" notnull_strength="1" exp_strength="0" field="id" unique_strength="1"/>
-    <constraint constraints="2" notnull_strength="0" exp_strength="0" field="guidkey" unique_strength="1"/>
-    <constraint constraints="0" notnull_strength="0" exp_strength="0" field="inspireid_localid" unique_strength="0"/>
-    <constraint constraints="0" notnull_strength="0" exp_strength="0" field="inspireid_namespace" unique_strength="0"/>
-    <constraint constraints="0" notnull_strength="0" exp_strength="0" field="inspireid_versionid" unique_strength="0"/>
-    <constraint constraints="0" notnull_strength="0" exp_strength="0" field="localidentifier" unique_strength="0"/>
-    <constraint constraints="1" notnull_strength="1" exp_strength="0" field="beginlifespanversion" unique_strength="0"/>
-    <constraint constraints="0" notnull_strength="0" exp_strength="0" field="endlifespanversion" unique_strength="0"/>
-    <constraint constraints="1" notnull_strength="1" exp_strength="0" field="validfrom" unique_strength="0"/>
-    <constraint constraints="0" notnull_strength="0" exp_strength="0" field="validto" unique_strength="0"/>
-    <constraint constraints="1" notnull_strength="1" exp_strength="0" field="isderived" unique_strength="0"/>
-    <constraint constraints="0" notnull_strength="0" exp_strength="0" field="wrbversion" unique_strength="0"/>
-    <constraint constraints="0" notnull_strength="0" exp_strength="0" field="wrbreferencesoilgroup" unique_strength="0"/>
-    <constraint constraints="1" notnull_strength="1" exp_strength="0" field="isoriginalclassification" unique_strength="0"/>
-    <constraint constraints="2" notnull_strength="0" exp_strength="0" field="location" unique_strength="1"/>
+    <constraint constraints="3" unique_strength="1" notnull_strength="1" exp_strength="0" field="id"/>
+    <constraint constraints="2" unique_strength="1" notnull_strength="0" exp_strength="0" field="guidkey"/>
+    <constraint constraints="0" unique_strength="0" notnull_strength="0" exp_strength="0" field="inspireid_localid"/>
+    <constraint constraints="0" unique_strength="0" notnull_strength="0" exp_strength="0" field="inspireid_namespace"/>
+    <constraint constraints="0" unique_strength="0" notnull_strength="0" exp_strength="0" field="inspireid_versionid"/>
+    <constraint constraints="0" unique_strength="0" notnull_strength="0" exp_strength="0" field="localidentifier"/>
+    <constraint constraints="1" unique_strength="0" notnull_strength="1" exp_strength="0" field="beginlifespanversion"/>
+    <constraint constraints="0" unique_strength="0" notnull_strength="0" exp_strength="0" field="endlifespanversion"/>
+    <constraint constraints="1" unique_strength="0" notnull_strength="1" exp_strength="0" field="validfrom"/>
+    <constraint constraints="0" unique_strength="0" notnull_strength="0" exp_strength="0" field="validto"/>
+    <constraint constraints="1" unique_strength="0" notnull_strength="1" exp_strength="0" field="isderived"/>
+    <constraint constraints="0" unique_strength="0" notnull_strength="0" exp_strength="0" field="wrbversion"/>
+    <constraint constraints="0" unique_strength="0" notnull_strength="0" exp_strength="0" field="wrbreferencesoilgroup"/>
+    <constraint constraints="1" unique_strength="0" notnull_strength="1" exp_strength="0" field="isoriginalclassification"/>
+    <constraint constraints="2" unique_strength="1" notnull_strength="0" exp_strength="0" field="location"/>
   </constraints>
   <constraintExpressions>
     <constraint desc="" exp="" field="id"/>
@@ -320,101 +320,101 @@ control = dialog.findChild(QWidget, "MyLineEdit")
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-      <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+    <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+      <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
     </labelStyle>
-    <attributeEditorField showLabel="1" index="0" horizontalStretch="0" name="id" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+    <attributeEditorField showLabel="1" horizontalStretch="0" index="0" verticalStretch="0" name="id">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="10" horizontalStretch="0" name="isderived" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="1" overrideLabelColor="0">
-        <labelFont italic="0" style="" bold="1" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,75,0,0,0,0,0" underline="0"/>
+    <attributeEditorField showLabel="1" horizontalStretch="0" index="10" verticalStretch="0" name="isderived">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="1">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,75,0,0,0,0,0" bold="1"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer type="GroupBox" groupBox="1" collapsedExpressionEnabled="0" collapsed="0" showLabel="1" collapsedExpression="" visibilityExpression="" horizontalStretch="0" name="INSPIRE ID" verticalStretch="0" columnCount="1" visibilityExpressionEnabled="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+    <attributeEditorContainer collapsed="0" visibilityExpression="" groupBox="1" showLabel="1" collapsedExpression="" horizontalStretch="0" columnCount="1" type="GroupBox" visibilityExpressionEnabled="0" verticalStretch="0" collapsedExpressionEnabled="0" name="INSPIRE ID">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
       </labelStyle>
-      <attributeEditorField showLabel="1" index="2" horizontalStretch="0" name="inspireid_localid" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+      <attributeEditorField showLabel="1" horizontalStretch="0" index="2" verticalStretch="0" name="inspireid_localid">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField showLabel="1" index="3" horizontalStretch="0" name="inspireid_namespace" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+      <attributeEditorField showLabel="1" horizontalStretch="0" index="3" verticalStretch="0" name="inspireid_namespace">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField showLabel="1" index="4" horizontalStretch="0" name="inspireid_versionid" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+      <attributeEditorField showLabel="1" horizontalStretch="0" index="4" verticalStretch="0" name="inspireid_versionid">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorField showLabel="1" index="5" horizontalStretch="0" name="localidentifier" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+    <attributeEditorField showLabel="1" horizontalStretch="0" index="5" verticalStretch="0" name="localidentifier">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer type="GroupBox" groupBox="1" collapsedExpressionEnabled="0" collapsed="0" showLabel="1" collapsedExpression="" visibilityExpression="" horizontalStretch="0" name="Dates" verticalStretch="0" columnCount="1" visibilityExpressionEnabled="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+    <attributeEditorContainer collapsed="0" visibilityExpression="" groupBox="1" showLabel="1" collapsedExpression="" horizontalStretch="0" columnCount="1" type="GroupBox" visibilityExpressionEnabled="0" verticalStretch="0" collapsedExpressionEnabled="0" name="Dates">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
       </labelStyle>
-      <attributeEditorField showLabel="1" index="6" horizontalStretch="0" name="beginlifespanversion" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+      <attributeEditorField showLabel="1" horizontalStretch="0" index="6" verticalStretch="0" name="beginlifespanversion">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField showLabel="1" index="7" horizontalStretch="0" name="endlifespanversion" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+      <attributeEditorField showLabel="1" horizontalStretch="0" index="7" verticalStretch="0" name="endlifespanversion">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField showLabel="1" index="8" horizontalStretch="0" name="validfrom" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+      <attributeEditorField showLabel="1" horizontalStretch="0" index="8" verticalStretch="0" name="validfrom">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField showLabel="1" index="9" horizontalStretch="0" name="validto" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+      <attributeEditorField showLabel="1" horizontalStretch="0" index="9" verticalStretch="0" name="validto">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorField showLabel="1" index="11" horizontalStretch="0" name="wrbversion" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+    <attributeEditorField showLabel="1" horizontalStretch="0" index="11" verticalStretch="0" name="wrbversion">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="12" horizontalStretch="0" name="wrbreferencesoilgroup" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+    <attributeEditorField showLabel="1" horizontalStretch="0" index="12" verticalStretch="0" name="wrbreferencesoilgroup">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="13" horizontalStretch="0" name="isoriginalclassification" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+    <attributeEditorField showLabel="1" horizontalStretch="0" index="13" verticalStretch="0" name="isoriginalclassification">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer type="GroupBox" groupBox="1" collapsedExpressionEnabled="0" collapsed="0" showLabel="1" collapsedExpression="" visibilityExpression=" &quot;isderived&quot; =False" horizontalStretch="0" name="Soil Plot" verticalStretch="0" columnCount="1" visibilityExpressionEnabled="1">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+    <attributeEditorContainer collapsed="0" visibilityExpression=" &quot;isderived&quot; =False" groupBox="1" showLabel="1" collapsedExpression="" horizontalStretch="0" columnCount="1" type="GroupBox" visibilityExpressionEnabled="1" verticalStretch="0" collapsedExpressionEnabled="0" name="Soil Plot">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
       </labelStyle>
-      <attributeEditorField showLabel="0" index="14" horizontalStretch="0" name="location" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+      <attributeEditorField showLabel="0" horizontalStretch="0" index="14" verticalStretch="0" name="location">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorContainer type="Tab" groupBox="0" collapsedExpressionEnabled="0" collapsed="0" showLabel="1" collapsedExpression="" visibilityExpression="" horizontalStretch="0" name="WRB Qualifier" verticalStretch="0" columnCount="1" visibilityExpressionEnabled="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+    <attributeEditorContainer collapsed="0" visibilityExpression="" groupBox="0" showLabel="1" collapsedExpression="" horizontalStretch="0" columnCount="1" type="Tab" visibilityExpressionEnabled="0" verticalStretch="0" collapsedExpressionEnabled="0" name="WRB Qualifier">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
       </labelStyle>
-      <attributeEditorRelation showLabel="1" relation="soilprofile_wrbqualifiergroup_profile_2" forceSuppressFormPopup="0" relationWidgetTypeId="relation_editor" label="" horizontalStretch="0" name="soilprofile_wrbqualifiergroup_profile_2" nmRelationId="" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+      <attributeEditorRelation nmRelationId="" showLabel="1" relationWidgetTypeId="relation_editor" horizontalStretch="0" forceSuppressFormPopup="0" relation="soilprofile_wrbqualifiergroup_profile_2" verticalStretch="0" name="soilprofile_wrbqualifiergroup_profile_2" label="">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
         <editor_configuration type="Map">
           <Option type="bool" value="false" name="allow_add_child_feature_with_no_geometry"/>
@@ -423,13 +423,13 @@ control = dialog.findChild(QWidget, "MyLineEdit")
         </editor_configuration>
       </attributeEditorRelation>
     </attributeEditorContainer>
-    <attributeEditorContainer type="Tab" groupBox="0" collapsedExpressionEnabled="0" collapsed="0" showLabel="1" collapsedExpression="" visibilityExpression="" horizontalStretch="0" name="Other Soil Name" verticalStretch="0" columnCount="1" visibilityExpressionEnabled="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+    <attributeEditorContainer collapsed="0" visibilityExpression="" groupBox="0" showLabel="1" collapsedExpression="" horizontalStretch="0" columnCount="1" type="Tab" visibilityExpressionEnabled="0" verticalStretch="0" collapsedExpressionEnabled="0" name="Other Soil Name">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
       </labelStyle>
-      <attributeEditorRelation showLabel="0" relation="soilprofile_othersoilnametype" forceSuppressFormPopup="0" relationWidgetTypeId="relation_editor" label="" horizontalStretch="0" name="soilprofile_othersoilnametype" nmRelationId="" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+      <attributeEditorRelation nmRelationId="" showLabel="0" relationWidgetTypeId="relation_editor" horizontalStretch="0" forceSuppressFormPopup="0" relation="soilprofile_othersoilnametype" verticalStretch="0" name="soilprofile_othersoilnametype" label="">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
         <editor_configuration type="Map">
           <Option type="bool" value="false" name="allow_add_child_feature_with_no_geometry"/>
@@ -438,13 +438,13 @@ control = dialog.findChild(QWidget, "MyLineEdit")
         </editor_configuration>
       </attributeEditorRelation>
     </attributeEditorContainer>
-    <attributeEditorContainer type="Tab" groupBox="0" collapsedExpressionEnabled="0" collapsed="0" showLabel="1" collapsedExpression="" visibilityExpression=" &quot;isderived&quot; =True" horizontalStretch="0" name="Is Derived From" verticalStretch="0" columnCount="1" visibilityExpressionEnabled="1">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+    <attributeEditorContainer collapsed="0" visibilityExpression=" &quot;isderived&quot; =True" groupBox="0" showLabel="1" collapsedExpression="" horizontalStretch="0" columnCount="1" type="Tab" visibilityExpressionEnabled="1" verticalStretch="0" collapsedExpressionEnabled="0" name="Is Derived From">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
       </labelStyle>
-      <attributeEditorRelation showLabel="0" relation="soilprofile_isderivedfrom_2" forceSuppressFormPopup="0" relationWidgetTypeId="relation_editor" label="" horizontalStretch="0" name="soilprofile_isderivedfrom_2" nmRelationId="" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+      <attributeEditorRelation nmRelationId="" showLabel="0" relationWidgetTypeId="relation_editor" horizontalStretch="0" forceSuppressFormPopup="0" relation="soilprofile_isderivedfrom_2" verticalStretch="0" name="soilprofile_isderivedfrom_2" label="">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
         <editor_configuration type="Map">
           <Option type="bool" value="false" name="allow_add_child_feature_with_no_geometry"/>
@@ -453,13 +453,13 @@ control = dialog.findChild(QWidget, "MyLineEdit")
         </editor_configuration>
       </attributeEditorRelation>
     </attributeEditorContainer>
-    <attributeEditorContainer type="Tab" groupBox="0" collapsedExpressionEnabled="0" collapsed="0" showLabel="1" collapsedExpression="" visibilityExpression=" &quot;isderived&quot; =False" horizontalStretch="0" name="Derived Soil Profile" verticalStretch="0" columnCount="1" visibilityExpressionEnabled="1">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+    <attributeEditorContainer collapsed="0" visibilityExpression=" &quot;isderived&quot; =False" groupBox="0" showLabel="1" collapsedExpression="" horizontalStretch="0" columnCount="1" type="Tab" visibilityExpressionEnabled="1" verticalStretch="0" collapsedExpressionEnabled="0" name="Derived Soil Profile">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
       </labelStyle>
-      <attributeEditorRelation showLabel="0" relation="soilprofile_isderivedfrom" forceSuppressFormPopup="0" relationWidgetTypeId="relation_editor" label="" horizontalStretch="0" name="soilprofile_isderivedfrom" nmRelationId="" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+      <attributeEditorRelation nmRelationId="" showLabel="0" relationWidgetTypeId="relation_editor" horizontalStretch="0" forceSuppressFormPopup="0" relation="soilprofile_isderivedfrom" verticalStretch="0" name="soilprofile_isderivedfrom" label="">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
         <editor_configuration type="Map">
           <Option type="bool" value="false" name="allow_add_child_feature_with_no_geometry"/>
@@ -468,17 +468,17 @@ control = dialog.findChild(QWidget, "MyLineEdit")
         </editor_configuration>
       </attributeEditorRelation>
     </attributeEditorContainer>
-    <attributeEditorContainer type="GroupBox" groupBox="1" collapsedExpressionEnabled="0" collapsed="0" showLabel="1" collapsedExpression="" visibilityExpression="" horizontalStretch="0" name="RELATIONS" verticalStretch="0" columnCount="1" visibilityExpressionEnabled="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+    <attributeEditorContainer collapsed="0" visibilityExpression="" groupBox="1" showLabel="1" collapsedExpression="" horizontalStretch="0" columnCount="1" type="GroupBox" visibilityExpressionEnabled="0" verticalStretch="0" collapsedExpressionEnabled="0" name="RELATIONS">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
       </labelStyle>
-      <attributeEditorContainer type="GroupBox" groupBox="1" collapsedExpressionEnabled="0" collapsed="1" showLabel="1" collapsedExpression="" visibilityExpression="" horizontalStretch="0" name="Profile Element" verticalStretch="0" columnCount="1" visibilityExpressionEnabled="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+      <attributeEditorContainer collapsed="1" visibilityExpression="" groupBox="1" showLabel="1" collapsedExpression="" horizontalStretch="0" columnCount="1" type="GroupBox" visibilityExpressionEnabled="0" verticalStretch="0" collapsedExpressionEnabled="0" name="Profile Element">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
-        <attributeEditorRelation showLabel="0" relation="soilprofile_profileelement" forceSuppressFormPopup="0" relationWidgetTypeId="relation_editor" label="" horizontalStretch="0" name="soilprofile_profileelement" nmRelationId="" verticalStretch="0">
-          <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-            <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+        <attributeEditorRelation nmRelationId="" showLabel="0" relationWidgetTypeId="relation_editor" horizontalStretch="0" forceSuppressFormPopup="0" relation="soilprofile_profileelement" verticalStretch="0" name="soilprofile_profileelement" label="">
+          <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+            <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
           </labelStyle>
           <editor_configuration type="Map">
             <Option type="bool" value="false" name="allow_add_child_feature_with_no_geometry"/>
@@ -487,13 +487,13 @@ control = dialog.findChild(QWidget, "MyLineEdit")
           </editor_configuration>
         </attributeEditorRelation>
       </attributeEditorContainer>
-      <attributeEditorContainer type="GroupBox" groupBox="1" collapsedExpressionEnabled="0" collapsed="1" showLabel="1" collapsedExpression="" visibilityExpression="" horizontalStretch="0" name="Datastream" verticalStretch="0" columnCount="1" visibilityExpressionEnabled="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+      <attributeEditorContainer collapsed="1" visibilityExpression="" groupBox="1" showLabel="1" collapsedExpression="" horizontalStretch="0" columnCount="1" type="GroupBox" visibilityExpressionEnabled="0" verticalStretch="0" collapsedExpressionEnabled="0" name="Datastream">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
-        <attributeEditorRelation showLabel="0" relation="soilprofile_datastream_8" forceSuppressFormPopup="0" relationWidgetTypeId="relation_editor" label="" horizontalStretch="0" name="soilprofile_datastream_8" nmRelationId="" verticalStretch="0">
-          <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-            <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+        <attributeEditorRelation nmRelationId="" showLabel="0" relationWidgetTypeId="relation_editor" horizontalStretch="0" forceSuppressFormPopup="0" relation="soilprofile_datastream_8" verticalStretch="0" name="soilprofile_datastream_8" label="">
+          <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+            <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
           </labelStyle>
           <editor_configuration type="Map">
             <Option type="bool" value="false" name="allow_add_child_feature_with_no_geometry"/>
@@ -502,13 +502,13 @@ control = dialog.findChild(QWidget, "MyLineEdit")
           </editor_configuration>
         </attributeEditorRelation>
       </attributeEditorContainer>
-      <attributeEditorContainer type="GroupBox" groupBox="1" collapsedExpressionEnabled="0" collapsed="1" showLabel="1" collapsedExpression="" visibilityExpression=" &quot;isderived&quot; =True" horizontalStretch="0" name="Derived Presence in Soil Body" verticalStretch="0" columnCount="1" visibilityExpressionEnabled="1">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,9.6,-1,5,50,0,0,0,0,0" underline="0"/>
+      <attributeEditorContainer collapsed="1" visibilityExpression=" &quot;isderived&quot; =True" groupBox="1" showLabel="1" collapsedExpression="" horizontalStretch="0" columnCount="1" type="GroupBox" visibilityExpressionEnabled="1" verticalStretch="0" collapsedExpressionEnabled="0" name="Derived Presence in Soil Body">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,9.6,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
-        <attributeEditorRelation showLabel="0" relation="soilprofile_derivedprofilepresenceinsoilbody" forceSuppressFormPopup="0" relationWidgetTypeId="relation_editor" label="" horizontalStretch="0" name="soilprofile_derivedprofilepresenceinsoilbody" nmRelationId="" verticalStretch="0">
-          <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-            <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+        <attributeEditorRelation nmRelationId="" showLabel="0" relationWidgetTypeId="relation_editor" horizontalStretch="0" forceSuppressFormPopup="0" relation="soilprofile_derivedprofilepresenceinsoilbody" verticalStretch="0" name="soilprofile_derivedprofilepresenceinsoilbody" label="">
+          <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+            <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
           </labelStyle>
           <editor_configuration type="Map">
             <Option type="bool" value="false" name="allow_add_child_feature_with_no_geometry"/>
@@ -517,13 +517,13 @@ control = dialog.findChild(QWidget, "MyLineEdit")
           </editor_configuration>
         </attributeEditorRelation>
       </attributeEditorContainer>
-      <attributeEditorContainer type="GroupBox" groupBox="1" collapsedExpressionEnabled="0" collapsed="1" showLabel="1" collapsedExpression="" visibilityExpression=" &quot;isderived&quot; =False" horizontalStretch="0" name="Soil Derived Object" verticalStretch="0" columnCount="1" visibilityExpressionEnabled="1">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,9.6,-1,5,50,0,0,0,0,0" underline="0"/>
+      <attributeEditorContainer collapsed="1" visibilityExpression=" &quot;isderived&quot; =False" groupBox="1" showLabel="1" collapsedExpression="" horizontalStretch="0" columnCount="1" type="GroupBox" visibilityExpressionEnabled="1" verticalStretch="0" collapsedExpressionEnabled="0" name="Soil Derived Object">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,9.6,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
-        <attributeEditorRelation showLabel="0" relation="soilprofile_isbasedonobservedsoilprofile" forceSuppressFormPopup="0" relationWidgetTypeId="relation_editor" label="" horizontalStretch="0" name="soilprofile_isbasedonobservedsoilprofile" nmRelationId="" verticalStretch="0">
-          <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-            <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+        <attributeEditorRelation nmRelationId="" showLabel="0" relationWidgetTypeId="relation_editor" horizontalStretch="0" forceSuppressFormPopup="0" relation="soilprofile_isbasedonobservedsoilprofile" verticalStretch="0" name="soilprofile_isbasedonobservedsoilprofile" label="">
+          <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+            <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
           </labelStyle>
           <editor_configuration type="Map">
             <Option type="bool" value="false" name="allow_add_child_feature_with_no_geometry"/>

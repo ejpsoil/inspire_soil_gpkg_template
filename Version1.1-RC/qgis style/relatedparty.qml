@@ -18,7 +18,10 @@
     <field configurationFlags="None" name="guidkey">
       <editWidget type="TextEdit">
         <config>
-          <Option/>
+          <Option type="Map">
+            <Option type="bool" value="false" name="IsMultiline"/>
+            <Option type="bool" value="false" name="UseHtml"/>
+          </Option>
         </config>
       </editWidget>
     </field>
@@ -145,79 +148,79 @@
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias field="id" index="0" name=""/>
-    <alias field="guidkey" index="1" name=""/>
-    <alias field="individualname" index="2" name="Individual"/>
-    <alias field="organizationname" index="3" name="Organization"/>
-    <alias field="positionname" index="4" name="Position"/>
-    <alias field="address" index="5" name="Address"/>
-    <alias field="contactinstructions" index="6" name="Cintact Instruction"/>
-    <alias field="electronicmailaddress" index="7" name=""/>
-    <alias field="hoursofservice" index="8" name="Hour of service"/>
-    <alias field="telephonefacsimile" index="9" name="Fax"/>
-    <alias field="telephonevoice" index="10" name="Telephone"/>
-    <alias field="website" index="11" name="Website"/>
-    <alias field="role" index="12" name="Role"/>
+    <alias index="0" field="id" name=""/>
+    <alias index="1" field="guidkey" name=""/>
+    <alias index="2" field="individualname" name="Individual"/>
+    <alias index="3" field="organizationname" name="Organization"/>
+    <alias index="4" field="positionname" name="Position"/>
+    <alias index="5" field="address" name="Address"/>
+    <alias index="6" field="contactinstructions" name="Cintact Instruction"/>
+    <alias index="7" field="electronicmailaddress" name=""/>
+    <alias index="8" field="hoursofservice" name="Hour of service"/>
+    <alias index="9" field="telephonefacsimile" name="Fax"/>
+    <alias index="10" field="telephonevoice" name="Telephone"/>
+    <alias index="11" field="website" name="Website"/>
+    <alias index="12" field="role" name="Role"/>
   </aliases>
   <splitPolicies>
-    <policy field="id" policy="Duplicate"/>
-    <policy field="guidkey" policy="Duplicate"/>
-    <policy field="individualname" policy="DefaultValue"/>
-    <policy field="organizationname" policy="DefaultValue"/>
-    <policy field="positionname" policy="DefaultValue"/>
-    <policy field="address" policy="DefaultValue"/>
-    <policy field="contactinstructions" policy="DefaultValue"/>
-    <policy field="electronicmailaddress" policy="DefaultValue"/>
-    <policy field="hoursofservice" policy="DefaultValue"/>
-    <policy field="telephonefacsimile" policy="DefaultValue"/>
-    <policy field="telephonevoice" policy="DefaultValue"/>
-    <policy field="website" policy="DefaultValue"/>
-    <policy field="role" policy="DefaultValue"/>
+    <policy policy="Duplicate" field="id"/>
+    <policy policy="DefaultValue" field="guidkey"/>
+    <policy policy="DefaultValue" field="individualname"/>
+    <policy policy="DefaultValue" field="organizationname"/>
+    <policy policy="DefaultValue" field="positionname"/>
+    <policy policy="DefaultValue" field="address"/>
+    <policy policy="DefaultValue" field="contactinstructions"/>
+    <policy policy="DefaultValue" field="electronicmailaddress"/>
+    <policy policy="DefaultValue" field="hoursofservice"/>
+    <policy policy="DefaultValue" field="telephonefacsimile"/>
+    <policy policy="DefaultValue" field="telephonevoice"/>
+    <policy policy="DefaultValue" field="website"/>
+    <policy policy="DefaultValue" field="role"/>
   </splitPolicies>
   <defaults>
-    <default applyOnUpdate="0" field="id" expression=""/>
-    <default applyOnUpdate="0" field="guidkey" expression=""/>
-    <default applyOnUpdate="0" field="individualname" expression=""/>
-    <default applyOnUpdate="0" field="organizationname" expression=""/>
-    <default applyOnUpdate="0" field="positionname" expression=""/>
-    <default applyOnUpdate="0" field="address" expression=""/>
-    <default applyOnUpdate="0" field="contactinstructions" expression=""/>
-    <default applyOnUpdate="0" field="electronicmailaddress" expression=""/>
-    <default applyOnUpdate="0" field="hoursofservice" expression=""/>
-    <default applyOnUpdate="0" field="telephonefacsimile" expression=""/>
-    <default applyOnUpdate="0" field="telephonevoice" expression=""/>
-    <default applyOnUpdate="0" field="website" expression=""/>
-    <default applyOnUpdate="0" field="role" expression=""/>
+    <default applyOnUpdate="0" expression="" field="id"/>
+    <default applyOnUpdate="0" expression="" field="guidkey"/>
+    <default applyOnUpdate="0" expression="" field="individualname"/>
+    <default applyOnUpdate="0" expression="" field="organizationname"/>
+    <default applyOnUpdate="0" expression="" field="positionname"/>
+    <default applyOnUpdate="0" expression="" field="address"/>
+    <default applyOnUpdate="0" expression="" field="contactinstructions"/>
+    <default applyOnUpdate="0" expression="" field="electronicmailaddress"/>
+    <default applyOnUpdate="0" expression="" field="hoursofservice"/>
+    <default applyOnUpdate="0" expression="" field="telephonefacsimile"/>
+    <default applyOnUpdate="0" expression="" field="telephonevoice"/>
+    <default applyOnUpdate="0" expression="" field="website"/>
+    <default applyOnUpdate="0" expression="" field="role"/>
   </defaults>
   <constraints>
-    <constraint unique_strength="1" field="id" notnull_strength="1" exp_strength="0" constraints="3"/>
-    <constraint unique_strength="1" field="guidkey" notnull_strength="0" exp_strength="0" constraints="2"/>
-    <constraint unique_strength="0" field="individualname" notnull_strength="0" exp_strength="0" constraints="0"/>
-    <constraint unique_strength="0" field="organizationname" notnull_strength="0" exp_strength="0" constraints="0"/>
-    <constraint unique_strength="0" field="positionname" notnull_strength="0" exp_strength="0" constraints="0"/>
-    <constraint unique_strength="0" field="address" notnull_strength="0" exp_strength="0" constraints="0"/>
-    <constraint unique_strength="0" field="contactinstructions" notnull_strength="0" exp_strength="0" constraints="0"/>
-    <constraint unique_strength="0" field="electronicmailaddress" notnull_strength="0" exp_strength="0" constraints="0"/>
-    <constraint unique_strength="0" field="hoursofservice" notnull_strength="0" exp_strength="0" constraints="0"/>
-    <constraint unique_strength="0" field="telephonefacsimile" notnull_strength="0" exp_strength="0" constraints="0"/>
-    <constraint unique_strength="0" field="telephonevoice" notnull_strength="0" exp_strength="0" constraints="0"/>
-    <constraint unique_strength="0" field="website" notnull_strength="0" exp_strength="0" constraints="0"/>
-    <constraint unique_strength="0" field="role" notnull_strength="0" exp_strength="0" constraints="0"/>
+    <constraint constraints="3" unique_strength="1" notnull_strength="1" exp_strength="0" field="id"/>
+    <constraint constraints="2" unique_strength="1" notnull_strength="0" exp_strength="0" field="guidkey"/>
+    <constraint constraints="0" unique_strength="0" notnull_strength="0" exp_strength="0" field="individualname"/>
+    <constraint constraints="0" unique_strength="0" notnull_strength="0" exp_strength="0" field="organizationname"/>
+    <constraint constraints="0" unique_strength="0" notnull_strength="0" exp_strength="0" field="positionname"/>
+    <constraint constraints="0" unique_strength="0" notnull_strength="0" exp_strength="0" field="address"/>
+    <constraint constraints="0" unique_strength="0" notnull_strength="0" exp_strength="0" field="contactinstructions"/>
+    <constraint constraints="0" unique_strength="0" notnull_strength="0" exp_strength="0" field="electronicmailaddress"/>
+    <constraint constraints="0" unique_strength="0" notnull_strength="0" exp_strength="0" field="hoursofservice"/>
+    <constraint constraints="0" unique_strength="0" notnull_strength="0" exp_strength="0" field="telephonefacsimile"/>
+    <constraint constraints="0" unique_strength="0" notnull_strength="0" exp_strength="0" field="telephonevoice"/>
+    <constraint constraints="0" unique_strength="0" notnull_strength="0" exp_strength="0" field="website"/>
+    <constraint constraints="0" unique_strength="0" notnull_strength="0" exp_strength="0" field="role"/>
   </constraints>
   <constraintExpressions>
-    <constraint field="id" exp="" desc=""/>
-    <constraint field="guidkey" exp="" desc=""/>
-    <constraint field="individualname" exp="" desc=""/>
-    <constraint field="organizationname" exp="" desc=""/>
-    <constraint field="positionname" exp="" desc=""/>
-    <constraint field="address" exp="" desc=""/>
-    <constraint field="contactinstructions" exp="" desc=""/>
-    <constraint field="electronicmailaddress" exp="" desc=""/>
-    <constraint field="hoursofservice" exp="" desc=""/>
-    <constraint field="telephonefacsimile" exp="" desc=""/>
-    <constraint field="telephonevoice" exp="" desc=""/>
-    <constraint field="website" exp="" desc=""/>
-    <constraint field="role" exp="" desc=""/>
+    <constraint desc="" exp="" field="id"/>
+    <constraint desc="" exp="" field="guidkey"/>
+    <constraint desc="" exp="" field="individualname"/>
+    <constraint desc="" exp="" field="organizationname"/>
+    <constraint desc="" exp="" field="positionname"/>
+    <constraint desc="" exp="" field="address"/>
+    <constraint desc="" exp="" field="contactinstructions"/>
+    <constraint desc="" exp="" field="electronicmailaddress"/>
+    <constraint desc="" exp="" field="hoursofservice"/>
+    <constraint desc="" exp="" field="telephonefacsimile"/>
+    <constraint desc="" exp="" field="telephonevoice"/>
+    <constraint desc="" exp="" field="website"/>
+    <constraint desc="" exp="" field="role"/>
   </constraintExpressions>
   <expressionfields/>
   <editform tolerant="1"></editform>
@@ -244,91 +247,86 @@ def my_form_open(dialog, layer, feature):
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
-      <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
+    <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+      <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
     </labelStyle>
-    <attributeEditorField index="0" name="id" showLabel="1" verticalStretch="0" horizontalStretch="0">
-      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
-        <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
+    <attributeEditorField showLabel="1" horizontalStretch="0" index="0" verticalStretch="0" name="id">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField index="1" name="guidkey" showLabel="1" verticalStretch="0" horizontalStretch="0">
-      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
-        <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
+    <attributeEditorContainer collapsed="0" visibilityExpression="" groupBox="1" showLabel="1" collapsedExpression="" horizontalStretch="0" columnCount="1" type="GroupBox" visibilityExpressionEnabled="0" verticalStretch="0" collapsedExpressionEnabled="0" name="Name">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
       </labelStyle>
-    </attributeEditorField>
-    <attributeEditorContainer type="GroupBox" columnCount="1" collapsed="0" visibilityExpressionEnabled="0" name="Name" showLabel="1" collapsedExpressionEnabled="0" verticalStretch="0" groupBox="1" collapsedExpression="" visibilityExpression="" horizontalStretch="0">
-      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
-        <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
-      </labelStyle>
-      <attributeEditorField index="2" name="individualname" showLabel="1" verticalStretch="0" horizontalStretch="0">
-        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
-          <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
+      <attributeEditorField showLabel="1" horizontalStretch="0" index="2" verticalStretch="0" name="individualname">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField index="3" name="organizationname" showLabel="1" verticalStretch="0" horizontalStretch="0">
-        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
-          <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
+      <attributeEditorField showLabel="1" horizontalStretch="0" index="3" verticalStretch="0" name="organizationname">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField index="4" name="positionname" showLabel="1" verticalStretch="0" horizontalStretch="0">
-        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
-          <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
+      <attributeEditorField showLabel="1" horizontalStretch="0" index="4" verticalStretch="0" name="positionname">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorField index="12" name="role" showLabel="1" verticalStretch="0" horizontalStretch="0">
-      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
-        <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
+    <attributeEditorField showLabel="1" horizontalStretch="0" index="12" verticalStretch="0" name="role">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer type="GroupBox" columnCount="1" collapsed="0" visibilityExpressionEnabled="0" name="Info" showLabel="1" collapsedExpressionEnabled="0" verticalStretch="0" groupBox="1" collapsedExpression="" visibilityExpression="" horizontalStretch="0">
-      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
-        <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
+    <attributeEditorContainer collapsed="0" visibilityExpression="" groupBox="1" showLabel="1" collapsedExpression="" horizontalStretch="0" columnCount="1" type="GroupBox" visibilityExpressionEnabled="0" verticalStretch="0" collapsedExpressionEnabled="0" name="Info">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
       </labelStyle>
-      <attributeEditorField index="5" name="address" showLabel="1" verticalStretch="0" horizontalStretch="0">
-        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
-          <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
+      <attributeEditorField showLabel="1" horizontalStretch="0" index="5" verticalStretch="0" name="address">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField index="6" name="contactinstructions" showLabel="1" verticalStretch="0" horizontalStretch="0">
-        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
-          <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
+      <attributeEditorField showLabel="1" horizontalStretch="0" index="6" verticalStretch="0" name="contactinstructions">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField index="7" name="electronicmailaddress" showLabel="1" verticalStretch="0" horizontalStretch="0">
-        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
-          <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
+      <attributeEditorField showLabel="1" horizontalStretch="0" index="7" verticalStretch="0" name="electronicmailaddress">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField index="8" name="hoursofservice" showLabel="1" verticalStretch="0" horizontalStretch="0">
-        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
-          <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
+      <attributeEditorField showLabel="1" horizontalStretch="0" index="8" verticalStretch="0" name="hoursofservice">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField index="9" name="telephonefacsimile" showLabel="1" verticalStretch="0" horizontalStretch="0">
-        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
-          <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
+      <attributeEditorField showLabel="1" horizontalStretch="0" index="9" verticalStretch="0" name="telephonefacsimile">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField index="10" name="telephonevoice" showLabel="1" verticalStretch="0" horizontalStretch="0">
-        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
-          <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
+      <attributeEditorField showLabel="1" horizontalStretch="0" index="10" verticalStretch="0" name="telephonevoice">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField index="11" name="website" showLabel="1" verticalStretch="0" horizontalStretch="0">
-        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
-          <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
+      <attributeEditorField showLabel="1" horizontalStretch="0" index="11" verticalStretch="0" name="website">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
-    <attributeEditorContainer type="GroupBox" columnCount="2" collapsed="1" visibilityExpressionEnabled="0" name="Process" showLabel="1" collapsedExpressionEnabled="0" verticalStretch="0" groupBox="1" collapsedExpression="" visibilityExpression="" horizontalStretch="0">
-      <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
-        <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
+    <attributeEditorContainer collapsed="1" visibilityExpression="" groupBox="1" showLabel="1" collapsedExpression="" horizontalStretch="0" columnCount="2" type="GroupBox" visibilityExpressionEnabled="0" verticalStretch="0" collapsedExpressionEnabled="0" name="Process">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
       </labelStyle>
-      <attributeEditorRelation forceSuppressFormPopup="0" name="relatedparty_process_4" showLabel="0" verticalStretch="0" relationWidgetTypeId="relation_editor" relation="relatedparty_process_4" nmRelationId="" horizontalStretch="0" label="Process">
-        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
-          <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
+      <attributeEditorRelation nmRelationId="" showLabel="0" relationWidgetTypeId="relation_editor" horizontalStretch="0" forceSuppressFormPopup="0" relation="relatedparty_process_4" verticalStretch="0" name="relatedparty_process_4" label="Process">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
         <editor_configuration type="Map">
           <Option type="bool" value="false" name="allow_add_child_feature_with_no_geometry"/>
@@ -336,9 +334,9 @@ def my_form_open(dialog, layer, feature):
           <Option type="bool" value="true" name="show_first_feature"/>
         </editor_configuration>
       </attributeEditorRelation>
-      <attributeEditorRelation forceSuppressFormPopup="0" name="relatedparty_process_3" showLabel="0" verticalStretch="0" relationWidgetTypeId="relation_editor" relation="relatedparty_process_3" nmRelationId="" horizontalStretch="0" label="">
-        <labelStyle overrideLabelColor="0" labelColor="0,0,0,255" overrideLabelFont="0">
-          <labelFont style="" bold="0" underline="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" italic="0"/>
+      <attributeEditorRelation nmRelationId="" showLabel="0" relationWidgetTypeId="relation_editor" horizontalStretch="0" forceSuppressFormPopup="0" relation="relatedparty_process_3" verticalStretch="0" name="relatedparty_process_3" label="">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
         <editor_configuration type="Map">
           <Option type="bool" value="false" name="allow_add_child_feature_with_no_geometry"/>
@@ -349,49 +347,49 @@ def my_form_open(dialog, layer, feature):
     </attributeEditorContainer>
   </attributeEditorForm>
   <editable>
-    <field name="address" editable="1"/>
-    <field name="contactinstructions" editable="1"/>
-    <field name="electronicmailaddress" editable="1"/>
-    <field name="guidkey" editable="1"/>
-    <field name="hoursofservice" editable="1"/>
-    <field name="id" editable="1"/>
-    <field name="individualname" editable="1"/>
-    <field name="organizationname" editable="1"/>
-    <field name="positionname" editable="1"/>
-    <field name="role" editable="1"/>
-    <field name="telephonefacsimile" editable="1"/>
-    <field name="telephonevoice" editable="1"/>
-    <field name="website" editable="1"/>
+    <field editable="1" name="address"/>
+    <field editable="1" name="contactinstructions"/>
+    <field editable="1" name="electronicmailaddress"/>
+    <field editable="1" name="guidkey"/>
+    <field editable="1" name="hoursofservice"/>
+    <field editable="1" name="id"/>
+    <field editable="1" name="individualname"/>
+    <field editable="1" name="organizationname"/>
+    <field editable="1" name="positionname"/>
+    <field editable="1" name="role"/>
+    <field editable="1" name="telephonefacsimile"/>
+    <field editable="1" name="telephonevoice"/>
+    <field editable="1" name="website"/>
   </editable>
   <labelOnTop>
-    <field name="address" labelOnTop="0"/>
-    <field name="contactinstructions" labelOnTop="0"/>
-    <field name="electronicmailaddress" labelOnTop="0"/>
-    <field name="guidkey" labelOnTop="0"/>
-    <field name="hoursofservice" labelOnTop="0"/>
-    <field name="id" labelOnTop="0"/>
-    <field name="individualname" labelOnTop="0"/>
-    <field name="organizationname" labelOnTop="0"/>
-    <field name="positionname" labelOnTop="0"/>
-    <field name="role" labelOnTop="0"/>
-    <field name="telephonefacsimile" labelOnTop="0"/>
-    <field name="telephonevoice" labelOnTop="0"/>
-    <field name="website" labelOnTop="0"/>
+    <field labelOnTop="0" name="address"/>
+    <field labelOnTop="0" name="contactinstructions"/>
+    <field labelOnTop="0" name="electronicmailaddress"/>
+    <field labelOnTop="0" name="guidkey"/>
+    <field labelOnTop="0" name="hoursofservice"/>
+    <field labelOnTop="0" name="id"/>
+    <field labelOnTop="0" name="individualname"/>
+    <field labelOnTop="0" name="organizationname"/>
+    <field labelOnTop="0" name="positionname"/>
+    <field labelOnTop="0" name="role"/>
+    <field labelOnTop="0" name="telephonefacsimile"/>
+    <field labelOnTop="0" name="telephonevoice"/>
+    <field labelOnTop="0" name="website"/>
   </labelOnTop>
   <reuseLastValue>
-    <field name="address" reuseLastValue="0"/>
-    <field name="contactinstructions" reuseLastValue="0"/>
-    <field name="electronicmailaddress" reuseLastValue="0"/>
-    <field name="guidkey" reuseLastValue="0"/>
-    <field name="hoursofservice" reuseLastValue="0"/>
-    <field name="id" reuseLastValue="0"/>
-    <field name="individualname" reuseLastValue="0"/>
-    <field name="organizationname" reuseLastValue="0"/>
-    <field name="positionname" reuseLastValue="1"/>
-    <field name="role" reuseLastValue="0"/>
-    <field name="telephonefacsimile" reuseLastValue="0"/>
-    <field name="telephonevoice" reuseLastValue="0"/>
-    <field name="website" reuseLastValue="0"/>
+    <field reuseLastValue="0" name="address"/>
+    <field reuseLastValue="0" name="contactinstructions"/>
+    <field reuseLastValue="0" name="electronicmailaddress"/>
+    <field reuseLastValue="0" name="guidkey"/>
+    <field reuseLastValue="0" name="hoursofservice"/>
+    <field reuseLastValue="0" name="id"/>
+    <field reuseLastValue="0" name="individualname"/>
+    <field reuseLastValue="0" name="organizationname"/>
+    <field reuseLastValue="1" name="positionname"/>
+    <field reuseLastValue="0" name="role"/>
+    <field reuseLastValue="0" name="telephonefacsimile"/>
+    <field reuseLastValue="0" name="telephonevoice"/>
+    <field reuseLastValue="0" name="website"/>
   </reuseLastValue>
   <dataDefinedFieldProperties/>
   <widgets>

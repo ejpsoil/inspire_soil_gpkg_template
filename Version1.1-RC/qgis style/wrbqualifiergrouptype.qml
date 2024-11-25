@@ -93,14 +93,14 @@
         <config>
           <Option type="Map">
             <Option type="bool" value="false" name="AllowMulti"/>
-            <Option type="bool" value="false" name="AllowNull"/>
+            <Option type="bool" value="true" name="AllowNull"/>
             <Option type="QString" value="" name="Description"/>
             <Option type="QString" value="CASE &#xa;  WHEN current_value('wrbversion')= 'https://inspire.ec.europa.eu/codelist/WRBReferenceSoilGroupValue'  THEN &quot;collection&quot; IN('WRBSpecifierValue') &#xa;  WHEN current_value('wrbversion')= 'http://stats-class.fao.uniroma2.it/WRB/v2014/rsg.html' THEN &quot;collection&quot; IN('WRBSpecifierValue2014')  &#xa;  WHEN current_value('wrbversion')= 'https://obrl-soil.github.io/wrbsoil2022/'  THEN &quot;collection&quot; IN('WRBSpecifierValue2022')  &#xa;  ELSE 0&#xa;END" name="FilterExpression"/>
             <Option type="QString" value="id" name="Key"/>
-            <Option type="QString" value="codelist_c31ed647_1b11_42f4_8db6_c48e13994a56" name="Layer"/>
+            <Option type="QString" value="codelist_7257b262_7388_468b_a269_2546711c92b6" name="Layer"/>
             <Option type="QString" value="codelist" name="LayerName"/>
             <Option type="QString" value="ogr" name="LayerProviderName"/>
-            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage_Sicily_Import/GPKG/Sicily_06_New/Sicily_TESTFORM/INSPIRE_SO.gpkg|layername=codelist" name="LayerSource"/>
+            <Option type="QString" value="C:/Users/andrea.lachi/Documents/_INSPIRE_NOV24/INSPIRE_SO.gpkg|layername=codelist" name="LayerSource"/>
             <Option type="int" value="1" name="NofColumns"/>
             <Option type="bool" value="false" name="OrderByValue"/>
             <Option type="bool" value="false" name="UseCompleter"/>
@@ -114,14 +114,14 @@
         <config>
           <Option type="Map">
             <Option type="bool" value="false" name="AllowMulti"/>
-            <Option type="bool" value="false" name="AllowNull"/>
+            <Option type="bool" value="true" name="AllowNull"/>
             <Option type="QString" value="" name="Description"/>
             <Option type="QString" value="CASE &#xa;  WHEN current_value('wrbversion')= 'https://inspire.ec.europa.eu/codelist/WRBReferenceSoilGroupValue'  THEN &quot;collection&quot; IN('WRBSpecifierValue') &#xa;  WHEN current_value('wrbversion')= 'http://stats-class.fao.uniroma2.it/WRB/v2014/rsg.html' THEN &quot;collection&quot; IN('WRBSpecifierValue2014')  &#xa;  WHEN current_value('wrbversion')= 'https://obrl-soil.github.io/wrbsoil2022/'  THEN &quot;collection&quot; IN('WRBSpecifierValue2022')  &#xa;  ELSE 0&#xa;END" name="FilterExpression"/>
             <Option type="QString" value="id" name="Key"/>
-            <Option type="QString" value="codelist_c31ed647_1b11_42f4_8db6_c48e13994a56" name="Layer"/>
+            <Option type="QString" value="codelist_7257b262_7388_468b_a269_2546711c92b6" name="Layer"/>
             <Option type="QString" value="codelist" name="LayerName"/>
             <Option type="QString" value="ogr" name="LayerProviderName"/>
-            <Option type="QString" value="C:/Users/andrea.lachi/Documents/Geopackage_Sicily_Import/GPKG/Sicily_06_New/Sicily_TESTFORM/INSPIRE_SO.gpkg|layername=codelist" name="LayerSource"/>
+            <Option type="QString" value="C:/Users/andrea.lachi/Documents/_INSPIRE_NOV24/INSPIRE_SO.gpkg|layername=codelist" name="LayerSource"/>
             <Option type="int" value="1" name="NofColumns"/>
             <Option type="bool" value="false" name="OrderByValue"/>
             <Option type="bool" value="false" name="UseCompleter"/>
@@ -132,13 +132,13 @@
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias index="0" name="" field="id"/>
-    <alias index="1" name="" field="guidkey"/>
-    <alias index="2" name="WRB Version" field="wrbversion"/>
-    <alias index="3" name="Qualifier Place" field="qualifierplace"/>
-    <alias index="4" name="WRB Qualifier" field="wrbqualifier"/>
-    <alias index="5" name="WRB Specifier 1" field="wrbspecifier_1"/>
-    <alias index="6" name="WRB Specifier 2" field="wrbspecifier_2"/>
+    <alias index="0" field="id" name=""/>
+    <alias index="1" field="guidkey" name=""/>
+    <alias index="2" field="wrbversion" name="WRB Version"/>
+    <alias index="3" field="qualifierplace" name="Qualifier Place"/>
+    <alias index="4" field="wrbqualifier" name="WRB Qualifier"/>
+    <alias index="5" field="wrbspecifier_1" name="WRB Specifier 1"/>
+    <alias index="6" field="wrbspecifier_2" name="WRB Specifier 2"/>
   </aliases>
   <splitPolicies>
     <policy policy="Duplicate" field="id"/>
@@ -159,13 +159,13 @@
     <default applyOnUpdate="0" expression="" field="wrbspecifier_2"/>
   </defaults>
   <constraints>
-    <constraint constraints="3" notnull_strength="1" exp_strength="0" field="id" unique_strength="1"/>
-    <constraint constraints="2" notnull_strength="0" exp_strength="0" field="guidkey" unique_strength="1"/>
-    <constraint constraints="1" notnull_strength="1" exp_strength="0" field="wrbversion" unique_strength="0"/>
-    <constraint constraints="1" notnull_strength="1" exp_strength="0" field="qualifierplace" unique_strength="0"/>
-    <constraint constraints="1" notnull_strength="1" exp_strength="0" field="wrbqualifier" unique_strength="0"/>
-    <constraint constraints="0" notnull_strength="0" exp_strength="0" field="wrbspecifier_1" unique_strength="0"/>
-    <constraint constraints="0" notnull_strength="0" exp_strength="0" field="wrbspecifier_2" unique_strength="0"/>
+    <constraint constraints="3" unique_strength="1" notnull_strength="1" exp_strength="0" field="id"/>
+    <constraint constraints="2" unique_strength="1" notnull_strength="0" exp_strength="0" field="guidkey"/>
+    <constraint constraints="1" unique_strength="0" notnull_strength="1" exp_strength="0" field="wrbversion"/>
+    <constraint constraints="1" unique_strength="0" notnull_strength="1" exp_strength="0" field="qualifierplace"/>
+    <constraint constraints="1" unique_strength="0" notnull_strength="1" exp_strength="0" field="wrbqualifier"/>
+    <constraint constraints="0" unique_strength="0" notnull_strength="0" exp_strength="0" field="wrbspecifier_1"/>
+    <constraint constraints="0" unique_strength="0" notnull_strength="0" exp_strength="0" field="wrbspecifier_2"/>
   </constraints>
   <constraintExpressions>
     <constraint desc="" exp="" field="id"/>
@@ -201,41 +201,41 @@ def my_form_open(dialog, layer, feature):
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-      <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+    <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+      <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
     </labelStyle>
-    <attributeEditorField showLabel="1" index="0" horizontalStretch="0" name="id" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+    <attributeEditorField showLabel="1" horizontalStretch="0" index="0" verticalStretch="0" name="id">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="2" horizontalStretch="0" name="wrbversion" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+    <attributeEditorField showLabel="1" horizontalStretch="0" index="2" verticalStretch="0" name="wrbversion">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="3" horizontalStretch="0" name="qualifierplace" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+    <attributeEditorField showLabel="1" horizontalStretch="0" index="3" verticalStretch="0" name="qualifierplace">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" index="4" horizontalStretch="0" name="wrbqualifier" verticalStretch="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+    <attributeEditorField showLabel="1" horizontalStretch="0" index="4" verticalStretch="0" name="wrbqualifier">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer type="GroupBox" groupBox="1" collapsedExpressionEnabled="0" collapsed="0" showLabel="1" collapsedExpression="" visibilityExpression="" horizontalStretch="0" name="Specifier" verticalStretch="0" columnCount="1" visibilityExpressionEnabled="0">
-      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-        <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+    <attributeEditorContainer collapsed="0" visibilityExpression="" groupBox="1" showLabel="1" collapsedExpression="" horizontalStretch="0" columnCount="1" type="GroupBox" visibilityExpressionEnabled="0" verticalStretch="0" collapsedExpressionEnabled="0" name="Specifier">
+      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
       </labelStyle>
-      <attributeEditorField showLabel="1" index="5" horizontalStretch="0" name="wrbspecifier_1" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+      <attributeEditorField showLabel="1" horizontalStretch="0" index="5" verticalStretch="0" name="wrbspecifier_1">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField showLabel="1" index="6" horizontalStretch="0" name="wrbspecifier_2" verticalStretch="0">
-        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
-          <labelFont italic="0" style="" bold="0" strikethrough="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" underline="0"/>
+      <attributeEditorField showLabel="1" horizontalStretch="0" index="6" verticalStretch="0" name="wrbspecifier_2">
+        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
+          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
