@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.32.3-Lima" readOnly="0" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations">
+<qgis readOnly="0" styleCategories="LayerConfiguration|Symbology|Fields|Forms|Relations" version="3.32.3-Lima">
   <flags>
     <Identifiable>1</Identifiable>
     <Removable>1</Removable>
@@ -7,7 +7,7 @@
     <Private>0</Private>
   </flags>
   <referencedLayers>
-    <relation strength="Association" dataSource="./INSPIRE_SO.gpkg|layername=profileelement" referencedLayer="profileelement_b3ab52bf_7e70_44aa_8dc8_597c154a28b8" referencingLayer="particlesizefractiontype_c32c054c_73a6_48c5_8407_9776c43fb7bb" id="profileelement_particlesizefractiontype" layerId="profileelement_b3ab52bf_7e70_44aa_8dc8_597c154a28b8" layerName="profileelement" providerKey="ogr" name="profileelement_particlesizefractiontype">
+    <relation id="profileelement_particlesizefractiontype" referencingLayer="particlesizefractiontype_7fcdd654_2356_47de_9edc_a784f940e368" layerName="profileelement" strength="Association" referencedLayer="profileelement_df6b698e_5913_4023_acf5_5c39652d49b4" dataSource="./INSPIRE_SO.gpkg|layername=profileelement" providerKey="ogr" layerId="profileelement_df6b698e_5913_4023_acf5_5c39652d49b4" name="profileelement_particlesizefractiontype">
       <fieldRef referencedField="guidkey" referencingField="idprofileelement"/>
     </relation>
   </referencedLayers>
@@ -75,39 +75,39 @@
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias index="0" field="id" name=""/>
-    <alias index="1" field="fractioncontent" name="Fraction content %"/>
-    <alias index="2" field="pariclesize_min" name="Min"/>
-    <alias index="3" field="pariclesize_max" name="Max"/>
-    <alias index="4" field="idprofileelement" name=""/>
+    <alias field="id" index="0" name=""/>
+    <alias field="fractioncontent" index="1" name="Fraction content %"/>
+    <alias field="pariclesize_min" index="2" name="Min"/>
+    <alias field="pariclesize_max" index="3" name="Max"/>
+    <alias field="idprofileelement" index="4" name=""/>
   </aliases>
   <splitPolicies>
-    <policy policy="DefaultValue" field="id"/>
-    <policy policy="DefaultValue" field="fractioncontent"/>
-    <policy policy="DefaultValue" field="pariclesize_min"/>
-    <policy policy="DefaultValue" field="pariclesize_max"/>
-    <policy policy="DefaultValue" field="idprofileelement"/>
+    <policy field="id" policy="DefaultValue"/>
+    <policy field="fractioncontent" policy="DefaultValue"/>
+    <policy field="pariclesize_min" policy="DefaultValue"/>
+    <policy field="pariclesize_max" policy="DefaultValue"/>
+    <policy field="idprofileelement" policy="DefaultValue"/>
   </splitPolicies>
   <defaults>
-    <default applyOnUpdate="0" expression="" field="id"/>
-    <default applyOnUpdate="0" expression="" field="fractioncontent"/>
-    <default applyOnUpdate="0" expression="" field="pariclesize_min"/>
-    <default applyOnUpdate="0" expression="" field="pariclesize_max"/>
-    <default applyOnUpdate="0" expression="" field="idprofileelement"/>
+    <default field="id" expression="" applyOnUpdate="0"/>
+    <default field="fractioncontent" expression="" applyOnUpdate="0"/>
+    <default field="pariclesize_min" expression="" applyOnUpdate="0"/>
+    <default field="pariclesize_max" expression="" applyOnUpdate="0"/>
+    <default field="idprofileelement" expression="" applyOnUpdate="0"/>
   </defaults>
   <constraints>
-    <constraint constraints="3" unique_strength="1" notnull_strength="1" exp_strength="0" field="id"/>
-    <constraint constraints="1" unique_strength="0" notnull_strength="1" exp_strength="0" field="fractioncontent"/>
-    <constraint constraints="1" unique_strength="0" notnull_strength="1" exp_strength="0" field="pariclesize_min"/>
-    <constraint constraints="1" unique_strength="0" notnull_strength="1" exp_strength="0" field="pariclesize_max"/>
-    <constraint constraints="1" unique_strength="0" notnull_strength="1" exp_strength="0" field="idprofileelement"/>
+    <constraint notnull_strength="1" field="id" exp_strength="0" constraints="3" unique_strength="1"/>
+    <constraint notnull_strength="1" field="fractioncontent" exp_strength="0" constraints="1" unique_strength="0"/>
+    <constraint notnull_strength="1" field="pariclesize_min" exp_strength="0" constraints="1" unique_strength="0"/>
+    <constraint notnull_strength="1" field="pariclesize_max" exp_strength="0" constraints="1" unique_strength="0"/>
+    <constraint notnull_strength="1" field="idprofileelement" exp_strength="0" constraints="1" unique_strength="0"/>
   </constraints>
   <constraintExpressions>
-    <constraint desc="" exp="" field="id"/>
-    <constraint desc="" exp="" field="fractioncontent"/>
-    <constraint desc="" exp="" field="pariclesize_min"/>
-    <constraint desc="" exp="" field="pariclesize_max"/>
-    <constraint desc="" exp="" field="idprofileelement"/>
+    <constraint field="id" desc="" exp=""/>
+    <constraint field="fractioncontent" desc="" exp=""/>
+    <constraint field="pariclesize_min" desc="" exp=""/>
+    <constraint field="pariclesize_max" desc="" exp=""/>
+    <constraint field="idprofileelement" desc="" exp=""/>
   </constraintExpressions>
   <expressionfields/>
   <editform tolerant="1"></editform>
@@ -133,31 +133,31 @@ control = dialog.findChild(QWidget, "MyLineEdit")
   <featformsuppress>0</featformsuppress>
   <editorlayout>tablayout</editorlayout>
   <attributeEditorForm>
-    <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
-      <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+      <labelFont italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0" strikethrough="0" underline="0" style=""/>
     </labelStyle>
-    <attributeEditorField showLabel="1" horizontalStretch="0" index="4" verticalStretch="0" name="idprofileelement">
-      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
-        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorField index="4" verticalStretch="0" showLabel="1" horizontalStretch="0" name="idprofileelement">
+      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+        <labelFont italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0" strikethrough="0" underline="0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorField showLabel="1" horizontalStretch="0" index="1" verticalStretch="0" name="fractioncontent">
-      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
-        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorField index="1" verticalStretch="0" showLabel="1" horizontalStretch="0" name="fractioncontent">
+      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+        <labelFont italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0" strikethrough="0" underline="0" style=""/>
       </labelStyle>
     </attributeEditorField>
-    <attributeEditorContainer collapsed="0" visibilityExpression="" groupBox="1" showLabel="1" collapsedExpression="" horizontalStretch="0" columnCount="1" type="GroupBox" visibilityExpressionEnabled="0" verticalStretch="0" collapsedExpressionEnabled="0" name="Particle Size expressed in micrometers (µm)">
-      <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
-        <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+    <attributeEditorContainer visibilityExpression="" columnCount="1" groupBox="1" verticalStretch="0" showLabel="1" collapsedExpression="" visibilityExpressionEnabled="0" horizontalStretch="0" collapsed="0" collapsedExpressionEnabled="0" name="Particle Size expressed in micrometers (µm)" type="GroupBox">
+      <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+        <labelFont italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0" strikethrough="0" underline="0" style=""/>
       </labelStyle>
-      <attributeEditorField showLabel="1" horizontalStretch="0" index="2" verticalStretch="0" name="pariclesize_min">
-        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
-          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField index="2" verticalStretch="0" showLabel="1" horizontalStretch="0" name="pariclesize_min">
+        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+          <labelFont italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0" strikethrough="0" underline="0" style=""/>
         </labelStyle>
       </attributeEditorField>
-      <attributeEditorField showLabel="1" horizontalStretch="0" index="3" verticalStretch="0" name="pariclesize_max">
-        <labelStyle labelColor="0,0,0,255" overrideLabelColor="0" overrideLabelFont="0">
-          <labelFont italic="0" strikethrough="0" underline="0" style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0"/>
+      <attributeEditorField index="3" verticalStretch="0" showLabel="1" horizontalStretch="0" name="pariclesize_max">
+        <labelStyle labelColor="0,0,0,255" overrideLabelFont="0" overrideLabelColor="0">
+          <labelFont italic="0" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0" bold="0" strikethrough="0" underline="0" style=""/>
         </labelStyle>
       </attributeEditorField>
     </attributeEditorContainer>
@@ -188,8 +188,6 @@ control = dialog.findChild(QWidget, "MyLineEdit")
   </reuseLastValue>
   <dataDefinedFieldProperties/>
   <widgets/>
-  <previewExpression>if ( "pariclesize_min" = 0,'Clay',&#xd;&#xd;
-If("pariclesize_min" = 2,'Lime','Sand')&#xd;&#xd;
-) || ' '|| "fractioncontent" ||'%'</previewExpression>
+  <previewExpression>"fractioncontent" ||'% ' ||'('|| "pariclesize_min" ||'-'|| "pariclesize_max" ||')'</previewExpression>
   <layerGeometryType>4</layerGeometryType>
 </qgis>
