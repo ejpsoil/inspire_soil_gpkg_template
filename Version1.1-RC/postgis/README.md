@@ -69,6 +69,7 @@ In this setup, the presence of Functions and Triggers, functionally correspondin
 
 **PARTICLESIZEFRACTIONTYPE**
 - "check_fraction_sum" - checks that the sum of "fractioncontent" does not exceed 100. 
+- "check_particlesize_overlap" - checks that the new range should not overlap or touch an existing range for the sameidprofileelement.
 
 **FAOHORIZONNOTATIONTYPE**
 - "check_faoprofileelementtype" - Checks that the profileelementtype is = 1, meaning that it is a HORIZON.

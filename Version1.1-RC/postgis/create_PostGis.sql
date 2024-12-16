@@ -1115,9 +1115,12 @@ CREATE TABLE so.particlesizefractiontype
 (
     id SERIAL PRIMARY KEY, 
     fractioncontent REAL NOT NULL, 
-    pariclesize_min REAL NOT NULL, 
-    pariclesize_max REAL NOT NULL, 
+    particlesize_lower INTEGER NOT NULL, 
+    particlesize_upper INTEGER NOT NULL, 
     idprofileelement UUID NOT NULL,
+    CHECK (particlesize_lower >= 0 AND particlesize_lower <= 1999),
+    CHECK (particlesize_upper >= 1 AND particlesize_upper <= 2000),
+    CHECK (particlesize_lower < particlesize_upper),
     FOREIGN KEY (idprofileelement)
       REFERENCES so.profileelement(guidkey) 
       ON DELETE CASCADE 
@@ -1130,8 +1133,8 @@ COMMENT ON TABLE so.particlesizefractiontype IS 'Share of the soil that is compo
 -- Add Comment Column
 COMMENT ON COLUMN so.particlesizefractiontype.id IS 'Primary Key of the Table';
 COMMENT ON COLUMN so.particlesizefractiontype.fractioncontent IS 'Percentage of the defined fraction.';
-COMMENT ON COLUMN so.particlesizefractiontype.pariclesize_min IS 'Upper limit of the particle size of the defined fraction (expressed in µm)';
-COMMENT ON COLUMN so.particlesizefractiontype.pariclesize_max IS 'Lower limit of the particle size of the defined fraction (expressed in µm)';
+COMMENT ON COLUMN so.particlesizefractiontype.particlesize_lower IS 'Lower limit of the particle size of the defined fraction (expressed in µm)';
+COMMENT ON COLUMN so.particlesizefractiontype.particlesize_upper IS 'Upper limit of the particle size of the defined fraction (expressed in µm)';
 COMMENT ON COLUMN so.particlesizefractiontype.idprofileelement IS 'Foreign key to the ProfileElement table, guidkey field.';
 
 
@@ -1155,10 +1158,41 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER i_check_fraction_sum
-BEFORE INSERT ON so.particlesizefractiontype
+BEFORE INSERT OR UPDATE ON so.particlesizefractiontype
 FOR EACH ROW
 EXECUTE FUNCTION so.check_fraction_sum();
 
+
+CREATE OR REPLACE FUNCTION so.check_particlesize_overlap()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Controlla se esiste un range che si sovrappone o tocca quello nuovo
+    IF EXISTS (
+        SELECT 1
+        FROM so.particlesizefractiontype
+        WHERE idprofileelement = NEW.idprofileelement
+          AND (
+              (NEW.particlesize_lower > particlesize_lower AND NEW.particlesize_lower < particlesize_upper) OR
+              (NEW.particlesize_upper > particlesize_lower AND NEW.particlesize_upper < particlesize_upper) OR
+              (NEW.particlesize_lower <= particlesize_lower AND NEW.particlesize_upper >= particlesize_upper) OR
+              (NEW.particlesize_upper = particlesize_lower) OR
+              (NEW.particlesize_lower = particlesize_upper)
+          )
+    ) THEN
+        -- Lancia un'eccezione per impedire l'inserimento
+        RAISE EXCEPTION 'New range overlaps with or touches an existing range for the same idprofileelement';
+    END IF;
+
+    -- Permetti l'inserimento se non c'è sovrapposizione
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Creazione del trigger
+CREATE TRIGGER i_check_particlesize_overlap
+BEFORE INSERT OR UPDATE ON so.particlesizefractiontype
+FOR EACH ROW
+EXECUTE FUNCTION so.check_particlesize_overlap();
 
 
 /* 

@@ -129,6 +129,8 @@ CREATE INDEX soiBody_geom_idxsi ON soilbody_newname(geom);  ** CHANGE NAME INDEX
 **PARTICLESIZEFRACTIONTYPE**
 - "i_check_fraction_sum" - INSERT - checks that the sum of "fractioncontent" does not exceed 100. 
 - "u_check_fraction_sum" - UPDATE - checks that the sum of "fractioncontent" does not exceed 100.
+- "i_check_particlesize_overlap"  - INSERT - checks that the new range should not overlap or touch an existing range for the sameidprofileelement.
+- "u_check_particlesize_overlap"  - UPDATE - checks that the new range should not overlap or touch an existing range for the sameidprofileelement.
 
 **FAOHORIZONNOTATIONTYPE**
 - "i_ceckfaoprofileelementtype" - INSERT - Checks that the profileelementtype is = 1, meaning that it is a HORIZON

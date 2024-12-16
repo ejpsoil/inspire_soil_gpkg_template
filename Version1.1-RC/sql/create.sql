@@ -1511,9 +1511,12 @@ CREATE TABLE particlesizefractiontype
 (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
     fractioncontent                 REAL NOT NULL, 
-    pariclesize_min                 REAL NOT NULL, 
-    pariclesize_max                 REAL NOT NULL, 
+    particlesize_lower                 INTEGER NOT NULL, 
+    particlesize_upper                 INTEGER NOT NULL, 
     idprofileelement TEXT NOT NULL,
+    CHECK (particlesize_lower >= 0 AND particlesize_lower <= 1999),
+    CHECK (particlesize_upper >= 1 AND particlesize_upper <= 2000),
+    CHECK (particlesize_lower < particlesize_upper),
     FOREIGN KEY (idprofileelement)
       REFERENCES profileelement(guidkey) 
       ON DELETE CASCADE 
@@ -1579,8 +1582,48 @@ BEGIN
 END;
 
 
+CREATE TRIGGER i_check_particlesize_overlap
+BEFORE INSERT ON particlesizefractiontype
+FOR EACH ROW
+BEGIN
+    SELECT CASE
+        WHEN EXISTS (
+            SELECT 1
+            FROM particlesizefractiontype
+            WHERE idprofileelement = NEW.idprofileelement
+              AND (
+                  (NEW.particlesize_lower > particlesize_lower AND NEW.particlesize_lower < particlesize_upper) OR
+                  (NEW.particlesize_upper > particlesize_lower AND NEW.particlesize_upper < particlesize_upper) OR
+                  (NEW.particlesize_lower <= particlesize_lower AND NEW.particlesize_upper >= particlesize_upper) OR
+                  (NEW.particlesize_upper = particlesize_lower) OR
+                  (NEW.particlesize_lower = particlesize_upper)
+              )
+        ) THEN
+            RAISE(ABORT, 'New range overlaps with or touches an existing range for the same idprofileelement')
+    END;
+END;
 
 
+CREATE TRIGGER u_check_particlesize_overlap
+BEFORE UPDATE ON particlesizefractiontype
+FOR EACH ROW
+BEGIN
+    SELECT CASE
+        WHEN EXISTS (
+            SELECT 1
+            FROM particlesizefractiontype
+            WHERE idprofileelement = NEW.idprofileelement
+              AND (
+                  (NEW.particlesize_lower > particlesize_lower AND NEW.particlesize_lower < particlesize_upper) OR
+                  (NEW.particlesize_upper > particlesize_lower AND NEW.particlesize_upper < particlesize_upper) OR
+                  (NEW.particlesize_lower <= particlesize_lower AND NEW.particlesize_upper >= particlesize_upper) OR
+                  (NEW.particlesize_upper = particlesize_lower) OR
+                  (NEW.particlesize_lower = particlesize_upper)
+              )
+        ) THEN
+            RAISE(ABORT, 'New range overlaps with or touches an existing range for the same idprofileelement')
+    END;
+END;
 
 /* 
 ███████  █████   ██████  ██   ██  ██████  ██████  ██ ███████  ██████  ███    ██ ███    ██  ██████  ████████  █████  ████████ ██  ██████  ███    ██ ████████ ██    ██ ██████  ███████ 
