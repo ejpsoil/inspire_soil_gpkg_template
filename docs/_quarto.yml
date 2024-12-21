@@ -1,9 +1,0 @@
-project:
-  type: website
-
-website:
-  title: "A GeoPackage template for INSPIRE Soil data"
-  description: "This documentation introduces a relational database to capture soil data according to the INSPIRE soil data model."
-  repo-url: https://github.com/ejpsoil/inspire_soil_gpkg_template	
-  repo-subdir: docs
-  repo-actions: edit
