@@ -10,4 +10,5 @@
 - Download and open the EJPSOIL-GPKG-to-GML.halez project from this folder
 - Select the INSPIRE_SO GeoPackage  populated with your data as source
 - Run the transformation
-- Validate your GML in the INSPIRE validator https://inspire.ec.europa.eu/validator/home/index.html
+
+The resulting GML can be validated in the INSPIRE validator https://inspire.ec.europa.eu/validator/home/index.html to test compliance.
