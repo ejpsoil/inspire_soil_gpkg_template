@@ -1,37 +1,52 @@
-# Create a INSPIRE Soil GeoPackage template using SQL
+The `sql` folder contains the informatic code which is behind the INSPIRE Soil Geopackage.  
+Using the SQL code in the `create.sql` file, you can recreate the Geopackage containing the full INSPIRE Soil structure.
 
-A set of sql statements to update a plain geopackage template to a INSPIRE Soil template
+## Recreating the Geopackage Containing the INSPIRE Soil Structure
 
-Open the empty GeoPackage template, which you can find at http://www.geopackage.org/data/empty.gpkg, in for example, [sqlitebrowser](https://sqlitebrowser.org/)  and execute the SQL statements from the create.sql file in the query window.
+To do this:  
+1. Open the empty GeoPackage model available at [http://www.geopackage.org/data/empty.gpkg](http://www.geopackage.org/data/empty.gpkg) using a database manager (e.g., DBeaver).  
+2. Execute the SQL instructions from the `create.sql` file in the query window.  
 
-The code creates all the necessary tables, inserts the correct references into the Geopackage tables, and populates the table with INSPIRE codelists integrated by a series of codelists defined by CREA.
+- The `create.sql` file includes:  
+    - **Data Definition Language (DDL):** Instructions to create tables and their relationships.  
+    - **Data Manipulation Language (DML):** Instructions to populate the `codelist` table with the necessary codelists required for its functionality.  
 
-Some constraints have been managed through both form management and trigger creation. On one hand, we aim to assist user data entry, while on the other hand, the presence of triggers at the engine level ensures data integrity in case of massive data entry.
+- Some constraints have been managed through both form management and trigger creation.  
+    - On one hand, we aim to assist user data entry.  
+    - On the other hand, the presence of triggers at the engine level ensures data integrity in case of massive data entry.
 
+---
 
-# Create more than one geometric layer linked to the SoilBody table
+## Create More Than One Geometric Layer Linked to the SoilBody Table  
 
-It is possible to create more than one geometric layer linked to the SoilBody table, to do this use the code provided in SoilBody_newgeom.sql.
+It is possible to create more than one geometric layer linked to the SoilBody table, to do this use the code provided in `SoilBody_newgeom.sql`.
 
 Some names in the code need to be changed for it to work correctly, as described below.
 
-1 - SoilBody geometry table 
+1. SoilBody geometry table 
 
-CREATE TABLE soilbody_newname  ** CHANGE NAME **
+    - CREATE TABLE soilbody_newname  ** CHANGE NAME **
 
-2 - gpkg_contents INSERT
+2. gpkg_contents INSERT
 
-'soilbody_newname',   ** CHANGE NAME ** the name should be as entered in point 1
-'f_sbsi',  ** CHANGE NAME ID**
-'soilbody_newname Table',   ** CHANGE NAME DESCRIPTION  OPTIONAL** the name should be as entered in point 1
+    - 'soilbody_newname',   ** CHANGE NAME ** the name should be as entered in point 1
+    - 'f_sbsi',  ** CHANGE NAME ID**
+    - 'soilbody_newname Table',   ** CHANGE NAME DESCRIPTION  OPTIONAL** the name should be as entered in point 1
 
-3 - Spatial index
-CREATE INDEX soiBody_geom_idxsi ON soilbody_newname(geom);  ** CHANGE NAME INDEX ** AND ** CHANGE NAME AFTER ON ** the name should be as entered in point 1
+3. Spatial index
+    - CREATE INDEX soiBody_geom_idxsi ON soilbody_newname(geom);  ** CHANGE NAME INDEX ** AND ** CHANGE NAME AFTER ON ** the name should be as entered in point 1
 
-4 - gpkg_geometry_columns INSERT 'soilbody_newname',  ** CHANGE NAME ** the name should be as entered in point 1
+4. gpkg_geometry_columns INSERT 
+    - 'soilbody_newname',  ** CHANGE NAME ** the name should be as entered in point 1
 
+---
 
-# List of created triggers.
+## Trigger  
+
+A **Trigger** is procedural code that is automatically executed in response to certain events, for maintaining the integrity of the information on the database.  
+
+Below is the list of triggers implemented for the INSPIRE SO data model, along with a brief description of their functionalities.  
+
 
 **SOILSITE**
 - "soilsiteguid" - INSERT - manages the creation of the GUID in INSERT
@@ -260,18 +275,23 @@ CREATE INDEX soiBody_geom_idxsi ON soilbody_newname(geom);  ** CHANGE NAME INDEX
 - "i_role" INSERT - Checks that only valid values from the CODELIST "ResponsiblePartyRole" are entered in the "role" field.
 - "u_role" UPDATE - Checks that only valid values from the CODELIST "ResponsiblePartyRole" are entered in the "role" field.
 
-# Codelist Table.
+---
+
+## Codelist Table.
 
 Codelists in the SO (Soil) INSPIRE domain are essential for ensuring a standardized representation of soil data across the European Union. They enable consistent classification and encoding of specific values (e.g., soil types, usage categories) across different languages and applications, ensuring interoperability and semantic integrity in environmental datasets.
-
-Although the codelist table has no relationships with other tables, its presence is crucial for correct data management and control. It includes duplicates of all code lists in the INSPIRE registry (https://inspire.ec.europa.eu/registry) related to the SO domain, limiting input to valid codes through a check that occurs upon row insertion or update. Essentially, if a coded value is in the table, it is valid; if not, the code is incorrect, and the row isn’t recorded.
-
-The presence of the codelist table in the Geopackage allows forms to use it for displaying dropdown code lists, simplifying data entry. 
-***However, not all necessary codelists for Geopackage use have been populated, so in some cases, we refer to different registers or create temporary codelists.***
-
-Internal code lists have also been added to the codelist table to manage forms more efficiently.
+ 
+Although the codelist table has no relationships with other tables, it's presence is crucial for the correct data management and control. It includes replicates of all  SO domain valid codes extracted from the INSPIRE registry (https://inspire.ec.europa.eu/registry). Essentially, if a coded value is in the table, it is supposed to be valid; if not, the code is to be considered as incorrect, and the relative value isn’t stored.
+ 
+The presence of the codelist table in the Geopackage allows forms for displaying dropdown lists, simplifying the data entry. However, up to now (01/2025), not every Geopackage mandatory codelists have been populated into the INSPIRE registry, in those cases, we referred a few lists thanks to other controlled vocabularies by means of URI.
+ 
+Moreover, internal codelists have also been added to the overmentioned table to manage forms more efficiently.
+INSPIRE registry
+ 
 
 Below is a list of Features with their respective codelists:
+
+
 
 ### FEATURE soilsite
 
@@ -279,60 +299,53 @@ SoilInvestigationPurposeValue
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/SoilInvestigationPurposeValue
 
+
 ### FEATURE soilplot
 
 SoilPlotTypeValue
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/SoilPlotTypeValue
 
+
 ### FEATURE  soilprofile
-
-***INTERNAL*** 
-WRBRversion
-CODELIST CREA based on real URI of WRB Classification
-
 
 WRBReferenceSoilGroupValue (2006)
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/WRBReferenceSoilGroupValue
 
-
 WRBReferenceSoilGroupValue (2014)
-CODELIST UNIROMA
-http://stats-class.fao.uniroma2.it/WRB/v2014
-
+CODELIST AGROPORTAL
+https://agroportal.lirmm.fr/ontologies/AGROVOC/
 
 WRBReferenceSoilGroupValue (2022)
 CODELIST ORBL-SOIL
 https://obrl-soil.github.io/wrbsoil2022/
 
+
 ### FEATURE othersoilnametype
 
-***EXAMPLE*** 
 OtherSoilNameTypeValue
-CODELIST CREA
+CODELIST ***INSPIRE***
+https://inspire.ec.europa.eu/codelist/OtherSoilNameTypeValue 
 
-FEATURE profileelement
+
+### FEATURE profileelement
 
 LayerTypeValue
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/LayerTypeValue
 
-
 LithologyValue
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/LithologyValue
-
 
 EventProcessValue
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/EventProcessValue
 
-
 EventEnvironmentValue
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/EventEnvironmentValue
-
 
 LayerGenesisProcessStateValue
 CODELIST ***INSPIRE***
@@ -345,33 +358,21 @@ FAOHorizonMaster
 CODELIST ***INSPIRE***
 https://inspire.ec.europa.eu/codelist/FAOHorizonMasterValue
 
-
 FAOHorizonSubordinate
 CODELIST ***INSPIRE***
 https://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue
-
 
 FAOPrime
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/FAOPrimeValue
 
+
 ### FEATURE otherhorizonnotationtype
 
-***INTERNAL*** 
-codelist for managing forms 
-OtherHorizonNotationType
-CODELIST CREA
-
-
-***EXAMPLE*** 
 WRBdiagnostichorizon
-CODELIST CREA
-https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/ 
+CODELIST ORBL
+https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-diagh
 
-
-***EXAMPLE***
-diagnostichorizon
-CODELIST CREA
 
 ### FEATURE wrbqualifiergrouptype
 
@@ -379,55 +380,33 @@ WRBQualifierPlaceValue
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/WRBQualifierPlaceValue
 
-
 WRBQualifierValue (2006)
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/WRBQualifierValue
-
-
-WRBQualifierValue (2014)
-CODELIST UNIROMA
-http://stats-class.fao.uniroma2.it/WRB/v2014
-
 
 WRBQualifierValue (2022)
 CODELIST ORBL-SOIL
 https://obrl-soil.github.io/wrbsoil2022/
 
-
 WRBSpecifiers (2006)
 CODELIST ***INSPIRE*** 
 http://inspire.ec.europa.eu/codelist/WRBSpecifierValue (Under review)
-
-
-WRBSpecifierValue (2014)
-CODELIST ORBL-SOIL
-https://
-
 
 WRBSpecifierValue (2022)
 CODELIST ORBL-SOIL
 https://obrl-soil.github.io/wrbsoil2022/
 
-### FEATURE observableproperty
-
-***INTERNAL*** 
-codelist for managing forms 
-Define the FOI
-CODELIST CREA
-
-
-***INTERNAL*** 
-codelist for managing forms 
-Define the PhenomenonType
-CODELIST CREA
 
 ### FEATURE processparameter
 
-***EXAMPLE*** 
+ProcessParameterNameValue
+CODELIST AGROPRTAL - LOD 
+https://agroportal.lirmm.fr/ - https://lod.nal.usda.gov/
+
 ProcessParameterNameValue
 CODELIST CREA
 http://crea.gov.it/codelist
+
 
 ### FEATURE relatedparty
 
@@ -436,27 +415,22 @@ CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole
 
 
-
 ## PARAMETER
-
 
 SoilSiteParameterNameValue
 **PARAMETER soilsite**
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/SoilSiteParameterNameValue
 
-
 SoilProfileParameterNameValue
 **PARAMETER soilprofile**
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/SoilProfileParameterNameValue
 
-
 SoilDerivedObjectParameterNameValue
 **PARAMETER soilderivedobject**
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/SoilDerivedObjectParameterNameValue
-
 
 ProfileElementParameterNameValue
 **PARAMETER profileelement**

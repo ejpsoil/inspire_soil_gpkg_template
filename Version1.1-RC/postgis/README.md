@@ -1,7 +1,7 @@
 # Create a INSPIRE Soil PostGIS template using SQL
 
 The file "create_PostGis.sql" contains SQL (DDL) code for defining a data model in PostgreSQL that mirrors the INSPIRE SO Geopackage structure. 
-This script creates all necessary tables and populates the table with INSPIRE codelists, supplemented by additional codelists defined by CREA.
+This script creates all necessary tables and populates the table with INSPIRE codelists.
 
 The aim is to eventually provide users with a Server Side database that can simplify data exchange between the two systems. 
 
@@ -130,18 +130,21 @@ OTHERHORIZON_PROFILEELEMENT
 - "i_name" INSERT - Checks that only valid values from the CODELIST "ProcessParameterNameValue" are entered in the "name" field.
 
 
-# Codelist Table.
+## Codelist Table.
 
 Codelists in the SO (Soil) INSPIRE domain are essential for ensuring a standardized representation of soil data across the European Union. They enable consistent classification and encoding of specific values (e.g., soil types, usage categories) across different languages and applications, ensuring interoperability and semantic integrity in environmental datasets.
-
-Although the codelist table has no relationships with other tables, its presence is crucial for correct data management and control. It includes duplicates of all code lists in the INSPIRE registry (https://inspire.ec.europa.eu/registry) related to the SO domain, limiting input to valid codes through a check that occurs upon row insertion or update. Essentially, if a coded value is in the table, it is valid; if not, the code is incorrect, and the row isn’t recorded.
-
-The presence of the codelist table in the Geopackage allows forms to use it for displaying dropdown code lists, simplifying data entry. 
-***However, not all necessary codelists for Geopackage use have been populated, so in some cases, we refer to different registers or create temporary codelists.***
-
-Internal code lists have also been added to the codelist table to manage forms more efficiently.
+ 
+Although the codelist table has no relationships with other tables, it's presence is crucial for the correct data management and control. It includes replicates of all  SO domain valid codes extracted from the INSPIRE registry (https://inspire.ec.europa.eu/registry). Essentially, if a coded value is in the table, it is supposed to be valid; if not, the code is to be considered as incorrect, and the relative value isn’t stored.
+ 
+The presence of the codelist table in the Geopackage allows forms for displaying dropdown lists, simplifying the data entry. However, up to now (01/2025), not every Geopackage mandatory codelists have been populated into the INSPIRE registry, in those cases, we referred a few lists thanks to other controlled vocabularies by means of URI.
+ 
+Moreover, internal codelists have also been added to the overmentioned table to manage forms more efficiently.
+INSPIRE registry
+ 
 
 Below is a list of Features with their respective codelists:
+
+
 
 ### FEATURE soilsite
 
@@ -149,60 +152,53 @@ SoilInvestigationPurposeValue
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/SoilInvestigationPurposeValue
 
+
 ### FEATURE soilplot
 
 SoilPlotTypeValue
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/SoilPlotTypeValue
 
+
 ### FEATURE  soilprofile
-
-***INTERNAL*** 
-WRBRversion
-CODELIST CREA based on real URI of WRB Classification
-
 
 WRBReferenceSoilGroupValue (2006)
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/WRBReferenceSoilGroupValue
 
-
 WRBReferenceSoilGroupValue (2014)
-CODELIST UNIROMA
-http://stats-class.fao.uniroma2.it/WRB/v2014
-
+CODELIST AGROPORTAL
+https://agroportal.lirmm.fr/ontologies/AGROVOC/
 
 WRBReferenceSoilGroupValue (2022)
 CODELIST ORBL-SOIL
 https://obrl-soil.github.io/wrbsoil2022/
 
+
 ### FEATURE othersoilnametype
 
-***EXAMPLE*** 
 OtherSoilNameTypeValue
-CODELIST CREA
+CODELIST ***INSPIRE***
+https://inspire.ec.europa.eu/codelist/OtherSoilNameTypeValue 
 
-FEATURE profileelement
+
+### FEATURE profileelement
 
 LayerTypeValue
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/LayerTypeValue
 
-
 LithologyValue
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/LithologyValue
-
 
 EventProcessValue
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/EventProcessValue
 
-
 EventEnvironmentValue
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/EventEnvironmentValue
-
 
 LayerGenesisProcessStateValue
 CODELIST ***INSPIRE***
@@ -215,33 +211,21 @@ FAOHorizonMaster
 CODELIST ***INSPIRE***
 https://inspire.ec.europa.eu/codelist/FAOHorizonMasterValue
 
-
 FAOHorizonSubordinate
 CODELIST ***INSPIRE***
 https://inspire.ec.europa.eu/codelist/FAOHorizonSubordinateValue
-
 
 FAOPrime
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/FAOPrimeValue
 
+
 ### FEATURE otherhorizonnotationtype
 
-***INTERNAL*** 
-codelist for managing forms 
-OtherHorizonNotationType
-CODELIST CREA
-
-
-***EXAMPLE*** 
 WRBdiagnostichorizon
-CODELIST CREA
-https://crea.gov.it/infosuoli/vocabularies/WRBdiagnostichorizon/ 
+CODELIST ORBL
+https://obrl-soil.github.io/wrbsoil2022/chapter-03.html#sec-diagh
 
-
-***EXAMPLE***
-diagnostichorizon
-CODELIST CREA
 
 ### FEATURE wrbqualifiergrouptype
 
@@ -249,55 +233,33 @@ WRBQualifierPlaceValue
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/WRBQualifierPlaceValue
 
-
 WRBQualifierValue (2006)
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/WRBQualifierValue
-
-
-WRBQualifierValue (2014)
-CODELIST UNIROMA
-http://stats-class.fao.uniroma2.it/WRB/v2014
-
 
 WRBQualifierValue (2022)
 CODELIST ORBL-SOIL
 https://obrl-soil.github.io/wrbsoil2022/
 
-
 WRBSpecifiers (2006)
 CODELIST ***INSPIRE*** 
 http://inspire.ec.europa.eu/codelist/WRBSpecifierValue (Under review)
-
-
-WRBSpecifierValue (2014)
-CODELIST ORBL-SOIL
-https://
-
 
 WRBSpecifierValue (2022)
 CODELIST ORBL-SOIL
 https://obrl-soil.github.io/wrbsoil2022/
 
-### FEATURE observableproperty
-
-***INTERNAL*** 
-codelist for managing forms 
-Define the FOI
-CODELIST CREA
-
-
-***INTERNAL*** 
-codelist for managing forms 
-Define the PhenomenonType
-CODELIST CREA
 
 ### FEATURE processparameter
 
-***EXAMPLE*** 
+ProcessParameterNameValue
+CODELIST AGROPRTAL - LOD 
+https://agroportal.lirmm.fr/ - https://lod.nal.usda.gov/
+
 ProcessParameterNameValue
 CODELIST CREA
 http://crea.gov.it/codelist
+
 
 ### FEATURE relatedparty
 
@@ -306,29 +268,25 @@ CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole
 
 
-
 ## PARAMETER
-
 
 SoilSiteParameterNameValue
 **PARAMETER soilsite**
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/SoilSiteParameterNameValue
 
-
 SoilProfileParameterNameValue
 **PARAMETER soilprofile**
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/SoilProfileParameterNameValue
-
 
 SoilDerivedObjectParameterNameValue
 **PARAMETER soilderivedobject**
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/SoilDerivedObjectParameterNameValue
 
-
 ProfileElementParameterNameValue
 **PARAMETER profileelement**
 CODELIST ***INSPIRE***
 http://inspire.ec.europa.eu/codelist/ProfileElementParameterNameValue
+

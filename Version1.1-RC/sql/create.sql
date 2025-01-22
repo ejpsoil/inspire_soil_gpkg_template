@@ -3632,7 +3632,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 -- *** INTERNAL *** 
 -- WRBRversion
 -- FEATURE  soilprofile
--- CODELIST CREA based on real URI of WRB Classification
+-- CODELIST for internal management of Qgis forms based on real URI of WRB Classification
 
 INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('https://inspire.ec.europa.eu/codelist/WRBReferenceSoilGroupValue', 'WRB 2006', null, 'wrbversion', null, null, null, null);
 INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://stats-class.fao.uniroma2.it/WRB/v2014/rsg.html', 'WRB 2014', null, 'wrbversion', null, null, null, null);
@@ -4166,7 +4166,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 -- *** INTERNAL *** codelist for managing forms 
 -- OtherHorizonNotationType
 -- FEATURE otherhorizonnotationtype
--- CODELIST CREA
+-- CODELIST for internal management of Qgis forms
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('WRBdiagnostichorizon', 'WRB', 'WRB Diagnostic Horizon', 'OtherHorizonNotationTypeValue', null, null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('USDAdiagnostichorizon', 'USDA', 'USDA Diagnostic Horizon', 'OtherHorizonNotationTypeValue', null, null, null, null);
@@ -4966,7 +4966,7 @@ INSERT INTO codelist (id, label, definition, collection, foi, phenomenon, foi_ph
 -- *** INTERNAL *** codelist for managing forms 
 -- Define the FOI
 -- FEATURE observableproperty
--- CODELIST CREA
+-- CODELIST for internal management of Qgis forms
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('profileelement', 'profileelement', null, 'FOIType', '', null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('soilprofile', 'soilprofile', null, 'FOIType', '', null, null, null);
@@ -4976,7 +4976,7 @@ INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_
 -- *** INTERNAL *** codelist for managing forms 
 -- Define the PhenomenonType
 -- FEATURE observableproperty
--- CODELIST CREA
+-- CODELIST for internal management of Qgis forms
 
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('chemical', 'chemical', null, 'PhenomenonType', '', null, null, null);
 INSERT INTO "codelist" (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('biological', 'biological', null, 'PhenomenonType', '', null, null, null);
