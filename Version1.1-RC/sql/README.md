@@ -403,10 +403,6 @@ ProcessParameterNameValue
 CODELIST AGROPRTAL - LOD 
 https://agroportal.lirmm.fr/ - https://lod.nal.usda.gov/
 
-ProcessParameterNameValue
-CODELIST CREA
-http://crea.gov.it/codelist
-
 
 ### FEATURE relatedparty
 
