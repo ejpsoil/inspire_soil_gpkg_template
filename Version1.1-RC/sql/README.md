@@ -11,9 +11,9 @@ To do this:
     - **Data Definition Language (DDL):** Instructions to create tables and their relationships.  
     - **Data Manipulation Language (DML):** Instructions to populate the `codelist` table with the necessary codelists required for its functionality.  
 
-- Some constraints have been managed through both form management and trigger creation.  
-    - On one hand, we aim to assist user data entry.  
-    - On the other hand, the presence of triggers at the engine level ensures data integrity in case of massive data entry.
+- Some constraints have been managed through both form management and trigger creation, in order to:
+    - assist user data entry.  
+    - ensures data integrity in case of massive data entry.
 
 ---
 
