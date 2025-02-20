@@ -435,7 +435,7 @@ CREATE TABLE so.othersoilnametype
     id SERIAL PRIMARY KEY,
     othersoilname_type TEXT NOT NULL, --Codelist othersoilnametypevalue
     othersoilname_class TEXT,
-    isoriginalclassification BOOLEAN DEFAULT FALSE NOT NULL,
+    isoriginalclassification BOOLEAN DEFAULT false NOT NULL, --Change from 0/1 to false/true
     othersoilname UUID,
     FOREIGN KEY (othersoilname) REFERENCES so.soilprofile(guidkey) ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -487,8 +487,8 @@ CREATE TABLE so.isderivedfrom
 
 COMMENT ON TABLE so.isderivedfrom IS 'Link between Derived Soil Profiles and Observed Soil Profiles.';
 -- Add Comment Column
-COMMENT ON COLUMN so.isderivedfrom.base_id IS 'Foreign key to the SoilProfile table, guidkey field. - Observed Soil Profile';
-COMMENT ON COLUMN so.isderivedfrom.related_id IS 'Foreign key to the SoilProfile table, guidkey field. - Derived Soil Profile';
+COMMENT ON COLUMN so.isderivedfrom.base_id IS 'Foreign key to the SoilProfile table, guidkey field. - Derived Soil Profile';
+COMMENT ON COLUMN so.isderivedfrom.related_id IS 'Foreign key to the SoilProfile table, guidkey field. - Observed Soil Profile';
 
 
 -- Trigger and Function -------------------------------------------------------------------------------------------------
@@ -850,7 +850,7 @@ CREATE TABLE so.profileelement
     layergenesisenviroment TEXT,      -- CODELIST eventenvironmentvalue 
     layergenesisprocessstate TEXT,      -- CODELIST layergenesisprocessstatevalue
 
-    profileelementtype BOOLEAN DEFAULT false NOT NULL,
+    profileelementtype BOOLEAN DEFAULT false NOT NULL, --Change from 0/1 to false/true
     ispartof UUID NOT NULL,
     FOREIGN KEY (ispartof)
       REFERENCES so.soilprofile(guidkey)
@@ -1214,7 +1214,7 @@ CREATE TABLE so.faohorizonnotationtype
     faohorizonsubordinate_3 TEXT, -- CODELIST faohorizonsubordinatevalue
     faohorizonverical INTEGER,
     faoprime TEXT NOT NULL,  -- CODELIST faoprimevalue
-    isoriginalclassification BOOLEAN DEFAULT false NOT NULL,
+    isoriginalclassification BOOLEAN DEFAULT false NOT NULL, --Change from 0/1 to false/true
     idprofileelement UUID UNIQUE, 
     FOREIGN KEY (idprofileelement) 
       REFERENCES so.profileelement(guidkey) ON DELETE CASCADE ON UPDATE CASCADE
@@ -1241,8 +1241,8 @@ CREATE OR REPLACE FUNCTION so.check_faoprofileelementtype()
 RETURNS TRIGGER AS $$
 BEGIN
     IF NEW.idprofileelement IS NOT NULL THEN
-        IF (SELECT profileelementtype FROM profileelement WHERE guidkey = NEW.idprofileelement) <> 1 THEN
-            RAISE EXCEPTION 'Table faohorizonnotationtype: The associated profileelement must have profileelementtype = 0 (HORIZON)';
+        IF (SELECT profileelementtype FROM so.profileelement WHERE guidkey = NEW.idprofileelement) <> FALSE THEN
+            RAISE EXCEPTION 'Table faohorizonnotationtype: The associated profileelement must have profileelementtype = FASLE (HORIZON)';
         END IF;
     END IF;
     RETURN NEW;
@@ -1375,7 +1375,7 @@ CREATE TABLE so.otherhorizonnotationtype
     guidkey UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     horizonnotation TEXT NOT NULL, --Codelist otherhorizonnotationtypevalue
     diagnostichorizon TEXT, -- CODELIST wrbdiagnostichorizonvalue 
-    isoriginalclassification BOOLEAN DEFAULT false NOT NULL, 
+    isoriginalclassification BOOLEAN DEFAULT false NOT NULL,  --Change from 0/1 to false/true
     otherhorizonnotation TEXT
 );
 
@@ -2687,7 +2687,7 @@ INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi
 -- codelist INSPIRE
 -- https://inspire.ec.europa.eu/codelist/OtherSoilNameTypeValue
 
-INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('https://inspire.ec.europa.eu/so.codelist/OtherSoilNameTypeValue','Void','Void','OtherSoilNameTypeValue', null, null, null, null);
+INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('https://inspire.ec.europa.eu/codelist/OtherSoilNameTypeValue','Void','Void','OtherSoilNameTypeValue', null, null, null, null);
 
 
 -- LayerTypeValue
@@ -3666,17 +3666,17 @@ INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi
 -- codelist INSPIRE
 -- http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole
 
-INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/metadata-so.codelist/ResponsiblePartyRole/resourceProvider', 'Resource Provider', 'Party that supplies the resource.', 'ResponsiblePartyRole', null, null, null, null);
-INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/metadata-so.codelist/ResponsiblePartyRole/custodian', 'Custodian', 'Party that accepts accountability and responsibility for the data and ensures appropriate care and maintenance of the resource.', 'ResponsiblePartyRole', null, null, null, null);
-INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/metadata-so.codelist/ResponsiblePartyRole/owner', 'Owner', 'Party that owns the resource.', 'ResponsiblePartyRole', null, null, null, null);
-INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/metadata-so.codelist/ResponsiblePartyRole/user', 'User', 'Party who uses the resource.', 'ResponsiblePartyRole', null, null, null, null);
-INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/metadata-so.codelist/ResponsiblePartyRole/distributor', 'Distributor', 'Party who distributes the resource.', 'ResponsiblePartyRole', null, null, null, null);
-INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/metadata-so.codelist/ResponsiblePartyRole/originator', 'Originator', 'Party who created the resource', 'ResponsiblePartyRole', null, null, null, null);
-INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/metadata-so.codelist/ResponsiblePartyRole/pointOfContact', 'Point of Contact', 'Party who can be contacted for acquiring knowledge about or acquisition of the resource.', 'ResponsiblePartyRole', null, null, null, null);
-INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/metadata-so.codelist/ResponsiblePartyRole/principalInvestigator', 'Principal Investigator', 'Key party responsible for gathering information and conducting research.', 'ResponsiblePartyRole', null, null, null, null);
-INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/metadata-so.codelist/ResponsiblePartyRole/processor', 'Processor', 'Party who has processed the data in a manner such that the resource has been modified.', 'ResponsiblePartyRole', null, null, null, null);
-INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/metadata-so.codelist/ResponsiblePartyRole/publisher', 'Publisher', 'Party who published the resource.', 'ResponsiblePartyRole', null, null, null, null);
-INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/metadata-so.codelist/ResponsiblePartyRole/author', 'Author', 'Party who authored the resource.', 'ResponsiblePartyRole', null, null, null, null);
+INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/resourceProvider', 'Resource Provider', 'Party that supplies the resource.', 'ResponsiblePartyRole', null, null, null, null);
+INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/custodian', 'Custodian', 'Party that accepts accountability and responsibility for the data and ensures appropriate care and maintenance of the resource.', 'ResponsiblePartyRole', null, null, null, null);
+INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/owner', 'Owner', 'Party that owns the resource.', 'ResponsiblePartyRole', null, null, null, null);
+INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/user', 'User', 'Party who uses the resource.', 'ResponsiblePartyRole', null, null, null, null);
+INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/distributor', 'Distributor', 'Party who distributes the resource.', 'ResponsiblePartyRole', null, null, null, null);
+INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/originator', 'Originator', 'Party who created the resource', 'ResponsiblePartyRole', null, null, null, null);
+INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/pointOfContact', 'Point of Contact', 'Party who can be contacted for acquiring knowledge about or acquisition of the resource.', 'ResponsiblePartyRole', null, null, null, null);
+INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/principalInvestigator', 'Principal Investigator', 'Key party responsible for gathering information and conducting research.', 'ResponsiblePartyRole', null, null, null, null);
+INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/processor', 'Processor', 'Party who has processed the data in a manner such that the resource has been modified.', 'ResponsiblePartyRole', null, null, null, null);
+INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/publisher', 'Publisher', 'Party who published the resource.', 'ResponsiblePartyRole', null, null, null, null);
+INSERT INTO so.codelist (id, label, definition, collection, foi, phenomenon, foi_phenomenon, parent) VALUES ('http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/author', 'Author', 'Party who authored the resource.', 'ResponsiblePartyRole', null, null, null, null);
 
 
 ----------------------------------------------------------------
